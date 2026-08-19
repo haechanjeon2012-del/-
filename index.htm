@@ -3,10 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>CHEONJUNG BASEBALL LEAGUE</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -55,8 +60,7 @@ nav button:hover{
 
 .hero{
     padding:80px 8%;
-    background:
-    linear-gradient(135deg,#111,#263747);
+    background:linear-gradient(135deg,#111,#263747);
 }
 
 .hero small{
@@ -209,6 +213,11 @@ button.action:hover{
     color:#888;
 }
 
+#adminStatus{
+    margin-top:10px;
+    color:#aaa;
+}
+
 footer{
     text-align:center;
     color:#666;
@@ -281,12 +290,9 @@ footer{
 
 <h1>천중 스포츠 리그</h1>
 
-<p>
-해찬 · 시환 · 준열 · 재우
-</p>
+<p>해찬 · 시환 · 준열 · 재우</p>
 
 </div>
-
 
 <section>
 
@@ -296,7 +302,6 @@ footer{
 
 </section>
 
-
 <section>
 
 <h2>🏆 현재 순위</h2>
@@ -304,7 +309,6 @@ footer{
 <div id="homeRanking"></div>
 
 </section>
-
 
 <section>
 
@@ -459,25 +463,48 @@ footer{
 
 <div id="loginBox" class="card">
 
-<input id="adminId" placeholder="관리자 아이디">
+<h3>관리자 로그인</h3>
 
 <input
-id="adminPw"
+id="adminEmail"
+type="email"
+placeholder="관리자 이메일">
+
+<input
+id="adminPassword"
 type="password"
 placeholder="비밀번호">
 
-<button class="action" onclick="login()">
+<button
+class="action"
+onclick="adminLogin()">
+
 로그인
+
 </button>
 
-<p class="muted">
-테스트 계정 : admin / 1234
-</p>
+<p id="loginMessage"></p>
 
 </div>
 
 
 <div id="adminPanel" style="display:none">
+
+<div class="card">
+
+<h3>👑 관리자 모드</h3>
+
+<p>관리자 로그인 상태입니다.</p>
+
+<button
+class="action"
+onclick="adminLogout()">
+
+로그아웃
+
+</button>
+
+</div>
 
 
 <div class="card">
@@ -601,15 +628,32 @@ CHEONJUNG BASEBALL LEAGUE<br>
 
 <script>
 
-/* =====================================
+/* =================================================
+   SUPABASE 설정
+================================================= */
+
+const SUPABASE_URL =
+"https://tirfgtsipgthwsfunkrl.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_PUiDlKj8R3Z2NiQi7hZf-A_ithkw_L-";
+
+const supabaseClient =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+
+/* =================================================
    기본 데이터
-===================================== */
+================================================= */
 
 const teams = [
-"해찬팀",
-"시환팀",
-"준열팀",
-"재우팀"
+    "해찬팀",
+    "시환팀",
+    "준열팀",
+    "재우팀"
 ];
 
 
@@ -672,21 +716,23 @@ closer:"해찬"
 
 
 const players = [
-"해찬",
-"시환",
-"준열",
-"재우"
+    "해찬",
+    "시환",
+    "준열",
+    "재우"
 ];
 
 
-/* =====================================
+/* =================================================
    페이지 이동
-===================================== */
+================================================= */
 
 function showPage(id){
 
 document.querySelectorAll(".page")
-.forEach(p=>p.classList.remove("active"));
+.forEach(page =>
+page.classList.remove("active")
+);
 
 document.getElementById(id)
 .classList.add("active");
@@ -698,9 +744,120 @@ renderAll();
 }
 
 
-/* =====================================
+/* =================================================
+   관리자 로그인
+================================================= */
+
+async function adminLogin(){
+
+const email =
+document.getElementById("adminEmail").value.trim();
+
+const password =
+document.getElementById("adminPassword").value;
+
+const message =
+document.getElementById("loginMessage");
+
+if(!email || !password){
+
+message.textContent =
+"이메일과 비밀번호를 입력하세요.";
+
+return;
+
+}
+
+
+const {data,error} =
+await supabaseClient.auth.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+
+if(error){
+
+message.textContent =
+"로그인 실패: 이메일 또는 비밀번호를 확인하세요.";
+
+console.error(error);
+
+return;
+
+}
+
+
+if(data.user){
+
+document.getElementById("loginBox")
+.style.display="none";
+
+document.getElementById("adminPanel")
+.style.display="block";
+
+message.textContent="";
+
+alert("관리자 로그인 성공!");
+
+}
+
+}
+
+
+/* =================================================
+   관리자 로그아웃
+================================================= */
+
+async function adminLogout(){
+
+await supabaseClient.auth.signOut();
+
+document.getElementById("loginBox")
+.style.display="block";
+
+document.getElementById("adminPanel")
+.style.display="none";
+
+document.getElementById("adminEmail")
+.value="";
+
+document.getElementById("adminPassword")
+.value="";
+
+alert("로그아웃되었습니다.");
+
+}
+
+
+/* =================================================
+   현재 로그인 확인
+================================================= */
+
+async function checkAdmin(){
+
+const {data} =
+await supabaseClient.auth.getSession();
+
+if(data.session){
+
+document.getElementById("loginBox")
+.style.display="none";
+
+document.getElementById("adminPanel")
+.style.display="block";
+
+}
+
+}
+
+
+/* =================================================
    경기 결과
-===================================== */
+================================================= */
 
 function gameKey(g){
 
@@ -718,9 +875,9 @@ localStorage.getItem(gameKey(g))
 }
 
 
-/* =====================================
+/* =================================================
    다음 경기
-===================================== */
+================================================= */
 
 function renderNextGame(){
 
@@ -736,7 +893,7 @@ getGameResult(g);
 
 if(!result){
 
-box.innerHTML = `
+box.innerHTML=`
 
 <div class="card">
 
@@ -771,24 +928,29 @@ return;
 
 }
 
-box.innerHTML =
-`<div class="card">
+box.innerHTML=`
+
+<div class="card">
+
 모든 정규 경기가 종료되었습니다.
-</div>`;
+
+</div>
+
+`;
 
 }
 
 
-/* =====================================
-   일정
-===================================== */
+/* =================================================
+   경기 일정
+================================================= */
 
 function renderSchedule(){
 
 const box =
 document.getElementById("scheduleList");
 
-if(!box) return;
+if(!box)return;
 
 box.innerHTML="";
 
@@ -802,7 +964,7 @@ let score =
 
 if(result){
 
-score = `
+score=`
 
 <div class="status">
 
@@ -820,7 +982,7 @@ ${result.awayScore}
 
 }
 
-box.innerHTML += `
+box.innerHTML +=`
 
 <div class="card">
 
@@ -854,17 +1016,17 @@ ${score}
 }
 
 
-/* =====================================
+/* =================================================
    순위 계산
-===================================== */
+================================================= */
 
 function getRanking(){
 
 let data={};
 
-teams.forEach(t=>{
+teams.forEach(team=>{
 
-data[t]={
+data[team]={
 game:0,
 win:0,
 lose:0
@@ -878,13 +1040,16 @@ games.forEach(g=>{
 const result =
 getGameResult(g);
 
-if(!result) return;
+if(!result)return;
 
 const home=g[3];
+
 const away=g[4];
 
 data[home].game++;
+
 data[away].game++;
+
 
 if(
 Number(result.homeScore)
@@ -893,9 +1058,11 @@ Number(result.awayScore)
 ){
 
 data[home].win++;
+
 data[away].lose++;
 
 }
+
 else if(
 Number(result.homeScore)
 <
@@ -903,6 +1070,7 @@ Number(result.awayScore)
 ){
 
 data[away].win++;
+
 data[home].lose++;
 
 }
@@ -928,25 +1096,28 @@ d.win/d.game
 }))
 
 .sort(
+
 (a,b)=>
+
 b.rate-a.rate
 ||
 b.win-a.win
+
 );
 
 }
 
 
-/* =====================================
-   순위 화면
-===================================== */
+/* =================================================
+   순위 표시
+================================================= */
 
 function renderRanking(){
 
 const ranking =
 getRanking();
 
-const html = `
+const html=`
 
 <table>
 
@@ -967,7 +1138,9 @@ ${ranking.map((r,i)=>`
 
 <td>${i+1}</td>
 
-<td><strong>${r.team}</strong></td>
+<td>
+<strong>${r.team}</strong>
+</td>
 
 <td>${r.game}</td>
 
@@ -976,11 +1149,15 @@ ${ranking.map((r,i)=>`
 <td>${r.lose}</td>
 
 <td>
-${r.game
+
+${
+r.game
 ?
 r.rate.toFixed(3)
 :
-"-.---"}
+"-.---"
+}
+
 </td>
 
 </tr>
@@ -991,22 +1168,24 @@ r.rate.toFixed(3)
 
 `;
 
-const main =
+const home =
 document.getElementById("homeRanking");
 
 const page =
 document.getElementById("rankingTable");
 
-if(main) main.innerHTML=html;
+if(home)
+home.innerHTML=html;
 
-if(page) page.innerHTML=html;
+if(page)
+page.innerHTML=html;
 
 }
 
 
-/* =====================================
-   팀
-===================================== */
+/* =================================================
+   팀 정보
+================================================= */
 
 function renderTeams(){
 
@@ -1020,7 +1199,7 @@ box.innerHTML="";
 Object.entries(teamData)
 .forEach(([team,d])=>{
 
-box.innerHTML += `
+box.innerHTML +=`
 
 <div class="team-card">
 
@@ -1060,9 +1239,9 @@ box.innerHTML += `
 }
 
 
-/* =====================================
+/* =================================================
    선수 기록
-===================================== */
+================================================= */
 
 function getPlayerData(name){
 
@@ -1104,7 +1283,7 @@ d.atBat
 :
 ".000";
 
-box.innerHTML += `
+box.innerHTML +=`
 
 <tr>
 
@@ -1135,9 +1314,9 @@ box.innerHTML += `
 }
 
 
-/* =====================================
+/* =================================================
    공지
-===================================== */
+================================================= */
 
 function getNotices(){
 
@@ -1166,7 +1345,7 @@ document.getElementById("noticeList");
 const home =
 document.getElementById("homeNotice");
 
-const make =
+const makeNotice =
 n=>`
 
 <div class="notice">
@@ -1182,15 +1361,16 @@ n=>`
 if(list){
 
 list.innerHTML =
-notices.map(make).join("");
+notices.map(makeNotice).join("");
 
 }
 
 if(home){
 
 home.innerHTML =
-notices.slice(0,3)
-.map(make)
+notices
+.slice(0,3)
+.map(makeNotice)
 .join("");
 
 }
@@ -1198,41 +1378,9 @@ notices.slice(0,3)
 }
 
 
-/* =====================================
-   관리자 로그인
-===================================== */
-
-function login(){
-
-const id =
-document.getElementById("adminId").value;
-
-const pw =
-document.getElementById("adminPw").value;
-
-if(id==="admin" && pw==="1234"){
-
-document.getElementById("loginBox")
-.style.display="none";
-
-document.getElementById("adminPanel")
-.style.display="block";
-
-alert("관리자 로그인 성공!");
-
-}
-else{
-
-alert("아이디 또는 비밀번호가 틀렸습니다.");
-
-}
-
-}
-
-
-/* =====================================
+/* =================================================
    관리자 경기 선택
-===================================== */
+================================================= */
 
 function loadGameOptions(){
 
@@ -1261,9 +1409,9 @@ select.appendChild(option);
 }
 
 
-/* =====================================
+/* =================================================
    경기 결과 저장
-===================================== */
+================================================= */
 
 function saveGame(){
 
@@ -1287,8 +1435,10 @@ return;
 
 }
 
+
 if(
-Number(home.value)===
+Number(home.value)
+===
 Number(away.value)
 ){
 
@@ -1297,6 +1447,7 @@ alert("현재 무승부는 사용할 수 없습니다.");
 return;
 
 }
+
 
 localStorage.setItem(
 
@@ -1312,9 +1463,11 @@ awayScore:Number(away.value)
 
 );
 
+
 alert("경기 결과가 저장되었습니다.");
 
 home.value="";
+
 away.value="";
 
 renderAll();
@@ -1322,44 +1475,61 @@ renderAll();
 }
 
 
-/* =====================================
+/* =================================================
    선수 기록 저장
-===================================== */
+================================================= */
 
 function savePlayer(){
 
 const name =
-document.getElementById("playerSelect").value;
+document.getElementById("playerSelect")
+.value;
 
 const data={
 
 game:
-Number(document.getElementById("pGame").value)||0,
+Number(
+document.getElementById("pGame").value
+)||0,
 
 atBat:
-Number(document.getElementById("pAtBat").value)||0,
+Number(
+document.getElementById("pAtBat").value
+)||0,
 
 hit:
-Number(document.getElementById("pHit").value)||0,
+Number(
+document.getElementById("pHit").value
+)||0,
 
 homeRun:
-Number(document.getElementById("pHR").value)||0,
+Number(
+document.getElementById("pHR").value
+)||0,
 
 rbi:
-Number(document.getElementById("pRBI").value)||0,
+Number(
+document.getElementById("pRBI").value
+)||0,
 
 win:
-Number(document.getElementById("pWin").value)||0,
+Number(
+document.getElementById("pWin").value
+)||0,
 
 lose:
-Number(document.getElementById("pLose").value)||0
+Number(
+document.getElementById("pLose").value
+)||0
 
 };
+
 
 localStorage.setItem(
 "player_"+name,
 JSON.stringify(data)
 );
+
 
 alert(
 name+" 선수 기록이 저장되었습니다."
@@ -1370,17 +1540,19 @@ renderStats();
 }
 
 
-/* =====================================
+/* =================================================
    공지 저장
-===================================== */
+================================================= */
 
 function saveNotice(){
 
 const title =
-document.getElementById("noticeTitle").value;
+document.getElementById("noticeTitle")
+.value;
 
 const text =
-document.getElementById("noticeContent").value;
+document.getElementById("noticeContent")
+.value;
 
 if(!title || !text){
 
@@ -1389,6 +1561,7 @@ alert("제목과 내용을 입력하세요.");
 return;
 
 }
+
 
 const notices =
 getNotices();
@@ -1401,16 +1574,19 @@ text:text
 
 });
 
+
 localStorage.setItem(
 "notices",
 JSON.stringify(notices)
 );
+
 
 document.getElementById("noticeTitle")
 .value="";
 
 document.getElementById("noticeContent")
 .value="";
+
 
 alert("공지사항이 저장되었습니다.");
 
@@ -1419,9 +1595,9 @@ renderNotices();
 }
 
 
-/* =====================================
-   전체 데이터 초기화
-===================================== */
+/* =================================================
+   데이터 초기화
+================================================= */
 
 function resetData(){
 
@@ -1444,9 +1620,9 @@ location.reload();
 }
 
 
-/* =====================================
+/* =================================================
    전체 화면 갱신
-===================================== */
+================================================= */
 
 function renderAll(){
 
@@ -1465,13 +1641,46 @@ renderNotices();
 }
 
 
-/* =====================================
+/* =================================================
    시작
-===================================== */
+================================================= */
 
 loadGameOptions();
 
 renderAll();
+
+checkAdmin();
+
+
+/* =================================================
+   로그인 상태 변화 감지
+================================================= */
+
+supabaseClient.auth.onAuthStateChange(
+(event,session)=>{
+
+if(session){
+
+document.getElementById("loginBox")
+.style.display="none";
+
+document.getElementById("adminPanel")
+.style.display="block";
+
+}
+
+else{
+
+document.getElementById("loginBox")
+.style.display="block";
+
+document.getElementById("adminPanel")
+.style.display="none";
+
+}
+
+}
+);
 
 </script>
 
