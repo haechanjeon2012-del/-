@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHEONJUNG BASEBALL LEAGUE</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    background:#080808;
+    color:#fff;
+    font-family:Arial,"Noto Sans KR",sans-serif;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#111;
+    border-bottom:1px solid #333;
+    padding:16px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+}
+
+nav button{
+    background:none;
+    color:#bbb;
+    border:0;
+    margin:4px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+nav button:hover{
+    color:#fff;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.hero{
+    padding:80px 8%;
+    background:
+    linear-gradient(135deg,#111,#263747);
+}
+
+.hero small{
+    color:#aaa;
+    letter-spacing:2px;
+}
+
+.hero h1{
+    font-size:clamp(38px,7vw,72px);
+    margin:15px 0;
+}
+
+.hero p{
+    color:#ccc;
+}
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 6%;
+}
+
+h2{
+    margin-bottom:25px;
+}
+
+.card{
+    background:#151515;
+    border:1px solid #333;
+    border-radius:16px;
+    padding:24px;
+    margin-bottom:18px;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    border-color:#777;
+}
+
+.match{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    font-size:28px;
+    margin:25px 0;
+}
+
+.vs{
+    color:#777;
+    font-weight:bold;
+}
+
+.status{
+    display:inline-block;
+    background:#292929;
+    border-radius:20px;
+    padding:8px 15px;
+    color:#ddd;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#151515;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+th,td{
+    padding:14px 10px;
+    border-bottom:1px solid #333;
+    text-align:center;
+}
+
+th{
+    color:#999;
+}
+
+.team-grid,
+.player-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.team-card,
+.player-card{
+    background:#151515;
+    border:1px solid #333;
+    border-radius:16px;
+    padding:22px;
+    transition:.2s;
+}
+
+.team-card:hover,
+.player-card:hover{
+    transform:translateY(-4px);
+    border-color:#888;
+}
+
+.team-card h3,
+.player-card h3{
+    font-size:24px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    max-width:400px;
+    display:block;
+    background:#0d0d0d;
+    color:#fff;
+    border:1px solid #444;
+    border-radius:8px;
+    padding:12px;
+    margin:8px 0;
+}
+
+textarea{
+    min-height:110px;
+}
+
+button.action{
+    background:#fff;
+    color:#000;
+    border:0;
+    border-radius:8px;
+    padding:12px 18px;
+    cursor:pointer;
+    font-weight:bold;
+    margin:5px 0;
+}
+
+button.action:hover{
+    opacity:.8;
+}
+
+.notice{
+    background:#151515;
+    border-left:4px solid #fff;
+    padding:18px;
+    margin-bottom:12px;
+    border-radius:8px;
+}
+
+.muted{
+    color:#888;
+}
+
+footer{
+    text-align:center;
+    color:#666;
+    padding:50px 20px;
+    border-top:1px solid #222;
+}
+
+@media(max-width:700px){
+
+    header{
+        display:block;
+        text-align:center;
+    }
+
+    nav{
+        margin-top:12px;
+    }
+
+    .hero{
+        padding:55px 6%;
+    }
+
+    .team-grid,
+    .player-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .match{
+        font-size:20px;
+        gap:15px;
+    }
+
+    table{
+        font-size:13px;
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">⚾ CHEONJUNG</div>
+
+<nav>
+<button onclick="showPage('home')">홈</button>
+<button onclick="showPage('players')">선수</button>
+<button onclick="showPage('schedule')">일정</button>
+<button onclick="showPage('stats')">기록</button>
+<button onclick="showPage('ranking')">순위</button>
+<button onclick="showPage('teams')">팀정보</button>
+<button onclick="showPage('notice')">공지</button>
+<button onclick="showPage('admin')">관리자</button>
+</nav>
+
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<div id="home" class="page active">
+
+<div class="hero">
+
+<small>CHEONJUNG BASEBALL LEAGUE</small>
+
+<h1>천중 스포츠 리그</h1>
+
+<p>
+해찬 · 시환 · 준열 · 재우
+</p>
+
+</div>
+
+
+<section>
+
+<h2>🔥 다음 경기</h2>
+
+<div id="nextGame"></div>
+
+</section>
+
+
+<section>
+
+<h2>🏆 현재 순위</h2>
+
+<div id="homeRanking"></div>
+
+</section>
+
+
+<section>
+
+<h2>📢 최근 공지</h2>
+
+<div id="homeNotice"></div>
+
+</section>
+
+</div>
+
+
+<!-- ================= PLAYERS ================= -->
+
+<div id="players" class="page">
+
+<section>
+
+<h2>⚾ 선수 명단</h2>
+
+<div class="player-grid">
+
+<div class="player-card">
+<h3>해찬</h3>
+<p>CHEONJUNG PLAYER</p>
+</div>
+
+<div class="player-card">
+<h3>시환</h3>
+<p>CHEONJUNG PLAYER</p>
+</div>
+
+<div class="player-card">
+<h3>준열</h3>
+<p>CHEONJUNG PLAYER</p>
+</div>
+
+<div class="player-card">
+<h3>재우</h3>
+<p>CHEONJUNG PLAYER</p>
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= SCHEDULE ================= -->
+
+<div id="schedule" class="page">
+
+<section>
+
+<h2>📅 경기 일정</h2>
+
+<div id="scheduleList"></div>
+
+</section>
+
+</div>
+
+
+<!-- ================= STATS ================= -->
+
+<div id="stats" class="page">
+
+<section>
+
+<h2>📊 선수 기록</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>선수</th>
+<th>경기</th>
+<th>타수</th>
+<th>안타</th>
+<th>타율</th>
+<th>홈런</th>
+<th>타점</th>
+<th>승</th>
+<th>패</th>
+</tr>
+
+</thead>
+
+<tbody id="statsTable"></tbody>
+
+</table>
+
+</section>
+
+</div>
+
+
+<!-- ================= RANKING ================= -->
+
+<div id="ranking" class="page">
+
+<section>
+
+<h2>🏆 순위표</h2>
+
+<div id="rankingTable"></div>
+
+</section>
+
+</div>
+
+
+<!-- ================= TEAMS ================= -->
+
+<div id="teams" class="page">
+
+<section>
+
+<h2>⚾ 팀 정보</h2>
+
+<div id="teamList" class="team-grid"></div>
+
+</section>
+
+</div>
+
+
+<!-- ================= NOTICE ================= -->
+
+<div id="notice" class="page">
+
+<section>
+
+<h2>📢 공지사항</h2>
+
+<div id="noticeList"></div>
+
+</section>
+
+</div>
+
+
+<!-- ================= ADMIN ================= -->
+
+<div id="admin" class="page">
+
+<section>
+
+<h2>🔐 관리자</h2>
+
+<div id="loginBox" class="card">
+
+<input id="adminId" placeholder="관리자 아이디">
+
+<input
+id="adminPw"
+type="password"
+placeholder="비밀번호">
+
+<button class="action" onclick="login()">
+로그인
+</button>
+
+<p class="muted">
+테스트 계정 : admin / 1234
+</p>
+
+</div>
+
+
+<div id="adminPanel" style="display:none">
+
+
+<div class="card">
+
+<h3>⚾ 경기 결과 입력</h3>
+
+<select id="gameSelect"></select>
+
+<input
+id="homeScore"
+type="number"
+min="0"
+placeholder="홈팀 점수">
+
+<input
+id="awayScore"
+type="number"
+min="0"
+placeholder="원정팀 점수">
+
+<button
+class="action"
+onclick="saveGame()">
+
+경기 결과 저장
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>📊 선수 기록 입력</h3>
+
+<select id="playerSelect">
+
+<option>해찬</option>
+<option>시환</option>
+<option>준열</option>
+<option>재우</option>
+
+</select>
+
+<input id="pGame" type="number" placeholder="경기">
+
+<input id="pAtBat" type="number" placeholder="타수">
+
+<input id="pHit" type="number" placeholder="안타">
+
+<input id="pHR" type="number" placeholder="홈런">
+
+<input id="pRBI" type="number" placeholder="타점">
+
+<input id="pWin" type="number" placeholder="승">
+
+<input id="pLose" type="number" placeholder="패">
+
+<button
+class="action"
+onclick="savePlayer()">
+
+선수 기록 저장
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>📢 공지사항 작성</h3>
+
+<input
+id="noticeTitle"
+placeholder="공지 제목">
+
+<textarea
+id="noticeContent"
+placeholder="공지 내용"></textarea>
+
+<button
+class="action"
+onclick="saveNotice()">
+
+공지 저장
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔄 데이터 관리</h3>
+
+<button
+class="action"
+onclick="resetData()">
+
+전체 데이터 초기화
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<footer>
+
+CHEONJUNG BASEBALL LEAGUE<br>
+천중 스포츠 리그
+
+</footer>
+
+
+<script>
+
+/* =====================================
+   기본 데이터
+===================================== */
+
+const teams = [
+"해찬팀",
+"시환팀",
+"준열팀",
+"재우팀"
+];
+
+
+const games = [
+
+["1경기","8/24","월","준열팀","시환팀","해찬","시환"],
+
+["2경기","8/26","수","해찬팀","재우팀","해찬","시환"],
+
+["3경기","8/28","금","해찬팀","준열팀","해찬","준열"],
+
+["4경기","8/31","월","준열팀","재우팀","준열","시환"],
+
+["5경기","9/2","수","준열팀","시환팀","준열","시환"],
+
+["6경기","9/4","금","해찬팀","시환팀","해찬","시환"],
+
+["7경기","9/7","월","준열팀","시환팀","준열","시환"],
+
+["8경기","9/9","수","해찬팀","재우팀","해찬","시환"],
+
+["9경기","9/11","금","해찬팀","준열팀","해찬","준열"],
+
+["10경기","9/14","월","준열팀","재우팀","준열","시환"],
+
+["11경기","9/16","수","준열팀","시환팀","준열","시환"],
+
+["12경기","9/18","금","해찬팀","시환팀","해찬","시환"]
+
+];
+
+
+const teamData = {
+
+"시환팀":{
+starter:["시환","해찬","재우","준열","시환"],
+bullpen:["해찬","재우"],
+closer:"시환"
+},
+
+"해찬팀":{
+starter:["해찬","시환","재우","준열","해찬"],
+bullpen:["시환","준열"],
+closer:"해찬"
+},
+
+"재우팀":{
+starter:["시환","재우","해찬","준열","재우"],
+bullpen:["해찬","준열"],
+closer:"시환"
+},
+
+"준열팀":{
+starter:["해찬","준열","시환","재우","준열"],
+bullpen:["시환","재우"],
+closer:"해찬"
+}
+
+};
+
+
+const players = [
+"해찬",
+"시환",
+"준열",
+"재우"
+];
+
+
+/* =====================================
+   페이지 이동
+===================================== */
+
+function showPage(id){
+
+document.querySelectorAll(".page")
+.forEach(p=>p.classList.remove("active"));
+
+document.getElementById(id)
+.classList.add("active");
+
+window.scrollTo(0,0);
+
+renderAll();
+
+}
+
+
+/* =====================================
+   경기 결과
+===================================== */
+
+function gameKey(g){
+
+return `${g[0]} · ${g[3]} vs ${g[4]}`;
+
+}
+
+
+function getGameResult(g){
+
+return JSON.parse(
+localStorage.getItem(gameKey(g))
+);
+
+}
+
+
+/* =====================================
+   다음 경기
+===================================== */
+
+function renderNextGame(){
+
+const box =
+document.getElementById("nextGame");
+
+if(!box) return;
+
+for(const g of games){
+
+const result =
+getGameResult(g);
+
+if(!result){
+
+box.innerHTML = `
+
+<div class="card">
+
+<p>${g[0]} · ${g[1]} ${g[2]}</p>
+
+<div class="match">
+
+<strong>${g[3]}</strong>
+
+<span class="vs">VS</span>
+
+<strong>${g[4]}</strong>
+
+</div>
+
+<p>
+선발투수 :
+${g[5]} ⚔️ ${g[6]}
+</p>
+
+<div class="status">
+경기 예정
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+}
+
+box.innerHTML =
+`<div class="card">
+모든 정규 경기가 종료되었습니다.
+</div>`;
+
+}
+
+
+/* =====================================
+   일정
+===================================== */
+
+function renderSchedule(){
+
+const box =
+document.getElementById("scheduleList");
+
+if(!box) return;
+
+box.innerHTML="";
+
+games.forEach(g=>{
+
+const result =
+getGameResult(g);
+
+let score =
+`<div class="status">경기 예정</div>`;
+
+if(result){
+
+score = `
+
+<div class="status">
+
+${result.homeScore}
+:
+${result.awayScore}
+
+<br>
+
+경기 종료
+
+</div>
+
+`;
+
+}
+
+box.innerHTML += `
+
+<div class="card">
+
+<p>
+${g[0]} · ${g[1]} ${g[2]}
+</p>
+
+<div class="match">
+
+<strong>${g[3]}</strong>
+
+<span class="vs">VS</span>
+
+<strong>${g[4]}</strong>
+
+</div>
+
+<p>
+선발 :
+${g[5]} ⚔️ ${g[6]}
+</p>
+
+${score}
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* =====================================
+   순위 계산
+===================================== */
+
+function getRanking(){
+
+let data={};
+
+teams.forEach(t=>{
+
+data[t]={
+game:0,
+win:0,
+lose:0
+};
+
+});
+
+
+games.forEach(g=>{
+
+const result =
+getGameResult(g);
+
+if(!result) return;
+
+const home=g[3];
+const away=g[4];
+
+data[home].game++;
+data[away].game++;
+
+if(
+Number(result.homeScore)
+>
+Number(result.awayScore)
+){
+
+data[home].win++;
+data[away].lose++;
+
+}
+else if(
+Number(result.homeScore)
+<
+Number(result.awayScore)
+){
+
+data[away].win++;
+data[home].lose++;
+
+}
+
+});
+
+
+return Object.entries(data)
+
+.map(([team,d])=>({
+
+team,
+
+...d,
+
+rate:
+d.game
+?
+d.win/d.game
+:
+0
+
+}))
+
+.sort(
+(a,b)=>
+b.rate-a.rate
+||
+b.win-a.win
+);
+
+}
+
+
+/* =====================================
+   순위 화면
+===================================== */
+
+function renderRanking(){
+
+const ranking =
+getRanking();
+
+const html = `
+
+<table>
+
+<tr>
+
+<th>순위</th>
+<th>팀</th>
+<th>경기</th>
+<th>승</th>
+<th>패</th>
+<th>승률</th>
+
+</tr>
+
+${ranking.map((r,i)=>`
+
+<tr>
+
+<td>${i+1}</td>
+
+<td><strong>${r.team}</strong></td>
+
+<td>${r.game}</td>
+
+<td>${r.win}</td>
+
+<td>${r.lose}</td>
+
+<td>
+${r.game
+?
+r.rate.toFixed(3)
+:
+"-.---"}
+</td>
+
+</tr>
+
+`).join("")}
+
+</table>
+
+`;
+
+const main =
+document.getElementById("homeRanking");
+
+const page =
+document.getElementById("rankingTable");
+
+if(main) main.innerHTML=html;
+
+if(page) page.innerHTML=html;
+
+}
+
+
+/* =====================================
+   팀
+===================================== */
+
+function renderTeams(){
+
+const box =
+document.getElementById("teamList");
+
+if(!box)return;
+
+box.innerHTML="";
+
+Object.entries(teamData)
+.forEach(([team,d])=>{
+
+box.innerHTML += `
+
+<div class="team-card">
+
+<h3>${team}</h3>
+
+<h4>선발투수</h4>
+
+<p>
+
+1선발 : ${d.starter[0]}<br>
+2선발 : ${d.starter[1]}<br>
+3선발 : ${d.starter[2]}<br>
+4선발 : ${d.starter[3]}<br>
+5선발 : ${d.starter[4]}
+
+</p>
+
+<h4>필승조</h4>
+
+<p>
+
+1 : ${d.bullpen[0]}<br>
+2 : ${d.bullpen[1]}
+
+</p>
+
+<h4>마무리</h4>
+
+<p>${d.closer}</p>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* =====================================
+   선수 기록
+===================================== */
+
+function getPlayerData(name){
+
+return JSON.parse(
+localStorage.getItem("player_"+name)
+)
+||
+{
+game:0,
+atBat:0,
+hit:0,
+homeRun:0,
+rbi:0,
+win:0,
+lose:0
+};
+
+}
+
+
+function renderStats(){
+
+const box =
+document.getElementById("statsTable");
+
+if(!box)return;
+
+box.innerHTML="";
+
+players.forEach(name=>{
+
+const d =
+getPlayerData(name);
+
+const avg =
+d.atBat
+?
+(d.hit/d.atBat).toFixed(3)
+:
+".000";
+
+box.innerHTML += `
+
+<tr>
+
+<td>${name}</td>
+
+<td>${d.game}</td>
+
+<td>${d.atBat}</td>
+
+<td>${d.hit}</td>
+
+<td>${avg}</td>
+
+<td>${d.homeRun}</td>
+
+<td>${d.rbi}</td>
+
+<td>${d.win}</td>
+
+<td>${d.lose}</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+
+/* =====================================
+   공지
+===================================== */
+
+function getNotices(){
+
+return JSON.parse(
+localStorage.getItem("notices")
+)
+||
+[
+{
+title:"천중 스포츠 리그 개막",
+text:"8월 24일부터 천중 리그가 시작됩니다."
+}
+];
+
+}
+
+
+function renderNotices(){
+
+const notices =
+getNotices();
+
+const list =
+document.getElementById("noticeList");
+
+const home =
+document.getElementById("homeNotice");
+
+const make =
+n=>`
+
+<div class="notice">
+
+<h3>${n.title}</h3>
+
+<p>${n.text}</p>
+
+</div>
+
+`;
+
+if(list){
+
+list.innerHTML =
+notices.map(make).join("");
+
+}
+
+if(home){
+
+home.innerHTML =
+notices.slice(0,3)
+.map(make)
+.join("");
+
+}
+
+}
+
+
+/* =====================================
+   관리자 로그인
+===================================== */
+
+function login(){
+
+const id =
+document.getElementById("adminId").value;
+
+const pw =
+document.getElementById("adminPw").value;
+
+if(id==="admin" && pw==="1234"){
+
+document.getElementById("loginBox")
+.style.display="none";
+
+document.getElementById("adminPanel")
+.style.display="block";
+
+alert("관리자 로그인 성공!");
+
+}
+else{
+
+alert("아이디 또는 비밀번호가 틀렸습니다.");
+
+}
+
+}
+
+
+/* =====================================
+   관리자 경기 선택
+===================================== */
+
+function loadGameOptions(){
+
+const select =
+document.getElementById("gameSelect");
+
+if(!select)return;
+
+select.innerHTML="";
+
+games.forEach(g=>{
+
+const option =
+document.createElement("option");
+
+option.value =
+gameKey(g);
+
+option.textContent =
+`${g[0]} · ${g[3]} vs ${g[4]}`;
+
+select.appendChild(option);
+
+});
+
+}
+
+
+/* =====================================
+   경기 결과 저장
+===================================== */
+
+function saveGame(){
+
+const select =
+document.getElementById("gameSelect");
+
+const home =
+document.getElementById("homeScore");
+
+const away =
+document.getElementById("awayScore");
+
+if(
+home.value==="" ||
+away.value===""
+){
+
+alert("점수를 입력하세요.");
+
+return;
+
+}
+
+if(
+Number(home.value)===
+Number(away.value)
+){
+
+alert("현재 무승부는 사용할 수 없습니다.");
+
+return;
+
+}
+
+localStorage.setItem(
+
+select.value,
+
+JSON.stringify({
+
+homeScore:Number(home.value),
+
+awayScore:Number(away.value)
+
+})
+
+);
+
+alert("경기 결과가 저장되었습니다.");
+
+home.value="";
+away.value="";
+
+renderAll();
+
+}
+
+
+/* =====================================
+   선수 기록 저장
+===================================== */
+
+function savePlayer(){
+
+const name =
+document.getElementById("playerSelect").value;
+
+const data={
+
+game:
+Number(document.getElementById("pGame").value)||0,
+
+atBat:
+Number(document.getElementById("pAtBat").value)||0,
+
+hit:
+Number(document.getElementById("pHit").value)||0,
+
+homeRun:
+Number(document.getElementById("pHR").value)||0,
+
+rbi:
+Number(document.getElementById("pRBI").value)||0,
+
+win:
+Number(document.getElementById("pWin").value)||0,
+
+lose:
+Number(document.getElementById("pLose").value)||0
+
+};
+
+localStorage.setItem(
+"player_"+name,
+JSON.stringify(data)
+);
+
+alert(
+name+" 선수 기록이 저장되었습니다."
+);
+
+renderStats();
+
+}
+
+
+/* =====================================
+   공지 저장
+===================================== */
+
+function saveNotice(){
+
+const title =
+document.getElementById("noticeTitle").value;
+
+const text =
+document.getElementById("noticeContent").value;
+
+if(!title || !text){
+
+alert("제목과 내용을 입력하세요.");
+
+return;
+
+}
+
+const notices =
+getNotices();
+
+notices.unshift({
+
+title:title,
+
+text:text
+
+});
+
+localStorage.setItem(
+"notices",
+JSON.stringify(notices)
+);
+
+document.getElementById("noticeTitle")
+.value="";
+
+document.getElementById("noticeContent")
+.value="";
+
+alert("공지사항이 저장되었습니다.");
+
+renderNotices();
+
+}
+
+
+/* =====================================
+   전체 데이터 초기화
+===================================== */
+
+function resetData(){
+
+if(
+!confirm(
+"모든 경기 결과와 선수 기록, 공지를 삭제할까요?"
+)
+){
+
+return;
+
+}
+
+localStorage.clear();
+
+alert("데이터가 초기화되었습니다.");
+
+location.reload();
+
+}
+
+
+/* =====================================
+   전체 화면 갱신
+===================================== */
+
+function renderAll(){
+
+renderNextGame();
+
+renderSchedule();
+
+renderRanking();
+
+renderTeams();
+
+renderStats();
+
+renderNotices();
+
+}
+
+
+/* =====================================
+   시작
+===================================== */
+
+loadGameOptions();
+
+renderAll();
+
+</script>
+
+</body>
+</html>
