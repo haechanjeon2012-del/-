@@ -12,14 +12,16 @@ button{cursor:pointer}
 .app{max-width:1200px;margin:auto}
 header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e9edf2}
 .top{height:68px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:27px;font-weight:900;color:#3182f6}.logo span{color:#191f28}
-.admin{border:0;background:#f2f4f6;border-radius:12px;padding:10px 14px;font-weight:800}
+.logo{font-size:27px;font-weight:900;color:#3182f6}
+.logo span{color:#191f28}
+.admin{border:0;background:#191f28;color:#fff;border-radius:12px;padding:10px 16px;font-weight:800}
 .nav{display:flex;gap:5px;padding:0 15px 10px;overflow-x:auto}
 .nav button{border:0;background:#fff;border-radius:12px;padding:10px 15px;font-weight:800;white-space:nowrap}
 .nav button.on{background:#e8f3ff;color:#3182f6}
 main{padding:22px 16px 80px}
 .hero{background:#191f28;color:white;border-radius:24px;padding:30px;margin-bottom:16px}
-.hero h1{font-size:31px;margin:8px 0}.hero p{color:#c8d0d9;margin:0}
+.hero h1{font-size:31px;margin:8px 0}
+.hero p{color:#c8d0d9}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .two{display:grid;grid-template-columns:2fr 1fr;gap:14px}
 .card{background:#fff;border-radius:20px;padding:20px;margin-bottom:15px;box-shadow:0 2px 12px #00000008}
@@ -28,25 +30,34 @@ main{padding:22px 16px 80px}
 .stat{font-size:29px;font-weight:900;margin-top:5px}
 .match{display:flex;align-items:center;gap:10px;padding:15px 0;border-bottom:1px solid #edf0f2}
 .match:last-child{border-bottom:0}
-.mdate{width:100px;font-size:13px}.mteam{flex:1;text-align:center;font-weight:900}.score{min-width:65px;text-align:center;font-size:21px;font-weight:900}
+.mdate{width:105px;font-size:13px}
+.mteam{flex:1;text-align:center;font-weight:900}
+.score{min-width:65px;text-align:center;font-size:21px;font-weight:900}
 .badge{display:inline-block;background:#eef1f5;color:#66717d;border-radius:8px;padding:5px 9px;font-size:12px;font-weight:800}
 .practice{background:#f0edff;color:#6845e8}
 .gray,.primary,.danger,.dark{border:0;border-radius:12px;padding:11px 15px;font-weight:800}
-.gray{background:#eef1f5}.primary{background:#3182f6;color:#fff}.danger{background:#ffe8ea;color:#d9303e}.dark{background:#191f28;color:#fff}
+.gray{background:#eef1f5}.primary{background:#3182f6;color:#fff}
+.danger{background:#ffe8ea;color:#d9303e}.dark{background:#191f28;color:#fff}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
 .tabs button{border:0;background:#eef1f5;border-radius:11px;padding:9px 14px;font-weight:800}
 .tabs button.on{background:#3182f6;color:#fff}
 .team{background:#fff;border-radius:20px;padding:20px;margin-bottom:14px;cursor:pointer;box-shadow:0 2px 12px #00000008}
-.teamhead{display:flex;align-items:center;justify-content:space-between}.teamname{font-size:21px;font-weight:900}
+.teamhead{display:flex;align-items:center;justify-content:space-between}
+.teamname{font-size:21px;font-weight:900}
 .dot{display:inline-block;width:13px;height:13px;border-radius:50%;margin-right:8px}
 .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.kpi div{background:#f7f8fa;border-radius:14px;padding:14px}.kpi strong{display:block;font-size:20px;margin-top:4px}
+.kpi div{background:#f7f8fa;border-radius:14px;padding:14px}
+.kpi strong{display:block;font-size:20px;margin-top:4px}
 .members{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
 .member{background:#f7f8fa;border-radius:12px;padding:12px;cursor:pointer}
 .member b{display:block;margin-bottom:3px}
 .list{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #edf0f2}
-table{width:100%;border-collapse:collapse}th,td{padding:11px 7px;border-bottom:1px solid #e9edf2;text-align:center}th{background:#fafbfc;color:#78838e;font-size:13px}
-.news{padding:16px 0;border-bottom:1px solid #e9edf2;cursor:pointer}.news h3{margin:0 0 7px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:11px 7px;border-bottom:1px solid #e9edf2;text-align:center}
+th{background:#fafbfc;color:#78838e;font-size:13px}
+tr.clickable{cursor:pointer}
+.news{padding:16px 0;border-bottom:1px solid #e9edf2;cursor:pointer}
+.news h3{margin:0 0 7px}
 .notice{background:#e8f3ff;color:#176bd3;padding:14px;border-radius:14px;margin-bottom:15px}
 .form{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 input,select,textarea{width:100%;padding:12px;border:1px solid #dfe3e8;border-radius:11px;background:white}
@@ -54,30 +65,42 @@ textarea{min-height:120px;resize:vertical}
 .empty{text-align:center;padding:35px;color:#8b95a1}
 .modal{position:fixed;inset:0;background:#0008;z-index:100;display:none;align-items:center;justify-content:center;padding:15px}
 .modal.show{display:flex}
-.modalbox{background:#fff;width:100%;max-width:800px;max-height:92vh;overflow:auto;border-radius:22px;padding:22px}
+.modalbox{background:#fff;width:100%;max-width:850px;max-height:92vh;overflow:auto;border-radius:22px;padding:22px}
 .close{float:right;border:0;background:#eef1f5;border-radius:10px;padding:7px 11px}
-.comment{padding:12px 0;border-bottom:1px solid #edf0f2}.comment b{display:block}.comment small{color:#929aa4}
+.comment{padding:12px 0;border-bottom:1px solid #edf0f2}
+.comment b{display:block}
+.comment small{color:#929aa4}
 .predict{border:1px solid #e4e8ed;border-radius:15px;padding:15px;margin:10px 0}
 .predict button{margin:4px}
 .manager{background:#191f28;color:#fff;border-radius:13px;padding:13px}
 .sectionTitle{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.ranktabs{display:flex;gap:7px;overflow-x:auto;margin-bottom:15px}
+.ranktabs button{border:0;background:#eef1f5;border-radius:10px;padding:9px 13px;font-weight:800;white-space:nowrap}
+.ranktabs button.on{background:#3182f6;color:#fff}
+.adminTitle{background:#191f28;color:#fff;border-radius:18px;padding:20px;margin-bottom:15px}
+.smallbtn{padding:7px 10px!important;font-size:12px}
 @media(max-width:800px){
-.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}
-.kpi{grid-template-columns:repeat(2,1fr)}.form{grid-template-columns:1fr}
-.members{grid-template-columns:1fr}.mdate{width:80px}
+.grid{grid-template-columns:repeat(2,1fr)}
+.two{grid-template-columns:1fr}
+.kpi{grid-template-columns:repeat(2,1fr)}
+.form{grid-template-columns:1fr}
+.members{grid-template-columns:1fr}
+.mdate{width:80px}
 }
 </style>
 </head>
 
 <body>
 <div class="app">
+
 <header>
 <div class="top">
 <div class="logo">CPL <span>SPORTS</span></div>
-<button class="admin" onclick="adminLogin()">⚙ 관리자</button>
+<button type="button" class="admin" id="adminButton">⚙ 관리자</button>
 </div>
 <div class="nav" id="nav"></div>
 </header>
+
 <main id="main"></main>
 </div>
 
@@ -86,41 +109,44 @@ textarea{min-height:120px;resize:vertical}
 </div>
 
 <script>
-/* =========================
-   CPL DATA
-========================= */
+"use strict";
 
-const STORAGE_KEY="CPL_SPORTS_V3";
+/* =========================================================
+   CPL SPORTS
+   관리자 비밀번호: 1234
+========================================================= */
 
-const defaultData={
+const STORAGE_KEY="CPL_SPORTS_FINAL_2026";
+
+const DEFAULT={
 teams:{
 "시환팀":{
 icon:"🟦",color:"#3182f6",manager:"시환",
-hitters:["시환1","시환2","시환3","시환4","시환5","시환6"],
-pitchers:["시환투수1","시환투수2","시환투수3","시환투수4","시환투수5","시환투수6","시환투수7","시환투수8"],
+hitters:["1시환","2시환","3시환","4시환","5시환","6시환"],
+pitchers:["시환-01","시환-02","시환-03","시환-04","시환-05","시환-06","시환-07","시환-08"],
 starters:["시환","해찬","재우","준열","시환"],
-win:"해찬",bull:"재우",closer:"시환"
+win:"해찬",bull:"재우",closer:"해찬"
 },
 "해찬팀":{
 icon:"🟨",color:"#f5b900",manager:"해찬",
-hitters:["해찬1","해찬2","해찬3","해찬4","해찬5","해찬6"],
-pitchers:["해찬투수1","해찬투수2","해찬투수3","해찬투수4","해찬투수5","해찬투수6","해찬투수7","해찬투수8"],
+hitters:["1해찬","2해찬","3해찬","4해찬","5해찬","6해찬"],
+pitchers:["해찬-01","해찬-02","해찬-03","해찬-04","해찬-05","해찬-06","해찬-07","해찬-08"],
 starters:["해찬","시환","재우","준열","해찬"],
-win:"시환",bull:"준열",closer:"해찬"
+win:"시환",bull:"준열",closer:"시환"
 },
 "재우팀":{
 icon:"🟥",color:"#f04452",manager:"재우",
-hitters:["재우1","재우2","재우3","재우4","재우5","재우6"],
-pitchers:["재우투수1","재우투수2","재우투수3","재우투수4","재우투수5","재우투수6","재우투수7","재우투수8"],
+hitters:["1재우","2재우","3재우","4재우","5재우","6재우"],
+pitchers:["재우-01","재우-02","재우-03","재우-04","재우-05","재우-06","재우-07","재우-08"],
 starters:["시환","재우","해찬","준열","재우"],
-win:"해찬",bull:"시환",closer:"시환"
+win:"해찬",bull:"시환",closer:"해찬"
 },
 "준열팀":{
 icon:"⬜",color:"#9aa1a9",manager:"준열",
-hitters:["준열1","준열2","준열3","준열4","준열5","준열6"],
-pitchers:["준열투수1","준열투수2","준열투수3","준열투수4","준열투수5","준열투수6","준열투수7","준열투수8"],
+hitters:["1준열","2준열","3준열","4준열","5준열","6준열"],
+pitchers:["준열-01","준열-02","준열-03","준열-04","준열-05","준열-06","준열-07","준열-08"],
 starters:["해찬","준열","시환","재우","준열"],
-win:"시환",bull:"해찬",closer:"해찬"
+win:"시환",bull:"해찬",closer:"시환"
 }
 },
 
@@ -154,56 +180,102 @@ results:[],
 stats:{},
 predictions:{},
 comments:[],
+
 news:[
-{
-id:1,
-date:"2026-08-22",
-title:"CPL SPORTS 공식 포털 오픈",
-content:"CPL의 경기 일정, 경기 결과, 팀 정보, 선수 기록, 순위, 뉴스와 승부예측을 한 곳에서 확인할 수 있습니다."
-},
-{
-id:2,
-date:"2026-08-22",
-title:"CPL 정규시즌 일정 공개",
-content:"정규경기는 월요일·수요일·금요일에 진행되며 경기 시간은 12:30으로 통일합니다. 연습경기는 화요일·목요일에 진행됩니다."
-},
-{
-id:3,
-date:"2026-08-22",
-title:"CPL 4팀 운영 체계 확정",
-content:"시환·해찬·재우·준열은 각 팀 감독으로 운영되며, 타자 6명과 투수 8명은 별도의 선수로 관리합니다."
-}
+{id:1,date:"2026-08-22",title:"CPL SPORTS 공식 포털 오픈",
+content:"CPL의 경기 일정, 경기 결과, 선수 기록, 팀 순위, 타자 순위, 투수 순위, 뉴스와 승부예측을 한 곳에서 확인할 수 있습니다."},
+{id:2,date:"2026-08-22",title:"CPL 정규시즌 일정 공개",
+content:"정규경기는 월요일·수요일·금요일에 진행되며 경기 시간은 12:30으로 통일합니다. 연습경기는 화요일·목요일에 진행됩니다."},
+{id:3,date:"2026-08-22",title:"CPL 팀 운영 체계 확정",
+content:"시환·해찬·재우·준열은 각 팀 감독이며 타자 6명과 투수 8명은 별도의 선수로 관리됩니다."}
 ],
-settings:{
-predictionUser:"CPL 팬",
-adminPassword:"1234"
-}
+
+settings:{adminPassword:"1234"}
 };
 
-let data=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");
+/* =========================================================
+   DATA LOAD
+========================================================= */
 
-if(!data){
-data=structuredClone(defaultData);
+let data;
+
+try{
+data=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");
+}catch(e){
+data=null;
+}
+
+if(!data || !data.teams || !data.settings){
+data=deepCopy(DEFAULT);
 save();
+}else{
+repairData();
+}
+
+function deepCopy(obj){
+return JSON.parse(JSON.stringify(obj));
 }
 
 function save(){
+try{
 localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+}catch(e){
+console.error(e);
 }
+}
+
+function repairData(){
+
+if(!data.settings)data.settings={};
+if(!data.settings.adminPassword)data.settings.adminPassword="1234";
+
+if(!data.results)data.results=[];
+if(!data.stats)data.stats={};
+if(!data.predictions)data.predictions={};
+if(!data.comments)data.comments=[];
+if(!data.news)data.news=deepCopy(DEFAULT.news);
+if(!data.schedule)data.schedule=deepCopy(DEFAULT.schedule);
+
+Object.keys(DEFAULT.teams).forEach(team=>{
+if(!data.teams[team]){
+data.teams[team]=deepCopy(DEFAULT.teams[team]);
+return;
+}
+
+let t=data.teams[team];
+
+if(!t.manager)t.manager=DEFAULT.teams[team].manager;
+if(!Array.isArray(t.hitters))t.hitters=deepCopy(DEFAULT.teams[team].hitters);
+if(!Array.isArray(t.pitchers))t.pitchers=deepCopy(DEFAULT.teams[team].pitchers);
+if(!Array.isArray(t.starters))t.starters=deepCopy(DEFAULT.teams[team].starters);
+if(!t.win)t.win=DEFAULT.teams[team].win;
+if(!t.bull)t.bull=DEFAULT.teams[team].bull;
+if(!t.closer)t.closer=DEFAULT.teams[team].closer;
+});
+
+save();
+}
+
+/* =========================================================
+   BASIC
+========================================================= */
 
 const menus=["홈","팀","일정","경기결과","순위","선수","통계","뉴스","규정"];
 
-function $(id){return document.getElementById(id)}
+function $(id){
+return document.getElementById(id);
+}
 
 function nav(active){
 $("nav").innerHTML=menus.map(x=>
-`<button class="${x===active?"on":""}" onclick="go('${x}')">${x}</button>`
+`<button type="button" class="${x===active?"on":""}" onclick="go('${x}')">${x}</button>`
 ).join("");
 }
 
 function go(page){
 nav(page);
-({
+
+const pages={
 "홈":home,
 "팀":teamsPage,
 "일정":schedulePage,
@@ -213,12 +285,18 @@ nav(page);
 "통계":statsPage,
 "뉴스":newsPage,
 "규정":rulesPage
-}[page])();
+};
+
+if(pages[page])pages[page]();
 }
 
 function dateText(d){
 const x=new Date(d+"T12:30:00");
 return `${x.getMonth()+1}/${x.getDate()} (${["일","월","화","수","목","금","토"][x.getDay()]})`;
+}
+
+function teamNames(){
+return Object.keys(data.teams);
 }
 
 function allPlayers(){
@@ -230,19 +308,41 @@ arr.push(...t.pitchers);
 return [...new Set(arr)];
 }
 
-function getGame(date,home,away){
-return data.schedule.find(g=>g.date===date&&g.home===home&&g.away===away);
+function allManagers(){
+return ["시환","해찬","재우","준열"];
+}
+
+function gameKey(date,away,home){
+return date+"_"+away+"_"+home;
 }
 
 function getResult(date,home,away){
 return data.results.find(r=>r.date===date&&r.home===home&&r.away===away);
 }
 
-/* =========================
+function getGame(date,home,away){
+return data.schedule.find(g=>g.date===date&&g.home===home&&g.away===away);
+}
+
+function esc(s){
+return String(s??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+}
+
+function escAttr(s){
+return esc(s);
+}
+
+/* =========================================================
    HOME
-========================= */
+========================================================= */
 
 function home(){
+
 const next=data.schedule
 .filter(g=>!getResult(g.date,g.home,g.away))
 .sort((a,b)=>a.date.localeCompare(b.date))
@@ -252,46 +352,50 @@ $("main").innerHTML=`
 <div class="hero">
 <small>CPL SPORTS</small>
 <h1>⚾ CPL 자체 스포츠 포털</h1>
-<p>경기 · 일정 · 선수 · 기록 · 뉴스 · 승부예측</p>
+<p>네이버 스포츠처럼 경기 · 일정 · 순위 · 선수 · 기록 · 뉴스 · 승부예측을 한 곳에서</p>
 </div>
 
 <div class="grid">
 <div class="card"><span class="muted">팀</span><div class="stat">4</div></div>
 <div class="card"><span class="muted">선수</span><div class="stat">${allPlayers().length}</div></div>
-<div class="card"><span class="muted">정규경기</span><div class="stat">${data.schedule.filter(x=>x.type==="정규").length}</div></div>
+<div class="card"><span class="muted">전체 경기</span><div class="stat">${data.schedule.length}</div></div>
 <div class="card"><span class="muted">경기시간</span><div class="stat">12:30</div></div>
 </div>
 
 <div class="two">
 <div class="card">
-<div class="sectionTitle"><h2>📅 다음 경기</h2><button class="gray" onclick="go('일정')">전체 ›</button></div>
+<div class="sectionTitle">
+<h2>📅 다음 경기</h2>
+<button class="gray" onclick="go('일정')">전체 ›</button>
+</div>
 ${next.length?next.map(gameRow).join(""):`<div class="empty">예정된 경기가 없습니다.</div>`}
 </div>
 
 <div>
 <div class="card">
 <h2>📰 최신 뉴스</h2>
-${data.news.slice().reverse().slice(0,3).map(n=>
-`<div class="news" onclick="newsDetail(${n.id})">
-<h3>${n.title}</h3>
-<span class="muted">${n.date} · 내용 보기 ›</span>
+${data.news.slice().reverse().slice(0,3).map(n=>`
+<div class="news" onclick="newsDetail(${n.id})">
+<h3>${esc(n.title)}</h3>
+<span class="muted">${n.date} · 기사 보기 ›</span>
 </div>`).join("")}
 </div>
 
 <div class="card">
 <h2>🔮 승부예측</h2>
-<p class="muted">다음 경기를 예측해보세요.</p>
-${next[0]?`<button class="primary" style="width:100%" onclick="gameDetail('${next[0].date}','${next[0].home}','${next[0].away}')">승부예측 참여 ›</button>`:""}
+<p class="muted">다음 경기 승자를 예측하세요.</p>
+${next[0]?`
+<button class="primary" style="width:100%"
+onclick="gameDetail('${next[0].date}','${next[0].home}','${next[0].away}')">
+승부예측 참여 ›
+</button>`:""}
 </div>
 </div>
 </div>`;
 }
 
-/* =========================
-   GAME ROW
-========================= */
-
 function gameRow(g){
+
 const r=getResult(g.date,g.home,g.away);
 
 return `
@@ -311,41 +415,43 @@ return `
 </div>`;
 }
 
-/* =========================
+/* =========================================================
    TEAMS
-========================= */
+========================================================= */
 
 function teamsPage(){
+
 $("main").innerHTML=`
 <div class="card">
 <h2>⚾ CPL 팀</h2>
-<p class="muted">감독과 선수는 완전히 분리되어 관리됩니다.</p>
+<p class="muted">팀을 클릭하면 감독 · 타자 · 투수 · 선발 로테이션을 확인할 수 있습니다.</p>
 </div>
 
-${Object.keys(data.teams).map(t=>{
-const x=data.teams[t];
+${teamNames().map(team=>{
+const t=data.teams[team];
 
 return `
-<div class="team" onclick="teamDetail('${t}')">
+<div class="team" onclick="teamDetail('${team}')">
 <div class="teamhead">
 <div class="teamname">
-<i class="dot" style="background:${x.color}"></i>
-${x.icon} ${t}
+<i class="dot" style="background:${t.color}"></i>
+${t.icon} ${team}
 </div>
 <span class="badge">상세 ›</span>
 </div>
 
 <div class="kpi">
-<div><span class="muted">감독</span><strong>${x.manager}</strong></div>
-<div><span class="muted">타자</span><strong>${x.hitters.length}명</strong></div>
-<div><span class="muted">투수</span><strong>${x.pitchers.length}명</strong></div>
-<div><span class="muted">마무리</span><strong>${x.closer}</strong></div>
+<div><span class="muted">감독</span><strong>${esc(t.manager)}</strong></div>
+<div><span class="muted">타자</span><strong>${t.hitters.length}명</strong></div>
+<div><span class="muted">투수</span><strong>${t.pitchers.length}명</strong></div>
+<div><span class="muted">마무리</span><strong>${esc(t.closer)}</strong></div>
 </div>
 </div>`;
 }).join("")}`;
 }
 
 function teamDetail(team){
+
 const t=data.teams[team];
 
 modal(`
@@ -353,17 +459,17 @@ modal(`
 <h2>${t.icon} ${team}</h2>
 
 <div class="manager">
-👔 감독 <b>${t.manager}</b>
+👔 감독 <b>${esc(t.manager)}</b>
 </div>
 
 <br>
 
 <h3>🧢 타자 ${t.hitters.length}명</h3>
 <div class="members">
-${t.hitters.map((p,i)=>
-`<div class="member" onclick="playerDetail('${p}')">
-<b>${i+1}번 ${p}</b>
-<span class="muted">타자</span>
+${t.hitters.map((p,i)=>`
+<div class="member" onclick="playerDetail('${escAttr(p)}')">
+<b>${i+1}번 ${esc(p)}</b>
+<span class="muted">타자 · 기록 보기</span>
 </div>`).join("")}
 </div>
 
@@ -371,10 +477,10 @@ ${t.hitters.map((p,i)=>
 
 <h3>⚾ 투수 ${t.pitchers.length}명</h3>
 <div class="members">
-${t.pitchers.map((p,i)=>
-`<div class="member" onclick="playerDetail('${p}')">
-<b>${p}</b>
-<span class="muted">투수 ${i+1}</span>
+${t.pitchers.map((p,i)=>`
+<div class="member" onclick="playerDetail('${escAttr(p)}')">
+<b>${esc(p)}</b>
+<span class="muted">투수 · 기록 보기</span>
 </div>`).join("")}
 </div>
 
@@ -382,32 +488,37 @@ ${t.pitchers.map((p,i)=>
 
 <h3>🔥 투수진 운영</h3>
 <div class="kpi">
-<div><span>필승조</span><strong>${t.win}</strong></div>
-<div><span>불펜</span><strong>${t.bull}</strong></div>
-<div><span>마무리</span><strong>${t.closer}</strong></div>
-<div><span>감독</span><strong>${t.manager}</strong></div>
+<div><span>필승조</span><strong>${esc(t.win)}</strong></div>
+<div><span>불펜</span><strong>${esc(t.bull)}</strong></div>
+<div><span>마무리</span><strong>${esc(t.closer)}</strong></div>
+<div><span>감독</span><strong>${esc(t.manager)}</strong></div>
 </div>
 
 <br>
 
 <h3>🔄 선발 로테이션</h3>
-<div class="notice">${t.starters.map((x,i)=>`${i+1}선발 ${x}`).join("　→　")}</div>
+<div class="notice">
+${t.starters.map((x,i)=>`${i+1}선발 ${esc(x)}`).join("　→　")}
+</div>
 `);
 }
 
-/* =========================
+/* =========================================================
    SCHEDULE
-========================= */
+========================================================= */
 
 function schedulePage(){
+
 $("main").innerHTML=`
 <div class="card">
 <h2>📅 전체 일정</h2>
+
 <div class="tabs">
 <button class="on" onclick="filterSchedule('전체',this)">전체</button>
 <button onclick="filterSchedule('정규',this)">정규</button>
 <button onclick="filterSchedule('연습',this)">연습</button>
 </div>
+
 <div id="scheduleList">
 ${data.schedule.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(gameRow).join("")}
 </div>
@@ -415,53 +526,74 @@ ${data.schedule.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(gameRow).j
 }
 
 function filterSchedule(type,btn){
+
 document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));
 btn.classList.add("on");
 
-$("scheduleList").innerHTML=
-data.schedule
+$("scheduleList").innerHTML=data.schedule
 .filter(g=>type==="전체"||g.type===type)
 .sort((a,b)=>a.date.localeCompare(b.date))
 .map(gameRow).join("");
 }
 
-/* =========================
-   GAME DETAIL + PREDICTION
-========================= */
+/* =========================================================
+   GAME
+========================================================= */
 
 function gameDetail(date,home,away){
+
 const g=getGame(date,home,away);
 const r=getResult(date,home,away);
+
+if(!g)return;
+
 const h=data.teams[home];
 const a=data.teams[away];
-
-const key=date+"_"+away+"_"+home;
+const key=gameKey(date,away,home);
 const prediction=data.predictions[key];
 
 let predictionHTML="";
 
 if(!r){
+
 predictionHTML=`
 <div class="predict">
 <h3>🔮 승부예측</h3>
 <p class="muted">예상되는 결과를 선택하세요.</p>
-<button class="gray" onclick="predict('${key}','${away}')">${a.icon} ${away} 승</button>
-<button class="gray" onclick="predict('${key}','DRAW')">무승부</button>
-<button class="gray" onclick="predict('${key}','${home}')">${h.icon} ${home} 승</button>
-${prediction?`<p>내 예측: <b>${prediction}</b></p>`:""}
+
+<button class="gray" onclick="predict('${key}','${away}')">
+${a.icon} ${away} 승
+</button>
+
+<button class="gray" onclick="predict('${key}','DRAW')">
+무승부
+</button>
+
+<button class="gray" onclick="predict('${key}','${home}')">
+${h.icon} ${home} 승
+</button>
+
+${prediction?`<p>내 예측: <b>${esc(prediction)}</b></p>`:""}
 </div>`;
 }else{
-let result=r.awayScore>r.homeScore?away:r.homeScore>r.awayScore?home:"DRAW";
+
+const result=r.awayScore>r.homeScore?away:
+r.homeScore>r.awayScore?home:"DRAW";
+
 predictionHTML=`
 <div class="notice">
 🔮 승부예측 결과:
-<b>${result==="DRAW"?"무승부":result}</b>
-${prediction?`<br>내 예측: <b>${prediction}</b> · ${prediction===result?"🎯 적중":"❌ 미적중"}`:""}
+<b>${result==="DRAW"?"무승부":esc(result)}</b>
+${prediction?`
+<br>내 예측:
+<b>${esc(prediction)}</b>
+· ${prediction===result?"🎯 적중":"❌ 미적중"}`:""}
 </div>`;
 }
 
 modal(`
 <button class="close" onclick="closeModal()">닫기</button>
+
 <span class="badge ${g.type==="연습"?"practice":""}">${g.type}</span>
 <p class="muted">${dateText(date)} · ${g.time}</p>
 
@@ -472,26 +604,29 @@ ${home} ${h.icon}
 </h2>
 
 <div class="two">
+
 <div class="card">
-<h3>${away}</h3>
-<p>선발: <b>${a.starters[0]}</b></p>
-<p>필승조: <b>${a.win}</b></p>
-<p>불펜: <b>${a.bull}</b></p>
-<p>마무리: <b>${a.closer}</b></p>
+<h3>${a.icon} ${away}</h3>
+<p>선발: <b>${esc(getStarterForGame(a,date))}</b></p>
+<p>필승조: <b>${esc(a.win)}</b></p>
+<p>불펜: <b>${esc(a.bull)}</b></p>
+<p>마무리: <b>${esc(a.closer)}</b></p>
 </div>
 
 <div class="card">
-<h3>${home}</h3>
-<p>선발: <b>${h.starters[0]}</b></p>
-<p>필승조: <b>${h.win}</b></p>
-<p>불펜: <b>${h.bull}</b></p>
-<p>마무리: <b>${h.closer}</b></p>
-</div>
+<h3>${h.icon} ${home}</h3>
+<p>선발: <b>${esc(getStarterForGame(h,date))}</b></p>
+<p>필승조: <b>${esc(h.win)}</b></p>
+<p>불펜: <b>${esc(h.bull)}</b></p>
+<p>마무리: <b>${esc(h.closer)}</b></p>
 </div>
 
-${r?
-`<div class="notice">🏆 자동 MVP: <b>${r.mvp||"기록 부족"}</b></div>`
-:""}
+</div>
+
+${r?`
+<div class="notice">
+🏆 자동 MVP: <b>${esc(r.mvp||"기록 부족")}</b>
+</div>`:""}
 
 ${predictionHTML}
 
@@ -500,72 +635,105 @@ ${commentBox("game",key)}
 `);
 }
 
+/*
+선발 자동 선정:
+정규/연습 경기의 해당 팀 경기 횟수를 기준으로
+1→2→3→4→5 선발 순서가 자동으로 돌아감.
+관리자가 직접 지정한 로테이션도 사용됨.
+*/
+function getStarterForGame(team,date){
+
+const games=data.schedule
+.filter(g=>
+g.type==="정규" &&
+(g.home===team || g.away===team) &&
+g.date<=date
+)
+.sort((a,b)=>a.date.localeCompare(b.date));
+
+if(!games.length)return team.starters[0];
+
+const index=(games.length-1)%team.starters.length;
+
+return team.starters[index];
+}
+
 function predict(key,value){
 data.predictions[key]=value;
 save();
 
-const parts=key.split("_");
-gameDetail(parts[0],parts[2],parts[1]);
+const p=key.split("_");
+gameDetail(p[0],p[2],p[1]);
 }
 
-/* =========================
+/* =========================================================
    RESULTS
-========================= */
+========================================================= */
 
 function resultsPage(){
+
 $("main").innerHTML=`
 <div class="card">
 <h2>🏟 경기 결과</h2>
+
 ${data.results.length?
-data.results.slice().reverse().map((r,i)=>{
-const original=data.results.indexOf(r);
+data.results.slice().reverse().map((r)=>{
+const i=data.results.indexOf(r);
+
 return `
 <div class="match">
 <div class="mdate">${r.date}<br><span class="badge">${r.type}</span></div>
 <div class="mteam">${r.away}</div>
 <div class="score">${r.awayScore}:${r.homeScore}</div>
 <div class="mteam">${r.home}</div>
-<button class="gray" onclick="resultDetail(${original})">›</button>
+<button class="gray" onclick="resultDetail(${i})">›</button>
 </div>`;
 }).join("")
-:`<div class="empty">등록된 경기 결과가 없습니다.</div>`}
+:
+`<div class="empty">등록된 경기 결과가 없습니다.</div>`}
 </div>`;
 }
 
 function resultDetail(i){
+
 const r=data.results[i];
 
 modal(`
 <button class="close" onclick="closeModal()">닫기</button>
-<h2>${r.away} ${r.awayScore} : ${r.homeScore} ${r.home}</h2>
+<h2>${esc(r.away)} ${r.awayScore} : ${r.homeScore} ${esc(r.home)}</h2>
 <p class="muted">${r.date} · ${r.time||"12:30"} · ${r.type}</p>
 
 <div class="notice">
-🏆 MVP <b>${r.mvp||"자동 선정 실패"}</b>
+🏆 MVP <b>${esc(r.mvp||"기록 부족")}</b>
 </div>
 
-${r.mvpScore?`<p>자동 MVP 점수: <b>${r.mvpScore}</b></p>`:""}
-
-${commentBox("game",r.date+"_"+r.away+"_"+r.home)}
+${commentBox("game",gameKey(r.date,r.away,r.home))}
 `);
 }
 
-/* =========================
-   STANDINGS
-========================= */
+/* =========================================================
+   TEAM STANDINGS
+========================================================= */
 
-function standingsPage(){
+function getStandings(){
+
 const d={};
 
-Object.keys(data.teams).forEach(t=>{
-d[t]={g:0,w:0,l:0,draw:0};
+teamNames().forEach(t=>{
+d[t]={g:0,w:0,l:0,draw:0,rf:0,ra:0};
 });
 
 data.results.filter(r=>r.type==="정규").forEach(r=>{
+
 if(!d[r.home]||!d[r.away])return;
 
 d[r.home].g++;
 d[r.away].g++;
+
+d[r.home].rf+=Number(r.homeScore);
+d[r.home].ra+=Number(r.awayScore);
+d[r.away].rf+=Number(r.awayScore);
+d[r.away].ra+=Number(r.homeScore);
 
 if(r.homeScore>r.awayScore){
 d[r.home].w++;
@@ -579,62 +747,168 @@ d[r.away].draw++;
 }
 });
 
-const arr=Object.keys(d)
-.map(t=>({team:t,...d[t]}))
-.sort((a,b)=>
-((b.w+b.draw*.5)/(b.g||1))-
-((a.w+a.draw*.5)/(a.g||1))
-);
+return Object.keys(d)
+.map(team=>({
+team,
+...d[team],
+pct:d[team].g?
+(d[team].w+d[team].draw*.5)/d[team].g:0
+}))
+.sort((a,b)=>b.pct-a.pct||b.w-a.w);
+}
+
+function standingsPage(){
+
+const arr=getStandings();
 
 $("main").innerHTML=`
 <div class="card">
-<h2>🏆 CPL 순위</h2>
+<h2>🏆 팀 순위</h2>
+
 <table>
-<tr><th>순위</th><th>팀</th><th>경기</th><th>승</th><th>패</th><th>무</th><th>승률</th></tr>
+<tr>
+<th>순위</th>
+<th>팀</th>
+<th>경기</th>
+<th>승</th>
+<th>패</th>
+<th>무</th>
+<th>승률</th>
+<th>득점</th>
+<th>실점</th>
+</tr>
+
 ${arr.map((r,i)=>`
 <tr>
-<td>${i+1}</td>
-<td><b>${data.teams[r.team].icon} ${r.team}</b></td>
+<td><b>${i+1}</b></td>
+<td>${data.teams[r.team].icon} <b>${r.team}</b></td>
 <td>${r.g}</td>
 <td>${r.w}</td>
 <td>${r.l}</td>
 <td>${r.draw}</td>
-<td>${r.g?((r.w+r.draw*.5)/r.g).toFixed(3):".000"}</td>
+<td>${r.pct.toFixed(3).replace("0.",".")}</td>
+<td>${r.rf}</td>
+<td>${r.ra}</td>
 </tr>`).join("")}
 </table>
+</div>
+
+<div class="card">
+<h2>🥇 현재 순위 기준</h2>
+<div class="kpi">
+${arr.slice(0,4).map((r,i)=>`
+<div>
+<span>${i+1}위</span>
+<strong>${r.team}</strong>
+</div>`).join("")}
+</div>
 </div>`;
 }
 
-/* =========================
+/* =========================================================
    PLAYERS
-========================= */
+========================================================= */
+
+function isPitcher(player){
+return Object.values(data.teams).some(t=>t.pitchers.includes(player));
+}
 
 function playersPage(){
+
 $("main").innerHTML=`
 <div class="card">
 <h2>👤 선수</h2>
-<p class="muted">감독 4명은 선수 명단에서 제외됩니다.</p>
+<p class="muted">선수를 클릭하면 상세 기록을 볼 수 있습니다.</p>
 
-${allPlayers().map(p=>`
+${teamNames().map(team=>{
+const t=data.teams[team];
+
+return `
+<h3>${t.icon} ${team}</h3>
+
+${t.hitters.map(p=>`
 <div class="list">
-<b>${p}</b>
-<button class="gray" onclick="playerDetail('${p}')">기록 ›</button>
+<div>
+<b>${esc(p)}</b>
+<span class="muted"> · 타자</span>
 </div>
-`).join("")}
+<button class="gray" onclick="playerDetail('${escAttr(p)}')">기록 ›</button>
+</div>`).join("")}
+
+${t.pitchers.map(p=>`
+<div class="list">
+<div>
+<b>${esc(p)}</b>
+<span class="muted"> · 투수</span>
+</div>
+<button class="gray" onclick="playerDetail('${escAttr(p)}')">기록 ›</button>
+</div>`).join("")}
+`;
+}).join("")}
 </div>`;
 }
 
 function playerDetail(player){
+
 const s=data.stats[player]||{};
-const ab=s.ab||0;
-const h=s.h||0;
+const pitcher=isPitcher(player);
+
+if(pitcher){
+
+const ip=Number(s.ip||0);
 
 modal(`
 <button class="close" onclick="closeModal()">닫기</button>
-<h2>👤 ${player}</h2>
+<h2>⚾ ${esc(player)}</h2>
 
 <div class="kpi">
-<div><span>타율</span><strong>${ab?(h/ab).toFixed(3):".000"}</strong></div>
+<div><span>ERA</span><strong>${Number(s.era||0).toFixed(2)}</strong></div>
+<div><span>승</span><strong>${s.w||0}</strong></div>
+<div><span>패</span><strong>${s.l||0}</strong></div>
+<div><span>탈삼진</span><strong>${s.k||0}</strong></div>
+</div>
+
+<br>
+
+<table>
+<tr>
+<th>이닝</th>
+<th>ERA</th>
+<th>승</th>
+<th>패</th>
+<th>세이브</th>
+<th>K</th>
+<th>WHIP</th>
+</tr>
+<tr>
+<td>${ip}</td>
+<td>${Number(s.era||0).toFixed(2)}</td>
+<td>${s.w||0}</td>
+<td>${s.l||0}</td>
+<td>${s.save||0}</td>
+<td>${s.k||0}</td>
+<td>${Number(s.whip||0).toFixed(2)}</td>
+</tr>
+</table>
+`);
+}else{
+
+const ab=Number(s.ab||0);
+const h=Number(s.h||0);
+const bb=Number(s.bb||0);
+const tb=Number(s.tb||h);
+
+const avg=ab?h/ab:0;
+const obp=(ab+bb)>0?(h+bb)/(ab+bb):0;
+const slg=ab?tb/ab:0;
+const ops=obp+slg;
+
+modal(`
+<button class="close" onclick="closeModal()">닫기</button>
+<h2>🧢 ${esc(player)}</h2>
+
+<div class="kpi">
+<div><span>타율</span><strong>${avg.toFixed(3).replace("0.",".")}</strong></div>
 <div><span>안타</span><strong>${h}</strong></div>
 <div><span>홈런</span><strong>${s.hr||0}</strong></div>
 <div><span>타점</span><strong>${s.rbi||0}</strong></div>
@@ -643,94 +917,239 @@ modal(`
 <br>
 
 <table>
-<tr><th>이닝</th><th>ERA</th><th>승</th><th>패</th><th>K</th><th>WHIP</th></tr>
 <tr>
-<td>${s.ip||0}</td>
-<td>${s.era||"0.00"}</td>
-<td>${s.w||0}</td>
-<td>${s.l||0}</td>
-<td>${s.k||0}</td>
-<td>${s.whip||"0.00"}</td>
+<th>타수</th>
+<th>안타</th>
+<th>홈런</th>
+<th>타점</th>
+<th>볼넷</th>
+<th>도루</th>
+<th>OPS</th>
+</tr>
+<tr>
+<td>${ab}</td>
+<td>${h}</td>
+<td>${s.hr||0}</td>
+<td>${s.rbi||0}</td>
+<td>${bb}</td>
+<td>${s.sb||0}</td>
+<td>${ops.toFixed(3)}</td>
 </tr>
 </table>
 `);
 }
-
-/* =========================
-   STATS
-========================= */
-
-function statsPage(){
-$("main").innerHTML=`
-<div class="card">
-<h2>📊 선수 통계</h2>
-<table>
-<tr>
-<th>선수</th><th>타수</th><th>안타</th><th>타율</th>
-<th>홈런</th><th>타점</th><th>ERA</th><th>K</th>
-</tr>
-
-${allPlayers().map(p=>{
-const s=data.stats[p]||{};
-const ab=s.ab||0;
-const h=s.h||0;
-
-return `
-<tr onclick="playerDetail('${p}')">
-<td><b>${p}</b></td>
-<td>${ab}</td>
-<td>${h}</td>
-<td>${ab?(h/ab).toFixed(3):".000"}</td>
-<td>${s.hr||0}</td>
-<td>${s.rbi||0}</td>
-<td>${s.era||"0.00"}</td>
-<td>${s.k||0}</td>
-</tr>`;
-}).join("")}
-</table>
-</div>`;
 }
 
-/* =========================
-   NEWS
-========================= */
+/* =========================================================
+   PLAYER RANKINGS
+========================================================= */
 
-function newsPage(){
+function playerStat(player){
+return data.stats[player]||{};
+}
+
+function hitterList(){
+
+return allPlayers()
+.filter(p=>!isPitcher(p))
+.map(p=>{
+const s=playerStat(p);
+const ab=Number(s.ab||0);
+const h=Number(s.h||0);
+const bb=Number(s.bb||0);
+const tb=Number(s.tb||h);
+const avg=ab?h/ab:0;
+const obp=(ab+bb)?(h+bb)/(ab+bb):0;
+const slg=ab?tb/ab:0;
+
+return {
+player:p,
+ab,h,bb,
+hr:Number(s.hr||0),
+rbi:Number(s.rbi||0),
+sb:Number(s.sb||0),
+avg,obp,slg,
+ops:obp+slg
+};
+});
+}
+
+function pitcherList(){
+
+return allPlayers()
+.filter(isPitcher)
+.map(p=>{
+const s=playerStat(p);
+
+return {
+player:p,
+ip:Number(s.ip||0),
+era:Number(s.era||0),
+w:Number(s.w||0),
+l:Number(s.l||0),
+save:Number(s.save||0),
+k:Number(s.k||0),
+whip:Number(s.whip||0)
+};
+});
+}
+
+function statsPage(){
+
+let mode="hitter";
+
 $("main").innerHTML=`
 <div class="card">
-<div class="sectionTitle">
-<h2>📰 CPL 뉴스</h2>
+
+<h2>📊 선수 순위</h2>
+
+<div class="ranktabs" id="rankTabs">
+<button class="on" onclick="renderHitterRank('avg',this)">타율</button>
+<button onclick="renderHitterRank('h',this)">안타</button>
+<button onclick="renderHitterRank('hr',this)">홈런</button>
+<button onclick="renderHitterRank('rbi',this)">타점</button>
+<button onclick="renderHitterRank('ops',this)">OPS</button>
+<button onclick="renderHitterRank('obp',this)">출루율</button>
+<button onclick="renderHitterRank('slg',this)">장타율</button>
+<button onclick="renderHitterRank('sb',this)">도루</button>
 </div>
+
+<div id="rankingTable"></div>
+
+</div>
+
+<div class="card">
+<h2>⚾ 투수 순위</h2>
+
+<div class="ranktabs" id="pitchTabs">
+<button class="on" onclick="renderPitchRank('era',this)">평균자책점</button>
+<button onclick="renderPitchRank('w',this)">승</button>
+<button onclick="renderPitchRank('l',this)">패</button>
+<button onclick="renderPitchRank('k',this)">탈삼진</button>
+<button onclick="renderPitchRank('whip',this)">WHIP</button>
+<button onclick="renderPitchRank('save',this)">세이브</button>
+</div>
+
+<div id="pitchRanking"></div>
+</div>`;
+
+renderHitterRank("avg",document.querySelector("#rankTabs button"));
+renderPitchRank("era",document.querySelector("#pitchTabs button"));
+}
+
+function renderHitterRank(field,btn){
+
+document.querySelectorAll("#rankTabs button").forEach(b=>b.classList.remove("on"));
+if(btn)btn.classList.add("on");
+
+let arr=hitterList();
+
+arr.sort((a,b)=>b[field]-a[field]);
+
+$("rankingTable").innerHTML=`
+<table>
+<tr>
+<th>순위</th>
+<th>선수</th>
+<th>${field==="avg"?"타율":field.toUpperCase()}</th>
+<th>타수</th>
+<th>안타</th>
+<th>홈런</th>
+<th>타점</th>
+</tr>
+
+${arr.map((p,i)=>`
+<tr class="clickable" onclick="playerDetail('${escAttr(p.player)}')">
+<td>${i+1}</td>
+<td><b>${esc(p.player)}</b></td>
+<td>${Number(p[field]).toFixed(3)}</td>
+<td>${p.ab}</td>
+<td>${p.h}</td>
+<td>${p.hr}</td>
+<td>${p.rbi}</td>
+</tr>`).join("")}
+</table>`;
+}
+
+function renderPitchRank(field,btn){
+
+document.querySelectorAll("#pitchTabs button").forEach(b=>b.classList.remove("on"));
+if(btn)btn.classList.add("on");
+
+let arr=pitcherList();
+
+if(field==="era"||field==="whip"){
+arr.sort((a,b)=>a[field]-b[field]);
+}else{
+arr.sort((a,b)=>b[field]-a[field]);
+}
+
+$("pitchRanking").innerHTML=`
+<table>
+<tr>
+<th>순위</th>
+<th>투수</th>
+<th>${field==="era"?"ERA":field==="whip"?"WHIP":field==="w"?"승":field==="l"?"패":field==="k"?"탈삼진":"세이브"}</th>
+<th>이닝</th>
+<th>승</th>
+<th>패</th>
+<th>K</th>
+</tr>
+
+${arr.map((p,i)=>`
+<tr class="clickable" onclick="playerDetail('${escAttr(p.player)}')">
+<td>${i+1}</td>
+<td><b>${esc(p.player)}</b></td>
+<td>${field==="era"||field==="whip"?p[field].toFixed(2):p[field]}</td>
+<td>${p.ip}</td>
+<td>${p.w}</td>
+<td>${p.l}</td>
+<td>${p.k}</td>
+</tr>`).join("")}
+</table>`;
+}
+
+/* =========================================================
+   NEWS
+========================================================= */
+
+function newsPage(){
+
+$("main").innerHTML=`
+<div class="card">
+<h2>📰 CPL NEWS</h2>
 
 ${data.news.slice().reverse().map(n=>`
 <div class="news" onclick="newsDetail(${n.id})">
-<h3>${n.title}</h3>
+<h3>${esc(n.title)}</h3>
 <span class="muted">${n.date} · 기사 보기 ›</span>
-</div>
-`).join("")}
+</div>`).join("")}
 </div>`;
 }
 
 function newsDetail(id){
+
 const n=data.news.find(x=>x.id===id);
+if(!n)return;
 
 modal(`
 <button class="close" onclick="closeModal()">닫기</button>
 <span class="badge">CPL NEWS</span>
 <p class="muted">${n.date}</p>
-<h2>${n.title}</h2>
-<div style="font-size:17px;line-height:1.8">${n.content}</div>
+<h2>${esc(n.title)}</h2>
+<div style="font-size:17px;line-height:1.8;white-space:pre-line">${esc(n.content)}</div>
 
 <h3>💬 댓글</h3>
 ${commentBox("news",String(id))}
 `);
 }
 
-/* =========================
+/* =========================================================
    COMMENTS
-========================= */
+========================================================= */
 
 function commentBox(type,target){
+
 const comments=data.comments.filter(c=>c.type===type&&c.target===target);
 
 return `
@@ -738,25 +1157,25 @@ return `
 ${comments.length?
 comments.map(c=>`
 <div class="comment">
-<b>${escapeHTML(c.name)}</b>
-<div>${escapeHTML(c.text)}</div>
-<small>${c.date}</small>
-<button class="danger" style="float:right;padding:5px 8px" onclick="deleteComment(${c.id},'${type}','${target}')">삭제</button>
-</div>
-`).join("")
-:`<div class="empty">아직 댓글이 없습니다.</div>`}
+<b>${esc(c.name)}</b>
+<div>${esc(c.text)}</div>
+<small>${esc(c.date)}</small>
+</div>`).join("")
+:
+`<div class="empty">아직 댓글이 없습니다.</div>`}
 
 <br>
 
 <div class="form">
 <input id="commentName" placeholder="닉네임" value="CPL 팬">
 <input id="commentText" placeholder="댓글을 입력하세요">
-<button class="primary" onclick="addComment('${type}','${target}')">댓글 등록</button>
+<button class="primary" onclick="addComment('${type}','${escAttr(target)}')">댓글 등록</button>
 </div>
 </div>`;
 }
 
 function addComment(type,target){
+
 const name=$("commentName").value.trim()||"CPL 팬";
 const text=$("commentText").value.trim();
 
@@ -767,85 +1186,71 @@ return;
 
 data.comments.push({
 id:Date.now(),
-type,
-target,
-name,
-text,
+type,target,name,text,
 date:new Date().toLocaleString("ko-KR")
 });
 
 save();
 
-if(type==="news"){
-newsDetail(Number(target));
-}else{
+if(type==="news")newsDetail(Number(target));
+else{
 const p=target.split("_");
 gameDetail(p[0],p[2],p[1]);
 }
 }
 
-function deleteComment(id,type,target){
-data.comments=data.comments.filter(c=>c.id!==id);
-save();
-
-if(type==="news"){
-newsDetail(Number(target));
-}else{
-const p=target.split("_");
-gameDetail(p[0],p[2],p[1]);
-}
-}
-
-function escapeHTML(s){
-return String(s)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-}
-
-/* =========================
+/* =========================================================
    RULES
-========================= */
+========================================================= */
 
 function rulesPage(){
+
 $("main").innerHTML=`
 <div class="card">
 <h2>📖 CPL 규정</h2>
+
 <div class="notice">현재 적용되는 CPL 운영 규정</div>
+
 <p>• 정규경기: 월요일 · 수요일 · 금요일</p>
 <p>• 연습경기: 화요일 · 목요일</p>
 <p>• 경기시간: 12:30</p>
 <p>• 정규시즌 무승부 가능</p>
 <p>• 포스트시즌 무승부 없음</p>
-<p>• 선발 투수 변경 가능</p>
-<p>• 중복 2회 가능</p>
-<p>• 경기 결과 등록 시 순위 자동 계산</p>
-<p>• MVP 자동 선정</p>
+<p>• 각 팀 타자 6명</p>
+<p>• 각 팀 투수 8명</p>
 <p>• 감독과 선수는 별도 관리</p>
+<p>• 선발 로테이션은 경기 순서에 따라 자동 적용</p>
+<p>• 관리자는 선발 로테이션을 직접 수정 가능</p>
+<p>• 경기 결과 입력 시 팀 순위 자동 계산</p>
+<p>• 선수 기록 입력 시 타자·투수 순위 자동 계산</p>
+<p>• MVP 자동 선정</p>
 </div>`;
 }
 
-/* =========================
-   MVP AUTOMATIC
-========================= */
+/* =========================================================
+   MVP
+========================================================= */
 
-function calculateMVP(home,away,homeScore,awayScore){
-const candidates=[...data.teams[home].hitters,...data.teams[away].hitters];
+function calculateMVP(home,away){
+
+const candidates=[
+...data.teams[home].hitters,
+...data.teams[away].hitters
+];
 
 let best=null;
 let bestScore=-1;
 
 candidates.forEach(p=>{
+
 const s=data.stats[p]||{};
 
 const score=
-(s.h||0)*3+
-(s.hr||0)*6+
-(s.rbi||0)*4+
-(s.sb||0)*2+
-(s.k||0)*0.5;
+Number(s.h||0)*3+
+Number(s.hr||0)*6+
+Number(s.rbi||0)*4+
+Number(s.sb||0)*2+
+Number(s.bb||0);
 
 if(score>bestScore){
 bestScore=score;
@@ -853,57 +1258,88 @@ best=p;
 }
 });
 
-return {player:best,score:bestScore};
+return {
+player:best,
+score:bestScore
+};
 }
 
-/* =========================
-   ADMIN
-========================= */
+/* =========================================================
+   ADMIN LOGIN - FIXED
+========================================================= */
 
 function adminLogin(){
-const password=prompt("관리자 비밀번호");
+
+/*
+핵심 수정:
+기존 localStorage 데이터가 오래된 경우에도
+관리자 비밀번호를 자동으로 복구한다.
+*/
+
+if(!data.settings)data.settings={};
+
+if(!data.settings.adminPassword){
+data.settings.adminPassword="1234";
+save();
+}
+
+const password=prompt("관리자 비밀번호를 입력하세요.");
+
+if(password===null)return;
 
 if(password===data.settings.adminPassword){
 adminPage();
-}else if(password!==null){
+}else{
 alert("비밀번호가 올바르지 않습니다.");
 }
 }
 
+/* 버튼 이벤트도 직접 연결 */
+$("adminButton").addEventListener("click",function(e){
+e.preventDefault();
+adminLogin();
+});
+
+/* =========================================================
+   ADMIN MAIN
+========================================================= */
+
 function adminPage(){
-const players=allPlayers();
-const teamNames=Object.keys(data.teams);
 
 $("main").innerHTML=`
-<div class="card">
+<div class="adminTitle">
 <h2>⚙ CPL 관리자</h2>
-<div class="notice">
-여기에서 <b>팀·선수·선발·불펜·일정·경기결과·뉴스·댓글</b>을 모두 수정할 수 있습니다.
+<p>팀 · 선수 · 선발 · 일정 · 경기결과 · 기록 · 뉴스 관리</p>
 </div>
+
+<div class="card">
 
 <button class="dark" onclick="editTeams()">👥 팀 / 선수 / 선발 관리</button>
 <button class="primary" onclick="editSchedule()">📅 일정 관리</button>
 <button class="gray" onclick="editResults()">🏟 경기결과 관리</button>
+<button class="gray" onclick="editStats()">📊 선수 기록 관리</button>
 <button class="gray" onclick="editNews()">📰 뉴스 관리</button>
 <button class="gray" onclick="editComments()">💬 댓글 관리</button>
+<button class="danger" onclick="changePassword()">🔑 관리자 비밀번호 변경</button>
+
 </div>
 
 <div class="card">
-<h3>⚾ 경기 결과 빠른 등록</h3>
+<h3>🏟 경기 결과 빠른 등록</h3>
 
 <div class="form">
 <input id="rdate" type="date">
 
 <select id="rhome">
-${teamNames.map(t=>`<option>${t}</option>`).join("")}
+${teamNames().map(t=>`<option>${t}</option>`).join("")}
 </select>
 
 <select id="raway">
-${teamNames.map(t=>`<option>${t}</option>`).join("")}
+${teamNames().map(t=>`<option>${t}</option>`).join("")}
 </select>
 
-<input id="rhs" type="number" placeholder="홈 점수">
-<input id="ras" type="number" placeholder="원정 점수">
+<input id="rhs" type="number" min="0" placeholder="홈 점수">
+<input id="ras" type="number" min="0" placeholder="원정 점수">
 
 <select id="rtype">
 <option>정규</option>
@@ -912,43 +1348,52 @@ ${teamNames.map(t=>`<option>${t}</option>`).join("")}
 </div>
 
 <br>
+
 <button class="primary" onclick="saveResult()">경기 결과 저장 + MVP 자동 선정</button>
-</div>
-
-<div class="card">
-<h3>📊 선수 기록 입력</h3>
-
-<div class="form">
-<select id="sp">${players.map(p=>`<option>${p}</option>`).join("")}</select>
-<input id="sab" type="number" placeholder="타수">
-<input id="sh" type="number" placeholder="안타">
-<input id="shr" type="number" placeholder="홈런">
-<input id="srbi" type="number" placeholder="타점">
-<input id="sip" type="number" step=".1" placeholder="이닝">
-<input id="sera" type="number" step=".01" placeholder="ERA">
-<input id="sw" type="number" placeholder="승">
-<input id="sl" type="number" placeholder="패">
-<input id="sk" type="number" placeholder="탈삼진">
-<input id="swhip" type="number" step=".01" placeholder="WHIP">
-</div>
-
-<br>
-<button class="primary" onclick="saveStats()">선수 기록 저장</button>
 </div>`;
 }
 
-/* =========================
-   TEAM / STARTER EDITOR
-========================= */
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+function changePassword(){
+
+const old=prompt("현재 관리자 비밀번호");
+
+if(old!==data.settings.adminPassword){
+alert("현재 비밀번호가 틀렸습니다.");
+return;
+}
+
+const next=prompt("새 관리자 비밀번호");
+
+if(!next){
+alert("비밀번호를 입력하세요.");
+return;
+}
+
+data.settings.adminPassword=next;
+save();
+
+alert("관리자 비밀번호가 변경되었습니다.");
+}
+
+/* =========================================================
+   TEAM EDITOR
+========================================================= */
 
 function editTeams(){
-let html=`
-<button class="close" onclick="adminPage()">돌아가기</button>
-<h2>👥 팀 / 선수 / 투수진 관리</h2>
-<p class="muted">감독과 선수는 별도입니다. 선발도 여기서 직접 지정할 수 있습니다.</p>
-`;
 
-Object.keys(data.teams).forEach(team=>{
+let html=`
+<div class="adminTitle">
+<button class="close" onclick="adminPage()">돌아가기</button>
+<h2>👥 팀 / 선수 / 선발 관리</h2>
+<p>선발 로테이션은 관리자만 수정할 수 있습니다.</p>
+</div>`;
+
+teamNames().forEach(team=>{
+
 const t=data.teams[team];
 
 html+=`
@@ -956,26 +1401,39 @@ html+=`
 <h3>${t.icon} ${team}</h3>
 
 <div class="form">
-<label>감독<input id="mgr_${team}" value="${t.manager}"></label>
-<label>필승조<input id="win_${team}" value="${t.win}"></label>
-<label>불펜<input id="bull_${team}" value="${t.bull}"></label>
-<label>마무리<input id="closer_${team}" value="${t.closer}"></label>
+<label>감독
+<input id="mgr_${team}" value="${escAttr(t.manager)}">
+</label>
+
+<label>필승조
+<input id="win_${team}" value="${escAttr(t.win)}">
+</label>
+
+<label>불펜
+<input id="bull_${team}" value="${escAttr(t.bull)}">
+</label>
+
+<label>마무리
+<input id="closer_${team}" value="${escAttr(t.closer)}">
+</label>
 </div>
 
 <br>
 
 <h4>🧢 타자 6명</h4>
 <div class="form">
-${t.hitters.map((p,i)=>
-`<input id="hit_${team}_${i}" value="${p}" placeholder="${i+1}번 타자">`).join("")}
+${t.hitters.map((p,i)=>`
+<input id="hit_${team}_${i}" value="${escAttr(p)}">
+`).join("")}
 </div>
 
 <br>
 
 <h4>⚾ 투수 8명</h4>
 <div class="form">
-${t.pitchers.map((p,i)=>
-`<input id="pit_${team}_${i}" value="${p}" placeholder="투수 ${i+1}">`).join("")}
+${t.pitchers.map((p,i)=>`
+<input id="pit_${team}_${i}" value="${escAttr(p)}">
+`).join("")}
 </div>
 
 <br>
@@ -983,86 +1441,134 @@ ${t.pitchers.map((p,i)=>
 <h4>🔄 선발 로테이션</h4>
 <div class="form">
 ${t.starters.map((p,i)=>`
+<label>${i+1}선발
 <select id="starter_${team}_${i}">
-${allManagers().map(m=>`<option ${m===p?"selected":""}>${m}</option>`).join("")}
+${allManagers().map(m=>`
+<option value="${escAttr(m)}" ${m===p?"selected":""}>${esc(m)}</option>
+`).join("")}
 </select>
+</label>
 `).join("")}
 </div>
 
 <br>
-<button class="primary" onclick="saveTeam('${team}')">이 팀 저장</button>
+
+<button class="primary" onclick="saveTeam('${team}')">
+${team} 저장
+</button>
+
 </div>`;
 });
 
 $("main").innerHTML=html;
 }
 
-function allManagers(){
-return ["시환","해찬","재우","준열"];
-}
-
 function saveTeam(team){
+
 const t=data.teams[team];
 
-t.manager=$(`mgr_${team}`).value;
+t.manager=$(`mgr_${team}`).value.trim()||team.replace("팀","");
+t.win=$(`win_${team}`).value.trim();
+t.bull=$(`bull_${team}`).value.trim();
+t.closer=$(`closer_${team}`).value.trim();
 
-t.win=$(`win_${team}`).value;
-t.bull=$(`bull_${team}`).value;
-t.closer=$(`closer_${team}`).value;
+t.hitters=t.hitters.map((_,i)=>
+$(`hit_${team}_${i}`).value.trim()||`${i+1}${t.manager}`
+);
 
-t.hitters=t.hitters.map((_,i)=>$(`hit_${team}_${i}`).value.trim()||`타자${i+1}`);
-t.pitchers=t.pitchers.map((_,i)=>$(`pit_${team}_${i}`).value.trim()||`투수${i+1}`);
+t.pitchers=t.pitchers.map((_,i)=>
+$(`pit_${team}_${i}`).value.trim()||`${t.manager}-${String(i+1).padStart(2,"0")}`
+);
 
-t.starters=t.starters.map((_,i)=>$(`starter_${team}_${i}`).value);
+t.starters=t.starters.map((_,i)=>
+$(`starter_${team}_${i}`).value
+);
 
 save();
+
 alert("저장되었습니다.");
 editTeams();
 }
 
-/* =========================
+/* =========================================================
    SCHEDULE EDITOR
-========================= */
+========================================================= */
 
 function editSchedule(){
+
 let html=`
+<div class="adminTitle">
 <button class="close" onclick="adminPage()">돌아가기</button>
 <h2>📅 일정 관리</h2>
+</div>
 
 <div class="card">
 <h3>새 경기 추가</h3>
+
 <div class="form">
 <input id="ndate" type="date">
-<input id="ntime" value="12:30" placeholder="시간">
-<select id="nhome">${Object.keys(data.teams).map(t=>`<option>${t}</option>`).join("")}</select>
-<select id="naway">${Object.keys(data.teams).map(t=>`<option>${t}</option>`).join("")}</select>
+<input id="ntime" value="12:30">
+<select id="nhome">${teamNames().map(t=>`<option>${t}</option>`).join("")}</select>
+<select id="naway">${teamNames().map(t=>`<option>${t}</option>`).join("")}</select>
 <select id="ntype"><option>정규</option><option>연습</option></select>
 </div>
+
 <br>
 <button class="primary" onclick="addSchedule()">일정 추가</button>
+</div>`;
+
+data.schedule.slice().sort((a,b)=>a.date.localeCompare(b.date)).forEach((g,displayIndex)=>{
+
+const realIndex=data.schedule.indexOf(g);
+
+html+=`
+<div class="card">
+<strong>${dateText(g.date)} · ${g.away} vs ${g.home}</strong>
+
+<div class="form" style="margin-top:10px">
+<input id="sd_${realIndex}" type="date" value="${g.date}">
+<input id="st_${realIndex}" value="${escAttr(g.time||"12:30")}">
+
+<select id="sh_${realIndex}">
+${teamNames().map(t=>`<option ${t===g.home?"selected":""}>${t}</option>`).join("")}
+</select>
+
+<select id="sa_${realIndex}">
+${teamNames().map(t=>`<option ${t===g.away?"selected":""}>${t}</option>`).join("")}
+</select>
+
+<select id="sy_${realIndex}">
+<option ${g.type==="정규"?"selected":""}>정규</option>
+<option ${g.type==="연습"?"selected":""}>연습</option>
+</select>
 </div>
 
-${data.schedule.slice().sort((a,b)=>a.date.localeCompare(b.date)).map((g,i)=>`
-<div class="card">
-<div class="form">
-<input id="sd_${i}" type="date" value="${g.date}">
-<input id="st_${i}" value="${g.time}">
-<select id="sh_${i}">${Object.keys(data.teams).map(t=>`<option ${t===g.home?"selected":""}>${t}</option>`).join("")}</select>
-<select id="sa_${i}">${Object.keys(data.teams).map(t=>`<option ${t===g.away?"selected":""}>${t}</option>`).join("")}</select>
-<select id="sy_${i}"><option ${g.type==="정규"?"selected":""}>정규</option><option ${g.type==="연습"?"selected":""}>연습</option></select>
-</div>
 <br>
-<button class="primary" onclick="updateSchedule(${i})">수정</button>
-<button class="danger" onclick="deleteSchedule(${i})">삭제</button>
-</div>
-`).join("")}`;
+
+<button class="primary" onclick="updateSchedule(${realIndex})">수정</button>
+<button class="danger" onclick="deleteSchedule(${realIndex})">삭제</button>
+</div>`;
+});
 
 $("main").innerHTML=html;
 }
 
 function addSchedule(){
+
+const date=$("ndate").value;
+
+if(!date){
+alert("날짜를 입력하세요.");
+return;
+}
+
+if($("nhome").value===$("naway").value){
+alert("홈팀과 원정팀이 같을 수 없습니다.");
+return;
+}
+
 data.schedule.push({
-date:$("ndate").value,
+date,
 time:$("ntime").value||"12:30",
 home:$("nhome").value,
 away:$("naway").value,
@@ -1074,40 +1580,47 @@ editSchedule();
 }
 
 function updateSchedule(i){
+
 const g=data.schedule[i];
 
 g.date=$(`sd_${i}`).value;
-g.time=$(`st_${i}`).value;
+g.time=$(`st_${i}`).value||"12:30";
 g.home=$(`sh_${i}`).value;
 g.away=$(`sa_${i}`).value;
 g.type=$(`sy_${i}`).value;
 
+if(g.home===g.away){
+alert("홈팀과 원정팀이 같을 수 없습니다.");
+return;
+}
+
 save();
-alert("수정 완료");
 editSchedule();
 }
 
 function deleteSchedule(i){
+
 if(!confirm("이 일정을 삭제할까요?"))return;
+
 data.schedule.splice(i,1);
 save();
 editSchedule();
 }
 
-/* =========================
+/* =========================================================
    RESULT EDITOR
-========================= */
+========================================================= */
 
 function saveResult(){
+
 const home=$("rhome").value;
 const away=$("raway").value;
+const date=$("rdate").value;
 
 if(home===away){
 alert("홈팀과 원정팀이 같을 수 없습니다.");
 return;
 }
-
-const date=$("rdate").value;
 
 if(!date){
 alert("날짜를 입력하세요.");
@@ -1117,7 +1630,22 @@ return;
 const homeScore=Number($("rhs").value||0);
 const awayScore=Number($("ras").value||0);
 
-const mvp=calculateMVP(home,away,homeScore,awayScore);
+const mvp=calculateMVP(home,away);
+
+const existing=data.results.find(r=>
+r.date===date&&r.home===home&&r.away===away
+);
+
+if(existing){
+
+existing.homeScore=homeScore;
+existing.awayScore=awayScore;
+existing.type=$("rtype").value;
+existing.time="12:30";
+existing.mvp=mvp.player;
+existing.mvpScore=mvp.score;
+
+}else{
 
 data.results.push({
 date,
@@ -1130,57 +1658,88 @@ type:$("rtype").value,
 mvp:mvp.player,
 mvpScore:mvp.score
 });
+}
 
 save();
 
-alert(`경기 저장 완료\n자동 MVP: ${mvp.player||"기록 부족"}`);
+alert("경기 결과 저장 완료\nMVP: "+(mvp.player||"기록 부족"));
 
 adminPage();
 }
 
 function editResults(){
+
 let html=`
+<div class="adminTitle">
 <button class="close" onclick="adminPage()">돌아가기</button>
-<h2>🏟 경기결과 관리</h2>
-`;
+<h2>🏟 경기 결과 관리</h2>
+</div>`;
 
 data.results.forEach((r,i)=>{
+
 html+=`
 <div class="card">
+
 <div class="form">
 <input id="ed_${i}" type="date" value="${r.date}">
-<input id="eh_${i}" value="${r.home}">
-<input id="ea_${i}" value="${r.away}">
+
+<select id="eh_${i}">
+${teamNames().map(t=>`<option ${t===r.home?"selected":""}>${t}</option>`).join("")}
+</select>
+
+<select id="ea_${i}">
+${teamNames().map(t=>`<option ${t===r.away?"selected":""}>${t}</option>`).join("")}
+</select>
+
 <input id="ehs_${i}" type="number" value="${r.homeScore}">
 <input id="eas_${i}" type="number" value="${r.awayScore}">
-<input id="em_${i}" value="${r.mvp||""}" placeholder="MVP">
+
+<select id="ety_${i}">
+<option ${r.type==="정규"?"selected":""}>정규</option>
+<option ${r.type==="연습"?"selected":""}>연습</option>
+</select>
 </div>
+
 <br>
+
+<strong>현재 MVP: ${esc(r.mvp||"기록 부족")}</strong>
+<br><br>
+
 <button class="primary" onclick="updateResult(${i})">수정</button>
 <button class="danger" onclick="deleteResult(${i})">삭제</button>
 </div>`;
 });
 
-if(!data.results.length)html+=`<div class="empty">등록된 결과가 없습니다.</div>`;
+if(!data.results.length){
+html+=`<div class="empty">등록된 결과가 없습니다.</div>`;
+}
 
 $("main").innerHTML=html;
 }
 
 function updateResult(i){
+
 const r=data.results[i];
 
 r.date=$(`ed_${i}`).value;
 r.home=$(`eh_${i}`).value;
 r.away=$(`ea_${i}`).value;
-r.homeScore=Number($(`ehs_${i}`).value);
-r.awayScore=Number($(`eas_${i}`).value);
-r.mvp=$(`em_${i}`).value;
+r.homeScore=Number($(`ehs_${i}`).value||0);
+r.awayScore=Number($(`eas_${i}`).value||0);
+r.type=$(`ety_${i}`).value;
+r.time="12:30";
+
+const mvp=calculateMVP(r.home,r.away);
+
+r.mvp=mvp.player;
+r.mvpScore=mvp.score;
 
 save();
 editResults();
 }
 
 function deleteResult(i){
+
 if(!confirm("경기 결과를 삭제할까요?"))return;
 
 data.results.splice(i,1);
@@ -1188,32 +1747,151 @@ save();
 editResults();
 }
 
-/* =========================
-   NEWS EDITOR
-========================= */
+/* =========================================================
+   STATS EDITOR
+========================================================= */
+
+function editStats(){
+
+const players=allPlayers();
+
+let html=`
+<div class="adminTitle">
+<button class="close" onclick="adminPage()">돌아가기</button>
+<h2>📊 선수 기록 관리</h2>
+<p>입력한 기록은 타자·투수 순위에 자동 반영됩니다.</p>
+</div>`;
+
+players.forEach(p=>{
+
+const s=data.stats[p]||{};
+const pitcher=isPitcher(p);
+
+if(pitcher){
+
+html+=`
+<div class="card">
+<h3>⚾ ${esc(p)}</h3>
+
+<div class="form">
+<input id="ip_${escAttr(p)}" type="number" step=".1" placeholder="이닝" value="${s.ip||0}">
+<input id="era_${escAttr(p)}" type="number" step=".01" placeholder="ERA" value="${s.era||0}">
+<input id="w_${escAttr(p)}" type="number" placeholder="승" value="${s.w||0}">
+<input id="l_${escAttr(p)}" type="number" placeholder="패" value="${s.l||0}">
+<input id="k_${escAttr(p)}" type="number" placeholder="탈삼진" value="${s.k||0}">
+<input id="whip_${escAttr(p)}" type="number" step=".01" placeholder="WHIP" value="${s.whip||0}">
+<input id="save_${escAttr(p)}" type="number" placeholder="세이브" value="${s.save||0}">
+</div>
+
+<br>
+<button class="primary" onclick="savePlayerStat('${escAttr(p)}','pitcher')">저장</button>
+</div>`;
+}else{
+
+html+=`
+<div class="card">
+<h3>🧢 ${esc(p)}</h3>
+
+<div class="form">
+<input id="ab_${escAttr(p)}" type="number" placeholder="타수" value="${s.ab||0}">
+<input id="h_${escAttr(p)}" type="number" placeholder="안타" value="${s.h||0}">
+<input id="hr_${escAttr(p)}" type="number" placeholder="홈런" value="${s.hr||0}">
+<input id="rbi_${escAttr(p)}" type="number" placeholder="타점" value="${s.rbi||0}">
+<input id="bb_${escAttr(p)}" type="number" placeholder="볼넷" value="${s.bb||0}">
+<input id="sb_${escAttr(p)}" type="number" placeholder="도루" value="${s.sb||0}">
+<input id="tb_${escAttr(p)}" type="number" placeholder="총루타" value="${s.tb||0}">
+</div>
+
+<br>
+<button class="primary" onclick="savePlayerStat('${escAttr(p)}','hitter')">저장</button>
+</div>`;
+}
+});
+
+$("main").innerHTML=html;
+}
+
+function safeId(player){
+return String(player).replace(/[^a-zA-Z0-9가-힣_-]/g,"_");
+}
+
+function savePlayerStat(player,type){
+
+const id=safeId(player);
+
+if(!data.stats[player])data.stats[player]={};
+
+if(type==="pitcher"){
+
+data.stats[player].ip=Number($(`ip_${id}`).value||0);
+data.stats[player].era=Number($(`era_${id}`).value||0);
+data.stats[player].w=Number($(`w_${id}`).value||0);
+data.stats[player].l=Number($(`l_${id}`).value||0);
+data.stats[player].k=Number($(`k_${id}`).value||0);
+data.stats[player].whip=Number($(`whip_${id}`).value||0);
+data.stats[player].save=Number($(`save_${id}`).value||0);
+
+}else{
+
+data.stats[player].ab=Number($(`ab_${id}`).value||0);
+data.stats[player].h=Number($(`h_${id}`).value||0);
+data.stats[player].hr=Number($(`hr_${id}`).value||0);
+data.stats[player].rbi=Number($(`rbi_${id}`).value||0);
+data.stats[player].bb=Number($(`bb_${id}`).value||0);
+data.stats[player].sb=Number($(`sb_${id}`).value||0);
+data.stats[player].tb=Number($(`tb_${id}`).value||0);
+
+}
+
+save();
+alert(player+" 기록 저장 완료");
+editStats();
+}
+
+/* =========================================================
+   NEWS ADMIN
+========================================================= */
 
 function editNews(){
+
 let html=`
+<div class="adminTitle">
 <button class="close" onclick="adminPage()">돌아가기</button>
 <h2>📰 뉴스 관리</h2>
+</div>
 
 <div class="card">
 <h3>뉴스 추가</h3>
-<input id="newstitle" placeholder="뉴스 제목"><br><br>
-<textarea id="newscontent" placeholder="뉴스 내용"></textarea><br><br>
-<input id="newsdate" type="date"><br><br>
+
+<input id="newstitle" placeholder="뉴스 제목">
+<br><br>
+
+<textarea id="newscontent" placeholder="뉴스 내용"></textarea>
+<br><br>
+
+<input id="newsdate" type="date">
+<br><br>
+
 <button class="primary" onclick="addNews()">뉴스 등록</button>
-</div>
-`;
+</div>`;
 
 data.news.forEach((n,i)=>{
+
 html+=`
 <div class="card">
-<input id="nt_${i}" value="${escapeAttr(n.title)}"><br><br>
-<textarea id="nc_${i}">${escapeHTML(n.content)}</textarea><br><br>
-<input id="nd_${i}" type="date" value="${n.date}"><br><br>
+
+<input id="nt_${i}" value="${escAttr(n.title)}">
+<br><br>
+
+<textarea id="nc_${i}">${esc(n.content)}</textarea>
+<br><br>
+
+<input id="nd_${i}" type="date" value="${n.date}">
+<br><br>
+
 <button class="primary" onclick="updateNews(${i})">수정</button>
 <button class="danger" onclick="deleteNews(${i})">삭제</button>
+
 </div>`;
 });
 
@@ -1221,6 +1899,7 @@ $("main").innerHTML=html;
 }
 
 function addNews(){
+
 const title=$("newstitle").value.trim();
 const content=$("newscontent").value.trim();
 const date=$("newsdate").value||new Date().toISOString().slice(0,10);
@@ -1242,6 +1921,7 @@ editNews();
 }
 
 function updateNews(i){
+
 data.news[i].title=$(`nt_${i}`).value;
 data.news[i].content=$(`nc_${i}`).value;
 data.news[i].date=$(`nd_${i}`).value;
@@ -1251,6 +1931,7 @@ editNews();
 }
 
 function deleteNews(i){
+
 if(!confirm("뉴스를 삭제할까요?"))return;
 
 data.news.splice(i,1);
@@ -1258,25 +1939,31 @@ save();
 editNews();
 }
 
-/* =========================
+/* =========================================================
    COMMENT ADMIN
-========================= */
+========================================================= */
 
 function editComments(){
+
 let html=`
+<div class="adminTitle">
 <button class="close" onclick="adminPage()">돌아가기</button>
 <h2>💬 댓글 관리</h2>
-`;
+</div>`;
 
 if(!data.comments.length){
+
 html+=`<div class="empty">댓글이 없습니다.</div>`;
+
 }else{
+
 data.comments.forEach(c=>{
+
 html+=`
 <div class="card">
-<b>${escapeHTML(c.name)}</b>
-<p>${escapeHTML(c.text)}</p>
-<small class="muted">${c.date}</small>
+<b>${esc(c.name)}</b>
+<p>${esc(c.text)}</p>
+<small class="muted">${esc(c.date)}</small>
 <br><br>
 <button class="danger" onclick="adminDeleteComment(${c.id})">삭제</button>
 </div>`;
@@ -1287,22 +1974,15 @@ $("main").innerHTML=html;
 }
 
 function adminDeleteComment(id){
+
 data.comments=data.comments.filter(c=>c.id!==id);
 save();
 editComments();
 }
 
-/* =========================
-   UTILITIES
-========================= */
-
-function escapeAttr(s){
-return String(s)
-.replaceAll("&","&amp;")
-.replaceAll('"',"&quot;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;");
-}
+/* =========================================================
+   MODAL
+========================================================= */
 
 function modal(html){
 $("modalbox").innerHTML=html;
@@ -1313,16 +1993,22 @@ function closeModal(){
 $("modal").classList.remove("show");
 }
 
-$("modal").addEventListener("click",e=>{
+$("modal").addEventListener("click",function(e){
 if(e.target.id==="modal")closeModal();
 });
 
-/* =========================
+/* ESC key */
+document.addEventListener("keydown",function(e){
+if(e.key==="Escape")closeModal();
+});
+
+/* =========================================================
    START
-========================= */
+========================================================= */
 
 nav("홈");
 home();
+
 </script>
 </body>
 </html>
