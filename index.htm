@@ -2,436 +2,422 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>CPL SPORTS</title>
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-    margin:0;
-    background:#080808;
-    color:#fff;
-    font-family:Arial,"Noto Sans KR",sans-serif;
-}
-button,input,select,textarea{font:inherit}
+html,body{margin:0;padding:0;background:#070707;color:#fff;font-family:Arial,"Noto Sans KR",sans-serif}
+button,input,textarea{font:inherit}
 button{cursor:pointer}
 
 :root{
-    --bg:#080808;
-    --card:#151515;
-    --card2:#1d1d1d;
-    --line:#292929;
-    --muted:#999;
-    --white:#fff;
-    --blue:#397cff;
-    --green:#20c878;
-    --yellow:#ffc400;
-    --red:#ff4545;
-    --purple:#9b6cff;
+ --bg:#070707;
+ --card:#121212;
+ --card2:#181818;
+ --line:#292929;
+ --muted:#8d8d8d;
+ --blue:#397cff;
+ --green:#20c77a;
+ --yellow:#ffc400;
+ --red:#ff4c4c;
 }
 
+body{max-width:720px;margin:auto}
+
 .app{
-    min-height:100vh;
-    padding-bottom:82px;
+ min-height:100vh;
+ padding-bottom:78px;
 }
 
 /* HEADER */
 .header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:rgba(8,8,8,.96);
-    border-bottom:1px solid var(--line);
-    padding:15px 16px;
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:rgba(7,7,7,.97);
+ border-bottom:1px solid var(--line);
+ padding:14px 16px;
 }
-.header-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+
+.headerRow{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
 }
+
 .logo{
-    font-size:22px;
-    font-weight:900;
+ font-size:22px;
+ font-weight:900;
+ letter-spacing:-1px;
 }
+
 .logo span{color:var(--blue)}
-.user-btn{
-    border:1px solid var(--line);
-    background:#141414;
-    color:#fff;
-    border-radius:50px;
-    padding:8px 12px;
+
+.accountBtn{
+ background:#171717;
+ color:#fff;
+ border:1px solid #303030;
+ border-radius:20px;
+ padding:8px 12px;
 }
 
 /* PAGE */
 .page{
-    display:none;
-    padding:18px 15px;
+ display:none;
+ padding:18px 15px;
 }
+
 .page.active{display:block}
 
-.page-title{
-    font-size:25px;
-    font-weight:900;
-    margin-bottom:5px;
-}
-.page-sub{
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:18px;
+.title{
+ font-size:26px;
+ font-weight:900;
+ letter-spacing:-1px;
 }
 
-/* CARDS */
+.subtitle{
+ color:var(--muted);
+ font-size:13px;
+ margin-top:5px;
+ margin-bottom:18px;
+}
+
+/* CARD */
 .card{
-    background:linear-gradient(145deg,#181818,#101010);
-    border:1px solid var(--line);
-    border-radius:17px;
-    padding:16px;
-    margin-bottom:12px;
-}
-.card-title{
-    font-size:16px;
-    font-weight:800;
-    margin-bottom:12px;
-}
-.card-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
+ background:linear-gradient(145deg,#171717,#101010);
+ border:1px solid var(--line);
+ border-radius:17px;
+ padding:16px;
+ margin-bottom:12px;
 }
 
-/* HERO */
-.hero{
-    background:linear-gradient(135deg,#111d35,#101010);
-    border:1px solid #263b66;
-    border-radius:20px;
-    padding:20px;
-    margin-bottom:14px;
-}
-.hero-label{
-    color:#72a0ff;
-    font-size:12px;
-    font-weight:bold;
-}
-.hero-match{
-    font-size:25px;
-    font-weight:900;
-    margin:9px 0;
-}
-.hero-date{
-    color:#aaa;
-    font-size:13px;
+.cardTitle{
+ font-size:16px;
+ font-weight:900;
+ margin-bottom:13px;
 }
 
-/* MATCH */
-.match-card{
-    background:#151515;
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:15px;
-    margin-bottom:10px;
-    transition:.15s;
+/* NEXT GAME */
+.nextGame{
+ background:linear-gradient(135deg,#101d39,#111);
+ border:1px solid #29416f;
+ border-radius:20px;
+ padding:20px;
+ margin-bottom:13px;
 }
-.match-card:active{
-    transform:scale(.98);
+
+.smallBlue{
+ color:#79a5ff;
+ font-size:12px;
+ font-weight:bold;
 }
-.match-top{
-    display:flex;
-    justify-content:space-between;
-    color:#999;
-    font-size:12px;
-    margin-bottom:12px;
+
+.gameTeams{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:18px;
+ margin:15px 0;
 }
-.match-teams{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:18px;
+
+.gameTeam{
+ width:100px;
+ text-align:center;
+ font-size:17px;
+ font-weight:900;
 }
-.team-name{
-    font-weight:900;
-    font-size:17px;
-    min-width:85px;
-    text-align:center;
-}
+
 .vs{
-    color:#777;
-    font-size:13px;
-}
-.score{
-    font-size:25px;
-    font-weight:900;
-}
-.status{
-    margin-top:10px;
-    text-align:center;
-    color:#aaa;
-    font-size:12px;
+ color:#777;
+ font-weight:bold;
 }
 
-/* BUTTONS */
+.gameInfo{
+ text-align:center;
+ color:#aaa;
+ font-size:12px;
+}
+
+/* BUTTON */
 .btn{
-    border:0;
-    border-radius:11px;
-    padding:10px 13px;
-    background:#252525;
-    color:#fff;
-}
-.btn.primary{
-    background:var(--blue);
-}
-.btn.green{
-    background:#137c4d;
-}
-.btn.red{
-    background:#852626;
-}
-.btn.full{
-    width:100%;
+ border:1px solid #333;
+ background:#222;
+ color:#fff;
+ border-radius:11px;
+ padding:11px 13px;
 }
 
-.grid2{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+.btnBlue{
+ background:var(--blue);
+ border-color:var(--blue);
 }
-.grid3{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
+
+.full{width:100%}
+
+/* GRID */
+.grid2{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:9px;
+}
+
+/* STAT */
+.stats{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:9px;
+}
+
+.stat{
+ background:#0e0e0e;
+ border:1px solid #252525;
+ border-radius:12px;
+ padding:13px;
+}
+
+.statLabel{
+ color:#777;
+ font-size:11px;
+}
+
+.statValue{
+ font-size:20px;
+ font-weight:900;
+ margin-top:5px;
+}
+
+/* LIST */
+.row{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ padding:13px 0;
+ border-bottom:1px solid var(--line);
+}
+
+.row:last-child{border-bottom:0}
+
+.rank{
+ width:25px;
+ color:#888;
+ font-weight:900;
+}
+
+.rowMain{flex:1}
+
+.rowTitle{font-weight:800}
+
+.rowSub{
+ color:#777;
+ font-size:11px;
+ margin-top:3px;
+}
+
+.rowValue{font-weight:900}
+
+/* PLAYER */
+.avatar{
+ width:43px;
+ height:43px;
+ border-radius:50%;
+ background:#282828;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:900;
 }
 
 /* TABS */
 .tabs{
-    display:flex;
-    gap:7px;
-    overflow-x:auto;
-    padding-bottom:5px;
-    margin-bottom:14px;
+ display:flex;
+ gap:7px;
+ overflow-x:auto;
+ margin:14px 0;
+ padding-bottom:3px;
 }
+
 .tabs::-webkit-scrollbar{display:none}
+
 .tab{
-    flex:none;
-    border:1px solid var(--line);
-    background:#151515;
-    color:#aaa;
-    padding:10px 13px;
-    border-radius:10px;
+ flex:none;
+ background:#151515;
+ color:#888;
+ border:1px solid #292929;
+ border-radius:10px;
+ padding:9px 12px;
 }
+
 .tab.active{
-    background:#fff;
-    color:#000;
-    border-color:#fff;
-}
-
-/* RANK */
-.rank-row{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:13px 0;
-    border-bottom:1px solid var(--line);
-}
-.rank-row:last-child{border-bottom:0}
-.rank-number{
-    width:28px;
-    font-weight:900;
-    color:#aaa;
-}
-.rank-name{
-    flex:1;
-    font-weight:700;
-}
-.rank-value{
-    font-weight:900;
-}
-
-/* PLAYER */
-.player{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-.avatar{
-    width:44px;
-    height:44px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#292929;
-    font-weight:900;
+ background:#fff;
+ color:#000;
+ border-color:#fff;
 }
 
 /* CALENDAR */
 .calendar{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:5px;
-}
-.day{
-    min-height:65px;
-    border:1px solid var(--line);
-    border-radius:9px;
-    padding:6px;
-    background:#111;
-}
-.day-num{
-    font-size:11px;
-    color:#888;
-}
-.day-game{
-    margin-top:7px;
-    font-size:10px;
-    color:#72a0ff;
-    font-weight:bold;
+ display:grid;
+ grid-template-columns:repeat(7,1fr);
+ gap:5px;
 }
 
-/* STAT */
-.stat-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:9px;
-}
-.stat{
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:13px;
-}
-.stat-label{
-    font-size:11px;
-    color:#888;
-}
-.stat-value{
-    font-size:21px;
-    font-weight:900;
-    margin-top:5px;
+.calHead{
+ text-align:center;
+ color:#777;
+ font-size:10px;
+ padding:5px 0;
 }
 
-/* BOTTOM */
-.bottom{
-    position:fixed;
-    z-index:200;
-    bottom:0;
-    left:0;
-    right:0;
-    height:72px;
-    background:rgba(10,10,10,.98);
-    border-top:1px solid var(--line);
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    padding-bottom:env(safe-area-inset-bottom);
-}
-.nav-btn{
-    border:0;
-    background:transparent;
-    color:#777;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:4px;
-    font-size:10px;
-}
-.nav-btn .icon{
-    font-size:21px;
-}
-.nav-btn.active{
-    color:#fff;
+.calDay{
+ min-height:62px;
+ background:#0d0d0d;
+ border:1px solid #242424;
+ border-radius:9px;
+ padding:6px;
 }
 
-/* MODAL */
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:500;
-    background:rgba(0,0,0,.75);
-    align-items:flex-end;
-}
-.modal.show{display:flex}
-.modal-box{
-    width:100%;
-    max-height:90vh;
-    overflow:auto;
-    background:#111;
-    border-radius:22px 22px 0 0;
-    padding:20px;
-    border-top:1px solid #333;
-}
-.modal-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
-}
-.close{
-    border:0;
-    background:#292929;
-    color:#fff;
-    border-radius:50%;
-    width:35px;
-    height:35px;
+.calNum{
+ color:#888;
+ font-size:10px;
 }
 
-/* FORM */
-input,select,textarea{
-    width:100%;
-    background:#0c0c0c;
-    border:1px solid #333;
-    color:#fff;
-    border-radius:10px;
-    padding:12px;
-    outline:none;
+.calGame{
+ color:#72a0ff;
+ font-size:9px;
+ font-weight:bold;
+ margin-top:7px;
 }
-label{
-    display:block;
-    color:#aaa;
-    font-size:12px;
-    margin:10px 0 6px;
-}
-
-/* BADGES */
-.badge{
-    display:inline-block;
-    padding:5px 8px;
-    border-radius:7px;
-    background:#252525;
-    font-size:10px;
-}
-.badge.blue{background:#173875;color:#9fbeff}
-.badge.green{background:#123c2b;color:#66e8a8}
-.badge.yellow{background:#493900;color:#ffd85a}
-.badge.red{background:#451b1b;color:#ff7777}
 
 /* COMMENT */
 .comment{
-    padding:12px 0;
-    border-bottom:1px solid var(--line);
-}
-.comment-name{
-    font-weight:bold;
-    font-size:13px;
-}
-.comment-text{
-    color:#ccc;
-    font-size:13px;
-    margin-top:5px;
+ border-bottom:1px solid var(--line);
+ padding:12px 0;
 }
 
+.commentUser{
+ font-size:12px;
+ font-weight:bold;
+}
+
+.commentText{
+ color:#ccc;
+ font-size:13px;
+ margin-top:5px;
+ line-height:1.55;
+}
+
+/* INPUT */
+input,textarea{
+ width:100%;
+ background:#0c0c0c;
+ color:#fff;
+ border:1px solid #333;
+ border-radius:10px;
+ padding:12px;
+ outline:none;
+}
+
+textarea{resize:vertical}
+
+label{
+ display:block;
+ color:#888;
+ font-size:11px;
+ margin:11px 0 6px;
+}
+
+/* BOTTOM NAV */
+.bottomNav{
+ position:fixed;
+ left:0;
+ right:0;
+ bottom:0;
+ z-index:200;
+ height:72px;
+ background:rgba(9,9,9,.98);
+ border-top:1px solid #292929;
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+}
+
+.nav{
+ border:0;
+ background:none;
+ color:#777;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ gap:4px;
+ font-size:10px;
+}
+
+.navIcon{font-size:21px}
+
+.nav.active{color:#fff}
+
+/* MODAL */
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:500;
+ background:rgba(0,0,0,.8);
+ align-items:flex-end;
+}
+
+.modal.show{display:flex}
+
+.modalBox{
+ width:100%;
+ max-height:91vh;
+ overflow-y:auto;
+ background:#111;
+ border-radius:22px 22px 0 0;
+ padding:20px 16px 30px;
+ border-top:1px solid #333;
+}
+
+.modalHeader{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:15px;
+}
+
+.modalTitle{
+ font-size:19px;
+ font-weight:900;
+}
+
+.close{
+ width:34px;
+ height:34px;
+ border:0;
+ border-radius:50%;
+ background:#292929;
+ color:#fff;
+ font-size:20px;
+}
+
+/* BADGE */
+.badge{
+ display:inline-block;
+ padding:5px 8px;
+ border-radius:7px;
+ background:#242424;
+ font-size:10px;
+}
+
+.badgeBlue{background:#17366e;color:#9ebcff}
+.badgeGreen{background:#123c2b;color:#6be8a9}
+
 /* DESKTOP */
-@media(min-width:800px){
-    body{max-width:1100px;margin:auto;background:#050505}
-    .page{padding:25px}
-    .bottom{
-        max-width:1100px;
-        left:50%;
-        transform:translateX(-50%);
-    }
-    .modal-box{max-width:700px;margin:auto;border-radius:20px}
-    .modal{align-items:center}
+@media(min-width:721px){
+ body{background:#030303}
+ .bottomNav{max-width:720px;margin:auto}
+ .modal{align-items:center}
+ .modalBox{max-width:650px;border-radius:20px}
 }
 </style>
 </head>
@@ -441,367 +427,485 @@ label{
 <div class="app">
 
 <header class="header">
-    <div class="header-row">
-        <div class="logo">CPL <span>SPORTS</span></div>
-        <button class="user-btn" onclick="openAccount()">👤 계정</button>
-    </div>
+ <div class="headerRow">
+  <div class="logo">CPL <span>SPORTS</span></div>
+  <button class="accountBtn" onclick="openAccount()">👤 계정</button>
+ </div>
 </header>
 
 <!-- HOME -->
 <section id="home" class="page active">
-    <div class="page-title">CPL SPORTS</div>
-    <div class="page-sub">천중리그 공식 스포츠 센터</div>
 
-    <div class="hero" onclick="openMatch(1)">
-        <div class="hero-label">⚾ 다음 경기</div>
-        <div class="hero-match">시환팀 <span style="color:#777">VS</span> 해찬팀</div>
-        <div class="hero-date">2026.09.02 · 12:30</div>
-    </div>
+ <div class="title">CPL SPORTS</div>
+ <div class="subtitle">천중리그 공식 스포츠 사이트</div>
 
-    <div class="card">
-        <div class="card-title">🔥 핫한 선수</div>
-        <div class="player">
-            <div class="avatar">시</div>
-            <div style="flex:1">
-                <b>시환</b>
-                <div style="color:#888;font-size:12px">최근 5경기 OPS 1.120</div>
-            </div>
-            <span class="badge red">HOT</span>
-        </div>
-    </div>
+ <div class="nextGame" onclick="openMatch(1)">
+  <div class="smallBlue">⚾ 개막전</div>
 
-    <div class="card">
-        <div class="card-title">🏆 현재 순위</div>
-        <div id="homeRank"></div>
-        <button class="btn full" onclick="showPage('ranking')">전체 순위 보기</button>
-    </div>
+  <div class="gameTeams">
+   <div class="gameTeam">🟦 시환팀</div>
+   <div class="vs">VS</div>
+   <div class="gameTeam">🟨 해찬팀</div>
+  </div>
 
-    <div class="card">
-        <div class="card-title">🎲 오늘의 랜덤 기록 TOP 3</div>
-        <div id="randomRecords"></div>
-        <button class="btn primary full" onclick="randomRecords()">다시 뽑기</button>
-    </div>
+  <div class="gameInfo">
+   2026년 9월 2일 · 수요일 · 12:30
+  </div>
+ </div>
 
-    <div class="card">
-        <div class="card-title">📢 공지사항</div>
-        <b>2026 CPL 후반기 일정 안내</b>
-        <p style="color:#999;font-size:12px">후반기는 10월 12일부터 시작됩니다.</p>
-    </div>
+ <div class="card">
+  <div class="cardTitle">🔥 핫한 선수</div>
+
+  <div class="row" onclick="openPlayer('시환')">
+   <div class="avatar">시</div>
+   <div class="rowMain">
+    <div class="rowTitle">시환</div>
+    <div class="rowSub">아직 경기 기록이 없습니다.</div>
+   </div>
+   <div>›</div>
+  </div>
+ </div>
+
+ <div class="card">
+  <div class="cardTitle">🏆 팀 순위</div>
+  <div id="homeStandings"></div>
+  <button class="btn full" onclick="showPage('ranking')">전체 순위 보기</button>
+ </div>
+
+ <div class="card">
+  <div class="cardTitle">📊 현재 기록</div>
+
+  <div class="stats">
+   <div class="stat">
+    <div class="statLabel">전체 경기</div>
+    <div class="statValue">0</div>
+   </div>
+
+   <div class="stat">
+    <div class="statLabel">게임차</div>
+    <div class="statValue">-</div>
+   </div>
+
+   <div class="stat">
+    <div class="statLabel">승률</div>
+    <div class="statValue">-</div>
+   </div>
+
+   <div class="stat">
+    <div class="statLabel">득실차</div>
+    <div class="statValue">0</div>
+   </div>
+  </div>
+ </div>
+
+ <div class="card">
+  <div class="cardTitle">🎲 오늘의 랜덤 기록 TOP 3</div>
+  <div id="randomRecords"></div>
+  <button class="btn btnBlue full" onclick="randomRecords()">다시 뽑기</button>
+ </div>
+
+ <div class="card">
+  <div class="cardTitle">📢 공지</div>
+  <b>2026 CPL 시즌 안내</b>
+  <p style="color:#999;font-size:12px;line-height:1.6">
+   전반기 9월 2일부터 9월 18일까지 진행됩니다.
+   후반기는 10월 12일부터 11월 6일까지 진행됩니다.
+  </p>
+ </div>
+
 </section>
 
 <!-- SCHEDULE -->
 <section id="schedule" class="page">
-    <div class="page-title">📅 일정</div>
-    <div class="page-sub">전반기 9/2~9/18 · 후반기 10/12~11/6</div>
 
-    <div class="tabs">
-        <button class="tab active" onclick="scheduleTab(this,'all')">전체</button>
-        <button class="tab" onclick="scheduleTab(this,'시환')">시환팀</button>
-        <button class="tab" onclick="scheduleTab(this,'재우')">재우팀</button>
-        <button class="tab" onclick="scheduleTab(this,'해찬')">해찬팀</button>
-        <button class="tab" onclick="scheduleTab(this,'민푹')">민푹팀</button>
-    </div>
+ <div class="title">📅 일정</div>
+ <div class="subtitle">월 · 수 · 금 경기</div>
 
-    <div class="card">
-        <div class="card-title">2026년 9월</div>
-        <div class="calendar" id="calendar"></div>
-    </div>
+ <div class="tabs">
+  <button class="tab active" onclick="changeSchedulePeriod(this,'first')">전반기</button>
+  <button class="tab" onclick="changeSchedulePeriod(this,'second')">후반기</button>
+ </div>
 
-    <div id="scheduleList"></div>
+ <div class="tabs">
+  <button class="tab active" onclick="scheduleFilter(this,'all')">전체</button>
+  <button class="tab" onclick="scheduleFilter(this,'시환팀')">시환</button>
+  <button class="tab" onclick="scheduleFilter(this,'재우팀')">재우</button>
+  <button class="tab" onclick="scheduleFilter(this,'해찬팀')">해찬</button>
+  <button class="tab" onclick="scheduleFilter(this,'민푹팀')">민푹</button>
+ </div>
+
+ <div class="card">
+  <div class="cardTitle" id="calendarTitle">2026년 9월 · 전반기</div>
+  <div id="calendar" class="calendar"></div>
+ </div>
+
+ <div id="scheduleList"></div>
+
 </section>
 
 <!-- RANKING -->
 <section id="ranking" class="page">
-    <div class="page-title">🏆 랭킹</div>
-    <div class="page-sub">CPL 주요 기록 순위</div>
 
-    <div class="tabs">
-        <button class="tab active" onclick="rankingTab(this,'pitcher')">투수</button>
-        <button class="tab" onclick="rankingTab(this,'batter')">타자</button>
-        <button class="tab" onclick="rankingTab(this,'war')">WAR</button>
-        <button class="tab" onclick="rankingTab(this,'team')">팀</button>
-        <button class="tab" onclick="rankingTab(this,'regular')">정규시즌</button>
-    </div>
+ <div class="title">🏆 랭킹</div>
+ <div class="subtitle">실제 경기 기록만 반영됩니다.</div>
 
-    <div class="card">
-        <div id="rankingContent"></div>
-    </div>
+ <div class="tabs">
+  <button class="tab active" onclick="rankingTab(this,'pitcher')">투수</button>
+  <button class="tab" onclick="rankingTab(this,'batter')">타자</button>
+  <button class="tab" onclick="rankingTab(this,'war')">WAR</button>
+  <button class="tab" onclick="rankingTab(this,'team')">팀</button>
+  <button class="tab" onclick="rankingTab(this,'regular')">정규시즌</button>
+ </div>
+
+ <div class="card">
+  <div id="rankingContent"></div>
+ </div>
+
 </section>
 
 <!-- PLAYERS -->
 <section id="players" class="page">
-    <div class="page-title">👤 선수</div>
-    <div class="page-sub">선수를 선택하면 개인 기록을 확인할 수 있습니다.</div>
-    <div id="playerList"></div>
+
+ <div class="title">👤 선수</div>
+ <div class="subtitle">선수를 선택하면 개인 기록을 확인합니다.</div>
+
+ <div id="playerList"></div>
+
 </section>
 
 <!-- MORE -->
 <section id="more" class="page">
-    <div class="page-title">☰ 더보기</div>
-    <div class="page-sub">CPL의 모든 기능</div>
 
-    <div class="grid2">
-        <button class="btn" onclick="showPage('teams')">🏟️ 팀</button>
-        <button class="btn" onclick="showPage('fun')">🎮 재미</button>
-        <button class="btn" onclick="showPage('community')">💬 커뮤니티</button>
-        <button class="btn" onclick="showPage('news')">📰 뉴스</button>
-        <button class="btn" onclick="showPage('analysis')">📊 자동분석</button>
-        <button class="btn" onclick="showPage('admin')">🔐 관리자</button>
-    </div>
+ <div class="title">☰ 더보기</div>
+ <div class="subtitle">CPL 주요 기능</div>
+
+ <div class="grid2">
+  <button class="card" onclick="showPage('teams')">🏟️ 팀</button>
+  <button class="card" onclick="showPage('fun')">🎮 재미</button>
+  <button class="card" onclick="showPage('community')">💬 커뮤니티</button>
+  <button class="card" onclick="showPage('news')">📰 뉴스</button>
+  <button class="card" onclick="showPage('admin')">🔐 관리자</button>
+  <button class="card" onclick="showPage('analysis')">📊 분석</button>
+ </div>
+
 </section>
 
 <!-- TEAMS -->
 <section id="teams" class="page">
-    <div class="page-title">🏟️ 팀</div>
-    <div class="page-sub">CPL 4개 팀</div>
-    <div id="teamList"></div>
+
+ <div class="title">🏟️ 팀</div>
+ <div class="subtitle">CPL 4개 팀</div>
+
+ <div id="teamList"></div>
+
 </section>
 
 <!-- FUN -->
 <section id="fun" class="page">
-    <div class="page-title">🎮 CPL 재미</div>
-    <div class="page-sub">경기를 더 재미있게 즐겨보세요.</div>
 
-    <div class="grid2">
-        <button class="card" onclick="prediction()">🎯 승부예측</button>
-        <button class="card" onclick="scorePrediction()">🔢 스코어 예측</button>
-        <button class="card" onclick="randomChallenge()">🎲 오늘의 미션</button>
-        <button class="card" onclick="openAwards()">🏅 기록 도전</button>
-    </div>
+ <div class="title">🎮 CPL 재미</div>
+ <div class="subtitle">경기를 재미있게 즐겨보세요.</div>
 
-    <div class="card">
-        <div class="card-title">⭐ 특별 기록</div>
-        <p>🟢 퍼스트 스타트 FS</p>
-        <p>🔵 더블 스타트 DS</p>
-        <p>🟣 클린 스타트 CS</p>
-        <p>⚡ 퀵 스타트 QS</p>
-        <p>💪 파워 스타트 PS</p>
-        <p>🛡️ 세이프 스타트 SS</p>
-        <p>🔥 얼티메이트 스타트 US</p>
-        <p>⚾ 얼티메이트 히트 UH</p>
-        <p>👑 퍼펙트 게임 PG</p>
-    </div>
+ <div class="card">
+  <div class="cardTitle">🎯 승부예측</div>
+  <p style="color:#999;font-size:12px">
+   예측은 경기마다 한 번만 선택할 수 있습니다.
+  </p>
+
+  <div class="grid2">
+   <button class="btn" onclick="pickTeam('시환팀')">🟦 시환팀</button>
+   <button class="btn" onclick="pickTeam('해찬팀')">🟨 해찬팀</button>
+  </div>
+
+  <div id="predictionResult" style="margin-top:12px;color:#aaa"></div>
+ </div>
+
+ <div class="card">
+  <div class="cardTitle">🔢 예상 스코어</div>
+
+  <div class="grid2">
+   <input id="scoreA" type="number" min="0" placeholder="시환팀">
+   <input id="scoreB" type="number" min="0" placeholder="해찬팀">
+  </div>
+
+  <button class="btn btnBlue full" style="margin-top:9px" onclick="saveScore()">
+   예측 저장
+  </button>
+ </div>
+
+ <div class="card">
+  <div class="cardTitle">🏅 특별 기록</div>
+  <p>🟢 FS · 퍼스트 스타트</p>
+  <p>🔵 DS · 더블 스타트</p>
+  <p>🟣 CS · 클린 스타트</p>
+  <p>⚡ QS · 퀵 스타트</p>
+  <p>💪 PS · 파워 스타트</p>
+  <p>🛡️ SS · 세이프 스타트</p>
+  <p>🔥 US · 얼티메이트 스타트</p>
+  <p>⚾ UH · 얼티메이트 히트</p>
+  <p>👑 PG · 퍼펙트 게임</p>
+ </div>
+
 </section>
 
 <!-- COMMUNITY -->
 <section id="community" class="page">
-    <div class="page-title">💬 커뮤니티</div>
-    <div class="page-sub">CPL 팬들과 이야기하세요.</div>
 
-    <div class="card">
-        <textarea id="commentInput" rows="3" placeholder="댓글을 입력하세요"></textarea>
-        <button class="btn primary full" style="margin-top:8px" onclick="addComment()">댓글 등록</button>
-    </div>
+ <div class="title">💬 커뮤니티</div>
+ <div class="subtitle">CPL 회원들과 이야기하세요.</div>
 
-    <div class="card">
-        <div class="card-title">최근 댓글</div>
-        <div id="comments"></div>
-    </div>
+ <div class="card">
+  <textarea id="communityText" rows="5" maxlength="2000"
+   placeholder="내용을 입력하세요."></textarea>
+
+  <div style="text-align:right;color:#666;font-size:10px;margin-top:5px">
+   최대 2,000자
+  </div>
+
+  <button class="btn btnBlue full" style="margin-top:9px" onclick="addCommunityComment()">
+   댓글 등록
+  </button>
+ </div>
+
+ <div class="card">
+  <div class="cardTitle">최근 댓글</div>
+  <div id="communityComments"></div>
+ </div>
+
 </section>
 
 <!-- NEWS -->
 <section id="news" class="page">
-    <div class="page-title">📰 뉴스</div>
-    <div class="page-sub">CPL 최신 소식</div>
 
-    <div class="card">
-        <span class="badge blue">CPL</span>
-        <h3>후반기 일정 확정</h3>
-        <p style="color:#aaa">10월 12일부터 11월 6일까지 진행됩니다.</p>
-    </div>
+ <div class="title">📰 뉴스</div>
+ <div class="subtitle">CPL 최신 소식</div>
 
-    <div class="card">
-        <span class="badge green">기록</span>
-        <h3>새로운 특별 기록 시스템</h3>
-        <p style="color:#aaa">FS · DS · CS · QS · PS · SS · US 기록을 관리합니다.</p>
-    </div>
+ <div class="card">
+  <span class="badge badgeBlue">CPL NEWS</span>
+  <h3>2026 CPL 시즌 일정 확정</h3>
+
+  <p style="color:#bbb;line-height:1.7;font-size:13px">
+   2026 CPL은 전반기와 후반기로 나누어 진행됩니다.
+   전반기는 9월 2일 개막전을 시작으로 9월 18일까지 진행되며,
+   후반기는 10월 12일부터 11월 6일까지 진행됩니다.
+   모든 정규 경기는 월요일, 수요일, 금요일에 진행됩니다.
+  </p>
+ </div>
+
+ <div class="card">
+  <span class="badge badgeGreen">SYSTEM</span>
+  <h3>새로운 기록 시스템</h3>
+
+  <p style="color:#bbb;line-height:1.7;font-size:13px">
+   실제 경기 결과가 입력된 이후 승률, 게임차, 득실차,
+   타율, 평균자책점, WAR, 상대전적 등의 기록이 자동으로
+   계산되는 시스템으로 운영됩니다.
+  </p>
+ </div>
+
 </section>
 
 <!-- ANALYSIS -->
 <section id="analysis" class="page">
-    <div class="page-title">📊 자동분석</div>
-    <div class="page-sub">경기 데이터를 기반으로 주요 지표를 계산합니다.</div>
 
-    <div class="stat-grid">
-        <div class="stat"><div class="stat-label">승률</div><div class="stat-value">75%</div></div>
-        <div class="stat"><div class="stat-label">최근 연승</div><div class="stat-value">3연승</div></div>
-        <div class="stat"><div class="stat-label">득점력</div><div class="stat-value">6.4</div></div>
-        <div class="stat"><div class="stat-label">실점력</div><div class="stat-value">3.1</div></div>
-    </div>
+ <div class="title">📊 분석</div>
+ <div class="subtitle">실제 데이터가 쌓인 뒤 분석합니다.</div>
 
-    <div class="card" style="margin-top:12px">
-        <div class="card-title">자동 계산 항목</div>
-        <p>✓ 승률</p>
-        <p>✓ 게임차</p>
-        <p>✓ 연승 / 연패</p>
-        <p>✓ 득점력 / 실점력</p>
-        <p>✓ 상대전적</p>
-        <p>✓ 파워랭킹</p>
-        <p>✓ 선수기록</p>
-        <p>✓ 리그 랭킹</p>
-    </div>
+ <div class="card">
+  <div class="cardTitle">현재 상태</div>
+  <p style="color:#aaa;line-height:1.7">
+   아직 진행된 경기가 없습니다.<br>
+   실제 경기 결과가 입력되면 분석이 시작됩니다.
+  </p>
+ </div>
+
 </section>
 
 <!-- ADMIN -->
 <section id="admin" class="page">
-    <div class="page-title">🔐 관리자</div>
-    <div class="page-sub">CPL 운영 관리</div>
 
-    <div class="card">
-        <div class="card-title">관리자 로그인</div>
+ <div class="title">🔐 관리자</div>
+ <div class="subtitle">CPL 운영센터</div>
 
-        <label>관리자 번호</label>
-        <input id="adminPin" type="password" placeholder="관리자 번호 입력">
+ <div class="card">
 
-        <button class="btn primary full" style="margin-top:12px" onclick="adminLogin()">
-            관리자 로그인
-        </button>
+  <div class="cardTitle">관리자 로그인</div>
 
-        <div style="margin-top:10px;color:#777;font-size:11px">
-            초기 관리자 번호: 1234
-        </div>
-    </div>
+  <label>관리자 번호</label>
+  <input id="adminPin" type="password" placeholder="관리자 번호">
 
-    <div id="adminPanel" style="display:none">
-        <div class="grid2">
-            <button class="card" onclick="adminAction('경기 관리')">⚾ 경기 관리</button>
-            <button class="card" onclick="adminAction('일정 관리')">📅 일정 관리</button>
-            <button class="card" onclick="adminAction('선수 관리')">👤 선수 관리</button>
-            <button class="card" onclick="adminAction('팀 관리')">🏟️ 팀 관리</button>
-            <button class="card" onclick="adminAction('공지 관리')">📢 공지 관리</button>
-            <button class="card" onclick="adminAction('댓글 관리')">💬 댓글 관리</button>
-            <button class="card" onclick="adminAction('기록 관리')">📊 기록 관리</button>
-            <button class="card" onclick="adminAction('사이트 설정')">⚙️ 사이트 설정</button>
-        </div>
-    </div>
+  <button class="btn btnBlue full" style="margin-top:10px" onclick="adminLogin()">
+   로그인
+  </button>
+
+ </div>
+
+ <div id="adminPanel" style="display:none">
+
+  <div class="card">
+   <div class="cardTitle">⚾ 경기 운영</div>
+
+   <div class="grid2">
+    <button class="btn" onclick="adminMessage('경기 등록')">경기 등록</button>
+    <button class="btn" onclick="adminMessage('결과 입력')">결과 입력</button>
+    <button class="btn" onclick="adminMessage('일정 수정')">일정 수정</button>
+    <button class="btn" onclick="adminMessage('경기 취소')">경기 취소</button>
+   </div>
+  </div>
+
+  <div class="card">
+   <div class="cardTitle">👤 선수 / 팀</div>
+
+   <div class="grid2">
+    <button class="btn" onclick="adminMessage('선수 관리')">선수 관리</button>
+    <button class="btn" onclick="adminMessage('팀 관리')">팀 관리</button>
+    <button class="btn" onclick="adminMessage('기록 관리')">기록 관리</button>
+    <button class="btn" onclick="adminMessage('회원 관리')">회원 관리</button>
+   </div>
+  </div>
+
+  <div class="card">
+   <div class="cardTitle">📢 콘텐츠</div>
+
+   <div class="grid2">
+    <button class="btn" onclick="adminMessage('공지 관리')">공지 관리</button>
+    <button class="btn" onclick="adminMessage('뉴스 관리')">뉴스 관리</button>
+    <button class="btn" onclick="adminMessage('댓글 관리')">댓글 관리</button>
+    <button class="btn" onclick="adminMessage('핫한 선수')">핫한 선수</button>
+   </div>
+  </div>
+
+ </div>
+
 </section>
 
 </div>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom">
-    <button class="nav-btn active" onclick="showPage('home',this)">
-        <span class="icon">🏠</span>홈
-    </button>
-    <button class="nav-btn" onclick="showPage('schedule',this)">
-        <span class="icon">📅</span>일정
-    </button>
-    <button class="nav-btn" onclick="showPage('ranking',this)">
-        <span class="icon">🏆</span>랭킹
-    </button>
-    <button class="nav-btn" onclick="showPage('players',this)">
-        <span class="icon">👤</span>선수
-    </button>
-    <button class="nav-btn" onclick="showPage('more',this)">
-        <span class="icon">☰</span>더보기
-    </button>
+<!-- BOTTOM -->
+<nav class="bottomNav">
+
+ <button class="nav active" onclick="showPage('home',this)">
+  <span class="navIcon">🏠</span>
+  홈
+ </button>
+
+ <button class="nav" onclick="showPage('schedule',this)">
+  <span class="navIcon">📅</span>
+  일정
+ </button>
+
+ <button class="nav" onclick="showPage('ranking',this)">
+  <span class="navIcon">🏆</span>
+  랭킹
+ </button>
+
+ <button class="nav" onclick="showPage('players',this)">
+  <span class="navIcon">👤</span>
+  선수
+ </button>
+
+ <button class="nav" onclick="showPage('more',this)">
+  <span class="navIcon">☰</span>
+  더보기
+ </button>
+
 </nav>
 
 <!-- MODAL -->
-<div class="modal" id="modal">
-    <div class="modal-box">
-        <div class="modal-head">
-            <b id="modalTitle">상세</b>
-            <button class="close" onclick="closeModal()">×</button>
-        </div>
-        <div id="modalContent"></div>
-    </div>
+<div id="modal" class="modal">
+
+ <div class="modalBox">
+
+  <div class="modalHeader">
+   <div class="modalTitle" id="modalTitle"></div>
+   <button class="close" onclick="closeModal()">×</button>
+  </div>
+
+  <div id="modalContent"></div>
+
+ </div>
+
 </div>
 
 <script>
+
 /* =========================
    DATA
 ========================= */
 
-const teams = [
-    {name:"시환팀", color:"🟦"},
-    {name:"재우팀", color:"🟥"},
-    {name:"해찬팀", color:"🟨"},
-    {name:"민푹팀", color:"🟩"}
+const teams=[
+ "시환팀",
+ "재우팀",
+ "해찬팀",
+ "민푹팀"
 ];
 
-const players = [
-    {name:"시환",team:"시환팀",avg:".412",era:"1.24",war:"4.8"},
-    {name:"재우",team:"재우팀",avg:".385",era:"1.61",war:"4.1"},
-    {name:"해찬",team:"해찬팀",avg:".367",era:"1.45",war:"3.9"},
-    {name:"민푹",team:"민푹팀",avg:".351",era:"1.82",war:"3.4"}
+const players=[
+ {name:"시환",team:"시환팀"},
+ {name:"재우",team:"재우팀"},
+ {name:"해찬",team:"해찬팀"},
+ {name:"민푹",team:"민푹팀"}
 ];
 
-const games = [
-    {id:1,date:"09/02",day:"수",home:"시환팀",away:"해찬팀"},
-    {id:2,date:"09/04",day:"금",home:"재우팀",away:"민푹팀"},
-    {id:3,date:"09/07",day:"월",home:"시환팀",away:"재우팀"},
-    {id:4,date:"09/09",day:"수",home:"해찬팀",away:"민푹팀"},
-    {id:5,date:"09/11",day:"금",home:"시환팀",away:"민푹팀"},
-    {id:6,date:"09/14",day:"월",home:"재우팀",away:"해찬팀"},
-    {id:7,date:"09/16",day:"수",home:"시환팀",away:"해찬팀"},
-    {id:8,date:"09/18",day:"금",home:"민푹팀",away:"재우팀"}
+/* 실제 경기 결과가 들어오기 전에는 빈 배열 */
+let results=[];
+
+const games=[
+ {id:1,date:"09/02",day:"수",home:"시환팀",away:"해찬팀"},
+ {id:2,date:"09/04",day:"금",home:"재우팀",away:"민푹팀"},
+ {id:3,date:"09/07",day:"월",home:"시환팀",away:"재우팀"},
+ {id:4,date:"09/09",day:"수",home:"해찬팀",away:"민푹팀"},
+ {id:5,date:"09/11",day:"금",home:"시환팀",away:"민푹팀"},
+ {id:6,date:"09/14",day:"월",home:"재우팀",away:"해찬팀"},
+ {id:7,date:"09/16",day:"수",home:"민푹팀",away:"시환팀"},
+ {id:8,date:"09/18",day:"금",home:"해찬팀",away:"재우팀"}
 ];
 
-const rankings = {
-    pitcher:[
-        ["시환","1.24"],
-        ["해찬","1.45"],
-        ["재우","1.61"],
-        ["민푹","1.82"]
-    ],
-    batter:[
-        ["시환",".412"],
-        ["재우",".385"],
-        ["해찬",".367"],
-        ["민푹",".351"]
-    ],
-    war:[
-        ["시환","4.8"],
-        ["재우","4.1"],
-        ["해찬","3.9"],
-        ["민푹","3.4"]
-    ],
-    team:[
-        ["시환팀","8승 3패"],
-        ["해찬팀","7승 4패"],
-        ["재우팀","5승 6패"],
-        ["민푹팀","3승 8패"]
-    ],
-    regular:[
-        ["시환팀","1위"],
-        ["해찬팀","2위"],
-        ["재우팀","3위"],
-        ["민푹팀","4위"]
-    ]
-};
-
-const specialRecords=[
-    "시환 · 최다 연속 안타",
-    "해찬 · 퍼스트 스타트",
-    "재우 · 파워 스타트",
-    "민푹 · 세이프 스타트",
-    "시환 · 얼티메이트 히트",
-    "해찬 · 클린 스타트"
+const secondHalf=[
+ {id:101,date:"10/12",day:"월",home:"시환팀",away:"민푹팀"},
+ {id:102,date:"10/14",day:"수",home:"해찬팀",away:"시환팀"},
+ {id:103,date:"10/16",day:"금",home:"재우팀",away:"민푹팀"},
+ {id:104,date:"10/19",day:"월",home:"시환팀",away:"재우팀"},
+ {id:105,date:"10/21",day:"수",home:"민푹팀",away:"해찬팀"},
+ {id:106,date:"10/23",day:"금",home:"재우팀",away:"시환팀"},
+ {id:107,date:"10/26",day:"월",home:"해찬팀",away:"민푹팀"},
+ {id:108,date:"10/28",day:"수",home:"시환팀",away:"해찬팀"},
+ {id:109,date:"10/30",day:"금",home:"민푹팀",away:"재우팀"},
+ {id:110,date:"11/02",day:"월",home:"해찬팀",away:"시환팀"},
+ {id:111,date:"11/04",day:"수",home:"민푹팀",away:"시환팀"},
+ {id:112,date:"11/06",day:"금",home:"재우팀",away:"해찬팀"}
 ];
+
+let currentPeriod="first";
+let currentFilter="all";
 
 /* =========================
    PAGE
 ========================= */
 
 function showPage(id,nav){
-    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 
-    const page=document.getElementById(id);
-    if(!page)return;
+ document.querySelectorAll(".page")
+ .forEach(x=>x.classList.remove("active"));
 
-    page.classList.add("active");
+ const page=document.getElementById(id);
 
-    document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+ if(!page)return;
 
-    if(nav)nav.classList.add("active");
+ page.classList.add("active");
 
-    window.scrollTo({top:0,behavior:"smooth"});
+ document.querySelectorAll(".nav")
+ .forEach(x=>x.classList.remove("active"));
 
-    if(id==="ranking")renderRanking("pitcher");
-    if(id==="players")renderPlayers();
-    if(id==="teams")renderTeams();
-    if(id==="schedule")renderSchedule();
+ if(nav)nav.classList.add("active");
+
+ window.scrollTo(0,0);
+
+ if(id==="schedule")renderSchedule();
+ if(id==="ranking")renderRanking("pitcher");
+ if(id==="players")renderPlayers();
+ if(id==="teams")renderTeams();
+ if(id==="community")renderComments();
 }
 
 /* =========================
@@ -809,215 +913,478 @@ function showPage(id,nav){
 ========================= */
 
 function renderHome(){
-    const box=document.getElementById("homeRank");
 
-    box.innerHTML=rankings.team.slice(0,3).map((r,i)=>`
-        <div class="rank-row">
-            <div class="rank-number">${i+1}</div>
-            <div class="rank-name">${r[0]}</div>
-            <div class="rank-value">${r[1]}</div>
-        </div>
-    `).join("");
+ document.getElementById("homeStandings").innerHTML=
+ teams.map((team,i)=>`
 
-    randomRecords();
+ <div class="row">
+
+  <div class="rank">${i+1}</div>
+
+  <div class="rowMain">
+   <div class="rowTitle">${team}</div>
+   <div class="rowSub">0경기 · 0승 0패 0무</div>
+  </div>
+
+  <div class="rowValue">-</div>
+
+ </div>
+
+ `).join("");
+
+ randomRecords();
 }
 
 function randomRecords(){
-    const arr=[...specialRecords].sort(()=>Math.random()-.5).slice(0,3);
 
-    document.getElementById("randomRecords").innerHTML=arr.map((x,i)=>`
-        <div class="rank-row">
-            <div class="rank-number">${i+1}</div>
-            <div class="rank-name">${x}</div>
-        </div>
-    `).join("");
+ const records=[
+  "최다 안타",
+  "최고 타율",
+  "최다 홈런",
+  "최다 삼진",
+  "최다 볼넷",
+  "최저 ERA",
+  "최다 승리",
+  "최다 연속 안타"
+ ];
+
+ const picked=[...records]
+ .sort(()=>Math.random()-.5)
+ .slice(0,3);
+
+ document.getElementById("randomRecords").innerHTML=
+ picked.map((x,i)=>`
+  <div class="row">
+   <div class="rank">${i+1}</div>
+   <div class="rowMain">${x}</div>
+   <div style="color:#666">기록 없음</div>
+  </div>
+ `).join("");
 }
 
 /* =========================
    SCHEDULE
 ========================= */
 
-function renderSchedule(filter="all"){
-    const list=document.getElementById("scheduleList");
-
-    const filtered=filter==="all"
-        ?games
-        :games.filter(g=>g.home.includes(filter)||g.away.includes(filter));
-
-    list.innerHTML=filtered.map(g=>`
-        <div class="match-card" onclick="openMatch(${g.id})">
-            <div class="match-top">
-                <span>2026.${g.date}</span>
-                <span>${g.day}요일 · 12:30</span>
-            </div>
-
-            <div class="match-teams">
-                <div class="team-name">${g.home}</div>
-                <div class="vs">VS</div>
-                <div class="team-name">${g.away}</div>
-            </div>
-
-            <div class="status">경기 상세보기 ›</div>
-        </div>
-    `).join("");
-
-    renderCalendar();
+function getGames(){
+ return currentPeriod==="first"?games:secondHalf;
 }
 
-function scheduleTab(btn,filter){
-    document.querySelectorAll("#schedule .tab").forEach(t=>t.classList.remove("active"));
-    btn.classList.add("active");
-    renderSchedule(filter);
+function changeSchedulePeriod(btn,period){
+
+ document.querySelectorAll("#schedule .tabs:first-of-type .tab")
+ .forEach(x=>x.classList.remove("active"));
+
+ btn.classList.add("active");
+
+ currentPeriod=period;
+
+ currentFilter="all";
+
+ document.querySelectorAll("#schedule .tabs:nth-of-type(2) .tab")
+ .forEach((x,i)=>x.classList.toggle("active",i===0));
+
+ renderSchedule();
+}
+
+function scheduleFilter(btn,team){
+
+ currentFilter=team;
+
+ const parent=btn.parentElement;
+
+ parent.querySelectorAll(".tab")
+ .forEach(x=>x.classList.remove("active"));
+
+ btn.classList.add("active");
+
+ renderSchedule();
+}
+
+function renderSchedule(){
+
+ const list=document.getElementById("scheduleList");
+
+ let data=getGames();
+
+ if(currentFilter!=="all"){
+  data=data.filter(g=>
+   g.home===currentFilter ||
+   g.away===currentFilter
+  );
+ }
+
+ document.getElementById("calendarTitle").innerText=
+ currentPeriod==="first"
+ ? "2026년 9월 · 전반기"
+ : "2026년 10~11월 · 후반기";
+
+ renderCalendar();
+
+ list.innerHTML=data.map(g=>`
+
+ <div class="card" onclick="openMatch(${g.id})">
+
+  <div style="display:flex;justify-content:space-between;color:#777;font-size:11px">
+   <span>2026.${g.date}</span>
+   <span>${g.day} · 12:30</span>
+  </div>
+
+  <div class="gameTeams">
+
+   <div class="gameTeam">${g.home}</div>
+
+   <div class="vs">VS</div>
+
+   <div class="gameTeam">${g.away}</div>
+
+  </div>
+
+  <div style="text-align:center;color:#777;font-size:11px">
+   경기 상세보기 ›
+  </div>
+
+ </div>
+
+ `).join("");
 }
 
 function renderCalendar(){
-    const cal=document.getElementById("calendar");
 
-    let html="";
+ const calendar=document.getElementById("calendar");
 
-    ["월","화","수","목","금","토","일"].forEach(d=>{
-        html+=`<div style="text-align:center;color:#777;font-size:10px;padding:4px">${d}</div>`;
-    });
+ let data=getGames();
 
-    for(let i=1;i<=30;i++){
-        const date=`09/${String(i).padStart(2,"0")}`;
-        const game=games.find(g=>g.date===date);
+ let month=currentPeriod==="first"?9:10;
 
-        html+=`
-        <div class="day">
-            <div class="day-num">${i}</div>
-            ${game?`<div class="day-game">${game.home.replace("팀","")}<br>vs<br>${game.away.replace("팀","")}</div>`:""}
-        </div>`;
+ let days=currentPeriod==="first"?30:31;
+
+ let html=["월","화","수","목","금","토","일"]
+ .map(x=>`<div class="calHead">${x}</div>`)
+ .join("");
+
+ for(let i=1;i<=days;i++){
+
+  const date=
+   month===9
+   ?`09/${String(i).padStart(2,"0")}`
+   :`10/${String(i).padStart(2,"0")}`;
+
+  const game=data.find(g=>g.date===date);
+
+  html+=`
+
+   <div class="calDay"
+    onclick="${game?`openMatch(${game.id})`:""}"
+    style="${game?"cursor:pointer":""}">
+
+    <div class="calNum">${i}</div>
+
+    ${game?
+     `<div class="calGame">
+      ⚾ 경기<br>
+      ${game.home.replace("팀","")}<br>
+      VS<br>
+      ${game.away.replace("팀","")}
+     </div>`
+     :""
     }
 
-    cal.innerHTML=html;
+   </div>
+
+  `;
+ }
+
+ calendar.innerHTML=html;
 }
 
 /* =========================
-   MATCH DETAIL
+   MATCH
 ========================= */
 
+function findGame(id){
+
+ return games.find(g=>g.id===id)
+ || secondHalf.find(g=>g.id===id);
+
+}
+
 function openMatch(id){
-    const g=games.find(x=>x.id===id);
-    if(!g)return;
 
-    openModal(
-        `${g.home} vs ${g.away}`,
-        `
-        <div class="hero">
-            <div class="hero-label">⚾ 경기 정보</div>
-            <div class="hero-match">${g.home} VS ${g.away}</div>
-            <div class="hero-date">2026.${g.date} · ${g.day}요일 · 12:30</div>
-        </div>
+ const g=findGame(id);
 
-        <div class="tabs">
-            <button class="tab active" onclick="matchTab(this,'info',${id})">경기정보</button>
-            <button class="tab" onclick="matchTab(this,'record',${id})">상대전적</button>
-            <button class="tab" onclick="matchTab(this,'power',${id})">팀전력</button>
-            <button class="tab" onclick="matchTab(this,'player',${id})">선수기록</button>
-            <button class="tab" onclick="matchTab(this,'predict',${id})">경기예상</button>
-            <button class="tab" onclick="matchTab(this,'comment',${id})">💬댓글</button>
-        </div>
+ if(!g)return;
 
-        <div id="matchTabContent">
-            ${matchInfo(g)}
-        </div>
-        `
-    );
+ openModal(
+
+  `${g.home} vs ${g.away}`,
+
+  `
+
+  <div class="nextGame">
+
+   <div class="smallBlue">⚾ 경기</div>
+
+   <div class="gameTeams">
+
+    <div class="gameTeam">${g.home}</div>
+    <div class="vs">VS</div>
+    <div class="gameTeam">${g.away}</div>
+
+   </div>
+
+   <div class="gameInfo">
+    2026.${g.date} · ${g.day} · 12:30
+   </div>
+
+  </div>
+
+  <div class="tabs">
+
+   <button class="tab active"
+    onclick="matchTab(this,'info',${id})">
+    경기정보
+   </button>
+
+   <button class="tab"
+    onclick="matchTab(this,'record',${id})">
+    상대전적
+   </button>
+
+   <button class="tab"
+    onclick="matchTab(this,'power',${id})">
+    팀전력
+   </button>
+
+   <button class="tab"
+    onclick="matchTab(this,'players',${id})">
+    선수기록
+   </button>
+
+   <button class="tab"
+    onclick="matchTab(this,'predict',${id})">
+    경기예상
+   </button>
+
+   <button class="tab"
+    onclick="matchTab(this,'comments',${id})">
+    💬 댓글
+   </button>
+
+  </div>
+
+  <div id="matchContent">
+
+   ${matchInfo(g)}
+
+  </div>
+
+  `
+ );
 }
 
 function matchTab(btn,type,id){
-    document.querySelectorAll(".modal-box .tab").forEach(t=>t.classList.remove("active"));
-    btn.classList.add("active");
 
-    const g=games.find(x=>x.id===id);
+ document.querySelectorAll(".modalBox .tab")
+ .forEach(x=>x.classList.remove("active"));
 
-    const box=document.getElementById("matchTabContent");
+ btn.classList.add("active");
 
-    if(type==="info")box.innerHTML=matchInfo(g);
+ const g=findGame(id);
 
-    if(type==="record")box.innerHTML=`
-        <div class="stat-grid">
-            <div class="stat"><div class="stat-label">상대전적</div><div class="stat-value">3 - 2</div></div>
-            <div class="stat"><div class="stat-label">승률</div><div class="stat-value">60%</div></div>
-            <div class="stat"><div class="stat-label">평균 타율</div><div class="stat-value">.378</div></div>
-            <div class="stat"><div class="stat-label">평균 ERA</div><div class="stat-value">1.54</div></div>
-        </div>
-        <div class="card">
-            <b>최근 5경기</b>
-            <p>승 · 승 · 패 · 승 · 패</p>
-        </div>
-    `;
+ const box=document.getElementById("matchContent");
 
-    if(type==="power")box.innerHTML=`
-        <div class="card">
-            <div class="card-title">${g.home}</div>
-            <p>타격력 ⭐⭐⭐⭐⭐</p>
-            <p>투수력 ⭐⭐⭐⭐</p>
-            <p>수비력 ⭐⭐⭐⭐</p>
-        </div>
-        <div class="card">
-            <div class="card-title">${g.away}</div>
-            <p>타격력 ⭐⭐⭐⭐</p>
-            <p>투수력 ⭐⭐⭐⭐⭐</p>
-            <p>수비력 ⭐⭐⭐⭐</p>
-        </div>
-    `;
+ if(type==="info"){
+  box.innerHTML=matchInfo(g);
+ }
 
-    if(type==="player")box.innerHTML=players.map(p=>`
-        <div class="rank-row" onclick="openPlayer('${p.name}')">
-            <div class="rank-name">${p.name}</div>
-            <div>${p.team}</div>
-            <div class="rank-value">${p.avg}</div>
-        </div>
-    `).join("");
+ if(type==="record"){
 
-    if(type==="predict")box.innerHTML=`
-        <div class="card">
-            <div class="card-title">🎯 승부예측</div>
-            <div class="grid2">
-                <button class="btn primary" onclick="vote('${g.home}')">${g.home}</button>
-                <button class="btn" onclick="vote('${g.away}')">${g.away}</button>
-            </div>
-            <p id="voteResult" style="color:#999;margin-top:15px">현재 예측에 참여해보세요.</p>
-        </div>
+  box.innerHTML=`
 
-        <div class="card">
-            <div class="card-title">🔢 예상 스코어</div>
-            <div class="grid2">
-                <input id="scoreHome" type="number" min="0" placeholder="${g.home} 점">
-                <input id="scoreAway" type="number" min="0" placeholder="${g.away} 점">
-            </div>
-            <button class="btn green full" style="margin-top:10px" onclick="saveScorePrediction()">예측 저장</button>
-        </div>
-    `;
+  <div class="card">
+   <div class="cardTitle">상대전적</div>
 
-    if(type==="comment")box.innerHTML=`
-        <textarea id="matchComment" rows="3" placeholder="이 경기에 댓글을 남겨보세요"></textarea>
-        <button class="btn primary full" style="margin-top:8px" onclick="addMatchComment()">댓글 등록</button>
-        <div id="matchComments" style="margin-top:12px">
-            <div class="comment">
-                <div class="comment-name">CPL 팬</div>
-                <div class="comment-text">개막전 기대된다!</div>
-            </div>
-        </div>
-    `;
+   <div class="stats">
+
+    <div class="stat">
+     <div class="statLabel">${g.home}</div>
+     <div class="statValue">0승</div>
+    </div>
+
+    <div class="stat">
+     <div class="statLabel">${g.away}</div>
+     <div class="statValue">0승</div>
+    </div>
+
+    <div class="stat">
+     <div class="statLabel">타율</div>
+     <div class="statValue">-</div>
+    </div>
+
+    <div class="stat">
+     <div class="statLabel">평균자책점</div>
+     <div class="statValue">-</div>
+    </div>
+
+    <div class="stat">
+     <div class="statLabel">승률</div>
+     <div class="statValue">-</div>
+    </div>
+
+    <div class="stat">
+     <div class="statLabel">최근 5경기</div>
+     <div class="statValue">-</div>
+    </div>
+
+   </div>
+  </div>
+
+  `;
+ }
+
+ if(type==="power"){
+
+  box.innerHTML=`
+
+  <div class="card">
+   <div class="cardTitle">${g.home}</div>
+   <p>경기수 : 0</p>
+   <p>승률 : -</p>
+   <p>타율 : -</p>
+   <p>ERA : -</p>
+   <p>득실차 : 0</p>
+  </div>
+
+  <div class="card">
+   <div class="cardTitle">${g.away}</div>
+   <p>경기수 : 0</p>
+   <p>승률 : -</p>
+   <p>타율 : -</p>
+   <p>ERA : -</p>
+   <p>득실차 : 0</p>
+  </div>
+
+  `;
+ }
+
+ if(type==="players"){
+
+  box.innerHTML=players.map(p=>`
+
+   <div class="row" onclick="openPlayer('${p.name}')">
+
+    <div class="avatar">${p.name[0]}</div>
+
+    <div class="rowMain">
+     <div class="rowTitle">${p.name}</div>
+     <div class="rowSub">${p.team}</div>
+    </div>
+
+    <div>›</div>
+
+   </div>
+
+  `).join("");
+
+ }
+
+ if(type==="predict"){
+
+  box.innerHTML=`
+
+  <div class="card">
+
+   <div class="cardTitle">🎯 승부예측</div>
+
+   <div class="grid2">
+
+    <button class="btn"
+     onclick="matchVote('${g.home}')">
+     ${g.home}
+    </button>
+
+    <button class="btn"
+     onclick="matchVote('${g.away}')">
+     ${g.away}
+    </button>
+
+   </div>
+
+   <div id="matchVoteResult"
+    style="color:#888;margin-top:12px">
+   </div>
+
+  </div>
+
+  `;
+
+ }
+
+ if(type==="comments"){
+
+  box.innerHTML=`
+
+   <textarea id="matchComment"
+    rows="5"
+    maxlength="2000"
+    placeholder="이 경기에 대한 의견을 남겨보세요."></textarea>
+
+   <button class="btn btnBlue full"
+    style="margin-top:9px"
+    onclick="addMatchComment()">
+    댓글 등록
+   </button>
+
+   <div id="matchComments" style="margin-top:12px">
+    <div class="comment">
+     <div class="commentUser">CPL 팬</div>
+     <div class="commentText">
+      아직 작성된 댓글이 없습니다.
+     </div>
+    </div>
+   </div>
+
+  `;
+ }
+
 }
 
 function matchInfo(g){
-    return `
-        <div class="stat-grid">
-            <div class="stat"><div class="stat-label">일정</div><div class="stat-value">${g.date}</div></div>
-            <div class="stat"><div class="stat-label">시간</div><div class="stat-value">12:30</div></div>
-            <div class="stat"><div class="stat-label">홈</div><div class="stat-value">${g.home}</div></div>
-            <div class="stat"><div class="stat-label">원정</div><div class="stat-value">${g.away}</div></div>
-        </div>
 
-        <div class="card">
-            <div class="card-title">📌 경기 상태</div>
-            <p style="color:#aaa">경기 예정</p>
-        </div>
-    `;
+ return `
+
+ <div class="stats">
+
+  <div class="stat">
+   <div class="statLabel">경기일</div>
+   <div class="statValue">${g.date}</div>
+  </div>
+
+  <div class="stat">
+   <div class="statLabel">시간</div>
+   <div class="statValue">12:30</div>
+  </div>
+
+  <div class="stat">
+   <div class="statLabel">홈팀</div>
+   <div class="statValue">${g.home}</div>
+  </div>
+
+  <div class="stat">
+   <div class="statLabel">원정팀</div>
+   <div class="statValue">${g.away}</div>
+  </div>
+
+ </div>
+
+ <div class="card" style="margin-top:12px">
+  <div class="cardTitle">📌 경기 상태</div>
+  <p style="color:#888">경기 예정</p>
+ </div>
+
+ `;
+
 }
 
 /* =========================
@@ -1025,32 +1392,70 @@ function matchInfo(g){
 ========================= */
 
 function rankingTab(btn,type){
-    document.querySelectorAll("#ranking .tab").forEach(t=>t.classList.remove("active"));
-    btn.classList.add("active");
-    renderRanking(type);
+
+ document.querySelectorAll("#ranking .tab")
+ .forEach(x=>x.classList.remove("active"));
+
+ btn.classList.add("active");
+
+ renderRanking(type);
+
 }
 
 function renderRanking(type){
-    const data=rankings[type];
 
-    const title={
-        pitcher:"투수 기록 순위",
-        batter:"타자 기록 순위",
-        war:"WAR 순위",
-        team:"팀 순위",
-        regular:"정규시즌 순위"
-    }[type];
+ const box=document.getElementById("rankingContent");
 
-    document.getElementById("rankingContent").innerHTML=`
-        <div class="card-title">${title}</div>
-        ${data.map((r,i)=>`
-            <div class="rank-row" onclick="${type==='team' || type==='regular' ? `openTeam('${r[0]}')` : `openPlayer('${r[0]}')`}">
-                <div class="rank-number">${i+1}</div>
-                <div class="rank-name">${r[0]}</div>
-                <div class="rank-value">${r[1]}</div>
-            </div>
-        `).join("")}
-    `;
+ if(type==="team"||type==="regular"){
+
+  box.innerHTML=`
+
+   <div class="cardTitle">
+    ${type==="team"?"팀 순위":"정규시즌 순위"}
+   </div>
+
+   ${teams.map((t,i)=>`
+
+    <div class="row"
+     onclick="openTeam('${t}')">
+
+     <div class="rank">${i+1}</div>
+
+     <div class="rowMain">
+      <div class="rowTitle">${t}</div>
+      <div class="rowSub">
+       0경기 · 0승 0패 0무 · 득실차 0
+      </div>
+     </div>
+
+     <div class="rowValue">-</div>
+
+    </div>
+
+   `).join("")}
+
+  `;
+
+  return;
+ }
+
+ const title={
+  pitcher:"투수 기록 순위",
+  batter:"타자 기록 순위",
+  war:"WAR 순위"
+ }[type];
+
+ box.innerHTML=`
+
+  <div class="cardTitle">${title}</div>
+
+  <div style="padding:20px 0;text-align:center;color:#777">
+   아직 진행된 경기가 없습니다.<br>
+   실제 경기 기록이 입력되면 순위가 생성됩니다.
+  </div>
+
+ `;
+
 }
 
 /* =========================
@@ -1058,235 +1463,478 @@ function renderRanking(type){
 ========================= */
 
 function renderPlayers(){
-    document.getElementById("playerList").innerHTML=players.map(p=>`
-        <div class="card" onclick="openPlayer('${p.name}')">
-            <div class="player">
-                <div class="avatar">${p.name[0]}</div>
-                <div style="flex:1">
-                    <b>${p.name}</b>
-                    <div style="color:#888;font-size:12px">${p.team}</div>
-                </div>
-                <span>›</span>
-            </div>
-        </div>
-    `).join("");
+
+ document.getElementById("playerList").innerHTML=
+
+ players.map(p=>`
+
+  <div class="card"
+   onclick="openPlayer('${p.name}')">
+
+   <div class="row">
+
+    <div class="avatar">${p.name[0]}</div>
+
+    <div class="rowMain">
+     <div class="rowTitle">${p.name}</div>
+     <div class="rowSub">${p.team}</div>
+    </div>
+
+    <div>›</div>
+
+   </div>
+
+  </div>
+
+ `).join("");
+
 }
 
 function openPlayer(name){
-    const p=players.find(x=>x.name===name);
-    if(!p)return;
 
-    openModal(
-        `${p.name} 선수`,
-        `
-        <div class="player" style="margin-bottom:18px">
-            <div class="avatar">${p.name[0]}</div>
-            <div>
-                <div style="font-size:21px;font-weight:900">${p.name}</div>
-                <div style="color:#888">${p.team}</div>
-            </div>
-        </div>
+ const p=players.find(x=>x.name===name);
 
-        <div class="tabs">
-            <button class="tab active">프로필</button>
-            <button class="tab">타격</button>
-            <button class="tab">투구</button>
-            <button class="tab">경기별</button>
-            <button class="tab">최근활약</button>
-        </div>
+ if(!p)return;
 
-        <div class="stat-grid">
-            <div class="stat"><div class="stat-label">타율</div><div class="stat-value">${p.avg}</div></div>
-            <div class="stat"><div class="stat-label">ERA</div><div class="stat-value">${p.era}</div></div>
-            <div class="stat"><div class="stat-label">WAR</div><div class="stat-value">${p.war}</div></div>
-            <div class="stat"><div class="stat-label">최근활약</div><div class="stat-value">HOT</div></div>
-        </div>
+ openModal(
 
-        <div class="card" style="margin-top:12px">
-            <div class="card-title">🏅 개인 기록</div>
-            <p>홈런 · 4</p>
-            <p>안타 · 18</p>
-            <p>볼넷 · 7</p>
-            <p>삼진 · 11</p>
-        </div>
-        `
-    );
+  `${p.name} 선수`,
+
+  `
+
+  <div class="row">
+
+   <div class="avatar">${p.name[0]}</div>
+
+   <div class="rowMain">
+    <div style="font-size:20px;font-weight:900">${p.name}</div>
+    <div class="rowSub">${p.team}</div>
+   </div>
+
+  </div>
+
+  <div class="tabs">
+
+   <button class="tab active"
+    onclick="playerTab(this,'profile','${name}')">
+    프로필
+   </button>
+
+   <button class="tab"
+    onclick="playerTab(this,'batting','${name}')">
+    타격
+   </button>
+
+   <button class="tab"
+    onclick="playerTab(this,'pitching','${name}')">
+    투구
+   </button>
+
+   <button class="tab"
+    onclick="playerTab(this,'games','${name}')">
+    경기별
+   </button>
+
+   <button class="tab"
+    onclick="playerTab(this,'start','${name}')">
+    스타트
+   </button>
+
+   <button class="tab"
+    onclick="playerTab(this,'recent','${name}')">
+    최근활약
+   </button>
+
+   <button class="tab"
+    onclick="playerTab(this,'best','${name}')">
+    최고기록
+   </button>
+
+   <button class="tab"
+    onclick="playerTab(this,'head','${name}')">
+    상대전적
+   </button>
+
+  </div>
+
+  <div id="playerContent">
+
+   ${playerProfile(p)}
+
+  </div>
+
+  `
+
+ );
+
+}
+
+function playerTab(btn,type,name){
+
+ document.querySelectorAll(".modalBox .tab")
+ .forEach(x=>x.classList.remove("active"));
+
+ btn.classList.add("active");
+
+ const p=players.find(x=>x.name===name);
+
+ const box=document.getElementById("playerContent");
+
+ if(type==="profile")box.innerHTML=playerProfile(p);
+
+ if(type==="batting")box.innerHTML=emptyRecord("타격 기록");
+
+ if(type==="pitching")box.innerHTML=emptyRecord("투구 기록");
+
+ if(type==="games")box.innerHTML=emptyRecord("경기별 기록");
+
+ if(type==="start")box.innerHTML=`
+
+  <div class="card">
+   <div class="cardTitle">🏅 스타트 기록</div>
+   <p>FS : 0</p>
+   <p>DS : 0</p>
+   <p>CS : 0</p>
+   <p>QS : 0</p>
+   <p>PS : 0</p>
+   <p>SS : 0</p>
+   <p>US : 0</p>
+  </div>
+
+ `;
+
+ if(type==="recent")box.innerHTML=emptyRecord("최근 활약");
+
+ if(type==="best")box.innerHTML=emptyRecord("최고 기록");
+
+ if(type==="head")box.innerHTML=emptyRecord("상대전적");
+
+}
+
+function playerProfile(p){
+
+ return `
+
+ <div class="stats">
+
+  <div class="stat">
+   <div class="statLabel">경기</div>
+   <div class="statValue">0</div>
+  </div>
+
+  <div class="stat">
+   <div class="statLabel">타율</div>
+   <div class="statValue">-</div>
+  </div>
+
+  <div class="stat">
+   <div class="statLabel">ERA</div>
+   <div class="statValue">-</div>
+  </div>
+
+  <div class="stat">
+   <div class="statLabel">WAR</div>
+   <div class="statValue">-</div>
+  </div>
+
+ </div>
+
+ <div class="card" style="margin-top:12px">
+  <div class="cardTitle">현재 상태</div>
+  <p style="color:#888">
+   아직 공식 경기 기록이 없습니다.
+  </p>
+ </div>
+
+ `;
+
+}
+
+function emptyRecord(title){
+
+ return `
+
+ <div class="card">
+
+  <div class="cardTitle">${title}</div>
+
+  <div style="text-align:center;color:#777;padding:20px 0">
+   아직 경기 기록이 없습니다.
+  </div>
+
+ </div>
+
+ `;
+
 }
 
 /* =========================
-   TEAMS
+   TEAM
 ========================= */
 
 function renderTeams(){
-    document.getElementById("teamList").innerHTML=teams.map(t=>`
-        <div class="card" onclick="openTeam('${t.name}')">
-            <div class="card-row">
-                <div>
-                    <div style="font-size:21px;font-weight:900">${t.color} ${t.name}</div>
-                    <div style="color:#888;margin-top:5px">선수 기록 · 일정 · 상대전적</div>
-                </div>
-                <span>›</span>
-            </div>
-        </div>
-    `).join("");
+
+ document.getElementById("teamList").innerHTML=
+
+ teams.map(t=>`
+
+  <div class="card"
+   onclick="openTeam('${t}')">
+
+   <div class="row">
+
+    <div style="font-size:25px">
+     ${t==="시환팀"?"🟦":
+       t==="재우팀"?"🟥":
+       t==="해찬팀"?"🟨":"🟩"}
+    </div>
+
+    <div class="rowMain">
+     <div class="rowTitle">${t}</div>
+     <div class="rowSub">
+      0경기 · 승 0 · 패 0 · 무 0
+     </div>
+    </div>
+
+    <div>›</div>
+
+   </div>
+
+  </div>
+
+ `).join("");
+
 }
 
 function openTeam(name){
-    openModal(
-        name,
-        `
-        <div class="hero">
-            <div class="hero-label">🏟️ TEAM</div>
-            <div class="hero-match">${name}</div>
-            <div class="hero-date">CPL 공식 팀</div>
-        </div>
 
-        <div class="stat-grid">
-            <div class="stat"><div class="stat-label">승</div><div class="stat-value">8</div></div>
-            <div class="stat"><div class="stat-label">패</div><div class="stat-value">3</div></div>
-            <div class="stat"><div class="stat-label">승률</div><div class="stat-value">.727</div></div>
-            <div class="stat"><div class="stat-label">게임차</div><div class="stat-value">-</div></div>
-        </div>
+ openModal(
 
-        <div class="card">
-            <div class="card-title">최근 경기</div>
-            <p>승 · 승 · 패 · 승 · 승</p>
-        </div>
-        `
-    );
+  name,
+
+  `
+
+  <div class="card">
+
+   <div class="cardTitle">${name} 시즌 기록</div>
+
+   <div class="stats">
+
+    <div class="stat">
+     <div class="statLabel">경기</div>
+     <div class="statValue">0</div>
+    </div>
+
+    <div class="stat">
+     <div class="statLabel">승률</div>
+     <div class="statValue">-</div>
+    </div>
+
+    <div class="stat">
+     <div class="statLabel">득실차</div>
+     <div class="statValue">0</div>
+    </div>
+
+    <div class="stat">
+     <div class="statLabel">게임차</div>
+     <div class="statValue">-</div>
+    </div>
+
+   </div>
+
+  </div>
+
+  <div class="card">
+
+   <div class="cardTitle">최근 5경기</div>
+
+   <div style="color:#777">
+    아직 경기 기록이 없습니다.
+   </div>
+
+  </div>
+
+  `
+
+ );
+
 }
 
 /* =========================
    COMMUNITY
 ========================= */
 
-function getComments(){
-    return JSON.parse(localStorage.getItem("cpl_comments")||"[]");
-}
+function comments(){
 
-function addComment(){
-    const input=document.getElementById("commentInput");
-    const text=input.value.trim();
+ return JSON.parse(
+  localStorage.getItem("cpl_comments")||"[]"
+ );
 
-    if(!text){
-        alert("댓글을 입력하세요.");
-        return;
-    }
-
-    const comments=getComments();
-
-    comments.unshift({
-        name:"CPL 회원",
-        text:text
-    });
-
-    localStorage.setItem("cpl_comments",JSON.stringify(comments));
-
-    input.value="";
-    renderComments();
 }
 
 function renderComments(){
-    const comments=getComments();
 
-    document.getElementById("comments").innerHTML=
-        (comments.length?comments:[
-            {name:"CPL 팬",text:"CPL 재미있겠다!"}
-        ]).map(c=>`
-            <div class="comment">
-                <div class="comment-name">${c.name}</div>
-                <div class="comment-text">${escapeHtml(c.text)}</div>
-            </div>
-        `).join("");
+ const data=comments();
+
+ document.getElementById("communityComments").innerHTML=
+
+ data.length
+
+ ?data.map(c=>`
+
+  <div class="comment">
+
+   <div class="commentUser">
+    ${escapeHTML(c.user)}
+   </div>
+
+   <div class="commentText">
+    ${escapeHTML(c.text)}
+   </div>
+
+  </div>
+
+ `).join("")
+
+ :`
+
+  <div style="color:#777;padding:15px 0">
+   아직 댓글이 없습니다.
+  </div>
+
+ `;
+
+}
+
+function addCommunityComment(){
+
+ const input=document.getElementById("communityText");
+
+ const text=input.value.trim();
+
+ if(!text){
+  alert("댓글 내용을 입력하세요.");
+  return;
+ }
+
+ const user=
+  localStorage.getItem("cpl_user")
+  ||"CPL 회원";
+
+ const data=comments();
+
+ data.unshift({
+  user:user,
+  text:text,
+  time:Date.now()
+ });
+
+ localStorage.setItem(
+  "cpl_comments",
+  JSON.stringify(data)
+ );
+
+ input.value="";
+
+ renderComments();
+
+ alert("댓글이 등록되었습니다.");
+
 }
 
 function addMatchComment(){
-    const input=document.getElementById("matchComment");
-    if(!input.value.trim()){
-        alert("댓글을 입력하세요.");
-        return;
-    }
 
-    document.getElementById("matchComments").insertAdjacentHTML(
-        "afterbegin",
-        `
-        <div class="comment">
-            <div class="comment-name">CPL 회원</div>
-            <div class="comment-text">${escapeHtml(input.value)}</div>
-        </div>
-        `
-    );
+ const input=document.getElementById("matchComment");
 
-    input.value="";
+ if(!input||!input.value.trim()){
+  alert("댓글 내용을 입력하세요.");
+  return;
+ }
+
+ const box=document.getElementById("matchComments");
+
+ box.insertAdjacentHTML(
+  "afterbegin",
+  `
+
+  <div class="comment">
+
+   <div class="commentUser">
+    ${escapeHTML(localStorage.getItem("cpl_user")||"CPL 회원")}
+   </div>
+
+   <div class="commentText">
+    ${escapeHTML(input.value)}
+   </div>
+
+  </div>
+
+  `
+ );
+
+ input.value="";
+
 }
 
 /* =========================
-   FUN
+   PREDICTION
 ========================= */
 
-function prediction(){
-    openModal(
-        "🎯 승부예측",
-        `
-        <div class="card">
-            <div class="card-title">9월 2일 개막전</div>
-            <div class="grid2">
-                <button class="btn primary" onclick="alert('시환팀에 투표했습니다!')">🟦 시환팀</button>
-                <button class="btn" onclick="alert('해찬팀에 투표했습니다!')">🟨 해찬팀</button>
-            </div>
-        </div>
-        `
-    );
+function pickTeam(team){
+
+ const key="cpl_prediction_1";
+
+ if(localStorage.getItem(key)){
+  alert("이미 이번 경기 예측을 선택했습니다.");
+  return;
+ }
+
+ localStorage.setItem(key,team);
+
+ const box=document.getElementById("predictionResult");
+
+ if(box){
+  box.innerText=`✅ ${team}을(를) 픽했습니다.`;
+ }
+
 }
 
-function scorePrediction(){
-    openModal(
-        "🔢 스코어 예측",
-        `
-        <label>시환팀</label>
-        <input id="ps1" type="number" placeholder="점수">
+function matchVote(team){
 
-        <label>해찬팀</label>
-        <input id="ps2" type="number" placeholder="점수">
+ const key="cpl_match_prediction_1";
 
-        <button class="btn primary full" style="margin-top:12px" onclick="saveScorePrediction()">예측 저장</button>
-        `
-    );
+ if(localStorage.getItem(key)){
+  alert("이미 예측했습니다.");
+  return;
+ }
+
+ localStorage.setItem(key,team);
+
+ const box=document.getElementById("matchVoteResult");
+
+ if(box){
+  box.innerText=`✅ ${team} 픽 완료`;
+ }
+
 }
 
-function saveScorePrediction(){
-    alert("예상 스코어가 저장되었습니다.");
-}
+function saveScore(){
 
-function randomChallenge(){
-    const missions=[
-        "오늘 경기 MVP 맞히기",
-        "첫 홈런 선수 맞히기",
-        "첫 삼진 선수 맞히기",
-        "승리팀 맞히기",
-        "첫 득점팀 맞히기"
-    ];
+ const a=document.getElementById("scoreA").value;
+ const b=document.getElementById("scoreB").value;
 
-    alert("🎲 오늘의 미션\n\n"+missions[Math.floor(Math.random()*missions.length)]);
-}
+ if(a===""||b===""){
+  alert("두 팀의 예상 점수를 입력하세요.");
+  return;
+ }
 
-function openAwards(){
-    openModal(
-        "🏅 기록 도전",
-        `
-        <div class="card">
-            <p>🟢 FS · 퍼스트 스타트</p>
-            <p>🔵 DS · 더블 스타트</p>
-            <p>🟣 CS · 클린 스타트</p>
-            <p>⚡ QS · 퀵 스타트</p>
-            <p>💪 PS · 파워 스타트</p>
-            <p>🛡️ SS · 세이프 스타트</p>
-            <p>🔥 US · 얼티메이트 스타트</p>
-            <p>⚾ UH · 얼티메이트 히트</p>
-            <p>👑 PG · 퍼펙트 게임</p>
-        </div>
-        `
-    );
+ localStorage.setItem(
+  "cpl_score_prediction_1",
+  JSON.stringify({a:a,b:b})
+ );
+
+ alert(`예상 스코어 ${a} : ${b} 저장 완료`);
+
 }
 
 /* =========================
@@ -1294,39 +1942,89 @@ function openAwards(){
 ========================= */
 
 function openAccount(){
-    openModal(
-        "👤 계정",
-        `
-        <div class="card">
-            <div class="card-title">CPL 일반 계정</div>
 
-            <label>닉네임</label>
-            <input id="nickname" placeholder="닉네임">
+ const user=localStorage.getItem("cpl_user")||"";
 
-            <button class="btn primary full" style="margin-top:12px" onclick="saveAccount()">계정 저장</button>
-        </div>
+ openModal(
 
-        <div class="card">
-            <p>내 예측</p>
-            <p>내 댓글</p>
-            <p>내 기록</p>
-            <p>내 응원팀</p>
-        </div>
-        `
-    );
+  "👤 내 계정",
+
+  `
+
+  <div class="card">
+
+   <div class="cardTitle">
+    ${user?"내 계정":"계정 만들기"}
+   </div>
+
+   <label>닉네임</label>
+
+   <input id="nickname"
+    value="${escapeHTML(user)}"
+    maxlength="30"
+    placeholder="닉네임">
+
+   <label>좋아하는 팀</label>
+
+   <select id="favoriteTeam">
+
+    <option value="">선택하세요</option>
+
+    ${teams.map(t=>
+     `<option value="${t}">${t}</option>`
+    ).join("")}
+
+   </select>
+
+   <button class="btn btnBlue full"
+    style="margin-top:12px"
+    onclick="saveAccount()">
+    계정 저장
+   </button>
+
+  </div>
+
+  ${user?`
+
+  <div class="card">
+
+   <div class="cardTitle">내 활동</div>
+
+   <p>💬 내 댓글</p>
+   <p>🎯 내 승부예측</p>
+   <p>❤️ 좋아하는 팀</p>
+
+  </div>
+
+  `:""}
+
+  `
+
+ );
+
 }
 
 function saveAccount(){
-    const name=document.getElementById("nickname").value.trim();
 
-    if(!name){
-        alert("닉네임을 입력하세요.");
-        return;
-    }
+ const name=document.getElementById("nickname").value.trim();
 
-    localStorage.setItem("cpl_user",name);
-    alert(name+" 계정이 저장되었습니다.");
-    closeModal();
+ const favorite=document.getElementById("favoriteTeam").value;
+
+ if(!name){
+  alert("닉네임을 입력하세요.");
+  return;
+ }
+
+ localStorage.setItem("cpl_user",name);
+
+ if(favorite){
+  localStorage.setItem("cpl_favorite",favorite);
+ }
+
+ alert("계정 정보가 저장되었습니다.");
+
+ closeModal();
+
 }
 
 /* =========================
@@ -1334,27 +2032,54 @@ function saveAccount(){
 ========================= */
 
 function adminLogin(){
-    const pin=document.getElementById("adminPin").value;
 
-    if(pin==="1234"){
-        document.getElementById("adminPanel").style.display="block";
-        alert("관리자 로그인 성공");
-    }else{
-        alert("관리자 번호가 올바르지 않습니다.");
-    }
+ const pin=document.getElementById("adminPin").value;
+
+ /*
+  초기 테스트 관리자 번호
+  실제 운영에서는 Supabase 인증으로 교체
+ */
+ if(pin==="1234"){
+
+  document.getElementById("adminPanel").style.display="block";
+
+  alert("관리자 로그인 성공");
+
+ }else{
+
+  alert("관리자 번호가 올바르지 않습니다.");
+
+ }
+
 }
 
-function adminAction(name){
-    openModal(
-        "관리자 · "+name,
-        `
-        <div class="card">
-            <div class="card-title">${name}</div>
-            <p style="color:#aaa">관리 기능 화면입니다.</p>
-            <button class="btn primary full" onclick="alert('${name} 기능을 실행했습니다.')">실행</button>
-        </div>
-        `
-    );
+function adminMessage(name){
+
+ openModal(
+
+  "관리자 · "+name,
+
+  `
+
+  <div class="card">
+
+   <div class="cardTitle">${name}</div>
+
+   <p style="color:#888">
+    이 기능의 실제 데이터 연결 화면입니다.
+   </p>
+
+   <button class="btn btnBlue full"
+    onclick="alert('${name} 기능 준비')">
+    확인
+   </button>
+
+  </div>
+
+  `
+
+ );
+
 }
 
 /* =========================
@@ -1362,32 +2087,40 @@ function adminAction(name){
 ========================= */
 
 function openModal(title,content){
-    document.getElementById("modalTitle").innerText=title;
-    document.getElementById("modalContent").innerHTML=content;
-    document.getElementById("modal").classList.add("show");
+
+ document.getElementById("modalTitle").innerText=title;
+
+ document.getElementById("modalContent").innerHTML=content;
+
+ document.getElementById("modal").classList.add("show");
+
 }
 
 function closeModal(){
-    document.getElementById("modal").classList.remove("show");
+
+ document.getElementById("modal").classList.remove("show");
+
 }
 
-document.getElementById("modal").addEventListener("click",function(e){
-    if(e.target===this)closeModal();
+document.getElementById("modal")
+.addEventListener("click",function(e){
+
+ if(e.target===this)closeModal();
+
 });
 
 /* =========================
-   UTILITY
+   SECURITY
 ========================= */
 
-function vote(team){
-    const box=document.getElementById("voteResult");
-    if(box)box.innerText=`${team}에 투표했습니다.`;
-}
+function escapeHTML(value){
 
-function escapeHtml(text){
-    const div=document.createElement("div");
-    div.textContent=text;
-    return div.innerHTML;
+ const div=document.createElement("div");
+
+ div.textContent=value;
+
+ return div.innerHTML;
+
 }
 
 /* =========================
@@ -1405,3 +2138,4 @@ renderComments();
 
 </body>
 </html>
+```
