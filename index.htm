@@ -1,3190 +1,1407 @@
-```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>CPL SPORTS</title>
 
 <style>
 *{box-sizing:border-box}
-
+html{scroll-behavior:smooth}
 body{
     margin:0;
-    background:#070707;
+    background:#080808;
     color:#fff;
     font-family:Arial,"Noto Sans KR",sans-serif;
 }
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
 
-button,input,textarea,select{
-    font:inherit;
+:root{
+    --bg:#080808;
+    --card:#151515;
+    --card2:#1d1d1d;
+    --line:#292929;
+    --muted:#999;
+    --white:#fff;
+    --blue:#397cff;
+    --green:#20c878;
+    --yellow:#ffc400;
+    --red:#ff4545;
+    --purple:#9b6cff;
 }
 
-button{
-    cursor:pointer;
+.app{
+    min-height:100vh;
+    padding-bottom:82px;
 }
 
-header{
+/* HEADER */
+.header{
     position:sticky;
     top:0;
-    z-index:1000;
-    background:#090909;
-    border-bottom:1px solid #292929;
+    z-index:100;
+    background:rgba(8,8,8,.96);
+    border-bottom:1px solid var(--line);
+    padding:15px 16px;
 }
-
-.header{
-    max-width:1250px;
-    margin:auto;
-    padding:14px 18px;
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.logo{
-    font-size:22px;
-    font-weight:900;
-    white-space:nowrap;
-}
-
-.logo small{
-    display:block;
-    color:#777;
-    font-size:9px;
-    letter-spacing:2px;
-}
-
-nav{
-    display:flex;
-    gap:5px;
-    flex:1;
-    overflow-x:auto;
-}
-
-nav button{
-    border:0;
-    background:transparent;
-    color:#999;
-    padding:10px 12px;
-    border-radius:8px;
-    white-space:nowrap;
-}
-
-nav button:hover,
-nav button.active{
-    background:#fff;
-    color:#000;
-}
-
-.container{
-    max-width:1250px;
-    margin:auto;
-    padding:22px 18px 60px;
-}
-
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-.hero{
-    background:linear-gradient(135deg,#191919,#0c0c0c);
-    border:1px solid #303030;
-    border-radius:18px;
-    padding:28px;
-    margin-bottom:18px;
-}
-
-.hero small{
-    color:#777;
-    letter-spacing:2px;
-}
-
-.hero h1{
-    margin:8px 0;
-    font-size:34px;
-}
-
-.grid{
-    display:grid;
-    gap:14px;
-}
-
-.g2{grid-template-columns:repeat(2,1fr)}
-.g3{grid-template-columns:repeat(3,1fr)}
-.g4{grid-template-columns:repeat(4,1fr)}
-
-.card{
-    background:#111;
-    border:1px solid #292929;
-    border-radius:14px;
-    padding:18px;
-}
-
-.click{
-    cursor:pointer;
-    transition:.15s;
-}
-
-.click:hover{
-    border-color:#777;
-    transform:translateY(-2px);
-}
-
-.btn{
-    border:1px solid #383838;
-    background:#181818;
-    color:#fff;
-    padding:10px 14px;
-    border-radius:9px;
-    margin:3px;
-}
-
-.btn:hover{
-    background:#292929;
-}
-
-.btn.primary{
-    background:#fff;
-    color:#000;
-    border-color:#fff;
-    font-weight:bold;
-}
-
-.btn.danger{
-    background:#300f0f;
-    color:#ffaaaa;
-}
-
-.muted{
-    color:#888;
-}
-
-.section{
-    margin:25px 0 12px;
-}
-
-.section h2{
-    margin:0;
-}
-
-.stat{
-    text-align:center;
-}
-
-.stat span{
-    display:block;
-    color:#777;
-    font-size:12px;
-}
-
-.stat b{
-    display:block;
-    margin-top:6px;
-    font-size:25px;
-}
-
-.badge{
-    display:inline-block;
-    padding:5px 9px;
-    border:1px solid #383838;
-    background:#202020;
-    border-radius:99px;
-    font-size:12px;
-}
-
-.match{
+.header-row{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:15px;
 }
-
-.team{
-    font-size:21px;
+.logo{
+    font-size:22px;
     font-weight:900;
 }
-
-.score{
-    font-size:28px;
-    font-weight:900;
+.logo span{color:var(--blue)}
+.user-btn{
+    border:1px solid var(--line);
+    background:#141414;
+    color:#fff;
+    border-radius:50px;
+    padding:8px 12px;
 }
 
-.tabs{
+/* PAGE */
+.page{
+    display:none;
+    padding:18px 15px;
+}
+.page.active{display:block}
+
+.page-title{
+    font-size:25px;
+    font-weight:900;
+    margin-bottom:5px;
+}
+.page-sub{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+/* CARDS */
+.card{
+    background:linear-gradient(145deg,#181818,#101010);
+    border:1px solid var(--line);
+    border-radius:17px;
+    padding:16px;
+    margin-bottom:12px;
+}
+.card-title{
+    font-size:16px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+.card-row{
     display:flex;
-    gap:6px;
-    overflow-x:auto;
-    margin:15px 0;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
 }
 
-.tabs button{
-    background:#111;
+/* HERO */
+.hero{
+    background:linear-gradient(135deg,#111d35,#101010);
+    border:1px solid #263b66;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:14px;
+}
+.hero-label{
+    color:#72a0ff;
+    font-size:12px;
+    font-weight:bold;
+}
+.hero-match{
+    font-size:25px;
+    font-weight:900;
+    margin:9px 0;
+}
+.hero-date{
+    color:#aaa;
+    font-size:13px;
+}
+
+/* MATCH */
+.match-card{
+    background:#151515;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:15px;
+    margin-bottom:10px;
+    transition:.15s;
+}
+.match-card:active{
+    transform:scale(.98);
+}
+.match-top{
+    display:flex;
+    justify-content:space-between;
     color:#999;
-    border:1px solid #292929;
-    border-radius:8px;
-    padding:10px 14px;
-    white-space:nowrap;
+    font-size:12px;
+    margin-bottom:12px;
 }
-
-.tabs button.active{
-    background:#fff;
-    color:#000;
+.match-teams{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
 }
-
-table{
-    width:100%;
-    border-collapse:collapse;
+.team-name{
+    font-weight:900;
+    font-size:17px;
+    min-width:85px;
+    text-align:center;
 }
-
-th,td{
-    padding:11px;
-    border-bottom:1px solid #292929;
-    text-align:left;
-}
-
-th{
+.vs{
     color:#777;
+    font-size:13px;
+}
+.score{
+    font-size:25px;
+    font-weight:900;
+}
+.status{
+    margin-top:10px;
+    text-align:center;
+    color:#aaa;
     font-size:12px;
 }
 
-.table-wrap{
-    overflow-x:auto;
-}
-
-.form{
-    display:grid;
-    gap:11px;
-}
-
-.form input,
-.form select,
-.form textarea{
-    width:100%;
-    padding:12px;
-    background:#080808;
+/* BUTTONS */
+.btn{
+    border:0;
+    border-radius:11px;
+    padding:10px 13px;
+    background:#252525;
     color:#fff;
-    border:1px solid #333;
-    border-radius:8px;
-    outline:none;
+}
+.btn.primary{
+    background:var(--blue);
+}
+.btn.green{
+    background:#137c4d;
+}
+.btn.red{
+    background:#852626;
+}
+.btn.full{
+    width:100%;
 }
 
-.form input:focus,
-.form select:focus,
-.form textarea:focus{
-    border-color:#aaa;
+.grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+.grid3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
 }
 
-.form textarea{
-    min-height:100px;
+/* TABS */
+.tabs{
+    display:flex;
+    gap:7px;
+    overflow-x:auto;
+    padding-bottom:5px;
+    margin-bottom:14px;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+    flex:none;
+    border:1px solid var(--line);
+    background:#151515;
+    color:#aaa;
+    padding:10px 13px;
+    border-radius:10px;
+}
+.tab.active{
+    background:#fff;
+    color:#000;
+    border-color:#fff;
 }
 
-.notice{
-    background:#171717;
-    border-left:3px solid #fff;
-    border-radius:7px;
-    padding:12px;
-    margin-bottom:9px;
+/* RANK */
+.rank-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:13px 0;
+    border-bottom:1px solid var(--line);
+}
+.rank-row:last-child{border-bottom:0}
+.rank-number{
+    width:28px;
+    font-weight:900;
+    color:#aaa;
+}
+.rank-name{
+    flex:1;
+    font-weight:700;
+}
+.rank-value{
+    font-weight:900;
 }
 
+/* PLAYER */
 .player{
     display:flex;
     align-items:center;
-    gap:13px;
+    gap:12px;
 }
-
 .avatar{
-    width:52px;
-    height:52px;
+    width:44px;
+    height:44px;
     border-radius:50%;
-    background:#222;
-    border:1px solid #444;
-    display:grid;
-    place-items:center;
-    font-size:20px;
-    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#292929;
+    font-weight:900;
 }
 
-.empty{
-    padding:30px;
-    text-align:center;
-    color:#777;
-    border:1px dashed #333;
-    border-radius:10px;
-}
-
+/* CALENDAR */
 .calendar{
     display:grid;
     grid-template-columns:repeat(7,1fr);
-    border:1px solid #292929;
-    overflow:hidden;
-    border-radius:12px;
+    gap:5px;
 }
-
-.cal-head{
-    background:#181818;
-    color:#777;
-    padding:10px;
-}
-
 .day{
-    min-height:90px;
-    padding:8px;
-    border-top:1px solid #292929;
-    border-right:1px solid #292929;
+    min-height:65px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:6px;
+    background:#111;
 }
-
-.game{
-    background:#222;
-    padding:5px;
-    border-radius:6px;
-    margin-top:6px;
+.day-num{
     font-size:11px;
-    cursor:pointer;
+    color:#888;
+}
+.day-game{
+    margin-top:7px;
+    font-size:10px;
+    color:#72a0ff;
+    font-weight:bold;
 }
 
-.game:hover{
-    background:#333;
+/* STAT */
+.stat-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
+}
+.stat{
+    background:#111;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:13px;
+}
+.stat-label{
+    font-size:11px;
+    color:#888;
+}
+.stat-value{
+    font-size:21px;
+    font-weight:900;
+    margin-top:5px;
 }
 
+/* BOTTOM */
+.bottom{
+    position:fixed;
+    z-index:200;
+    bottom:0;
+    left:0;
+    right:0;
+    height:72px;
+    background:rgba(10,10,10,.98);
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    padding-bottom:env(safe-area-inset-bottom);
+}
+.nav-btn{
+    border:0;
+    background:transparent;
+    color:#777;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:4px;
+    font-size:10px;
+}
+.nav-btn .icon{
+    font-size:21px;
+}
+.nav-btn.active{
+    color:#fff;
+}
+
+/* MODAL */
 .modal{
     display:none;
     position:fixed;
     inset:0;
-    z-index:3000;
-    background:rgba(0,0,0,.82);
-    padding:18px;
-    align-items:center;
-    justify-content:center;
+    z-index:500;
+    background:rgba(0,0,0,.75);
+    align-items:flex-end;
 }
-
-.modal.open{
-    display:flex;
-}
-
+.modal.show{display:flex}
 .modal-box{
-    width:min(850px,100%);
+    width:100%;
     max-height:90vh;
     overflow:auto;
-    background:#101010;
-    border:1px solid #333;
-    border-radius:16px;
-    padding:22px;
+    background:#111;
+    border-radius:22px 22px 0 0;
+    padding:20px;
+    border-top:1px solid #333;
 }
-
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
 .close{
-    float:right;
-    background:#222;
     border:0;
+    background:#292929;
     color:#fff;
+    border-radius:50%;
     width:35px;
     height:35px;
-    border-radius:50%;
 }
 
-.admin-menu{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-}
-
-.admin-menu button{
-    min-height:75px;
-    background:#151515;
+/* FORM */
+input,select,textarea{
+    width:100%;
+    background:#0c0c0c;
+    border:1px solid #333;
     color:#fff;
-    border:1px solid #303030;
     border-radius:10px;
+    padding:12px;
+    outline:none;
 }
-
-.admin-menu button:hover{
-    background:#242424;
-}
-
-footer{
-    text-align:center;
-    border-top:1px solid #222;
-    padding:25px;
-    color:#666;
+label{
+    display:block;
+    color:#aaa;
     font-size:12px;
+    margin:10px 0 6px;
 }
 
-.toast{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    z-index:5000;
-    display:none;
-    background:#fff;
-    color:#000;
-    padding:12px 17px;
-    border-radius:9px;
+/* BADGES */
+.badge{
+    display:inline-block;
+    padding:5px 8px;
+    border-radius:7px;
+    background:#252525;
+    font-size:10px;
+}
+.badge.blue{background:#173875;color:#9fbeff}
+.badge.green{background:#123c2b;color:#66e8a8}
+.badge.yellow{background:#493900;color:#ffd85a}
+.badge.red{background:#451b1b;color:#ff7777}
+
+/* COMMENT */
+.comment{
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+}
+.comment-name{
     font-weight:bold;
+    font-size:13px;
+}
+.comment-text{
+    color:#ccc;
+    font-size:13px;
+    margin-top:5px;
 }
 
-@media(max-width:800px){
-    .header{
-        flex-wrap:wrap;
+/* DESKTOP */
+@media(min-width:800px){
+    body{max-width:1100px;margin:auto;background:#050505}
+    .page{padding:25px}
+    .bottom{
+        max-width:1100px;
+        left:50%;
+        transform:translateX(-50%);
     }
-
-    nav{
-        order:3;
-        width:100%;
-    }
-
-    .g3,
-    .g4{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .admin-menu{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
-@media(max-width:500px){
-    .g2,
-    .g3,
-    .g4{
-        grid-template-columns:1fr;
-    }
-
-    .hero h1{
-        font-size:27px;
-    }
-
-    .admin-menu{
-        grid-template-columns:1fr;
-    }
-
-    .team{
-        font-size:17px;
-    }
+    .modal-box{max-width:700px;margin:auto;border-radius:20px}
+    .modal{align-items:center}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="header">
+<div class="app">
 
-    <div class="logo">
-        CPL SPORTS
-        <small>CHEONJUNG BASEBALL LEAGUE</small>
+<header class="header">
+    <div class="header-row">
+        <div class="logo">CPL <span>SPORTS</span></div>
+        <button class="user-btn" onclick="openAccount()">👤 계정</button>
     </div>
-
-    <nav id="nav"></nav>
-
-    <button class="btn" onclick="showPage('account')">
-        👤 계정
-    </button>
-
-</div>
 </header>
 
-<main class="container">
+<!-- HOME -->
+<section id="home" class="page active">
+    <div class="page-title">CPL SPORTS</div>
+    <div class="page-sub">천중리그 공식 스포츠 센터</div>
 
-<section id="home" class="page active"></section>
-<section id="schedule" class="page"></section>
-<section id="players" class="page"></section>
-<section id="rankings" class="page"></section>
-<section id="teams" class="page"></section>
-<section id="analysis" class="page"></section>
-<section id="fun" class="page"></section>
-<section id="news" class="page"></section>
-<section id="community" class="page"></section>
-<section id="account" class="page"></section>
-<section id="admin" class="page"></section>
+    <div class="hero" onclick="openMatch(1)">
+        <div class="hero-label">⚾ 다음 경기</div>
+        <div class="hero-match">시환팀 <span style="color:#777">VS</span> 해찬팀</div>
+        <div class="hero-date">2026.09.02 · 12:30</div>
+    </div>
 
-</main>
+    <div class="card">
+        <div class="card-title">🔥 핫한 선수</div>
+        <div class="player">
+            <div class="avatar">시</div>
+            <div style="flex:1">
+                <b>시환</b>
+                <div style="color:#888;font-size:12px">최근 5경기 OPS 1.120</div>
+            </div>
+            <span class="badge red">HOT</span>
+        </div>
+    </div>
 
-<footer>
-CPL SPORTS · CHEONJUNG BASEBALL LEAGUE · 2026
-</footer>
+    <div class="card">
+        <div class="card-title">🏆 현재 순위</div>
+        <div id="homeRank"></div>
+        <button class="btn full" onclick="showPage('ranking')">전체 순위 보기</button>
+    </div>
 
-<div id="modal" class="modal">
-    <div id="modalBox" class="modal-box"></div>
+    <div class="card">
+        <div class="card-title">🎲 오늘의 랜덤 기록 TOP 3</div>
+        <div id="randomRecords"></div>
+        <button class="btn primary full" onclick="randomRecords()">다시 뽑기</button>
+    </div>
+
+    <div class="card">
+        <div class="card-title">📢 공지사항</div>
+        <b>2026 CPL 후반기 일정 안내</b>
+        <p style="color:#999;font-size:12px">후반기는 10월 12일부터 시작됩니다.</p>
+    </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" class="page">
+    <div class="page-title">📅 일정</div>
+    <div class="page-sub">전반기 9/2~9/18 · 후반기 10/12~11/6</div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="scheduleTab(this,'all')">전체</button>
+        <button class="tab" onclick="scheduleTab(this,'시환')">시환팀</button>
+        <button class="tab" onclick="scheduleTab(this,'재우')">재우팀</button>
+        <button class="tab" onclick="scheduleTab(this,'해찬')">해찬팀</button>
+        <button class="tab" onclick="scheduleTab(this,'민푹')">민푹팀</button>
+    </div>
+
+    <div class="card">
+        <div class="card-title">2026년 9월</div>
+        <div class="calendar" id="calendar"></div>
+    </div>
+
+    <div id="scheduleList"></div>
+</section>
+
+<!-- RANKING -->
+<section id="ranking" class="page">
+    <div class="page-title">🏆 랭킹</div>
+    <div class="page-sub">CPL 주요 기록 순위</div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="rankingTab(this,'pitcher')">투수</button>
+        <button class="tab" onclick="rankingTab(this,'batter')">타자</button>
+        <button class="tab" onclick="rankingTab(this,'war')">WAR</button>
+        <button class="tab" onclick="rankingTab(this,'team')">팀</button>
+        <button class="tab" onclick="rankingTab(this,'regular')">정규시즌</button>
+    </div>
+
+    <div class="card">
+        <div id="rankingContent"></div>
+    </div>
+</section>
+
+<!-- PLAYERS -->
+<section id="players" class="page">
+    <div class="page-title">👤 선수</div>
+    <div class="page-sub">선수를 선택하면 개인 기록을 확인할 수 있습니다.</div>
+    <div id="playerList"></div>
+</section>
+
+<!-- MORE -->
+<section id="more" class="page">
+    <div class="page-title">☰ 더보기</div>
+    <div class="page-sub">CPL의 모든 기능</div>
+
+    <div class="grid2">
+        <button class="btn" onclick="showPage('teams')">🏟️ 팀</button>
+        <button class="btn" onclick="showPage('fun')">🎮 재미</button>
+        <button class="btn" onclick="showPage('community')">💬 커뮤니티</button>
+        <button class="btn" onclick="showPage('news')">📰 뉴스</button>
+        <button class="btn" onclick="showPage('analysis')">📊 자동분석</button>
+        <button class="btn" onclick="showPage('admin')">🔐 관리자</button>
+    </div>
+</section>
+
+<!-- TEAMS -->
+<section id="teams" class="page">
+    <div class="page-title">🏟️ 팀</div>
+    <div class="page-sub">CPL 4개 팀</div>
+    <div id="teamList"></div>
+</section>
+
+<!-- FUN -->
+<section id="fun" class="page">
+    <div class="page-title">🎮 CPL 재미</div>
+    <div class="page-sub">경기를 더 재미있게 즐겨보세요.</div>
+
+    <div class="grid2">
+        <button class="card" onclick="prediction()">🎯 승부예측</button>
+        <button class="card" onclick="scorePrediction()">🔢 스코어 예측</button>
+        <button class="card" onclick="randomChallenge()">🎲 오늘의 미션</button>
+        <button class="card" onclick="openAwards()">🏅 기록 도전</button>
+    </div>
+
+    <div class="card">
+        <div class="card-title">⭐ 특별 기록</div>
+        <p>🟢 퍼스트 스타트 FS</p>
+        <p>🔵 더블 스타트 DS</p>
+        <p>🟣 클린 스타트 CS</p>
+        <p>⚡ 퀵 스타트 QS</p>
+        <p>💪 파워 스타트 PS</p>
+        <p>🛡️ 세이프 스타트 SS</p>
+        <p>🔥 얼티메이트 스타트 US</p>
+        <p>⚾ 얼티메이트 히트 UH</p>
+        <p>👑 퍼펙트 게임 PG</p>
+    </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community" class="page">
+    <div class="page-title">💬 커뮤니티</div>
+    <div class="page-sub">CPL 팬들과 이야기하세요.</div>
+
+    <div class="card">
+        <textarea id="commentInput" rows="3" placeholder="댓글을 입력하세요"></textarea>
+        <button class="btn primary full" style="margin-top:8px" onclick="addComment()">댓글 등록</button>
+    </div>
+
+    <div class="card">
+        <div class="card-title">최근 댓글</div>
+        <div id="comments"></div>
+    </div>
+</section>
+
+<!-- NEWS -->
+<section id="news" class="page">
+    <div class="page-title">📰 뉴스</div>
+    <div class="page-sub">CPL 최신 소식</div>
+
+    <div class="card">
+        <span class="badge blue">CPL</span>
+        <h3>후반기 일정 확정</h3>
+        <p style="color:#aaa">10월 12일부터 11월 6일까지 진행됩니다.</p>
+    </div>
+
+    <div class="card">
+        <span class="badge green">기록</span>
+        <h3>새로운 특별 기록 시스템</h3>
+        <p style="color:#aaa">FS · DS · CS · QS · PS · SS · US 기록을 관리합니다.</p>
+    </div>
+</section>
+
+<!-- ANALYSIS -->
+<section id="analysis" class="page">
+    <div class="page-title">📊 자동분석</div>
+    <div class="page-sub">경기 데이터를 기반으로 주요 지표를 계산합니다.</div>
+
+    <div class="stat-grid">
+        <div class="stat"><div class="stat-label">승률</div><div class="stat-value">75%</div></div>
+        <div class="stat"><div class="stat-label">최근 연승</div><div class="stat-value">3연승</div></div>
+        <div class="stat"><div class="stat-label">득점력</div><div class="stat-value">6.4</div></div>
+        <div class="stat"><div class="stat-label">실점력</div><div class="stat-value">3.1</div></div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+        <div class="card-title">자동 계산 항목</div>
+        <p>✓ 승률</p>
+        <p>✓ 게임차</p>
+        <p>✓ 연승 / 연패</p>
+        <p>✓ 득점력 / 실점력</p>
+        <p>✓ 상대전적</p>
+        <p>✓ 파워랭킹</p>
+        <p>✓ 선수기록</p>
+        <p>✓ 리그 랭킹</p>
+    </div>
+</section>
+
+<!-- ADMIN -->
+<section id="admin" class="page">
+    <div class="page-title">🔐 관리자</div>
+    <div class="page-sub">CPL 운영 관리</div>
+
+    <div class="card">
+        <div class="card-title">관리자 로그인</div>
+
+        <label>관리자 번호</label>
+        <input id="adminPin" type="password" placeholder="관리자 번호 입력">
+
+        <button class="btn primary full" style="margin-top:12px" onclick="adminLogin()">
+            관리자 로그인
+        </button>
+
+        <div style="margin-top:10px;color:#777;font-size:11px">
+            초기 관리자 번호: 1234
+        </div>
+    </div>
+
+    <div id="adminPanel" style="display:none">
+        <div class="grid2">
+            <button class="card" onclick="adminAction('경기 관리')">⚾ 경기 관리</button>
+            <button class="card" onclick="adminAction('일정 관리')">📅 일정 관리</button>
+            <button class="card" onclick="adminAction('선수 관리')">👤 선수 관리</button>
+            <button class="card" onclick="adminAction('팀 관리')">🏟️ 팀 관리</button>
+            <button class="card" onclick="adminAction('공지 관리')">📢 공지 관리</button>
+            <button class="card" onclick="adminAction('댓글 관리')">💬 댓글 관리</button>
+            <button class="card" onclick="adminAction('기록 관리')">📊 기록 관리</button>
+            <button class="card" onclick="adminAction('사이트 설정')">⚙️ 사이트 설정</button>
+        </div>
+    </div>
+</section>
+
 </div>
 
-<div id="toast" class="toast"></div>
+<!-- BOTTOM NAV -->
+<nav class="bottom">
+    <button class="nav-btn active" onclick="showPage('home',this)">
+        <span class="icon">🏠</span>홈
+    </button>
+    <button class="nav-btn" onclick="showPage('schedule',this)">
+        <span class="icon">📅</span>일정
+    </button>
+    <button class="nav-btn" onclick="showPage('ranking',this)">
+        <span class="icon">🏆</span>랭킹
+    </button>
+    <button class="nav-btn" onclick="showPage('players',this)">
+        <span class="icon">👤</span>선수
+    </button>
+    <button class="nav-btn" onclick="showPage('more',this)">
+        <span class="icon">☰</span>더보기
+    </button>
+</nav>
 
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-box">
+        <div class="modal-head">
+            <b id="modalTitle">상세</b>
+            <button class="close" onclick="closeModal()">×</button>
+        </div>
+        <div id="modalContent"></div>
+    </div>
+</div>
 
 <script>
+/* =========================
+   DATA
+========================= */
 
-/* =====================================================
-   CPL DATA
-===================================================== */
+const teams = [
+    {name:"시환팀", color:"🟦"},
+    {name:"재우팀", color:"🟥"},
+    {name:"해찬팀", color:"🟨"},
+    {name:"민푹팀", color:"🟩"}
+];
 
-const TEAMS = {
-    시환:{name:"시환팀",icon:"🟦"},
-    재우:{name:"재우팀",icon:"🟥"},
-    해찬:{name:"해찬팀",icon:"🟩"},
-    민푹:{name:"민푹팀",icon:"🟨"}
+const players = [
+    {name:"시환",team:"시환팀",avg:".412",era:"1.24",war:"4.8"},
+    {name:"재우",team:"재우팀",avg:".385",era:"1.61",war:"4.1"},
+    {name:"해찬",team:"해찬팀",avg:".367",era:"1.45",war:"3.9"},
+    {name:"민푹",team:"민푹팀",avg:".351",era:"1.82",war:"3.4"}
+];
+
+const games = [
+    {id:1,date:"09/02",day:"수",home:"시환팀",away:"해찬팀"},
+    {id:2,date:"09/04",day:"금",home:"재우팀",away:"민푹팀"},
+    {id:3,date:"09/07",day:"월",home:"시환팀",away:"재우팀"},
+    {id:4,date:"09/09",day:"수",home:"해찬팀",away:"민푹팀"},
+    {id:5,date:"09/11",day:"금",home:"시환팀",away:"민푹팀"},
+    {id:6,date:"09/14",day:"월",home:"재우팀",away:"해찬팀"},
+    {id:7,date:"09/16",day:"수",home:"시환팀",away:"해찬팀"},
+    {id:8,date:"09/18",day:"금",home:"민푹팀",away:"재우팀"}
+];
+
+const rankings = {
+    pitcher:[
+        ["시환","1.24"],
+        ["해찬","1.45"],
+        ["재우","1.61"],
+        ["민푹","1.82"]
+    ],
+    batter:[
+        ["시환",".412"],
+        ["재우",".385"],
+        ["해찬",".367"],
+        ["민푹",".351"]
+    ],
+    war:[
+        ["시환","4.8"],
+        ["재우","4.1"],
+        ["해찬","3.9"],
+        ["민푹","3.4"]
+    ],
+    team:[
+        ["시환팀","8승 3패"],
+        ["해찬팀","7승 4패"],
+        ["재우팀","5승 6패"],
+        ["민푹팀","3승 8패"]
+    ],
+    regular:[
+        ["시환팀","1위"],
+        ["해찬팀","2위"],
+        ["재우팀","3위"],
+        ["민푹팀","4위"]
+    ]
 };
 
-const PLAYERS = [
-    {id:1,name:"시환",team:"시환",role:"투타겸업"},
-    {id:2,name:"재우",team:"재우",role:"투타겸업"},
-    {id:3,name:"해찬",team:"해찬",role:"투타겸업"},
-    {id:4,name:"민푹",team:"민푹",role:"투타겸업"}
+const specialRecords=[
+    "시환 · 최다 연속 안타",
+    "해찬 · 퍼스트 스타트",
+    "재우 · 파워 스타트",
+    "민푹 · 세이프 스타트",
+    "시환 · 얼티메이트 히트",
+    "해찬 · 클린 스타트"
 ];
 
+/* =========================
+   PAGE
+========================= */
 
-/* =====================================================
+function showPage(id,nav){
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+
+    const page=document.getElementById(id);
+    if(!page)return;
+
+    page.classList.add("active");
+
+    document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+
+    if(nav)nav.classList.add("active");
+
+    window.scrollTo({top:0,behavior:"smooth"});
+
+    if(id==="ranking")renderRanking("pitcher");
+    if(id==="players")renderPlayers();
+    if(id==="teams")renderTeams();
+    if(id==="schedule")renderSchedule();
+}
+
+/* =========================
+   HOME
+========================= */
+
+function renderHome(){
+    const box=document.getElementById("homeRank");
+
+    box.innerHTML=rankings.team.slice(0,3).map((r,i)=>`
+        <div class="rank-row">
+            <div class="rank-number">${i+1}</div>
+            <div class="rank-name">${r[0]}</div>
+            <div class="rank-value">${r[1]}</div>
+        </div>
+    `).join("");
+
+    randomRecords();
+}
+
+function randomRecords(){
+    const arr=[...specialRecords].sort(()=>Math.random()-.5).slice(0,3);
+
+    document.getElementById("randomRecords").innerHTML=arr.map((x,i)=>`
+        <div class="rank-row">
+            <div class="rank-number">${i+1}</div>
+            <div class="rank-name">${x}</div>
+        </div>
+    `).join("");
+}
+
+/* =========================
    SCHEDULE
-===================================================== */
+========================= */
 
-const GAMES = [
+function renderSchedule(filter="all"){
+    const list=document.getElementById("scheduleList");
 
-    /* 전반기 */
-    {id:"G001",date:"2026-09-02",a:"시환",b:"해찬"},
-    {id:"G002",date:"2026-09-04",a:"재우",b:"민푹"},
-    {id:"G003",date:"2026-09-07",a:"시환",b:"재우"},
-    {id:"G004",date:"2026-09-09",a:"해찬",b:"민푹"},
-    {id:"G005",date:"2026-09-11",a:"시환",b:"민푹"},
-    {id:"G006",date:"2026-09-14",a:"재우",b:"해찬"},
-    {id:"G007",date:"2026-09-16",a:"시환",b:"해찬"},
-    {id:"G008",date:"2026-09-18",a:"재우",b:"민푹"},
+    const filtered=filter==="all"
+        ?games
+        :games.filter(g=>g.home.includes(filter)||g.away.includes(filter));
 
-    /* 후반기 */
-    {id:"G009",date:"2026-10-12",a:"시환",b:"재우"},
-    {id:"G010",date:"2026-10-14",a:"해찬",b:"민푹"},
-    {id:"G011",date:"2026-10-16",a:"시환",b:"민푹"},
-    {id:"G012",date:"2026-10-19",a:"재우",b:"해찬"},
-    {id:"G013",date:"2026-10-21",a:"시환",b:"해찬"},
-    {id:"G014",date:"2026-10-23",a:"재우",b:"민푹"},
-    {id:"G015",date:"2026-10-26",a:"시환",b:"재우"},
-    {id:"G016",date:"2026-10-28",a:"해찬",b:"민푹"},
-    {id:"G017",date:"2026-10-30",a:"시환",b:"민푹"},
-    {id:"G018",date:"2026-11-02",a:"재우",b:"해찬"},
-    {id:"G019",date:"2026-11-04",a:"시환",b:"해찬"},
-    {id:"G020",date:"2026-11-06",a:"재우",b:"민푹"}
-];
+    list.innerHTML=filtered.map(g=>`
+        <div class="match-card" onclick="openMatch(${g.id})">
+            <div class="match-top">
+                <span>2026.${g.date}</span>
+                <span>${g.day}요일 · 12:30</span>
+            </div>
 
+            <div class="match-teams">
+                <div class="team-name">${g.home}</div>
+                <div class="vs">VS</div>
+                <div class="team-name">${g.away}</div>
+            </div>
 
-/* =====================================================
-   LOCAL DATA
-===================================================== */
+            <div class="status">경기 상세보기 ›</div>
+        </div>
+    `).join("");
 
-let results =
-    JSON.parse(localStorage.getItem("CPL_RESULTS") || "{}");
+    renderCalendar();
+}
 
-let comments =
-    JSON.parse(localStorage.getItem("CPL_COMMENTS") || "[]");
+function scheduleTab(btn,filter){
+    document.querySelectorAll("#schedule .tab").forEach(t=>t.classList.remove("active"));
+    btn.classList.add("active");
+    renderSchedule(filter);
+}
 
-let predictions =
-    JSON.parse(localStorage.getItem("CPL_PREDICTIONS") || "[]");
+function renderCalendar(){
+    const cal=document.getElementById("calendar");
 
-let currentUser =
-    JSON.parse(localStorage.getItem("CPL_USER") || "null");
+    let html="";
 
-let isAdmin =
-    sessionStorage.getItem("CPL_ADMIN") === "true";
+    ["월","화","수","목","금","토","일"].forEach(d=>{
+        html+=`<div style="text-align:center;color:#777;font-size:10px;padding:4px">${d}</div>`;
+    });
 
+    for(let i=1;i<=30;i++){
+        const date=`09/${String(i).padStart(2,"0")}`;
+        const game=games.find(g=>g.date===date);
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+        html+=`
+        <div class="day">
+            <div class="day-num">${i}</div>
+            ${game?`<div class="day-game">${game.home.replace("팀","")}<br>vs<br>${game.away.replace("팀","")}</div>`:""}
+        </div>`;
+    }
 
-const MENU = [
-    ["home","🏠 홈"],
-    ["schedule","📅 일정"],
-    ["players","👤 선수"],
-    ["rankings","🏆 랭킹"],
-    ["teams","🏟️ 팀"],
-    ["analysis","📊 자동분석"],
-    ["fun","🎮 CPL 재미"],
-    ["news","📰 뉴스"],
-    ["community","💬 커뮤니티"]
-];
+    cal.innerHTML=html;
+}
 
-function makeNav(){
+/* =========================
+   MATCH DETAIL
+========================= */
 
-    document.getElementById("nav").innerHTML =
-        MENU.map(item => `
-            <button onclick="showPage('${item[0]}')">
-                ${item[1]}
-            </button>
+function openMatch(id){
+    const g=games.find(x=>x.id===id);
+    if(!g)return;
+
+    openModal(
+        `${g.home} vs ${g.away}`,
+        `
+        <div class="hero">
+            <div class="hero-label">⚾ 경기 정보</div>
+            <div class="hero-match">${g.home} VS ${g.away}</div>
+            <div class="hero-date">2026.${g.date} · ${g.day}요일 · 12:30</div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="matchTab(this,'info',${id})">경기정보</button>
+            <button class="tab" onclick="matchTab(this,'record',${id})">상대전적</button>
+            <button class="tab" onclick="matchTab(this,'power',${id})">팀전력</button>
+            <button class="tab" onclick="matchTab(this,'player',${id})">선수기록</button>
+            <button class="tab" onclick="matchTab(this,'predict',${id})">경기예상</button>
+            <button class="tab" onclick="matchTab(this,'comment',${id})">💬댓글</button>
+        </div>
+
+        <div id="matchTabContent">
+            ${matchInfo(g)}
+        </div>
+        `
+    );
+}
+
+function matchTab(btn,type,id){
+    document.querySelectorAll(".modal-box .tab").forEach(t=>t.classList.remove("active"));
+    btn.classList.add("active");
+
+    const g=games.find(x=>x.id===id);
+
+    const box=document.getElementById("matchTabContent");
+
+    if(type==="info")box.innerHTML=matchInfo(g);
+
+    if(type==="record")box.innerHTML=`
+        <div class="stat-grid">
+            <div class="stat"><div class="stat-label">상대전적</div><div class="stat-value">3 - 2</div></div>
+            <div class="stat"><div class="stat-label">승률</div><div class="stat-value">60%</div></div>
+            <div class="stat"><div class="stat-label">평균 타율</div><div class="stat-value">.378</div></div>
+            <div class="stat"><div class="stat-label">평균 ERA</div><div class="stat-value">1.54</div></div>
+        </div>
+        <div class="card">
+            <b>최근 5경기</b>
+            <p>승 · 승 · 패 · 승 · 패</p>
+        </div>
+    `;
+
+    if(type==="power")box.innerHTML=`
+        <div class="card">
+            <div class="card-title">${g.home}</div>
+            <p>타격력 ⭐⭐⭐⭐⭐</p>
+            <p>투수력 ⭐⭐⭐⭐</p>
+            <p>수비력 ⭐⭐⭐⭐</p>
+        </div>
+        <div class="card">
+            <div class="card-title">${g.away}</div>
+            <p>타격력 ⭐⭐⭐⭐</p>
+            <p>투수력 ⭐⭐⭐⭐⭐</p>
+            <p>수비력 ⭐⭐⭐⭐</p>
+        </div>
+    `;
+
+    if(type==="player")box.innerHTML=players.map(p=>`
+        <div class="rank-row" onclick="openPlayer('${p.name}')">
+            <div class="rank-name">${p.name}</div>
+            <div>${p.team}</div>
+            <div class="rank-value">${p.avg}</div>
+        </div>
+    `).join("");
+
+    if(type==="predict")box.innerHTML=`
+        <div class="card">
+            <div class="card-title">🎯 승부예측</div>
+            <div class="grid2">
+                <button class="btn primary" onclick="vote('${g.home}')">${g.home}</button>
+                <button class="btn" onclick="vote('${g.away}')">${g.away}</button>
+            </div>
+            <p id="voteResult" style="color:#999;margin-top:15px">현재 예측에 참여해보세요.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🔢 예상 스코어</div>
+            <div class="grid2">
+                <input id="scoreHome" type="number" min="0" placeholder="${g.home} 점">
+                <input id="scoreAway" type="number" min="0" placeholder="${g.away} 점">
+            </div>
+            <button class="btn green full" style="margin-top:10px" onclick="saveScorePrediction()">예측 저장</button>
+        </div>
+    `;
+
+    if(type==="comment")box.innerHTML=`
+        <textarea id="matchComment" rows="3" placeholder="이 경기에 댓글을 남겨보세요"></textarea>
+        <button class="btn primary full" style="margin-top:8px" onclick="addMatchComment()">댓글 등록</button>
+        <div id="matchComments" style="margin-top:12px">
+            <div class="comment">
+                <div class="comment-name">CPL 팬</div>
+                <div class="comment-text">개막전 기대된다!</div>
+            </div>
+        </div>
+    `;
+}
+
+function matchInfo(g){
+    return `
+        <div class="stat-grid">
+            <div class="stat"><div class="stat-label">일정</div><div class="stat-value">${g.date}</div></div>
+            <div class="stat"><div class="stat-label">시간</div><div class="stat-value">12:30</div></div>
+            <div class="stat"><div class="stat-label">홈</div><div class="stat-value">${g.home}</div></div>
+            <div class="stat"><div class="stat-label">원정</div><div class="stat-value">${g.away}</div></div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">📌 경기 상태</div>
+            <p style="color:#aaa">경기 예정</p>
+        </div>
+    `;
+}
+
+/* =========================
+   RANKING
+========================= */
+
+function rankingTab(btn,type){
+    document.querySelectorAll("#ranking .tab").forEach(t=>t.classList.remove("active"));
+    btn.classList.add("active");
+    renderRanking(type);
+}
+
+function renderRanking(type){
+    const data=rankings[type];
+
+    const title={
+        pitcher:"투수 기록 순위",
+        batter:"타자 기록 순위",
+        war:"WAR 순위",
+        team:"팀 순위",
+        regular:"정규시즌 순위"
+    }[type];
+
+    document.getElementById("rankingContent").innerHTML=`
+        <div class="card-title">${title}</div>
+        ${data.map((r,i)=>`
+            <div class="rank-row" onclick="${type==='team' || type==='regular' ? `openTeam('${r[0]}')` : `openPlayer('${r[0]}')`}">
+                <div class="rank-number">${i+1}</div>
+                <div class="rank-name">${r[0]}</div>
+                <div class="rank-value">${r[1]}</div>
+            </div>
+        `).join("")}
+    `;
+}
+
+/* =========================
+   PLAYERS
+========================= */
+
+function renderPlayers(){
+    document.getElementById("playerList").innerHTML=players.map(p=>`
+        <div class="card" onclick="openPlayer('${p.name}')">
+            <div class="player">
+                <div class="avatar">${p.name[0]}</div>
+                <div style="flex:1">
+                    <b>${p.name}</b>
+                    <div style="color:#888;font-size:12px">${p.team}</div>
+                </div>
+                <span>›</span>
+            </div>
+        </div>
+    `).join("");
+}
+
+function openPlayer(name){
+    const p=players.find(x=>x.name===name);
+    if(!p)return;
+
+    openModal(
+        `${p.name} 선수`,
+        `
+        <div class="player" style="margin-bottom:18px">
+            <div class="avatar">${p.name[0]}</div>
+            <div>
+                <div style="font-size:21px;font-weight:900">${p.name}</div>
+                <div style="color:#888">${p.team}</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active">프로필</button>
+            <button class="tab">타격</button>
+            <button class="tab">투구</button>
+            <button class="tab">경기별</button>
+            <button class="tab">최근활약</button>
+        </div>
+
+        <div class="stat-grid">
+            <div class="stat"><div class="stat-label">타율</div><div class="stat-value">${p.avg}</div></div>
+            <div class="stat"><div class="stat-label">ERA</div><div class="stat-value">${p.era}</div></div>
+            <div class="stat"><div class="stat-label">WAR</div><div class="stat-value">${p.war}</div></div>
+            <div class="stat"><div class="stat-label">최근활약</div><div class="stat-value">HOT</div></div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+            <div class="card-title">🏅 개인 기록</div>
+            <p>홈런 · 4</p>
+            <p>안타 · 18</p>
+            <p>볼넷 · 7</p>
+            <p>삼진 · 11</p>
+        </div>
+        `
+    );
+}
+
+/* =========================
+   TEAMS
+========================= */
+
+function renderTeams(){
+    document.getElementById("teamList").innerHTML=teams.map(t=>`
+        <div class="card" onclick="openTeam('${t.name}')">
+            <div class="card-row">
+                <div>
+                    <div style="font-size:21px;font-weight:900">${t.color} ${t.name}</div>
+                    <div style="color:#888;margin-top:5px">선수 기록 · 일정 · 상대전적</div>
+                </div>
+                <span>›</span>
+            </div>
+        </div>
+    `).join("");
+}
+
+function openTeam(name){
+    openModal(
+        name,
+        `
+        <div class="hero">
+            <div class="hero-label">🏟️ TEAM</div>
+            <div class="hero-match">${name}</div>
+            <div class="hero-date">CPL 공식 팀</div>
+        </div>
+
+        <div class="stat-grid">
+            <div class="stat"><div class="stat-label">승</div><div class="stat-value">8</div></div>
+            <div class="stat"><div class="stat-label">패</div><div class="stat-value">3</div></div>
+            <div class="stat"><div class="stat-label">승률</div><div class="stat-value">.727</div></div>
+            <div class="stat"><div class="stat-label">게임차</div><div class="stat-value">-</div></div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">최근 경기</div>
+            <p>승 · 승 · 패 · 승 · 승</p>
+        </div>
+        `
+    );
+}
+
+/* =========================
+   COMMUNITY
+========================= */
+
+function getComments(){
+    return JSON.parse(localStorage.getItem("cpl_comments")||"[]");
+}
+
+function addComment(){
+    const input=document.getElementById("commentInput");
+    const text=input.value.trim();
+
+    if(!text){
+        alert("댓글을 입력하세요.");
+        return;
+    }
+
+    const comments=getComments();
+
+    comments.unshift({
+        name:"CPL 회원",
+        text:text
+    });
+
+    localStorage.setItem("cpl_comments",JSON.stringify(comments));
+
+    input.value="";
+    renderComments();
+}
+
+function renderComments(){
+    const comments=getComments();
+
+    document.getElementById("comments").innerHTML=
+        (comments.length?comments:[
+            {name:"CPL 팬",text:"CPL 재미있겠다!"}
+        ]).map(c=>`
+            <div class="comment">
+                <div class="comment-name">${c.name}</div>
+                <div class="comment-text">${escapeHtml(c.text)}</div>
+            </div>
         `).join("");
 }
 
-function showPage(id){
+function addMatchComment(){
+    const input=document.getElementById("matchComment");
+    if(!input.value.trim()){
+        alert("댓글을 입력하세요.");
+        return;
+    }
 
-    document.querySelectorAll(".page")
-        .forEach(page => page.classList.remove("active"));
-
-    const target = document.getElementById(id);
-
-    if(!target) return;
-
-    target.classList.add("active");
-
-    if(id === "home") home();
-    if(id === "schedule") schedule();
-    if(id === "players") players();
-    if(id === "rankings") rankings();
-    if(id === "teams") teams();
-    if(id === "analysis") analysis();
-    if(id === "fun") fun();
-    if(id === "news") news();
-    if(id === "community") community();
-    if(id === "account") account();
-    if(id === "admin") adminPage();
-
-    document.querySelectorAll("#nav button")
-        .forEach(btn => btn.classList.remove("active"));
-
-    const buttons = document.querySelectorAll("#nav button");
-
-    MENU.forEach((item,index)=>{
-        if(item[0] === id && buttons[index]){
-            buttons[index].classList.add("active");
-        }
-    });
-
-    window.scrollTo(0,0);
-}
-
-
-/* =====================================================
-   SAVE
-===================================================== */
-
-function saveAll(){
-
-    localStorage.setItem(
-        "CPL_RESULTS",
-        JSON.stringify(results)
+    document.getElementById("matchComments").insertAdjacentHTML(
+        "afterbegin",
+        `
+        <div class="comment">
+            <div class="comment-name">CPL 회원</div>
+            <div class="comment-text">${escapeHtml(input.value)}</div>
+        </div>
+        `
     );
 
-    localStorage.setItem(
-        "CPL_COMMENTS",
-        JSON.stringify(comments)
-    );
-
-    localStorage.setItem(
-        "CPL_PREDICTIONS",
-        JSON.stringify(predictions)
-    );
-
-    localStorage.setItem(
-        "CPL_USER",
-        JSON.stringify(currentUser)
-    );
+    input.value="";
 }
 
+/* =========================
+   FUN
+========================= */
 
-/* =====================================================
-   UTIL
-===================================================== */
-
-function teamName(team){
-
-    return TEAMS[team]
-        ? TEAMS[team].icon + " " + TEAMS[team].name
-        : team;
-}
-
-function findGame(id){
-
-    return GAMES.find(g => g.id === id);
-}
-
-function statBox(title,value){
-
-    return `
-        <div class="card stat">
-            <span>${title}</span>
-            <b>${value}</b>
-        </div>
-    `;
-}
-
-function toast(message){
-
-    const box = document.getElementById("toast");
-
-    box.innerText = message;
-    box.style.display = "block";
-
-    setTimeout(()=>{
-        box.style.display = "none";
-    },2200);
-}
-
-
-/* =====================================================
-   HOME
-===================================================== */
-
-function home(){
-
-    const next = GAMES.find(g => !results[g.id]) || GAMES[0];
-
-    document.getElementById("home").innerHTML = `
-
-        <div class="hero">
-
-            <small>CPL 2026</small>
-
-            <h1>
-                ⚾ ${teamName(next.a)}
-                VS
-                ${teamName(next.b)}
-            </h1>
-
-            <p class="muted">
-                ${next.date} · 12:30
-            </p>
-
-            <button class="btn primary"
-                onclick="openGame('${next.id}')">
-                경기 상세
-            </button>
-
-            <button class="btn"
-                onclick="openPrediction('${next.id}')">
-                🎯 승부예측
-            </button>
-
-        </div>
-
-        <div class="section">
-            <h2>🔥 핫한 선수</h2>
-        </div>
-
-        <div class="grid g4">
-            ${PLAYERS.map(playerCard).join("")}
-        </div>
-
-        <div class="section">
-            <h2>📢 공지사항</h2>
-        </div>
-
+function prediction(){
+    openModal(
+        "🎯 승부예측",
+        `
         <div class="card">
-
-            <div class="notice">
-                <b>개막전</b><br>
-                9월 2일 · 시환팀 VS 해찬팀
+            <div class="card-title">9월 2일 개막전</div>
+            <div class="grid2">
+                <button class="btn primary" onclick="alert('시환팀에 투표했습니다!')">🟦 시환팀</button>
+                <button class="btn" onclick="alert('해찬팀에 투표했습니다!')">🟨 해찬팀</button>
             </div>
-
-            <div class="notice">
-                <b>전반기</b><br>
-                9월 2일 ~ 9월 18일
-            </div>
-
-            <div class="notice">
-                <b>후반기</b><br>
-                10월 12일 ~ 11월 6일
-            </div>
-
         </div>
-
-        <div class="section">
-            <h2>🏆 팀 순위</h2>
-        </div>
-
-        ${teamTable()}
-
-    `;
-}
-
-
-/* =====================================================
-   SCHEDULE
-===================================================== */
-
-function schedule(){
-
-    document.getElementById("schedule").innerHTML = `
-
-        <div class="hero">
-
-            <small>SCHEDULE</small>
-
-            <h1>📅 CPL 경기 일정</h1>
-
-            <p class="muted">
-                월요일 · 수요일 · 금요일 / 12:30
-            </p>
-
-        </div>
-
-        <div class="grid g2">
-
-            <div class="card">
-                <h2>전반기</h2>
-                <h3>9월 2일 ~ 9월 18일</h3>
-                <p class="muted">
-                    개막전: 시환팀 VS 해찬팀
-                </p>
-            </div>
-
-            <div class="card">
-                <h2>후반기</h2>
-                <h3>10월 12일 ~ 11월 6일</h3>
-                <p class="muted">
-                    월 · 수 · 금 경기
-                </p>
-            </div>
-
-        </div>
-
-        <div class="section">
-            <h2>⚾ 전체 경기</h2>
-        </div>
-
-        <div class="grid g2">
-            ${GAMES.map(gameCard).join("")}
-        </div>
-
-    `;
-}
-
-function gameCard(g){
-
-    const result = results[g.id];
-
-    return `
-
-        <div class="card click"
-             onclick="openGame('${g.id}')">
-
-            <div class="muted">
-                ${g.date} · 12:30
-            </div>
-
-            <div class="match">
-
-                <div class="team">
-                    ${teamName(g.a)}
-                </div>
-
-                <div class="score">
-                    ${result
-                        ? result.a + " : " + result.b
-                        : "VS"}
-                </div>
-
-                <div class="team">
-                    ${teamName(g.b)}
-                </div>
-
-            </div>
-
-            <p class="muted">
-                ${result ? "경기 종료" : "경기 예정"}
-            </p>
-
-        </div>
-    `;
-}
-
-
-/* =====================================================
-   GAME DETAIL
-===================================================== */
-
-function openGame(id){
-
-    const g = findGame(id);
-
-    if(!g) return;
-
-    modal(`
-
-        <button class="close"
-            onclick="closeModal()">×</button>
-
-        <small>GAME CENTER</small>
-
-        <h1>
-            ${teamName(g.a)}
-            VS
-            ${teamName(g.b)}
-        </h1>
-
-        <p class="muted">
-            ${g.date} · 12:30
-        </p>
-
-        <div class="tabs">
-
-            <button class="active"
-                onclick="gameTab('${id}','info',this)">
-                경기정보
-            </button>
-
-            <button
-                onclick="gameTab('${id}','head',this)">
-                상대전적
-            </button>
-
-            <button
-                onclick="gameTab('${id}','power',this)">
-                팀전력
-            </button>
-
-            <button
-                onclick="gameTab('${id}','recent',this)">
-                최근 5경기
-            </button>
-
-            <button
-                onclick="gameTab('${id}','players',this)">
-                선수기록
-            </button>
-
-            <button
-                onclick="openPrediction('${id}')">
-                🎯 승부예측
-            </button>
-
-            <button
-                onclick="gameTab('${id}','comments',this)">
-                💬 댓글
-            </button>
-
-        </div>
-
-        <div id="gameContent">
-            ${gameInfo(g)}
-        </div>
-
-    `);
-}
-
-function gameTab(id,type,button){
-
-    document.querySelectorAll(".tabs button")
-        .forEach(b => b.classList.remove("active"));
-
-    button.classList.add("active");
-
-    const g = findGame(id);
-
-    let html = "";
-
-    if(type === "info")
-        html = gameInfo(g);
-
-    if(type === "head")
-        html = headToHead(g);
-
-    if(type === "power")
-        html = teamPower(g);
-
-    if(type === "recent")
-        html = recentGames(g);
-
-    if(type === "players")
-        html = gamePlayers(g);
-
-    if(type === "comments")
-        html = gameComments(g);
-
-    document.getElementById("gameContent").innerHTML = html;
-}
-
-function gameInfo(g){
-
-    const r = results[g.id];
-
-    return `
-
-        <div class="grid g3">
-
-            ${statBox("상태",r ? "종료" : "예정")}
-
-            ${statBox(
-                "스코어",
-                r ? `${r.a} : ${r.b}` : "VS"
-            )}
-
-            ${statBox(
-                "MVP",
-                r?.mvp || "-"
-            )}
-
-        </div>
-
-        <div class="section">
-            <h2>📌 경기 정보</h2>
-        </div>
-
-        <div class="card">
-
-            <p>
-                ${teamName(g.a)}
-                VS
-                ${teamName(g.b)}
-            </p>
-
-            <p class="muted">
-                경기일: ${g.date}
-            </p>
-
-            <p class="muted">
-                경기시간: 12:30
-            </p>
-
-        </div>
-
-    `;
-}
-
-
-/* =====================================================
-   HEAD TO HEAD
-===================================================== */
-
-function headToHead(g){
-
-    let games = GAMES.filter(x =>
-        results[x.id] &&
-        (
-            (x.a === g.a && x.b === g.b) ||
-            (x.a === g.b && x.b === g.a)
-        )
+        `
     );
-
-    let aWins = 0;
-    let bWins = 0;
-
-    games.forEach(x=>{
-
-        const r = results[x.id];
-
-        if(x.a === g.a){
-
-            if(r.a > r.b) aWins++;
-            if(r.b > r.a) bWins++;
-
-        }else{
-
-            if(r.b > r.a) aWins++;
-            if(r.a > r.b) bWins++;
-
-        }
-
-    });
-
-    return `
-
-        <div class="grid g3">
-
-            ${statBox("맞대결",games.length+"경기")}
-
-            ${statBox(g.a+" 승",aWins)}
-
-            ${statBox(g.b+" 승",bWins)}
-
-        </div>
-
-        <div class="section">
-            <h2>📊 상대전적</h2>
-        </div>
-
-        <div class="card table-wrap">
-
-            <table>
-
-                <tr>
-                    <th>항목</th>
-                    <th>${g.a}</th>
-                    <th>${g.b}</th>
-                </tr>
-
-                <tr>
-                    <td>승률</td>
-                    <td>
-                        ${games.length
-                            ? (aWins/games.length*100).toFixed(1)+"%"
-                            : "-"}
-                    </td>
-                    <td>
-                        ${games.length
-                            ? (bWins/games.length*100).toFixed(1)+"%"
-                            : "-"}
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>타율</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-
-                <tr>
-                    <td>평균자책점</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-
-            </table>
-
-        </div>
-
-    `;
 }
 
+function scorePrediction(){
+    openModal(
+        "🔢 스코어 예측",
+        `
+        <label>시환팀</label>
+        <input id="ps1" type="number" placeholder="점수">
 
-/* =====================================================
-   TEAM POWER
-===================================================== */
+        <label>해찬팀</label>
+        <input id="ps2" type="number" placeholder="점수">
 
-function teamPower(g){
-
-    return `
-
-        <div class="grid g2">
-
-            <div class="card">
-
-                <h2>${teamName(g.a)}</h2>
-
-                ${statBox("승률","-")}
-                ${statBox("득점력","-")}
-                ${statBox("투구력","-")}
-                ${statBox("최근폼","-")}
-
-            </div>
-
-            <div class="card">
-
-                <h2>${teamName(g.b)}</h2>
-
-                ${statBox("승률","-")}
-                ${statBox("득점력","-")}
-                ${statBox("투구력","-")}
-                ${statBox("최근폼","-")}
-
-            </div>
-
-        </div>
-
-    `;
-}
-
-
-/* =====================================================
-   RECENT
-===================================================== */
-
-function recentGames(g){
-
-    return `
-
-        <div class="grid g2">
-
-            <div class="card">
-
-                <h2>${teamName(g.a)}</h2>
-
-                ${teamRecent(g.a)}
-
-            </div>
-
-            <div class="card">
-
-                <h2>${teamName(g.b)}</h2>
-
-                ${teamRecent(g.b)}
-
-            </div>
-
-        </div>
-
-    `;
-}
-
-function teamRecent(team){
-
-    const arr = GAMES.filter(g =>
-        results[g.id] &&
-        (g.a === team || g.b === team)
-    ).slice(-5);
-
-    if(!arr.length){
-        return `<div class="empty">최근 경기 없음</div>`;
-    }
-
-    return arr.map(g=>{
-
-        const r = results[g.id];
-
-        return `
-            <div class="notice">
-                ${g.date}<br>
-                ${g.a} ${r.a} : ${r.b} ${g.b}
-            </div>
-        `;
-
-    }).join("");
-}
-
-
-/* =====================================================
-   GAME PLAYERS
-===================================================== */
-
-function gamePlayers(g){
-
-    return `
-
-        <div class="grid g2">
-
-            ${
-                PLAYERS
-                .filter(p =>
-                    p.team === g.a ||
-                    p.team === g.b
-                )
-                .map(playerCard)
-                .join("")
-            }
-
-        </div>
-
-    `;
-}
-
-
-/* =====================================================
-   COMMENTS
-===================================================== */
-
-function gameComments(g){
-
-    const arr = comments.filter(
-        c => c.gameId === g.id
+        <button class="btn primary full" style="margin-top:12px" onclick="saveScorePrediction()">예측 저장</button>
+        `
     );
-
-    return `
-
-        ${
-            arr.length
-            ? arr.map(c=>`
-                <div class="notice">
-                    <b>${escapeHtml(c.user)}</b><br>
-                    ${escapeHtml(c.text)}
-                </div>
-            `).join("")
-            : `<div class="empty">
-                아직 댓글이 없습니다.
-              </div>`
-        }
-
-        <div class="form">
-
-            <textarea
-                id="commentText"
-                placeholder="경기에 대한 의견을 남겨주세요">
-            </textarea>
-
-            <button class="btn primary"
-                onclick="addComment('${g.id}')">
-                댓글 등록
-            </button>
-
-        </div>
-
-    `;
 }
 
-function addComment(id){
-
-    if(!currentUser){
-
-        toast("먼저 일반 계정으로 로그인하세요.");
-
-        showPage("account");
-
-        return;
-    }
-
-    const input =
-        document.getElementById("commentText");
-
-    if(!input) return;
-
-    const text = input.value.trim();
-
-    if(!text){
-        toast("댓글 내용을 입력하세요.");
-        return;
-    }
-
-    comments.push({
-        gameId:id,
-        user:currentUser.name,
-        text:text,
-        time:new Date().toLocaleString("ko-KR")
-    });
-
-    saveAll();
-
-    toast("댓글이 등록되었습니다.");
-
-    openGame(id);
+function saveScorePrediction(){
+    alert("예상 스코어가 저장되었습니다.");
 }
 
-
-/* =====================================================
-   PREDICTION
-===================================================== */
-
-function openPrediction(id){
-
-    const g = findGame(id);
-
-    modal(`
-
-        <button class="close"
-            onclick="closeModal()">×</button>
-
-        <small>PREDICTION</small>
-
-        <h1>🎯 승부예측</h1>
-
-        <h2>
-            ${teamName(g.a)}
-            VS
-            ${teamName(g.b)}
-        </h2>
-
-        ${
-            currentUser
-            ? `
-                <div class="form">
-
-                    <select id="predictionWinner">
-
-                        <option value="${g.a}">
-                            ${g.a} 승
-                        </option>
-
-                        <option value="${g.b}">
-                            ${g.b} 승
-                        </option>
-
-                    </select>
-
-                    <div class="grid g2">
-
-                        <input
-                            id="predictionA"
-                            type="number"
-                            min="0"
-                            placeholder="${g.a} 예상 점수">
-
-                        <input
-                            id="predictionB"
-                            type="number"
-                            min="0"
-                            placeholder="${g.b} 예상 점수">
-
-                    </div>
-
-                    <select id="predictionMvp">
-
-                        <option value="">
-                            예상 MVP
-                        </option>
-
-                        ${
-                            PLAYERS
-                            .filter(p =>
-                                p.team === g.a ||
-                                p.team === g.b
-                            )
-                            .map(p =>
-                                `<option value="${p.name}">
-                                    ${p.name}
-                                </option>`
-                            ).join("")
-                        }
-
-                    </select>
-
-                    <button
-                        class="btn primary"
-                        onclick="savePrediction('${id}')">
-                        예측 저장
-                    </button>
-
-                </div>
-            `
-            : `
-                <div class="empty">
-                    승부예측을 하려면
-                    일반 계정으로 로그인하세요.
-                    <br><br>
-                    <button
-                        class="btn primary"
-                        onclick="closeModal();showPage('account')">
-                        계정 만들기
-                    </button>
-                </div>
-            `
-        }
-
-    `);
-}
-
-function savePrediction(id){
-
-    if(!currentUser){
-        toast("로그인이 필요합니다.");
-        return;
-    }
-
-    const winner =
-        document.getElementById("predictionWinner").value;
-
-    const a =
-        Number(document.getElementById("predictionA").value);
-
-    const b =
-        Number(document.getElementById("predictionB").value);
-
-    const mvp =
-        document.getElementById("predictionMvp").value;
-
-    predictions.push({
-        gameId:id,
-        user:currentUser.name,
-        winner:winner,
-        a:a || 0,
-        b:b || 0,
-        mvp:mvp,
-        time:new Date().toLocaleString("ko-KR")
-    });
-
-    saveAll();
-
-    closeModal();
-
-    toast("승부예측이 저장되었습니다.");
-}
-
-
-/* =====================================================
-   PLAYERS
-===================================================== */
-
-function players(){
-
-    document.getElementById("players").innerHTML = `
-
-        <div class="hero">
-
-            <small>PLAYER</small>
-
-            <h1>👤 CPL 선수</h1>
-
-            <p class="muted">
-                선수를 클릭하면 개인 기록을 확인합니다.
-            </p>
-
-        </div>
-
-        <div class="grid g2">
-
-            ${PLAYERS.map(playerCard).join("")}
-
-        </div>
-
-    `;
-}
-
-function playerCard(p){
-
-    return `
-
-        <div class="card click"
-            onclick="openPlayer(${p.id})">
-
-            <div class="player">
-
-                <div class="avatar">
-                    ${p.name.charAt(0)}
-                </div>
-
-                <div>
-
-                    <h3>${p.name}</h3>
-
-                    <div class="muted">
-                        ${teamName(p.team)}
-                    </div>
-
-                    <div class="muted">
-                        ${p.role}
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="grid g4"
-                style="margin-top:15px">
-
-                ${statBox("타율","-")}
-                ${statBox("ERA","-")}
-                ${statBox("HR","0")}
-                ${statBox("K","0")}
-
-            </div>
-
-        </div>
-
-    `;
-}
-
-function openPlayer(id){
-
-    const p = PLAYERS.find(x => x.id === id);
-
-    if(!p) return;
-
-    modal(`
-
-        <button class="close"
-            onclick="closeModal()">×</button>
-
-        <div class="player">
-
-            <div class="avatar">
-                ${p.name.charAt(0)}
-            </div>
-
-            <div>
-
-                <h1>${p.name}</h1>
-
-                <div class="muted">
-                    ${teamName(p.team)}
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="tabs">
-
-            <button class="active"
-                onclick="playerTab('프로필',this,${id})">
-                프로필
-            </button>
-
-            <button
-                onclick="playerTab('타격',this,${id})">
-                타격
-            </button>
-
-            <button
-                onclick="playerTab('투구',this,${id})">
-                투구
-            </button>
-
-            <button
-                onclick="playerTab('경기별',this,${id})">
-                경기별
-            </button>
-
-            <button
-                onclick="playerTab('스타트',this,${id})">
-                스타트
-            </button>
-
-            <button
-                onclick="playerTab('최근활약',this,${id})">
-                최근활약
-            </button>
-
-            <button
-                onclick="playerTab('최고기록',this,${id})">
-                최고기록
-            </button>
-
-            <button
-                onclick="playerTab('상대전적',this,${id})">
-                상대전적
-            </button>
-
-        </div>
-
-        <div id="playerContent">
-            ${playerContent("프로필",p)}
-        </div>
-
-    `);
-}
-
-function playerTab(type,button,id){
-
-    document.querySelectorAll(".tabs button")
-        .forEach(b => b.classList.remove("active"));
-
-    button.classList.add("active");
-
-    const p = PLAYERS.find(x => x.id === id);
-
-    document.getElementById("playerContent")
-        .innerHTML = playerContent(type,p);
-}
-
-function playerContent(type,p){
-
-    if(type === "프로필"){
-
-        return `
-
-            <div class="grid g4">
-
-                ${statBox("경기","0")}
-                ${statBox("타율","-")}
-                ${statBox("ERA","-")}
-                ${statBox("MVP","0")}
-
-            </div>
-
-        `;
-    }
-
-    if(type === "타격"){
-
-        return `
-
-            <div class="grid g4">
-
-                ${statBox("타수","0")}
-                ${statBox("안타","0")}
-                ${statBox("홈런","0")}
-                ${statBox("타점","0")}
-                ${statBox("볼넷","0")}
-                ${statBox("내야안타","0")}
-                ${statBox("타율","-")}
-                ${statBox("OPS","-")}
-
-            </div>
-
-        `;
-    }
-
-    if(type === "투구"){
-
-        return `
-
-            <div class="grid g4">
-
-                ${statBox("이닝","0")}
-                ${statBox("K","0")}
-                ${statBox("피안타","0")}
-                ${statBox("실점","0")}
-                ${statBox("ERA","-")}
-                ${statBox("FS","0")}
-                ${statBox("DS","0")}
-                ${statBox("US","0")}
-
-            </div>
-
-        `;
-    }
-
-    if(type === "스타트"){
-
-        return `
-
-            <div class="grid g3">
-
-                ${statBox("🟢 FS","0")}
-                ${statBox("🔵 DS","0")}
-                ${statBox("🟣 CS","0")}
-                ${statBox("⚡ QS","0")}
-                ${statBox("💪 PS","0")}
-                ${statBox("🛡️ SS","0")}
-                ${statBox("👑 US","0")}
-
-            </div>
-
-        `;
-    }
-
-    return `
-        <div class="empty">
-            ${type} 기록은 경기 데이터가 쌓이면
-            자동으로 표시됩니다.
-        </div>
-    `;
-}
-
-
-/* =====================================================
-   RANKINGS
-===================================================== */
-
-function rankings(){
-
-    document.getElementById("rankings").innerHTML = `
-
-        <div class="hero">
-
-            <small>RANKINGS</small>
-
-            <h1>🏆 CPL 랭킹</h1>
-
-        </div>
-
-        <div class="tabs">
-
-            <button class="active">
-                투수기록
-            </button>
-
-            <button>
-                타자기록
-            </button>
-
-            <button>
-                WAR
-            </button>
-
-            <button>
-                팀순위
-            </button>
-
-            <button>
-                정규시즌
-            </button>
-
-        </div>
-
-        <div class="card table-wrap">
-
-            <table>
-
-                <tr>
-                    <th>#</th>
-                    <th>선수</th>
-                    <th>팀</th>
-                    <th>ERA</th>
-                    <th>K</th>
-                    <th>US</th>
-                </tr>
-
-                ${PLAYERS.map((p,i)=>`
-
-                    <tr>
-
-                        <td>${i+1}</td>
-                        <td>${p.name}</td>
-                        <td>${teamName(p.team)}</td>
-                        <td>-</td>
-                        <td>0</td>
-                        <td>0</td>
-
-                    </tr>
-
-                `).join("")}
-
-            </table>
-
-        </div>
-
-        <div class="section">
-            <h2>🏆 팀 순위</h2>
-        </div>
-
-        ${teamTable()}
-
-    `;
-}
-
-
-/* =====================================================
-   TEAM
-===================================================== */
-
-function teams(){
-
-    document.getElementById("teams").innerHTML = `
-
-        <div class="hero">
-
-            <small>TEAMS</small>
-
-            <h1>🏟️ CPL 4 TEAM</h1>
-
-        </div>
-
-        <div class="grid g2">
-
-            ${
-                Object.keys(TEAMS).map(t=>`
-
-                    <div class="card click"
-                        onclick="teamDetail('${t}')">
-
-                        <h2>
-                            ${teamName(t)}
-                        </h2>
-
-                        <p class="muted">
-                            선수 ${PLAYERS.filter(
-                                p => p.team === t
-                            ).length}명
-                        </p>
-
-                        ${statBox("승률","-")}
-
-                    </div>
-
-                `).join("")
-            }
-
-        </div>
-
-    `;
-}
-
-function teamDetail(t){
-
-    modal(`
-
-        <button class="close"
-            onclick="closeModal()">×</button>
-
-        <small>TEAM</small>
-
-        <h1>${teamName(t)}</h1>
-
-        <div class="grid g4">
-
-            ${statBox("경기","0")}
-            ${statBox("승","0")}
-            ${statBox("패","0")}
-            ${statBox("승률","-")}
-
-        </div>
-
-        <div class="section">
-            <h2>👤 선수</h2>
-        </div>
-
-        <div class="grid g2">
-
-            ${
-                PLAYERS
-                .filter(p => p.team === t)
-                .map(playerCard)
-                .join("")
-            }
-
-        </div>
-
-    `);
-}
-
-function teamTable(){
-
-    return `
-
-        <div class="card table-wrap">
-
-            <table>
-
-                <tr>
-                    <th>#</th>
-                    <th>팀</th>
-                    <th>G</th>
-                    <th>W</th>
-                    <th>L</th>
-                    <th>D</th>
-                    <th>승률</th>
-                </tr>
-
-                ${
-                    Object.keys(TEAMS).map((t,i)=>`
-
-                        <tr>
-                            <td>${i+1}</td>
-                            <td>${teamName(t)}</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>-</td>
-                        </tr>
-
-                    `).join("")
-                }
-
-            </table>
-
-        </div>
-
-    `;
-}
-
-
-/* =====================================================
-   AUTO ANALYSIS
-===================================================== */
-
-function analysis(){
-
-    const items = [
-        "승률",
-        "게임차",
-        "연승 / 연패",
-        "득점력",
-        "실점력",
-        "상대전적",
-        "파워랭킹",
-        "최근 5경기",
-        "팀 밸런스",
-        "타격지수",
-        "투구지수",
-        "MVP 영향도"
+function randomChallenge(){
+    const missions=[
+        "오늘 경기 MVP 맞히기",
+        "첫 홈런 선수 맞히기",
+        "첫 삼진 선수 맞히기",
+        "승리팀 맞히기",
+        "첫 득점팀 맞히기"
     ];
 
-    document.getElementById("analysis").innerHTML = `
-
-        <div class="hero">
-
-            <small>AUTO ANALYSIS</small>
-
-            <h1>📊 자동분석</h1>
-
-            <p class="muted">
-                경기 결과가 입력되면 기록을 자동으로 계산합니다.
-            </p>
-
-        </div>
-
-        <div class="grid g3">
-
-            ${
-                items.map(item=>`
-
-                    <div class="card">
-
-                        <span class="badge">
-                            ${item}
-                        </span>
-
-                        <h2>${item}</h2>
-
-                        <p class="muted">
-                            데이터 대기
-                        </p>
-
-                    </div>
-
-                `).join("")
-            }
-
-        </div>
-
-    `;
+    alert("🎲 오늘의 미션\n\n"+missions[Math.floor(Math.random()*missions.length)]);
 }
 
-
-/* =====================================================
-   CPL FUN
-===================================================== */
-
-function fun(){
-
-    document.getElementById("fun").innerHTML = `
-
-        <div class="hero">
-
-            <small>CPL FUN</small>
-
-            <h1>🎮 CPL 재미</h1>
-
-        </div>
-
-        <div class="grid g3">
-
-            <div class="card click"
-                onclick="openPrediction('${GAMES[0].id}')">
-
-                <h2>🎯 승부예측</h2>
-
-                <p class="muted">
-                    승자 · 스코어 · MVP
-                </p>
-
-            </div>
-
-            <div class="card click"
-                onclick="randomPlayer()">
-
-                <h2>🎲 오늘의 선수</h2>
-
-                <p class="muted">
-                    랜덤 선수 뽑기
-                </p>
-
-            </div>
-
-            <div class="card click"
-                onclick="randomRecord()">
-
-                <h2>🏅 오늘의 기록</h2>
-
-                <p class="muted">
-                    랜덤 특별기록
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="section">
-            <h2>⭐ CPL 특별기록</h2>
-        </div>
-
-        <div class="grid g3">
-
-            ${specialRecord(
-                "🟢 퍼스트 스타트 FS",
-                "1이닝 · 1K 이상 + 3실점 이하"
-            )}
-
-            ${specialRecord(
-                "🔵 더블 스타트 DS",
-                "1이닝 · 2K 이상 + 2실점 이하"
-            )}
-
-            ${specialRecord(
-                "🟣 클린 스타트 CS",
-                "1이닝 · 무실점 + 무피안타 + 무사사구"
-            )}
-
-            ${specialRecord(
-                "⚡ 퀵 스타트 QS",
-                "1이닝 · 2아웃 + 투구수 10개 이하"
-            )}
-
-            ${specialRecord(
-                "💪 파워 스타트 PS",
-                "1이닝 · 2K 이상 + 피안타 0개"
-            )}
-
-            ${specialRecord(
-                "🛡️ 세이프 스타트 SS",
-                "1이닝 · 무실점 + 출루 1명 이하"
-            )}
-
-            ${specialRecord(
-                "👑 얼티메이트 스타트 US",
-                "1이닝 · 2K 이상 + 무출루"
-            )}
-
-            ${specialRecord(
-                "👑 얼티메이트 히트 UH",
-                "안타 · 홈런 · 볼넷 · 내야안타"
-            )}
-
-            ${specialRecord(
-                "🏆 PERFECT GAME",
-                "얼티메이트 스타트 + 얼티메이트 히트"
-            )}
-
-        </div>
-
-    `;
-}
-
-function specialRecord(title,description){
-
-    return `
-
+function openAwards(){
+    openModal(
+        "🏅 기록 도전",
+        `
         <div class="card">
-
-            <h3>${title}</h3>
-
-            <p class="muted">
-                ${description}
-            </p>
-
+            <p>🟢 FS · 퍼스트 스타트</p>
+            <p>🔵 DS · 더블 스타트</p>
+            <p>🟣 CS · 클린 스타트</p>
+            <p>⚡ QS · 퀵 스타트</p>
+            <p>💪 PS · 파워 스타트</p>
+            <p>🛡️ SS · 세이프 스타트</p>
+            <p>🔥 US · 얼티메이트 스타트</p>
+            <p>⚾ UH · 얼티메이트 히트</p>
+            <p>👑 PG · 퍼펙트 게임</p>
         </div>
-
-    `;
+        `
+    );
 }
 
-function randomPlayer(){
-
-    const p =
-        PLAYERS[
-            Math.floor(Math.random()*PLAYERS.length)
-        ];
-
-    modal(`
-
-        <button class="close"
-            onclick="closeModal()">×</button>
-
-        <small>TODAY'S PLAYER</small>
-
-        <h1>🎲 ${p.name}</h1>
-
-        ${playerCard(p)}
-
-    `);
-}
-
-function randomRecord(){
-
-    const records = [
-        "🔥 오늘의 홈런 후보",
-        "⚡ 오늘의 US 후보",
-        "👑 오늘의 MVP 후보",
-        "🎯 오늘의 승부예측 후보",
-        "💪 오늘의 파워플레이 후보"
-    ];
-
-    const r =
-        records[
-            Math.floor(Math.random()*records.length)
-        ];
-
-    modal(`
-
-        <button class="close"
-            onclick="closeModal()">×</button>
-
-        <h1>🎲 오늘의 기록</h1>
-
-        <div class="card">
-            <h2>${r}</h2>
-        </div>
-
-    `);
-}
-
-
-/* =====================================================
-   NEWS
-===================================================== */
-
-function news(){
-
-    document.getElementById("news").innerHTML = `
-
-        <div class="hero">
-
-            <small>CPL NEWS</small>
-
-            <h1>📰 CPL 뉴스</h1>
-
-        </div>
-
-        <div class="notice">
-            <b>개막전 확정</b><br>
-            9월 2일 · 시환팀 VS 해찬팀
-        </div>
-
-        <div class="notice">
-            <b>전반기</b><br>
-            9월 2일 ~ 9월 18일
-        </div>
-
-        <div class="notice">
-            <b>후반기</b><br>
-            10월 12일 ~ 11월 6일
-        </div>
-
-    `;
-}
-
-
-/* =====================================================
-   COMMUNITY
-===================================================== */
-
-function community(){
-
-    document.getElementById("community").innerHTML = `
-
-        <div class="hero">
-
-            <small>COMMUNITY</small>
-
-            <h1>💬 CPL 커뮤니티</h1>
-
-            <p class="muted">
-                경기 댓글과 CPL 이야기를 나누는 공간
-            </p>
-
-        </div>
-
-        <div class="grid g3">
-
-            <div class="card">
-                <h2>💬 경기 댓글</h2>
-                <p class="muted">
-                    각 경기 상세에서 댓글 작성
-                </p>
-            </div>
-
-            <div class="card">
-                <h2>👤 선수 이야기</h2>
-                <p class="muted">
-                    선수에 대한 이야기
-                </p>
-            </div>
-
-            <div class="card">
-                <h2>📢 공지</h2>
-                <p class="muted">
-                    CPL 공식 공지
-                </p>
-            </div>
-
-        </div>
-
-    `;
-}
-
-
-/* =====================================================
+/* =========================
    ACCOUNT
-===================================================== */
+========================= */
 
-function account(){
+function openAccount(){
+    openModal(
+        "👤 계정",
+        `
+        <div class="card">
+            <div class="card-title">CPL 일반 계정</div>
 
-    if(currentUser){
+            <label>닉네임</label>
+            <input id="nickname" placeholder="닉네임">
 
-        document.getElementById("account").innerHTML = `
-
-            <div class="hero">
-
-                <small>MY ACCOUNT</small>
-
-                <h1>👤 ${escapeHtml(currentUser.name)}</h1>
-
-                <p class="muted">
-                    일반 사용자 계정
-                </p>
-
-            </div>
-
-            <div class="grid g3">
-
-                ${statBox(
-                    "승부예측",
-                    predictions.filter(
-                        p => p.user === currentUser.name
-                    ).length
-                )}
-
-                ${statBox(
-                    "댓글",
-                    comments.filter(
-                        c => c.user === currentUser.name
-                    ).length
-                )}
-
-                ${statBox("배지","0")}
-
-            </div>
-
-            <br>
-
-            <button class="btn danger"
-                onclick="logoutUser()">
-                로그아웃
-            </button>
-
-        `;
-
-        return;
-    }
-
-    document.getElementById("account").innerHTML = `
-
-        <div class="hero">
-
-            <small>ACCOUNT</small>
-
-            <h1>👤 CPL 계정</h1>
-
-            <p class="muted">
-                일반 계정과 관리자 계정은 분리됩니다.
-            </p>
-
+            <button class="btn primary full" style="margin-top:12px" onclick="saveAccount()">계정 저장</button>
         </div>
 
-        <div class="grid g2">
-
-            <div class="card">
-
-                <h2>👤 일반 계정</h2>
-
-                <div class="form">
-
-                    <input
-                        id="userName"
-                        placeholder="닉네임">
-
-                    <button
-                        class="btn primary"
-                        onclick="loginUser()">
-                        일반 계정 만들기
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="card">
-
-                <h2>🔐 관리자 계정</h2>
-
-                <p class="muted">
-                    CPL 운영자 전용
-                </p>
-
-                <button
-                    class="btn primary"
-                    onclick="showAdminLogin()">
-                    관리자 로그인
-                </button>
-
-            </div>
-
+        <div class="card">
+            <p>내 예측</p>
+            <p>내 댓글</p>
+            <p>내 기록</p>
+            <p>내 응원팀</p>
         </div>
-
-    `;
+        `
+    );
 }
 
-function loginUser(){
-
-    const input =
-        document.getElementById("userName");
-
-    const name = input.value.trim();
+function saveAccount(){
+    const name=document.getElementById("nickname").value.trim();
 
     if(!name){
-
-        toast("닉네임을 입력하세요.");
-
+        alert("닉네임을 입력하세요.");
         return;
     }
 
-    currentUser = {
-        name:name,
-        role:"user"
-    };
-
-    saveAll();
-
-    toast("일반 계정 생성 완료");
-
-    account();
+    localStorage.setItem("cpl_user",name);
+    alert(name+" 계정이 저장되었습니다.");
+    closeModal();
 }
 
-function logoutUser(){
-
-    currentUser = null;
-
-    saveAll();
-
-    toast("로그아웃되었습니다.");
-
-    account();
-}
-
-
-/* =====================================================
-   ADMIN LOGIN
-===================================================== */
-
-function showAdminLogin(){
-
-    modal(`
-
-        <button class="close"
-            onclick="closeModal()">×</button>
-
-        <small>ADMIN LOGIN</small>
-
-        <h1>🔐 관리자 로그인</h1>
-
-        <div class="form">
-
-            <label>관리자 ID</label>
-
-            <input
-                id="adminId"
-                autocomplete="username"
-                placeholder="관리자 ID">
-
-            <label>관리자 비밀번호</label>
-
-            <input
-                id="adminPassword"
-                type="password"
-                autocomplete="current-password"
-                placeholder="관리자 비밀번호">
-
-            <button
-                class="btn primary"
-                onclick="adminLogin()">
-                관리자 로그인
-            </button>
-
-        </div>
-
-    `);
-
-    setTimeout(()=>{
-
-        const id =
-            document.getElementById("adminId");
-
-        if(id) id.focus();
-
-    },100);
-}
+/* =========================
+   ADMIN
+========================= */
 
 function adminLogin(){
+    const pin=document.getElementById("adminPin").value;
 
-    const id =
-        document.getElementById("adminId").value.trim();
-
-    const password =
-        document.getElementById("adminPassword").value;
-
-    if(id !== "admin"){
-
-        toast("관리자 ID가 틀렸습니다.");
-
-        return;
+    if(pin==="1234"){
+        document.getElementById("adminPanel").style.display="block";
+        alert("관리자 로그인 성공");
+    }else{
+        alert("관리자 번호가 올바르지 않습니다.");
     }
+}
 
-    if(password !== "cpl2026"){
-
-        toast("관리자 비밀번호가 틀렸습니다.");
-
-        return;
-    }
-
-    isAdmin = true;
-
-    sessionStorage.setItem(
-        "CPL_ADMIN",
-        "true"
+function adminAction(name){
+    openModal(
+        "관리자 · "+name,
+        `
+        <div class="card">
+            <div class="card-title">${name}</div>
+            <p style="color:#aaa">관리 기능 화면입니다.</p>
+            <button class="btn primary full" onclick="alert('${name} 기능을 실행했습니다.')">실행</button>
+        </div>
+        `
     );
-
-    closeModal();
-
-    toast("관리자 로그인 성공");
-
-    showPage("admin");
 }
 
-
-/* =====================================================
-   ADMIN CENTER
-===================================================== */
-
-function adminPage(){
-
-    const page =
-        document.getElementById("admin");
-
-    if(!isAdmin){
-
-        page.innerHTML = `
-
-            <div class="hero">
-
-                <small>ADMIN</small>
-
-                <h1>🔐 CPL 관리자센터</h1>
-
-                <p class="muted">
-                    관리자 로그인 후 이용할 수 있습니다.
-                </p>
-
-                <button
-                    class="btn primary"
-                    onclick="showAdminLogin()">
-                    관리자 로그인
-                </button>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-    page.innerHTML = `
-
-        <div class="hero">
-
-            <small>ADMIN CONTROL</small>
-
-            <h1>🔐 CPL 관리자 운영센터</h1>
-
-            <p class="muted">
-                CPL 전체 운영을 관리합니다.
-            </p>
-
-            <button
-                class="btn danger"
-                onclick="adminLogout()">
-                관리자 로그아웃
-            </button>
-
-        </div>
-
-        <div class="grid g4">
-
-            ${statBox("전체 경기",GAMES.length)}
-
-            ${statBox(
-                "종료 경기",
-                Object.keys(results).length
-            )}
-
-            ${statBox(
-                "댓글",
-                comments.length
-            )}
-
-            ${statBox(
-                "승부예측",
-                predictions.length
-            )}
-
-        </div>
-
-        <div class="section">
-            <h2>⚙️ 관리자 메뉴</h2>
-        </div>
-
-        <div class="admin-menu">
-
-            <button onclick="adminSection('경기관리')">
-                ⚾<br>경기관리
-            </button>
-
-            <button onclick="adminSection('일정관리')">
-                📅<br>일정관리
-            </button>
-
-            <button onclick="adminSection('선수관리')">
-                👤<br>선수관리
-            </button>
-
-            <button onclick="adminSection('기록관리')">
-                📊<br>기록관리
-            </button>
-
-            <button onclick="adminSection('팀관리')">
-                🏟️<br>팀관리
-            </button>
-
-            <button onclick="adminSection('공지관리')">
-                📢<br>공지관리
-            </button>
-
-            <button onclick="adminSection('댓글관리')">
-                💬<br>댓글관리
-            </button>
-
-            <button onclick="adminSection('회원관리')">
-                👥<br>회원관리
-            </button>
-
-        </div>
-
-        <div id="adminContent">
-
-            <div class="section">
-                <h2>⚾ 경기 결과 관리</h2>
-            </div>
-
-            <div class="grid g2">
-
-                ${
-                    GAMES.map(g=>`
-
-                        <div class="card">
-
-                            <div class="muted">
-                                ${g.date} · 12:30
-                            </div>
-
-                            <h3>
-                                ${teamName(g.a)}
-                                VS
-                                ${teamName(g.b)}
-                            </h3>
-
-                            <button
-                                class="btn"
-                                onclick="editResult('${g.id}')">
-                                결과 입력
-                            </button>
-
-                        </div>
-
-                    `).join("")
-                }
-
-            </div>
-
-        </div>
-
-    `;
-}
-
-
-/* =====================================================
-   ADMIN SECTION
-===================================================== */
-
-function adminSection(type){
-
-    const box =
-        document.getElementById("adminContent");
-
-    if(!box) return;
-
-    if(type === "경기관리"){
-
-        box.innerHTML = `
-
-            <div class="section">
-                <h2>⚾ 경기관리</h2>
-            </div>
-
-            <div class="grid g2">
-
-                ${
-                    GAMES.map(g=>`
-
-                        <div class="card">
-
-                            <b>${g.date}</b>
-
-                            <p>
-                                ${teamName(g.a)}
-                                VS
-                                ${teamName(g.b)}
-                            </p>
-
-                            <button
-                                class="btn"
-                                onclick="editResult('${g.id}')">
-                                경기 결과 입력
-                            </button>
-
-                        </div>
-
-                    `).join("")
-                }
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-    if(type === "일정관리"){
-
-        box.innerHTML = `
-
-            <div class="card">
-
-                <h2>📅 일정관리</h2>
-
-                <p>
-                    전반기: 9/2 ~ 9/18
-                </p>
-
-                <p>
-                    후반기: 10/12 ~ 11/6
-                </p>
-
-                <p class="muted">
-                    경기일은 월·수·금으로 구성
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-    if(type === "선수관리"){
-
-        box.innerHTML = `
-
-            <div class="grid g2">
-
-                ${PLAYERS.map(p=>`
-
-                    <div class="card">
-
-                        <h2>${p.name}</h2>
-
-                        <p>${teamName(p.team)}</p>
-
-                        <button class="btn">
-                            선수 수정
-                        </button>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-    if(type === "기록관리"){
-
-        box.innerHTML = `
-
-            <div class="card">
-
-                <h2>📊 기록관리</h2>
-
-                <p>
-                    경기 결과를 입력하면 선수 및 팀 기록을 계산합니다.
-                </p>
-
-                <div class="grid g3">
-
-                    ${statBox("타율","자동")}
-                    ${statBox("ERA","자동")}
-                    ${statBox("WAR","자동")}
-                    ${statBox("승률","자동")}
-                    ${statBox("게임차","자동")}
-                    ${statBox("MVP","자동")}
-
-                </div>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-    if(type === "팀관리"){
-
-        box.innerHTML = `
-
-            <div class="grid g2">
-
-                ${
-                    Object.keys(TEAMS).map(t=>`
-
-                        <div class="card">
-
-                            <h2>${teamName(t)}</h2>
-
-                            <p>
-                                선수:
-                                ${PLAYERS.filter(
-                                    p=>p.team===t
-                                ).map(p=>p.name).join(", ")}
-                            </p>
-
-                            <button class="btn">
-                                팀 수정
-                            </button>
-
-                        </div>
-
-                    `).join("")
-                }
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-    if(type === "공지관리"){
-
-        box.innerHTML = `
-
-            <div class="card form">
-
-                <h2>📢 공지 등록</h2>
-
-                <input
-                    id="noticeTitle"
-                    placeholder="공지 제목">
-
-                <textarea
-                    id="noticeText"
-                    placeholder="공지 내용">
-                </textarea>
-
-                <button
-                    class="btn primary"
-                    onclick="addNotice()">
-                    공지 등록
-                </button>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-    if(type === "댓글관리"){
-
-        box.innerHTML = `
-
-            ${
-                comments.length
-                ? comments.map((c,i)=>`
-
-                    <div class="notice">
-
-                        <b>${escapeHtml(c.user)}</b>
-
-                        <br>
-
-                        ${escapeHtml(c.text)}
-
-                        <br>
-
-                        <button
-                            class="btn danger"
-                            onclick="deleteComment(${i})">
-                            삭제
-                        </button>
-
-                    </div>
-
-                `).join("")
-                : `<div class="empty">
-                    등록된 댓글이 없습니다.
-                   </div>`
-            }
-
-        `;
-
-        return;
-    }
-
-    if(type === "회원관리"){
-
-        box.innerHTML = `
-
-            <div class="card">
-
-                <h2>👥 회원관리</h2>
-
-                <p>
-                    현재 브라우저 일반 계정:
-                    ${
-                        currentUser
-                        ? escapeHtml(currentUser.name)
-                        : "로그인 없음"
-                    }
-                </p>
-
-                <p class="muted">
-                    실제 여러 사용자 계정 관리는
-                    Supabase Auth 연결 단계에서 완성합니다.
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-}
-
-
-/* =====================================================
-   ADMIN RESULT
-===================================================== */
-
-function editResult(id){
-
-    if(!isAdmin){
-
-        toast("관리자 로그인이 필요합니다.");
-
-        return;
-    }
-
-    const g = findGame(id);
-
-    const old = results[id] || {};
-
-    modal(`
-
-        <button class="close"
-            onclick="closeModal()">×</button>
-
-        <small>GAME RESULT</small>
-
-        <h1>
-            ${teamName(g.a)}
-            VS
-            ${teamName(g.b)}
-        </h1>
-
-        <div class="form">
-
-            <label>
-                ${g.a} 득점
-            </label>
-
-            <input
-                id="resultA"
-                type="number"
-                min="0"
-                value="${old.a ?? ""}">
-
-            <label>
-                ${g.b} 득점
-            </label>
-
-            <input
-                id="resultB"
-                type="number"
-                min="0"
-                value="${old.b ?? ""}">
-
-            <label>
-                MVP
-            </label>
-
-            <select id="resultMvp">
-
-                <option value="">
-                    선택
-                </option>
-
-                ${
-                    PLAYERS
-                    .filter(p =>
-                        p.team === g.a ||
-                        p.team === g.b
-                    )
-                    .map(p=>`
-                        <option
-                            value="${p.name}"
-                            ${old.mvp === p.name ? "selected":""}>
-                            ${p.name}
-                        </option>
-                    `).join("")
-                }
-
-            </select>
-
-            <button
-                class="btn primary"
-                onclick="saveResult('${id}')">
-                경기 결과 저장
-            </button>
-
-        </div>
-
-    `);
-}
-
-function saveResult(id){
-
-    if(!isAdmin){
-
-        toast("관리자 로그인이 필요합니다.");
-
-        return;
-    }
-
-    const a =
-        Number(document.getElementById("resultA").value);
-
-    const b =
-        Number(document.getElementById("resultB").value);
-
-    const mvp =
-        document.getElementById("resultMvp").value;
-
-    if(a < 0 || b < 0){
-
-        toast("점수를 확인하세요.");
-
-        return;
-    }
-
-    results[id] = {
-        a:a,
-        b:b,
-        mvp:mvp
-    };
-
-    saveAll();
-
-    closeModal();
-
-    toast("경기 결과가 저장되었습니다.");
-
-    adminPage();
-}
-
-function adminLogout(){
-
-    isAdmin = false;
-
-    sessionStorage.removeItem("CPL_ADMIN");
-
-    toast("관리자 로그아웃");
-
-    showPage("home");
-}
-
-
-/* =====================================================
-   NOTICE
-===================================================== */
-
-function addNotice(){
-
-    const title =
-        document.getElementById("noticeTitle").value.trim();
-
-    const text =
-        document.getElementById("noticeText").value.trim();
-
-    if(!title || !text){
-
-        toast("제목과 내용을 입력하세요.");
-
-        return;
-    }
-
-    const notices =
-        JSON.parse(
-            localStorage.getItem("CPL_NOTICES") || "[]"
-        );
-
-    notices.push({
-        title:title,
-        text:text,
-        date:new Date().toLocaleString("ko-KR")
-    });
-
-    localStorage.setItem(
-        "CPL_NOTICES",
-        JSON.stringify(notices)
-    );
-
-    toast("공지 등록 완료");
-
-    adminSection("공지관리");
-}
-
-
-/* =====================================================
-   COMMENT DELETE
-===================================================== */
-
-function deleteComment(index){
-
-    if(!isAdmin){
-
-        toast("관리자 로그인이 필요합니다.");
-
-        return;
-    }
-
-    if(!confirm("이 댓글을 삭제할까요?"))
-        return;
-
-    comments.splice(index,1);
-
-    saveAll();
-
-    toast("댓글 삭제 완료");
-
-    adminSection("댓글관리");
-}
-
-
-/* =====================================================
+/* =========================
    MODAL
-===================================================== */
+========================= */
 
-function modal(html){
-
-    document.getElementById("modalBox").innerHTML = html;
-
-    document.getElementById("modal")
-        .classList.add("open");
+function openModal(title,content){
+    document.getElementById("modalTitle").innerText=title;
+    document.getElementById("modalContent").innerHTML=content;
+    document.getElementById("modal").classList.add("show");
 }
 
 function closeModal(){
-
-    document.getElementById("modal")
-        .classList.remove("open");
+    document.getElementById("modal").classList.remove("show");
 }
 
-document.getElementById("modal")
-    .addEventListener("click",function(e){
+document.getElementById("modal").addEventListener("click",function(e){
+    if(e.target===this)closeModal();
+});
 
-        if(e.target === this){
-            closeModal();
-        }
+/* =========================
+   UTILITY
+========================= */
 
-    });
-
-
-/* =====================================================
-   SECURITY HELPER
-===================================================== */
-
-function escapeHtml(value){
-
-    return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+function vote(team){
+    const box=document.getElementById("voteResult");
+    if(box)box.innerText=`${team}에 투표했습니다.`;
 }
 
+function escapeHtml(text){
+    const div=document.createElement("div");
+    div.textContent=text;
+    return div.innerHTML;
+}
 
-/* =====================================================
-   START
-===================================================== */
+/* =========================
+   INIT
+========================= */
 
-makeNav();
-home();
+renderHome();
+renderSchedule();
+renderRanking("pitcher");
+renderPlayers();
+renderTeams();
+renderComments();
 
 </script>
 
 </body>
 </html>
-```
