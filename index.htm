@@ -3,1990 +3,1519 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>CPL SPORTS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WORLD MARBLE — Classic Board</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f6f8;
+  --panel:#ffffff;
+  --ink:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --gold:#d4a72c;
+  --accent:#2563eb;
+  --danger:#ef4444;
+  --ok:#16a34a;
+}
+
+*{box-sizing:border-box}
+
 body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;
-background:#f5f6f8;color:#17181b
-}
-button,input,select,textarea{font:inherit}
-button{border:0;cursor:pointer}
-.hidden{display:none!important}
-
-#loginScreen{
-min-height:100vh;display:flex;align-items:center;justify-content:center;
-padding:20px;background:#f5f6f8
-}
-.login-box{
-width:100%;max-width:420px;background:white;padding:32px 25px;
-border-radius:26px;box-shadow:0 15px 45px rgba(0,0,0,.08)
-}
-.logo{text-align:center;margin-bottom:28px}
-.logo-icon{
-width:65px;height:65px;border-radius:19px;background:#111;color:#fff;
-display:flex;align-items:center;justify-content:center;
-margin:0 auto 13px;font-weight:900
-}
-.logo h1{font-size:25px;font-weight:950}
-.logo p{font-size:10px;color:#999;margin-top:5px}
-.login-label{display:block;font-size:13px;font-weight:800;margin:15px 0 7px}
-.login-input{
-width:100%;height:51px;border:1px solid #ddd;border-radius:13px;
-padding:0 14px;background:#fafafa;outline:none
-}
-.login-input:focus{border-color:#111;background:#fff}
-.login-btn{
-width:100%;height:53px;background:#111;color:#fff;border-radius:14px;
-margin-top:21px;font-weight:900
-}
-.login-error{text-align:center;color:#e53935;font-size:12px;min-height:18px;margin-top:10px}
-.login-info{
-margin-top:14px;background:#f5f6f8;border-radius:13px;padding:13px;
-font-size:11px;line-height:1.7;color:#777
+  margin:0;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  background:var(--bg);
+  color:var(--ink);
 }
 
-#app{display:none;min-height:100vh}
-.topbar{
-height:66px;background:#fff;border-bottom:1px solid #e9eaec;
-position:sticky;top:0;z-index:100
-}
-.topbar-inner{
-height:100%;max-width:1200px;margin:auto;padding:0 20px;
-display:flex;align-items:center;justify-content:space-between
-}
-.brand{font-size:20px;font-weight:950}
-.brand small{display:block;font-size:8px;color:#999;letter-spacing:1px}
-.user-area{display:flex;align-items:center;gap:9px}
-.user-name{font-size:12px;font-weight:800;color:#666}
-.role-badge{
-font-size:9px;font-weight:900;background:#111;color:#fff;
-padding:5px 8px;border-radius:7px
-}
-.logout-btn{
-background:#f0f1f3;border-radius:9px;padding:8px 12px;
-font-size:11px;font-weight:800
+button{
+  font-family:inherit;
+  cursor:pointer;
 }
 
-.main{max-width:1200px;margin:auto;padding:18px 20px 100px}
-
-.nav{
-display:flex;gap:4px;overflow-x:auto;background:#fff;padding:7px;
-border-radius:17px;margin-bottom:20px
+.app{
+  max-width:1500px;
+  margin:0 auto;
+  padding:20px;
 }
-.nav button{
-white-space:nowrap;background:none;color:#777;
-padding:11px 13px;border-radius:10px;font-size:12px;font-weight:800
-}
-.nav button.active{background:#111;color:#fff}
 
-.page{display:none}
-.page.active{display:block}
-.page-title{font-size:28px;font-weight:950}
-.page-subtitle{font-size:13px;color:#999;margin:5px 0 21px}
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.sub{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:4px;
+}
+
+.header-buttons{
+  display:flex;
+  gap:8px;
+}
+
+.header-buttons button{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:10px;
+  padding:10px 15px;
+  font-weight:700;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:minmax(600px,1fr) 360px;
+  gap:18px;
+}
+
+.board-wrap{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.board{
+  width:100%;
+  aspect-ratio:1/1;
+  display:grid;
+  grid-template-columns:repeat(11,1fr);
+  grid-template-rows:repeat(11,1fr);
+  gap:3px;
+}
+
+.cell{
+  position:relative;
+  min-width:0;
+  min-height:0;
+  border:1px solid #dfe3e8;
+  border-radius:6px;
+  background:#fff;
+  padding:4px;
+  overflow:hidden;
+}
+
+.cell.center{
+  grid-column:2/11;
+  grid-row:2/11;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid #e5e7eb;
+}
+
+.center-title{
+  font-size:34px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.cell-name{
+  font-size:10px;
+  font-weight:800;
+  line-height:1.1;
+}
+
+.cell-price{
+  font-size:9px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.cell-toll{
+  font-size:8px;
+  color:#374151;
+  margin-top:2px;
+}
+
+.cell.special{
+  background:#fffaf0;
+}
+
+.cell.gold{
+  background:#fff8dc;
+}
+
+.cell.start{
+  background:#eef6ff;
+}
+
+.cell.island{
+  background:#f2f2f2;
+}
+
+.cell.vehicle{
+  background:#f3f4f6;
+}
+
+.cell.welfare{
+  background:#f0fdf4;
+}
+
+.cell.owner1{box-shadow:inset 0 0 0 3px #2563eb}
+.cell.owner2{box-shadow:inset 0 0 0 3px #ef4444}
+.cell.owner3{box-shadow:inset 0 0 0 3px #16a34a}
+.cell.owner4{box-shadow:inset 0 0 0 3px #f59e0b}
+
+.tokens{
+  position:absolute;
+  right:3px;
+  bottom:3px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:2px;
+}
+
+.token{
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  color:#fff;
+  font-size:8px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #fff;
+}
+
+.side{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.panel{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,.04);
+}
+
+.turn-box{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.turn-name{
+  font-size:20px;
+  font-weight:900;
+}
+
+.money{
+  font-size:18px;
+  font-weight:900;
+}
+
+.dice{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin:14px 0;
+}
+
+.die{
+  width:58px;
+  height:58px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:900;
+}
+
+.roll{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:13px;
+  background:var(--accent);
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
+}
+
+.roll:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.section-title{
+  font-size:14px;
+  font-weight:900;
+  margin-bottom:9px;
+}
+
+.player{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 0;
+  border-bottom:1px solid #f0f0f0;
+}
+
+.player:last-child{
+  border-bottom:0;
+}
+
+.player-dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+}
+
+.player-info{
+  flex:1;
+}
+
+.player-name{
+  font-weight:800;
+  font-size:13px;
+}
+
+.player-money{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.log{
+  height:180px;
+  overflow:auto;
+  background:#f8fafc;
+  border-radius:10px;
+  padding:9px;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.log div{
+  margin-bottom:4px;
+}
+
+.modal-bg{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+  padding:20px;
+}
+
+.modal-bg.show{
+  display:flex;
+}
+
+.modal{
+  width:min(500px,100%);
+  background:#fff;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.modal h2{
+  margin:0 0 10px;
+}
+
+.modal p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.modal-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:18px;
+}
+
+.modal-buttons button{
+  flex:1;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:10px;
+  padding:12px;
+  font-weight:900;
+}
+
+.modal-buttons button.primary{
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+}
 
 .card{
-background:#fff;border-radius:19px;padding:20px;
-box-shadow:0 3px 15px rgba(0,0,0,.035)
-}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
-.section{margin-top:27px}
-.section-head{
-display:flex;justify-content:space-between;align-items:center;margin-bottom:11px
-}
-.section-head h2{font-size:17px;font-weight:900}
-.section-head span{font-size:10px;color:#999}
-
-.hero{
-background:#111;color:#fff;border-radius:25px;padding:28px;
-min-height:210px;display:flex;flex-direction:column;justify-content:flex-end
-}
-.hero-tag{font-size:10px;color:#999;margin-bottom:8px}
-.hero h2{font-size:31px;line-height:1.1}
-.hero p{font-size:12px;color:#999;margin-top:10px}
-
-.next-game{
-display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-text-align:center;gap:15px
-}
-.team-name{font-weight:900;font-size:17px}
-.team-sub{font-size:10px;color:#999;margin-top:4px}
-.vs{font-weight:900;color:#999}
-.game-date{text-align:center;color:#777;font-size:12px;margin-top:16px}
-
-.news-card{cursor:pointer}
-.news-tag{
-display:inline-block;background:#f0f1f3;border-radius:7px;
-padding:5px 8px;font-size:10px;font-weight:900
-}
-.news-card h3{font-size:16px;margin-top:11px;line-height:1.4}
-.news-card p{font-size:12px;color:#888;margin-top:7px;line-height:1.5}
-
-.schedule-list{display:flex;flex-direction:column;gap:9px}
-.schedule-item{
-display:flex;align-items:center;gap:14px;background:#fff;
-border-radius:16px;padding:16px;cursor:pointer
-}
-.schedule-date{width:55px;text-align:center}
-.schedule-date strong{display:block;font-size:18px}
-.schedule-date span{font-size:10px;color:#999}
-.schedule-match{flex:1;font-size:13px;font-weight:900}
-.schedule-match small{display:block;color:#999;font-size:10px;margin-top:4px;font-weight:500}
-.badge{
-padding:6px 8px;border-radius:7px;background:#f0f1f3;
-font-size:9px;font-weight:900
-}
-.badge.open{background:#e7f7ed;color:#21863e}
-
-.table-wrap{background:#fff;border-radius:19px;overflow:auto}
-table{border-collapse:collapse;width:100%;min-width:600px}
-th{font-size:11px;color:#999;padding:14px 9px;border-bottom:1px solid #eee}
-td{font-size:13px;text-align:center;padding:16px 9px;border-bottom:1px solid #f1f1f1}
-th:first-child,td:first-child{text-align:left;padding-left:18px}
-
-.team-card,.player-card{cursor:pointer}
-.team-color{width:43px;height:43px;border-radius:13px;margin-bottom:14px}
-.team-card h3,.player-card h3{font-size:16px}
-.team-card p,.player-card p{font-size:11px;color:#999;margin-top:4px}
-.team-record{margin-top:15px;font-size:12px;font-weight:900}
-.player-number{
-width:43px;height:43px;border-radius:50%;background:#f0f1f3;
-display:flex;align-items:center;justify-content:center;
-font-weight:950;margin-bottom:13px
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px;
+  margin-top:10px;
+  background:#fffdf5;
 }
 
-.record-box{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.record-item{background:#fff;border-radius:16px;padding:17px}
-.record-item span{font-size:11px;color:#999}
-.record-item strong{display:block;font-size:23px;margin-top:7px}
-
-.prediction{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:17px}
-.predict-btn{padding:17px;border-radius:13px;background:#f2f3f5;font-weight:900}
-
-.admin-warning{
-padding:14px;border-radius:13px;background:#fff4df;
-color:#9a5c00;font-size:12px;margin-bottom:14px
-}
-.admin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.admin-action{
-background:#fff;border-radius:18px;padding:21px;text-align:left;
-box-shadow:0 3px 15px rgba(0,0,0,.035)
-}
-.admin-action strong{display:block;font-size:16px}
-.admin-action span{display:block;color:#999;font-size:11px;margin-top:6px}
-
-.admin-panel{
-background:#fff;border-radius:20px;padding:20px;
-box-shadow:0 3px 15px rgba(0,0,0,.035)
-}
-.form-grid{
-display:grid;grid-template-columns:repeat(2,1fr);gap:13px
-}
-.form-group{display:flex;flex-direction:column;gap:6px}
-.form-group.full{grid-column:1/-1}
-.form-group label{font-size:11px;font-weight:900;color:#666}
-.form-control{
-width:100%;height:45px;border:1px solid #ddd;border-radius:11px;
-padding:0 12px;background:#fafafa;outline:none
-}
-textarea.form-control{height:120px;padding:12px;resize:vertical}
-.form-control:focus{border-color:#111;background:#fff}
-.admin-buttons{display:flex;gap:8px;margin-top:16px}
-.btn{
-padding:11px 15px;border-radius:10px;font-size:12px;font-weight:900
-}
-.btn-black{background:#111;color:#fff}
-.btn-gray{background:#f0f1f3;color:#333}
-.btn-red{background:#ffe9e9;color:#d22}
-
-.manage-list{display:flex;flex-direction:column;gap:9px;margin-top:16px}
-.manage-row{
-display:flex;align-items:center;gap:10px;padding:14px;
-background:#f7f8f9;border-radius:13px
-}
-.manage-row-main{flex:1}
-.manage-row-main strong{font-size:13px}
-.manage-row-main small{display:block;color:#999;font-size:10px;margin-top:3px}
-.manage-actions{display:flex;gap:5px}
-
-.detail-head{display:flex;align-items:center;gap:9px;margin-bottom:15px}
-.back-btn{
-width:38px;height:38px;border-radius:11px;background:#fff;font-size:21px
-}
-.detail-card{background:#fff;padding:23px;border-radius:21px}
-.detail-card h2{font-size:25px;margin-top:9px}
-.detail-meta{font-size:12px;color:#999;line-height:1.7;margin-top:7px}
-.detail-text{font-size:14px;color:#555;line-height:1.8;margin-top:20px}
-
-.bottom-nav{display:none}
-
-.toast{
-position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
-background:#111;color:#fff;padding:11px 16px;border-radius:11px;
-font-size:12px;font-weight:800;z-index:500;opacity:0;
-pointer-events:none;transition:.2s
-}
-.toast.show{opacity:1}
-
-@media(max-width:850px){
-.grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1000px){
+  .layout{
+    grid-template-columns:1fr;
+  }
 }
 
-@media(max-width:600px){
-.topbar{height:59px}
-.main{padding:15px 13px 90px}
-.user-name,.role-badge{display:none}
-.grid{grid-template-columns:1fr}
-.form-grid{grid-template-columns:1fr}
-.form-group.full{grid-column:auto}
-.record-box{grid-template-columns:repeat(2,1fr)}
-.admin-grid{grid-template-columns:1fr}
-.nav{margin-bottom:16px}
-.bottom-nav{
-display:flex;position:fixed;bottom:0;left:0;right:0;height:66px;
-background:#fff;border-top:1px solid #eee;z-index:200
-}
-.bottom-nav button{
-flex:1;background:none;color:#999;font-size:9px;font-weight:800
-}
-.bottom-nav button strong{display:block;font-size:17px;margin-bottom:2px}
-.bottom-nav button.active{color:#111}
+@media(max-width:700px){
+  .app{
+    padding:8px;
+  }
+
+  .layout{
+    display:block;
+  }
+
+  .side{
+    margin-top:12px;
+  }
+
+  .board-wrap{
+    padding:6px;
+  }
+
+  .cell-name{
+    font-size:7px;
+  }
+
+  .cell-price,
+  .cell-toll{
+    font-size:6px;
+  }
+
+  .center-title{
+    font-size:20px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<section id="loginScreen">
-<div class="login-box">
+<div class="app">
 
-<div class="logo">
-<div class="logo-icon">CPL</div>
-<h1>CPL SPORTS</h1>
-<p>CHEONJUNG SPORTS LEAGUE</p>
-</div>
+<header>
+  <div>
+    <div class="logo">WORLD MARBLE</div>
+    <div class="sub">Classic world-travel board • 40 spaces</div>
+  </div>
 
-<label class="login-label">아이디</label>
-<input id="loginEmail" class="login-input" type="email"
-placeholder="이메일">
-
-<label class="login-label">비밀번호</label>
-<input id="loginPassword" class="login-input" type="password"
-placeholder="비밀번호">
-
-<button class="login-btn" onclick="login()">로그인</button>
-
-<div id="loginError" class="login-error"></div>
-
-<div class="login-info">
-<b>관리자</b><br>
-haechan.jeon2012@gmail.com<br>
-비밀번호: cpl2026
-</div>
-
-</div>
-</section>
-
-
-<!-- APP -->
-<div id="app">
-
-<header class="topbar">
-<div class="topbar-inner">
-
-<div class="brand">
-CPL SPORTS
-<small>CHEONJUNG SPORTS LEAGUE</small>
-</div>
-
-<div class="user-area">
-<span id="userName" class="user-name"></span>
-<span id="roleBadge" class="role-badge"></span>
-<button class="logout-btn" onclick="logout()">로그아웃</button>
-</div>
-
-</div>
+  <div class="header-buttons">
+    <button onclick="showRules()">규칙</button>
+    <button onclick="newGame()">새 게임</button>
+  </div>
 </header>
 
-<main class="main">
+<div class="layout">
 
-<nav id="mainNav" class="nav"></nav>
+  <div class="board-wrap">
+    <div class="board" id="board"></div>
+  </div>
 
+  <div class="side">
 
-<!-- HOME -->
-<section id="page-home" class="page active">
+    <div class="panel">
+      <div class="turn-box">
+        <div>
+          <div class="section-title">현재 턴</div>
+          <div class="turn-name" id="turnName">플레이어 1</div>
+        </div>
 
-<div class="hero">
-<div class="hero-tag">2026 CPL REGULAR SEASON</div>
-<h2>CHEONJUNG<br>SPORTS LEAGUE</h2>
-<p>5개 팀 · 정규시즌 20경기 · 12:30</p>
-</div>
+        <div class="money" id="turnMoney">₩3,000,000</div>
+      </div>
 
-<div class="section">
-<div class="section-head">
-<h2>다음 경기</h2>
-<span>OPENING GAME</span>
-</div>
+      <div class="dice">
+        <div class="die" id="die1">⚀</div>
+        <div class="die" id="die2">⚀</div>
+      </div>
 
-<div class="card">
-<div class="next-game">
-<div>
-<div class="team-name">해찬팀</div>
-<div class="team-sub">HAECHAN</div>
-</div>
-<div class="vs">VS</div>
-<div>
-<div class="team-name">시환팀</div>
-<div class="team-sub">SIHWAN</div>
-</div>
-</div>
-<div class="game-date">2026.10.12 월요일 · 12:30</div>
-</div>
-</div>
+      <button class="roll" id="rollBtn" onclick="rollDice()">주사위 굴리기</button>
+    </div>
 
-<div class="section">
-<div class="section-head">
-<h2>CPL NEWS</h2>
-<span>NEWS</span>
-</div>
-<div id="homeNews" class="grid"></div>
-</div>
+    <div class="panel">
+      <div class="section-title">플레이어</div>
+      <div id="playersPanel"></div>
+    </div>
 
-</section>
+    <div class="panel">
+      <div class="section-title">사회복지기금</div>
+      <div id="fund">₩0</div>
+    </div>
 
+    <div class="panel">
+      <div class="section-title">게임 로그</div>
+      <div class="log" id="log"></div>
+    </div>
 
-<!-- SCHEDULE -->
-<section id="page-schedule" class="page">
-<h1 class="page-title">일정</h1>
-<p class="page-subtitle">CPL 2026 정규시즌 20경기</p>
-<div id="scheduleList" class="schedule-list"></div>
-</section>
-
-
-<!-- RESULTS -->
-<section id="page-results" class="page">
-<h1 class="page-title">결과</h1>
-<p class="page-subtitle">경기 결과</p>
-<div id="resultsBox" class="card"></div>
-</section>
-
-
-<!-- STANDINGS -->
-<section id="page-standings" class="page">
-<h1 class="page-title">순위</h1>
-<p class="page-subtitle">정규시즌 순위</p>
-
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>팀</th>
-<th>경기</th>
-<th>승</th>
-<th>패</th>
-<th>무</th>
-<th>승률</th>
-<th>게임차</th>
-</tr>
-</thead>
-<tbody id="standingsBody"></tbody>
-</table>
-</div>
-</section>
-
-
-<!-- TEAMS -->
-<section id="page-teams" class="page">
-<h1 class="page-title">팀</h1>
-<p class="page-subtitle">CPL 5개 팀</p>
-<div id="teamGrid" class="grid"></div>
-</section>
-
-
-<!-- PLAYERS -->
-<section id="page-players" class="page">
-<h1 class="page-title">선수</h1>
-<p class="page-subtitle">CPL 참가 선수</p>
-<div id="playerGrid" class="grid"></div>
-</section>
-
-
-<!-- RECORDS -->
-<section id="page-records" class="page">
-
-<h1 class="page-title">기록</h1>
-<p class="page-subtitle">CPL 시즌 기록</p>
-
-<div class="record-box">
-
-<div class="record-item">
-<span>팀 수</span><strong>5</strong>
-</div>
-
-<div class="record-item">
-<span>정규시즌</span><strong>20</strong>
-</div>
-
-<div class="record-item">
-<span>경기시간</span><strong>12:30</strong>
-</div>
-
-<div class="record-item">
-<span>기본 이닝</span><strong>1</strong>
-</div>
-
-</div>
-
-<div class="section">
-<div class="section-head">
-<h2>경기기록 노트</h2>
-<span>CPL NOTE</span>
-</div>
-
-<div class="card">
-<b>타격 기록</b>
-<p style="color:#888;font-size:12px;margin-top:7px">
-타수 · 안타 · 홈런 · 타점 · 출루 기록
-</p>
-
-<hr style="border:0;border-top:1px solid #eee;margin:17px 0">
-
-<b>투구 기록</b>
-<p style="color:#888;font-size:12px;margin-top:7px">
-선발 · 구원 · 종합 · 투구 수 · 스트라이크 · 볼
-</p>
+  </div>
 </div>
 </div>
 
-</section>
-
-
-<!-- NEWS -->
-<section id="page-news" class="page">
-<h1 class="page-title">CPL NEWS</h1>
-<p class="page-subtitle">리그 최신 소식</p>
-<div id="newsGrid" class="grid"></div>
-</section>
-
-
-<!-- FUN -->
-<section id="page-fun" class="page">
-<h1 class="page-title">재미</h1>
-<p class="page-subtitle">CPL 예측</p>
-
-<div class="card">
-<h2 style="font-size:19px">개막전 승리팀은?</h2>
-
-<div class="prediction">
-<button class="predict-btn" onclick="vote('해찬팀')">🟦 해찬팀</button>
-<button class="predict-btn" onclick="vote('시환팀')">🟨 시환팀</button>
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h2 id="modalTitle"></h2>
+    <div id="modalBody"></div>
+    <div class="modal-buttons" id="modalButtons"></div>
+  </div>
 </div>
-</div>
-</section>
-
-
-<!-- ADMIN -->
-<section id="page-admin" class="page">
-
-<h1 class="page-title">관리자</h1>
-<p class="page-subtitle">CPL 운영 관리</p>
-
-<div class="admin-warning">
-👑 관리자 계정 전용입니다. 아래 메뉴를 누르면 실제 편집 화면이 열립니다.
-</div>
-
-<div id="adminMenu" class="admin-grid">
-
-<button class="admin-action" onclick="openAdmin('games')">
-<strong>⚾ 경기 관리</strong>
-<span>일정 · 팀 · 시간 · 상태 수정</span>
-</button>
-
-<button class="admin-action" onclick="openAdmin('players')">
-<strong>👤 선수 관리</strong>
-<span>선수 · 등번호 · 팀 · 포지션 수정</span>
-</button>
-
-<button class="admin-action" onclick="openAdmin('teams')">
-<strong>🏆 팀 관리</strong>
-<span>팀 정보 수정</span>
-</button>
-
-<button class="admin-action" onclick="openAdmin('news')">
-<strong>📰 뉴스 관리</strong>
-<span>뉴스 작성 · 수정 · 삭제</span>
-</button>
-
-<button class="admin-action" onclick="openAdmin('notice')">
-<strong>📢 공지 관리</strong>
-<span>공지사항 작성 및 수정</span>
-</button>
-
-<button class="admin-action" onclick="openAdmin('records')">
-<strong>📒 경기기록 노트</strong>
-<span>타격 · 투구 기록 입력</span>
-</button>
-
-</div>
-
-<div id="adminEditor" class="section"></div>
-
-</section>
-
-
-<!-- DETAIL -->
-<section id="page-detail" class="page">
-
-<div class="detail-head">
-<button class="back-btn" onclick="goBack()">‹</button>
-<strong>상세보기</strong>
-</div>
-
-<div id="detailContent" class="detail-card"></div>
-
-</section>
-
-</main>
-
-<div id="bottomNav" class="bottom-nav"></div>
-
-</div>
-
-
-<div id="toast" class="toast"></div>
-
 
 <script>
 
-/* ================================
- DATA
-================================ */
+const W=10000;
 
-const accounts=[
-{
-email:"haechan.jeon2012@gmail.com",
-password:"cpl2026",
-name:"CPL 관리자",
-role:"admin",
-team:"CPL 운영"
-},
-{
-email:"haechan@cpl.local",
-password:"haechan2026",
-name:"해찬팀",
-role:"user",
-team:"해찬팀"
-},
-{
-email:"sihwan@cpl.local",
-password:"sihwan2026",
-name:"시환팀",
-role:"user",
-team:"시환팀"
-},
-{
-email:"jaewoo@cpl.local",
-password:"jaewoo2026",
-name:"재우팀",
-role:"user",
-team:"재우팀"
-},
-{
-email:"jaehyung@cpl.local",
-password:"jaehyung2026",
-name:"재형팀",
-role:"user",
-team:"재형팀"
-},
-{
-email:"junhyuk@cpl.local",
-password:"junhyuk2026",
-name:"준혁팀",
-role:"user",
-team:"준혁팀"
-}
+const fmt=n=>'₩'+(n*10000).toLocaleString('ko-KR');
+
+const PColors=[
+  '#2563eb',
+  '#ef4444',
+  '#16a34a',
+  '#f59e0b'
+];
+
+const PNames=[
+  '플레이어 1',
+  '플레이어 2',
+  '플레이어 3',
+  '플레이어 4'
+];
+
+/* ★ 추가된 부분 : 게임 인원 */
+let playerCount=4;
+
+let players=[],
+    turn=0,
+    gameStarted=false,
+    rolled=false,
+    dice=[1,1],
+    fund=0,
+    deck=[],
+    deckPos=0;
+
+let pendingMove=null;
+
+
+/* =========================
+   보드 데이터
+========================= */
+
+const boardData=[
+  {name:'출발',type:'start',price:0},
+  {name:'타이베이',type:'property',price:5,t:[0,2,4,8,12]},
+  {name:'황금열쇠',type:'gold'},
+  {name:'베이징',type:'property',price:5,t:[0,2,4,8,12]},
+  {name:'마닐라',type:'property',price:6,t:[0,3,6,12,18]},
+  {name:'제주도',type:'property',price:6,t:[0,3,6,12,18]},
+  {name:'황금열쇠',type:'gold'},
+  {name:'싱가포르',type:'property',price:7,t:[0,3,7,14,21]},
+  {name:'카이로',type:'property',price:7,t:[0,3,7,14,21]},
+  {name:'이스탄불',type:'property',price:8,t:[0,4,8,16,24]},
+  {name:'무인도',type:'island'},
+  {name:'아테네',type:'property',price:8,t:[0,4,8,16,24]},
+  {name:'황금열쇠',type:'gold'},
+  {name:'코펜하겐',type:'property',price:9,t:[0,4,9,18,27]},
+  {name:'스톡홀름',type:'property',price:9,t:[0,4,9,18,27]},
+  {name:'콩코드 여객기',type:'vehicle',toll:20},
+  {name:'베른',type:'property',price:10,t:[0,5,10,20,30]},
+  {name:'황금열쇠',type:'gold'},
+  {name:'베를린',type:'property',price:10,t:[0,5,10,20,30]},
+  {name:'오타와',type:'property',price:11,t:[0,5,11,22,33]},
+  {name:'사회복지기금 수령처',type:'welfare'},
+  {name:'부에노스아이레스',type:'property',price:11,t:[0,5,11,22,33]},
+  {name:'황금열쇠',type:'gold'},
+  {name:'상파울루',type:'property',price:12,t:[0,6,12,24,36]},
+  {name:'시드니',type:'property',price:12,t:[0,6,12,24,36]},
+  {name:'부산',type:'property',price:13,t:[0,6,13,26,39]},
+  {name:'하와이',type:'property',price:13,t:[0,6,13,26,39]},
+  {name:'리스본',type:'property',price:14,t:[0,7,14,28,42]},
+  {name:'퀸 엘리자베스호',type:'vehicle',toll:20},
+  {name:'마드리드',type:'property',price:14,t:[0,7,14,28,42]},
+  {name:'우주여행',type:'tour'},
+  {name:'도쿄',type:'property',price:15,t:[0,7,15,30,45]},
+  {name:'컬럼비아호',type:'vehicle',toll:20},
+  {name:'파리',type:'property',price:15,t:[0,7,15,30,45]},
+  {name:'로마',type:'property',price:16,t:[0,8,16,32,48]},
+  {name:'황금열쇠',type:'gold'},
+  {name:'런던',type:'property',price:16,t:[0,8,16,32,48]},
+  {name:'뉴욕',type:'property',price:17,t:[0,8,17,34,51]},
+  {name:'사회복지기금 접수처',type:'welfare'},
+  {name:'서울',type:'property',price:20,t:[0,10,20,40,60]}
+];
+
+let board=[];
+
+const golden=[
+  {
+    title:'보너스',
+    text:'은행에서 보너스 20만원을 받습니다.',
+    action:p=>{
+      p.money+=20;
+    }
+  },
+  {
+    title:'사회복지기금',
+    text:'사회복지기금에 10만원을 납부합니다.',
+    action:p=>{
+      p.money-=10;
+      fund+=10;
+    }
+  },
+  {
+    title:'은행 보너스',
+    text:'은행에서 30만원을 받습니다.',
+    action:p=>{
+      p.money+=30;
+    }
+  },
+  {
+    title:'통행료 면제',
+    text:'다음 한 번의 통행료를 면제받습니다.',
+    action:p=>{
+      p.favor++;
+    }
+  },
+  {
+    title:'무인도 탈출',
+    text:'무인도 탈출권을 획득합니다.',
+    action:p=>{
+      p.island=0;
+    }
+  },
+  {
+    title:'여행',
+    text:'3칸 앞으로 이동합니다.',
+    action:p=>{
+      pendingMove=3;
+    }
+  }
 ];
 
 
-let teams=[
-{name:"해찬팀",code:"HAECHAN",color:"#2f6fed",wins:0,losses:0,draws:0},
-{name:"시환팀",code:"SIHWAN",color:"#f1b900",wins:0,losses:0,draws:0},
-{name:"재우팀",code:"JAEWOO",color:"#e64949",wins:0,losses:0,draws:0},
-{name:"재형팀",code:"JAEHYUNG",color:"#2aa876",wins:0,losses:0,draws:0},
-{name:"준혁팀",code:"JUNHYUK",color:"#8b5cf6",wins:0,losses:0,draws:0}
-];
+/* =========================
+   유틸
+========================= */
 
-
-let players=[
-{name:"전해찬",number:"1",team:"해찬팀",position:"투수 / 내야"},
-{name:"차시환",number:"2",team:"시환팀",position:"투수 / 내야"},
-{name:"남재우",number:"3",team:"재우팀",position:"투수 / 외야"},
-{name:"이재형",number:"4",team:"재형팀",position:"투수 / 내야"},
-{name:"준혁",number:"5",team:"준혁팀",position:"투수 / 내야"}
-];
-
-
-let schedule=[
-{date:"10/12",day:"월",home:"해찬팀",away:"시환팀",time:"12:30",status:"개막전"},
-{date:"10/13",day:"화",home:"재우팀",away:"재형팀",time:"12:30",status:"예정"},
-{date:"10/14",day:"수",home:"준혁팀",away:"해찬팀",time:"12:30",status:"예정"},
-{date:"10/15",day:"목",home:"시환팀",away:"재우팀",time:"12:30",status:"예정"},
-{date:"10/16",day:"금",home:"재형팀",away:"준혁팀",time:"12:30",status:"예정"},
-{date:"10/19",day:"월",home:"해찬팀",away:"재우팀",time:"12:30",status:"예정"},
-{date:"10/20",day:"화",home:"시환팀",away:"재형팀",time:"12:30",status:"예정"},
-{date:"10/21",day:"수",home:"재우팀",away:"준혁팀",time:"12:30",status:"예정"},
-{date:"10/22",day:"목",home:"해찬팀",away:"재형팀",time:"12:30",status:"예정"},
-{date:"10/23",day:"금",home:"시환팀",away:"준혁팀",time:"12:30",status:"예정"},
-{date:"10/26",day:"월",home:"해찬팀",away:"시환팀",time:"12:30",status:"예정"},
-{date:"10/27",day:"화",home:"재우팀",away:"재형팀",time:"12:30",status:"예정"},
-{date:"10/28",day:"수",home:"준혁팀",away:"해찬팀",time:"12:30",status:"예정"},
-{date:"10/29",day:"목",home:"시환팀",away:"재우팀",time:"12:30",status:"예정"},
-{date:"10/30",day:"금",home:"재형팀",away:"준혁팀",time:"12:30",status:"예정"},
-{date:"11/2",day:"월",home:"해찬팀",away:"재우팀",time:"12:30",status:"예정"},
-{date:"11/3",day:"화",home:"시환팀",away:"재형팀",time:"12:30",status:"예정"},
-{date:"11/4",day:"수",home:"재우팀",away:"준혁팀",time:"12:30",status:"예정"},
-{date:"11/5",day:"목",home:"해찬팀",away:"재형팀",time:"12:30",status:"예정"},
-{date:"11/6",day:"금",home:"시환팀",away:"준혁팀",time:"12:30",status:"예정"}
-];
-
-
-let news=[
-{
-title:"CPL 2026 정규시즌 개막",
-category:"리그",
-date:"2026.09.14",
-text:"10월 12일 해찬팀과 시환팀의 개막전을 시작으로 CPL 2026 정규시즌이 시작됩니다."
-},
-{
-title:"재형 선수 참가 확정",
-category:"선수",
-date:"2026.09.14",
-text:"재형 선수의 CPL 참가가 확정되었습니다."
-},
-{
-title:"준혁 선수 참가 확정",
-category:"선수",
-date:"2026.09.14",
-text:"준혁 선수의 CPL 참가가 확정되었습니다."
-}
-];
-
-
-let notices=[];
-
-let records=[];
-
-let currentUser=null;
-let currentPage="home";
-let previousPage="home";
-let toastTimer;
-
-
-/* ================================
- LOGIN
-================================ */
-
-function login(){
-
-const email=document.getElementById("loginEmail").value.trim().toLowerCase();
-const password=document.getElementById("loginPassword").value;
-const error=document.getElementById("loginError");
-
-const account=accounts.find(a=>
-a.email.toLowerCase()===email &&
-a.password===password
-);
-
-if(!account){
-error.textContent="아이디 또는 비밀번호가 올바르지 않습니다.";
-return;
+function shuffle(arr){
+  return [...arr].sort(()=>Math.random()-.5);
 }
 
-currentUser=account;
+function log(msg){
+  const el=document.getElementById('log');
+  const d=document.createElement('div');
+  d.textContent=msg;
+  el.prepend(d);
+}
 
-document.getElementById("loginScreen").style.display="none";
-document.getElementById("app").style.display="block";
+function activePlayers(){
+  return players.filter(p=>p.alive);
+}
 
-document.getElementById("userName").textContent=currentUser.name;
-document.getElementById("roleBadge").textContent=
-currentUser.role==="admin"?"ADMIN":"USER";
 
-buildNavigation();
-renderAll();
-navigate("home");
+/* =========================
+   ★ 플레이어 초기화
+   선택한 인원만 생성
+========================= */
 
-showToast(
-currentUser.role==="admin"
-?"관리자로 로그인했습니다."
-:"로그인했습니다."
-);
+function initPlayers(){
+
+  players=PNames
+    .slice(0,playerCount)
+    .map((name,i)=>({
+      id:i,
+      name,
+      money:300,
+      pos:0,
+      props:{},
+      island:0,
+      radio:0,
+      favor:0,
+      alive:true
+    }));
 
 }
 
 
-function logout(){
+/* =========================
+   ★ 새 게임
+   인원 선택
+========================= */
 
-currentUser=null;
+function newGame(){
 
-document.getElementById("app").style.display="none";
-document.getElementById("loginScreen").style.display="flex";
-
-document.getElementById("loginEmail").value="";
-document.getElementById("loginPassword").value="";
-document.getElementById("loginError").textContent="";
-
-}
-
-
-/* ================================
- NAV
-================================ */
-
-const navItems=[
-["home","홈","⌂"],
-["schedule","일정","▣"],
-["results","결과","◉"],
-["standings","순위","🏆"],
-["teams","팀","◆"],
-["players","선수","●"],
-["records","기록","▤"],
-["news","뉴스","N"],
-["fun","재미","★"]
-];
-
-
-function buildNavigation(){
-
-const nav=document.getElementById("mainNav");
-const bottom=document.getElementById("bottomNav");
-
-nav.innerHTML="";
-bottom.innerHTML="";
-
-navItems.forEach(item=>{
-
-const b=document.createElement("button");
-b.dataset.page=item[0];
-b.textContent=item[2]+" "+item[1];
-b.onclick=()=>navigate(item[0]);
-
-nav.appendChild(b);
-
-});
-
-if(currentUser && currentUser.role==="admin"){
-
-const b=document.createElement("button");
-b.dataset.page="admin";
-b.textContent="⚙ 관리자";
-b.onclick=()=>navigate("admin");
-nav.appendChild(b);
-
-}
-
-navItems.slice(0,5).forEach(item=>{
-
-const b=document.createElement("button");
-b.dataset.page=item[0];
-b.innerHTML="<strong>"+item[2]+"</strong>"+item[1];
-b.onclick=()=>navigate(item[0]);
-bottom.appendChild(b);
-
-});
+  showModal(
+    '게임 인원 선택',
+    '<p>몇 명이 플레이할까요?</p>',
+    [
+      ['2명',()=>startGame(2)],
+      ['3명',()=>startGame(3)],
+      ['4명',()=>startGame(4)]
+    ]
+  );
 
 }
 
 
-function navigate(page){
+/* =========================
+   ★ 실제 게임 시작
+========================= */
 
-if(page==="admin" &&
-(!currentUser || currentUser.role!=="admin")){
-showToast("관리자만 접근할 수 있습니다.");
-return;
-}
+function startGame(count){
 
-const target=document.getElementById("page-"+page);
-if(!target)return;
+  playerCount=count;
 
-document.querySelectorAll(".page")
-.forEach(p=>p.classList.remove("active"));
+  initPlayers();
 
-target.classList.add("active");
-currentPage=page;
+  turn=0;
+  rolled=false;
+  dice=[1,1];
+  fund=0;
 
-document.querySelectorAll("#mainNav button")
-.forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+  deck=shuffle(
+    golden.map((c,i)=>({
+      ...c,
+      id:i+1
+    }))
+  );
 
-document.querySelectorAll("#bottomNav button")
-.forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+  deckPos=0;
 
-window.scrollTo({top:0,behavior:"smooth"});
+  gameStarted=true;
 
-}
+  board.forEach(x=>{
+    if(x){
+      delete x.owner;
+      x.build=0;
+    }
+  });
 
+  log(
+    `${playerCount}인 게임을 시작했습니다. 4인 클래식 규칙, 시작자금 300만원.`
+  );
 
-/* ================================
- RENDER
-================================ */
+  closeModal();
 
-function renderAll(){
-renderSchedule();
-renderStandings();
-renderTeams();
-renderPlayers();
-renderNews();
-renderResults();
-}
-
-
-function renderSchedule(){
-
-const list=document.getElementById("scheduleList");
-list.innerHTML="";
-
-schedule.forEach((g,i)=>{
-
-const item=document.createElement("div");
-item.className="schedule-item";
-
-item.onclick=()=>{
-previousPage="schedule";
-openGame(i);
-};
-
-item.innerHTML=`
-<div class="schedule-date">
-<strong>${g.date}</strong>
-<span>${g.day}</span>
-</div>
-
-<div class="schedule-match">
-${g.home} vs ${g.away}
-<small>${g.time} · ${g.status}</small>
-</div>
-
-<span class="badge ${i===0?"open":""}">
-${g.status}
-</span>
-`;
-
-list.appendChild(item);
-
-});
+  render();
 
 }
 
 
-function renderStandings(){
+/* =========================
+   모달
+========================= */
 
-const body=document.getElementById("standingsBody");
-body.innerHTML="";
+function showModal(title,body,buttons=[]){
 
-teams.forEach((t,i)=>{
+  document.getElementById('modalTitle').textContent=title;
 
-const games=t.wins+t.losses+t.draws;
-const rate=games?((t.wins/games).toFixed(3)):"0.000";
+  document.getElementById('modalBody').innerHTML=body;
 
-const tr=document.createElement("tr");
+  const box=document.getElementById('modalButtons');
 
-tr.innerHTML=`
-<td><b>${i+1}</b> ${t.name}</td>
-<td>${games}</td>
-<td>${t.wins}</td>
-<td>${t.losses}</td>
-<td>${t.draws}</td>
-<td>${rate}</td>
-<td>—</td>
-`;
+  box.innerHTML='';
 
-body.appendChild(tr);
+  buttons.forEach((b,i)=>{
 
-});
+    const btn=document.createElement('button');
+
+    btn.textContent=b[0];
+
+    if(i===buttons.length-1){
+      btn.classList.add('primary');
+    }
+
+    btn.onclick=b[1];
+
+    box.appendChild(btn);
+
+  });
+
+  document.getElementById('modalBg').classList.add('show');
+
+}
+
+function closeModal(){
+
+  document.getElementById('modalBg').classList.remove('show');
 
 }
 
 
-function renderTeams(){
+/* =========================
+   규칙
+========================= */
 
-const grid=document.getElementById("teamGrid");
-grid.innerHTML="";
+function showRules(){
 
-teams.forEach((t,i)=>{
-
-const card=document.createElement("div");
-card.className="card team-card";
-
-card.onclick=()=>{
-previousPage="teams";
-openTeam(i);
-};
-
-card.innerHTML=`
-<div class="team-color" style="background:${t.color}"></div>
-<h3>${t.name}</h3>
-<p>${t.code}</p>
-<div class="team-record">
-${t.wins}승 ${t.losses}패 ${t.draws}무
-</div>
-`;
-
-grid.appendChild(card);
-
-});
+  showModal(
+    'WORLD MARBLE 규칙',
+    `
+    <p>
+    • 40칸 클래식 세계여행 보드<br>
+    • 플레이어는 2~4명 선택 가능<br>
+    • 시작자금 300만원<br>
+    • 주사위 2개를 굴려 이동<br>
+    • 빈 토지는 구매 가능<br>
+    • 소유 토지는 건물을 건설할 수 있습니다.<br>
+    • 다른 플레이어의 토지에 도착하면 통행료를 냅니다.<br>
+    • 황금열쇠에서는 카드를 뽑습니다.<br>
+    • 무인도에서는 일정 조건에 따라 탈출할 수 있습니다.
+    </p>
+    `,
+    [
+      ['닫기',closeModal]
+    ]
+  );
 
 }
 
+
+/* =========================
+   보드 생성
+========================= */
+
+function buildBoard(){
+
+  const el=document.getElementById('board');
+
+  el.innerHTML='';
+
+  board=[];
+
+  for(let i=0;i<40;i++){
+
+    const c=boardData[i];
+
+    const cell=document.createElement('div');
+
+    cell.className='cell';
+
+    if(c.type==='start')cell.classList.add('start');
+    if(c.type==='gold')cell.classList.add('gold');
+    if(c.type==='island')cell.classList.add('island');
+    if(c.type==='vehicle'||c.type==='tour')cell.classList.add('vehicle');
+    if(c.type==='welfare')cell.classList.add('welfare');
+
+    cell.dataset.index=i;
+
+    cell.onclick=()=>{
+      if(gameStarted) spaceAction(i);
+    };
+
+    board[i]={
+      ...c,
+      build:0
+    };
+
+    cell.id='cell-'+i;
+
+    el.appendChild(cell);
+
+  }
+
+  const cells=[...el.children];
+
+  const positions=[];
+
+  for(let x=0;x<11;x++)positions.push([0,x]);
+  for(let y=1;y<11;y++)positions.push([y,10]);
+  for(let x=9;x>=0;x--)positions.push([10,x]);
+  for(let y=9;y>=1;y--)positions.push([y,0]);
+
+  positions.forEach((pos,i)=>{
+
+    const cell=cells[i];
+
+    cell.style.gridRow=pos[0]+1;
+    cell.style.gridColumn=pos[1]+1;
+
+  });
+
+  const center=document.createElement('div');
+
+  center.className='cell center';
+
+  center.innerHTML='<div class="center-title">WORLD MARBLE</div>';
+
+  el.appendChild(center);
+
+}
+
+
+/* =========================
+   보드 렌더링
+========================= */
+
+function renderBoard(){
+
+  board.forEach((c,i)=>{
+
+    const cell=document.getElementById('cell-'+i);
+
+    if(!cell)return;
+
+    cell.className='cell';
+
+    if(c.type==='start')cell.classList.add('start');
+    if(c.type==='gold')cell.classList.add('gold');
+    if(c.type==='island')cell.classList.add('island');
+    if(c.type==='vehicle'||c.type==='tour')cell.classList.add('vehicle');
+    if(c.type==='welfare')cell.classList.add('welfare');
+
+    if(c.owner!==undefined){
+      cell.classList.add('owner'+(c.owner+1));
+    }
+
+    let html='';
+
+    html+=`<div class="cell-name">${c.name}</div>`;
+
+    if(c.price){
+      html+=`<div class="cell-price">${fmt(c.price)}</div>`;
+    }
+
+    if(c.toll){
+      html+=`<div class="cell-toll">통행료 ${fmt(c.toll)}</div>`;
+    }
+
+    if(c.t){
+      html+=`<div class="cell-toll">대지료 ${fmt(c.t[c.build||0])}</div>`;
+    }
+
+    const tokens=players
+      .filter(p=>p.alive&&p.pos===i)
+      .map(p=>
+        `<div class="token" style="background:${PColors[p.id]}">${p.id+1}</div>`
+      )
+      .join('');
+
+    html+=`<div class="tokens">${tokens}</div>`;
+
+    cell.innerHTML=html;
+
+  });
+
+}
+
+
+/* =========================
+   플레이어 렌더링
+========================= */
 
 function renderPlayers(){
 
-const grid=document.getElementById("playerGrid");
-grid.innerHTML="";
+  const el=document.getElementById('playersPanel');
 
-players.forEach((p,i)=>{
+  el.innerHTML='';
 
-const card=document.createElement("div");
-card.className="card player-card";
+  players.forEach(p=>{
 
-card.onclick=()=>{
-previousPage="players";
-openPlayer(i);
-};
+    const row=document.createElement('div');
 
-card.innerHTML=`
-<div class="player-number">${p.number}</div>
-<h3>${p.name}</h3>
-<p>${p.team}</p>
-<div style="margin-top:13px;color:#999;font-size:11px">
-${p.position}
-</div>
-`;
+    row.className='player';
 
-grid.appendChild(card);
+    row.innerHTML=`
+      <div class="player-dot" style="background:${PColors[p.id]}"></div>
+      <div class="player-info">
+        <div class="player-name">
+          ${p.name}${turn===p.id?' ◀':''}
+        </div>
+        <div class="player-money">
+          ${fmt(p.money)} · ${board[p.pos]?.name||''}
+        </div>
+      </div>
+    `;
 
-});
+    el.appendChild(row);
 
-}
-
-
-function renderNews(){
-
-const home=document.getElementById("homeNews");
-const grid=document.getElementById("newsGrid");
-
-home.innerHTML="";
-grid.innerHTML="";
-
-news.forEach((n,i)=>{
-
-const card=`
-<div class="card news-card" onclick="openNews(${i})">
-<span class="news-tag">${n.category}</span>
-<h3>${n.title}</h3>
-<p>${n.text}</p>
-</div>
-`;
-
-home.innerHTML+=card;
-grid.innerHTML+=card;
-
-});
+  });
 
 }
 
 
-function renderResults(){
+/* =========================
+   전체 렌더링
+========================= */
 
-document.getElementById("resultsBox").innerHTML=`
-<b>아직 공식 경기 결과가 없습니다.</b>
-<p style="color:#999;font-size:12px;margin-top:8px">
-10월 12일 개막전부터 공식 결과가 기록됩니다.
-</p>
-`;
+function render(){
 
-}
+  renderBoard();
 
+  renderPlayers();
 
-/* ================================
- DETAIL
-================================ */
+  const p=players[turn];
 
-function openGame(i){
+  if(p){
 
-const g=schedule[i];
+    document.getElementById('turnName').textContent=p.name;
 
-document.getElementById("detailContent").innerHTML=`
-<div style="font-size:11px;color:#999">CPL REGULAR SEASON</div>
-<h2>${g.home} VS ${g.away}</h2>
+    document.getElementById('turnMoney').textContent=fmt(p.money);
 
-<div class="detail-meta">
-2026년 ${g.date} ${g.day}요일<br>
-${g.time}<br>
-상태: ${g.status}
-</div>
+  }
 
-<div class="detail-text">
-정규경기 1이닝 2아웃<br>
-동점 시 연장 가능<br>
-연장전은 1이닝 3아웃<br>
-도루 없음 · 실책 없음<br>
-2루타 없음 · 3루타 없음
-</div>
-`;
+  document.getElementById('fund').textContent=fmt(fund);
 
-navigate("detail");
+  renderDice();
 
 }
 
 
-function openTeam(i){
+/* =========================
+   주사위
+========================= */
 
-const t=teams[i];
+const diceFace=[
+  '',
+  '⚀',
+  '⚁',
+  '⚂',
+  '⚃',
+  '⚄',
+  '⚅'
+];
 
-document.getElementById("detailContent").innerHTML=`
-<div class="team-color" style="background:${t.color}"></div>
-<h2>${t.name}</h2>
-<div class="detail-meta">${t.code}</div>
-<div class="detail-text">
-시즌 기록<br><br>
-${t.wins}승 ${t.losses}패 ${t.draws}무
-</div>
-`;
+function renderDice(){
 
-navigate("detail");
+  document.getElementById('die1').textContent=diceFace[dice[0]];
 
-}
+  document.getElementById('die2').textContent=diceFace[dice[1]];
 
+  const btn=document.getElementById('rollBtn');
 
-function openPlayer(i){
-
-const p=players[i];
-
-document.getElementById("detailContent").innerHTML=`
-<div class="player-number">${p.number}</div>
-<h2>${p.name}</h2>
-<div class="detail-meta">
-${p.team}<br>${p.position}
-</div>
-<div class="detail-text">
-타격 기록<br>
-경기 0 · 타수 0 · 안타 0 · 홈런 0 · 타점 0<br><br>
-투구 기록<br>
-경기 0 · 투구 수 0 · 스트라이크 0 · 볼 0
-</div>
-`;
-
-navigate("detail");
+  btn.disabled=
+    !gameStarted ||
+    rolled ||
+    !players.length ||
+    !players[turn]?.alive;
 
 }
 
 
-function openNews(i){
+/* =========================
+   주사위 굴리기
+========================= */
 
-const n=news[i];
+function rollDice(){
 
-document.getElementById("detailContent").innerHTML=`
-<div style="font-size:11px;color:#999">${n.category}</div>
-<h2>${n.title}</h2>
-<div class="detail-meta">${n.date} · CPL SPORTS</div>
-<div class="detail-text">${n.text}</div>
-`;
+  if(!gameStarted){
 
-previousPage="news";
-navigate("detail");
+    newGame();
 
-}
+    return;
 
+  }
 
-function goBack(){
-navigate(previousPage);
-}
+  if(rolled)return;
 
+  const p=players[turn];
 
-/* ================================
- ADMIN OPEN
-================================ */
+  if(!p.alive){
 
-function openAdmin(type){
+    nextTurn();
 
-if(!currentUser || currentUser.role!=="admin"){
-showToast("관리자 권한이 필요합니다.");
-return;
-}
+    return;
 
-const editor=document.getElementById("adminEditor");
+  }
 
-if(type==="games")renderGameAdmin(editor);
-if(type==="players")renderPlayerAdmin(editor);
-if(type==="teams")renderTeamAdmin(editor);
-if(type==="news")renderNewsAdmin(editor);
-if(type==="notice")renderNoticeAdmin(editor);
-if(type==="records")renderRecordAdmin(editor);
+  if(p.island>0){
 
-editor.scrollIntoView({behavior:"smooth",block:"start"});
+    islandTurn(p);
 
-}
+    return;
 
+  }
 
-/* ================================
- GAME ADMIN
-================================ */
+  dice=[
+    1+Math.floor(Math.random()*6),
+    1+Math.floor(Math.random()*6)
+  ];
 
-function renderGameAdmin(editor){
+  rolled=true;
 
-editor.innerHTML=`
-<div class="admin-panel">
+  renderDice();
 
-<div class="section-head">
-<h2>⚾ 경기 관리</h2>
-<span>20경기</span>
-</div>
+  const total=dice[0]+dice[1];
 
-<div class="manage-list" id="gameManageList"></div>
+  log(
+    `${p.name} 주사위 ${dice[0]} + ${dice[1]} = ${total}`
+  );
 
-<div id="gameForm"></div>
-
-</div>
-`;
-
-const list=document.getElementById("gameManageList");
-
-schedule.forEach((g,i)=>{
-
-const row=document.createElement("div");
-row.className="manage-row";
-
-row.innerHTML=`
-<div class="manage-row-main">
-<strong>${g.date} · ${g.home} vs ${g.away}</strong>
-<small>${g.time} · ${g.status}</small>
-</div>
-<div class="manage-actions">
-<button class="btn btn-black" onclick="editGame(${i})">수정</button>
-</div>
-`;
-
-list.appendChild(row);
-
-});
+  moveSteps(
+    p,
+    total,
+    ()=>{
+      afterMove(
+        p,
+        dice[0]===dice[1]
+      );
+    }
+  );
 
 }
 
 
-function editGame(i){
+/* =========================
+   이동
+========================= */
 
-const g=schedule[i];
-const form=document.getElementById("gameForm");
+function moveSteps(p,n,done){
 
-form.innerHTML=`
-<div class="section" id="editingGame">
+  let count=0;
 
-<div class="section-head">
-<h2>경기 ${i+1} 수정</h2>
-<span>${g.date}</span>
-</div>
+  function step(){
 
-<div class="form-grid">
+    if(count>=n){
 
-<div class="form-group">
-<label>날짜</label>
-<input id="gDate" class="form-control" value="${g.date}">
-</div>
+      done();
 
-<div class="form-group">
-<label>요일</label>
-<input id="gDay" class="form-control" value="${g.day}">
-</div>
+      return;
 
-<div class="form-group">
-<label>홈팀</label>
-<select id="gHome" class="form-control">
-${teamOptions(g.home)}
-</select>
-</div>
+    }
 
-<div class="form-group">
-<label>원정팀</label>
-<select id="gAway" class="form-control">
-${teamOptions(g.away)}
-</select>
-</div>
+    p.pos=(p.pos+1)%40;
 
-<div class="form-group">
-<label>시간</label>
-<input id="gTime" class="form-control" value="${g.time}">
-</div>
+    if(p.pos===0){
 
-<div class="form-group">
-<label>상태</label>
-<select id="gStatus" class="form-control">
-<option ${g.status==="예정"?"selected":""}>예정</option>
-<option ${g.status==="개막전"?"selected":""}>개막전</option>
-<option ${g.status==="완료"?"selected":""}>완료</option>
-<option ${g.status==="연기"?"selected":""}>연기</option>
-<option ${g.status==="취소"?"selected":""}>취소</option>
-</select>
-</div>
+      p.money+=20;
 
-</div>
+      log(`${p.name} 출발을 지나 20만원을 받았습니다.`);
 
-<div class="admin-buttons">
-<button class="btn btn-black" onclick="saveGame(${i})">저장</button>
-<button class="btn btn-gray" onclick="cancelAdminEdit()">취소</button>
-</div>
+    }
 
-</div>
-`;
+    count++;
 
-form.scrollIntoView({behavior:"smooth"});
+    render();
+
+    setTimeout(step,180);
+
+  }
+
+  step();
 
 }
 
 
-function teamOptions(selected){
+/* =========================
+   도착 처리
+========================= */
 
-return teams.map(t=>
-`<option ${t.name===selected?"selected":""}>${t.name}</option>`
-).join("");
+function afterMove(p,doubles){
 
-}
+  spaceAction(
+    p.pos,
+    ()=>{
+      if(doubles){
 
+        log(`${p.name} 더블! 한 번 더 굴릴 수 있습니다.`);
 
-function saveGame(i){
+        rolled=false;
 
-schedule[i].date=document.getElementById("gDate").value.trim();
-schedule[i].day=document.getElementById("gDay").value.trim();
-schedule[i].home=document.getElementById("gHome").value;
-schedule[i].away=document.getElementById("gAway").value;
-schedule[i].time=document.getElementById("gTime").value.trim();
-schedule[i].status=document.getElementById("gStatus").value;
+        render();
 
-renderSchedule();
-renderGameAdmin(document.getElementById("adminEditor"));
+      }else{
 
-showToast("경기 정보가 저장되었습니다.");
+        nextTurn();
 
-}
-
-
-function cancelAdminEdit(){
-
-document.getElementById("gameForm").innerHTML="";
-}
-
-
-/* ================================
- PLAYER ADMIN
-================================ */
-
-function renderPlayerAdmin(editor){
-
-editor.innerHTML=`
-<div class="admin-panel">
-
-<div class="section-head">
-<h2>👤 선수 관리</h2>
-<span>${players.length}명</span>
-</div>
-
-<div class="admin-buttons">
-<button class="btn btn-black" onclick="newPlayer()">+ 선수 추가</button>
-</div>
-
-<div class="manage-list" id="playerManageList"></div>
-<div id="playerForm"></div>
-
-</div>
-`;
-
-const list=document.getElementById("playerManageList");
-
-players.forEach((p,i)=>{
-
-const row=document.createElement("div");
-row.className="manage-row";
-
-row.innerHTML=`
-<div class="manage-row-main">
-<strong>${p.name}</strong>
-<small>${p.number}번 · ${p.team} · ${p.position}</small>
-</div>
-
-<div class="manage-actions">
-<button class="btn btn-black" onclick="editPlayer(${i})">수정</button>
-</div>
-`;
-
-list.appendChild(row);
-
-});
+      }
+    }
+  );
 
 }
 
 
-function newPlayer(){
+/* =========================
+   칸 행동
+========================= */
 
-const index=players.length;
+function spaceAction(index,done=()=>{}){
 
-players.push({
-name:"새 선수",
-number:String(index+1),
-team:teams[0].name,
-position:"내야"
-});
+  const c=board[index];
 
-renderPlayers();
+  if(!c)return;
 
-renderPlayerAdmin(document.getElementById("adminEditor"));
+  const p=players[turn];
 
-editPlayer(index);
+  if(c.type==='property'){
 
-showToast("새 선수 입력란을 만들었습니다.");
+    if(c.owner===undefined){
 
-}
+      showModal(
+        c.name,
+        `
+        <p>
+        가격: <b>${fmt(c.price)}</b><br>
+        현재 보유금액: <b>${fmt(p.money)}</b>
+        </p>
+        `,
+        [
+          ['구매',()=>buyProperty(index,done)],
+          ['구매하지 않기',()=>{
+            closeModal();
+            done();
+          }]
+        ]
+      );
 
+      return;
 
-function editPlayer(i){
+    }
 
-const p=players[i];
+    if(c.owner!==p.id){
 
-document.getElementById("playerForm").innerHTML=`
+      payToll(p,c,done);
 
-<div class="section">
+      return;
 
-<div class="section-head">
-<h2>선수 수정</h2>
-<span>${p.name}</span>
-</div>
+    }
 
-<div class="form-grid">
+  }
 
-<div class="form-group">
-<label>선수 이름</label>
-<input id="pName" class="form-control" value="${p.name}">
-</div>
+  if(c.type==='gold'){
 
-<div class="form-group">
-<label>등번호</label>
-<input id="pNumber" class="form-control" value="${p.number}">
-</div>
+    drawGolden(p,done);
 
-<div class="form-group">
-<label>팀</label>
-<select id="pTeam" class="form-control">
-${teamOptions(p.team)}
-</select>
-</div>
+    return;
 
-<div class="form-group">
-<label>포지션</label>
-<input id="pPosition" class="form-control" value="${p.position}">
-</div>
+  }
 
-</div>
+  if(c.type==='island'){
 
-<div class="admin-buttons">
-<button class="btn btn-black" onclick="savePlayer(${i})">저장</button>
-<button class="btn btn-gray" onclick="cancelPlayer()">취소</button>
-</div>
+    p.island=2;
 
-</div>
-`;
+    log(`${p.name} 무인도에 갇혔습니다.`);
 
-}
+  }
 
+  if(c.type==='welfare'){
 
-function savePlayer(i){
+    if(index===38){
 
-players[i].name=document.getElementById("pName").value.trim();
-players[i].number=document.getElementById("pNumber").value.trim();
-players[i].team=document.getElementById("pTeam").value;
-players[i].position=document.getElementById("pPosition").value.trim();
+      const amount=Math.min(30,p.money);
 
-renderPlayers();
-renderPlayerAdmin(document.getElementById("adminEditor"));
+      p.money-=amount;
 
-showToast("선수 정보가 저장되었습니다.");
+      fund+=amount;
 
-}
+      log(`${p.name} 사회복지기금 ${fmt(amount)}을 납부했습니다.`);
 
+    }else{
 
-function cancelPlayer(){
-document.getElementById("playerForm").innerHTML="";
-}
+      p.money+=fund;
 
+      log(`${p.name} 사회복지기금 ${fmt(fund)}을 받았습니다.`);
 
-/* ================================
- TEAM ADMIN
-================================ */
+      fund=0;
 
-function renderTeamAdmin(editor){
+    }
 
-editor.innerHTML=`
-<div class="admin-panel">
+  }
 
-<div class="section-head">
-<h2>🏆 팀 관리</h2>
-<span>5 TEAM</span>
-</div>
+  if(c.type==='vehicle'||c.type==='tour'){
 
-<div class="manage-list" id="teamManageList"></div>
-<div id="teamForm"></div>
+    if(c.toll){
 
-</div>
-`;
+      p.money+=c.toll;
 
-const list=document.getElementById("teamManageList");
+      log(`${p.name} 특별칸 보상 ${fmt(c.toll)}을 받았습니다.`);
 
-teams.forEach((t,i)=>{
+    }
 
-const row=document.createElement("div");
-row.className="manage-row";
+  }
 
-row.innerHTML=`
-<div class="manage-row-main">
-<strong>${t.name}</strong>
-<small>${t.code} · ${t.wins}승 ${t.losses}패 ${t.draws}무</small>
-</div>
+  render();
 
-<div class="manage-actions">
-<button class="btn btn-black" onclick="editTeam(${i})">수정</button>
-</div>
-`;
-
-list.appendChild(row);
-
-});
+  done();
 
 }
 
 
-function editTeam(i){
+/* =========================
+   토지 구매
+========================= */
 
-const t=teams[i];
+function buyProperty(index,done){
 
-document.getElementById("teamForm").innerHTML=`
+  const p=players[turn];
 
-<div class="section">
+  const c=board[index];
 
-<div class="section-head">
-<h2>팀 수정</h2>
-<span>${t.name}</span>
-</div>
+  if(p.money<c.price){
 
-<div class="form-grid">
+    log(`${p.name}은(는) 돈이 부족하여 ${c.name}을 구매하지 못했습니다.`);
 
-<div class="form-group">
-<label>팀 이름</label>
-<input id="tName" class="form-control" value="${t.name}">
-</div>
+    closeModal();
 
-<div class="form-group">
-<label>영문 코드</label>
-<input id="tCode" class="form-control" value="${t.code}">
-</div>
+    done();
 
-<div class="form-group">
-<label>승</label>
-<input id="tWins" class="form-control" type="number" value="${t.wins}">
-</div>
+    return;
 
-<div class="form-group">
-<label>패</label>
-<input id="tLosses" class="form-control" type="number" value="${t.losses}">
-</div>
+  }
 
-<div class="form-group">
-<label>무</label>
-<input id="tDraws" class="form-control" type="number" value="${t.draws}">
-</div>
+  p.money-=c.price;
 
-<div class="form-group">
-<label>대표 색상</label>
-<input id="tColor" class="form-control" type="color" value="${t.color}">
-</div>
+  c.owner=p.id;
 
-</div>
+  c.build=0;
 
-<div class="admin-buttons">
-<button class="btn btn-black" onclick="saveTeam(${i})">저장</button>
-<button class="btn btn-gray" onclick="cancelTeam()">취소</button>
-</div>
+  p.props[index]=true;
 
-</div>
-`;
+  log(`${p.name}이(가) ${c.name}을 ${fmt(c.price)}에 구매했습니다.`);
+
+  closeModal();
+
+  render();
+
+  done();
 
 }
 
 
-function saveTeam(i){
+/* =========================
+   통행료
+========================= */
 
-teams[i].name=document.getElementById("tName").value.trim();
-teams[i].code=document.getElementById("tCode").value.trim();
-teams[i].wins=Number(document.getElementById("tWins").value)||0;
-teams[i].losses=Number(document.getElementById("tLosses").value)||0;
-teams[i].draws=Number(document.getElementById("tDraws").value)||0;
-teams[i].color=document.getElementById("tColor").value;
+function calcToll(c){
 
-renderAll();
-renderTeamAdmin(document.getElementById("adminEditor"));
+  if(c.type==='tour'||c.type==='vehicle')return c.toll||0;
 
-showToast("팀 정보가 저장되었습니다.");
+  return c.t[p=>p];
+
+}
+
+function payToll(p,c,done){
+
+  const owner=players[c.owner];
+
+  if(!owner){
+
+    done();
+
+    return;
+
+  }
+
+  let toll=calcToll(c);
+
+  if(!Number.isFinite(toll)){
+
+    toll=c.t[c.build||0]||0;
+
+  }
+
+  if(p.favor>0){
+
+    p.favor--;
+
+    log(`${p.name}이(가) 통행료 면제권을 사용했습니다.`);
+
+    render();
+
+    done();
+
+    return;
+
+  }
+
+  toll=Math.min(toll,p.money);
+
+  p.money-=toll;
+
+  owner.money+=toll;
+
+  log(
+    `${p.name} → ${owner.name} ${c.name} 통행료 ${fmt(toll)}`
+  );
+
+  render();
+
+  done();
 
 }
 
 
-function cancelTeam(){
-document.getElementById("teamForm").innerHTML="";
-}
+/* =========================
+   황금열쇠
+========================= */
 
+function drawGolden(p,done){
 
-/* ================================
- NEWS ADMIN
-================================ */
+  const card=deck[deckPos];
 
-function renderNewsAdmin(editor){
+  deckPos++;
 
-editor.innerHTML=`
-<div class="admin-panel">
+  if(deckPos>=deck.length)deckPos=0;
 
-<div class="section-head">
-<h2>📰 뉴스 관리</h2>
-<span>${news.length}개</span>
-</div>
+  showModal(
+    '황금열쇠',
+    `
+    <div class="card">
+      <b>${card.title}</b>
+      <p>${card.text}</p>
+    </div>
+    `,
+    [
+      ['확인',()=>{
 
-<div class="admin-buttons">
-<button class="btn btn-black" onclick="newNews()">+ 뉴스 작성</button>
-</div>
+        card.action(p);
 
-<div class="manage-list" id="newsManageList"></div>
-<div id="newsForm"></div>
+        closeModal();
 
-</div>
-`;
+        if(pendingMove){
 
-const list=document.getElementById("newsManageList");
+          const n=pendingMove;
 
-news.forEach((n,i)=>{
+          pendingMove=null;
 
-const row=document.createElement("div");
-row.className="manage-row";
+          moveSteps(
+            p,
+            n,
+            ()=>{
+              spaceAction(
+                p.pos,
+                done
+              );
+            }
+          );
 
-row.innerHTML=`
-<div class="manage-row-main">
-<strong>${n.title}</strong>
-<small>${n.category} · ${n.date}</small>
-</div>
+        }else{
 
-<div class="manage-actions">
-<button class="btn btn-black" onclick="editNews(${i})">수정</button>
-<button class="btn btn-red" onclick="deleteNews(${i})">삭제</button>
-</div>
-`;
+          render();
 
-list.appendChild(row);
+          done();
 
-});
+        }
 
-}
-
-
-function newNews(){
-
-news.unshift({
-title:"새 뉴스",
-category:"리그",
-date:"2026.09.14",
-text:"뉴스 내용을 입력하세요."
-});
-
-renderNews();
-renderNewsAdmin(document.getElementById("adminEditor"));
-
-editNews(0);
+      }]
+    ]
+  );
 
 }
 
 
-function editNews(i){
+/* =========================
+   무인도
+========================= */
 
-const n=news[i];
+function islandTurn(p){
 
-document.getElementById("newsForm").innerHTML=`
+  p.island--;
 
-<div class="section">
+  log(`${p.name} 무인도 턴 ${p.island}`);
 
-<div class="section-head">
-<h2>뉴스 수정</h2>
-<span>${n.category}</span>
-</div>
+  if(p.island<=0){
 
-<div class="form-grid">
+    log(`${p.name}이(가) 무인도에서 나왔습니다.`);
 
-<div class="form-group full">
-<label>제목</label>
-<input id="nTitle" class="form-control" value="${escapeHtml(n.title)}">
-</div>
+  }
 
-<div class="form-group">
-<label>분류</label>
-<select id="nCategory" class="form-control">
-<option ${n.category==="리그"?"selected":""}>리그</option>
-<option ${n.category==="선수"?"selected":""}>선수</option>
-<option ${n.category==="팀"?"selected":""}>팀</option>
-<option ${n.category==="공지"?"selected":""}>공지</option>
-</select>
-</div>
+  rolled=true;
 
-<div class="form-group">
-<label>날짜</label>
-<input id="nDate" class="form-control" value="${n.date}">
-</div>
+  render();
 
-<div class="form-group full">
-<label>내용</label>
-<textarea id="nText" class="form-control">${escapeHtml(n.text)}</textarea>
-</div>
-
-</div>
-
-<div class="admin-buttons">
-<button class="btn btn-black" onclick="saveNews(${i})">저장</button>
-<button class="btn btn-gray" onclick="cancelNews()">취소</button>
-</div>
-
-</div>
-`;
+  setTimeout(
+    nextTurn,
+    500
+  );
 
 }
 
 
-function saveNews(i){
+/* =========================
+   다음 턴
+   ★ players.length가 선택 인원수
+========================= */
 
-news[i].title=document.getElementById("nTitle").value.trim();
-news[i].category=document.getElementById("nCategory").value;
-news[i].date=document.getElementById("nDate").value.trim();
-news[i].text=document.getElementById("nText").value.trim();
+function nextTurn(){
 
-renderNews();
-renderNewsAdmin(document.getElementById("adminEditor"));
+  if(activePlayers().length<=1){
 
-showToast("뉴스가 저장되었습니다.");
+    endGame();
 
-}
+    return;
 
+  }
 
-function deleteNews(i){
+  rolled=false;
 
-if(!confirm("이 뉴스를 삭제할까요?"))return;
+  let tries=0;
 
-news.splice(i,1);
+  do{
 
-renderNews();
-renderNewsAdmin(document.getElementById("adminEditor"));
+    turn=(turn+1)%players.length;
 
-showToast("뉴스가 삭제되었습니다.");
+    tries++;
 
-}
+  }while(
+    !players[turn].alive &&
+    tries<10
+  );
 
-
-function cancelNews(){
-document.getElementById("newsForm").innerHTML="";
-}
-
-
-/* ================================
- NOTICE ADMIN
-================================ */
-
-function renderNoticeAdmin(editor){
-
-editor.innerHTML=`
-<div class="admin-panel">
-
-<div class="section-head">
-<h2>📢 공지 관리</h2>
-<span>공지사항</span>
-</div>
-
-<div class="form-grid">
-
-<div class="form-group full">
-<label>공지 제목</label>
-<input id="noticeTitle" class="form-control"
-placeholder="공지 제목을 입력하세요">
-</div>
-
-<div class="form-group full">
-<label>공지 내용</label>
-<textarea id="noticeText" class="form-control"
-placeholder="공지 내용을 입력하세요"></textarea>
-</div>
-
-</div>
-
-<div class="admin-buttons">
-<button class="btn btn-black" onclick="saveNotice()">공지 등록</button>
-</div>
-
-<div class="manage-list">
-
-${notices.length===0
-? `<div style="color:#999;font-size:12px;padding:10px">
-등록된 공지가 없습니다.
-</div>`
-: notices.map((n,i)=>`
-<div class="manage-row">
-<div class="manage-row-main">
-<strong>${escapeHtml(n.title)}</strong>
-<small>${escapeHtml(n.text)}</small>
-</div>
-<button class="btn btn-red" onclick="deleteNotice(${i})">삭제</button>
-</div>
-`).join("")
-}
-
-</div>
-
-</div>
-`;
+  render();
 
 }
 
 
-function saveNotice(){
+/* =========================
+   게임 종료
+========================= */
 
-const title=document.getElementById("noticeTitle").value.trim();
-const text=document.getElementById("noticeText").value.trim();
+function endGame(){
 
-if(!title || !text){
-showToast("제목과 내용을 입력하세요.");
-return;
-}
+  const alive=activePlayers();
 
-notices.unshift({
-title:title,
-text:text,
-date:new Date().toLocaleDateString("ko-KR")
-});
+  if(alive.length===1){
 
-renderNoticeAdmin(document.getElementById("adminEditor"));
+    showModal(
+      '게임 종료',
+      `<p><b>${alive[0].name}</b> 승리!</p>`,
+      [
+        ['닫기',closeModal]
+      ]
+    );
 
-showToast("공지가 등록되었습니다.");
+    return;
 
-}
+  }
 
-
-function deleteNotice(i){
-
-if(!confirm("이 공지를 삭제할까요?"))return;
-
-notices.splice(i,1);
-
-renderNoticeAdmin(document.getElementById("adminEditor"));
-
-}
-
-
-/* ================================
- RECORD ADMIN
-================================ */
-
-function renderRecordAdmin(editor){
-
-editor.innerHTML=`
-<div class="admin-panel">
-
-<div class="section-head">
-<h2>📒 경기기록 노트</h2>
-<span>GAME RECORD</span>
-</div>
-
-<div class="form-grid">
-
-<div class="form-group">
-<label>경기</label>
-<select id="rGame" class="form-control">
-${schedule.map((g,i)=>
-`<option value="${i}">
-${g.date} ${g.home} vs ${g.away}
-</option>`).join("")}
-</select>
-</div>
-
-<div class="form-group">
-<label>선수</label>
-<select id="rPlayer" class="form-control">
-${players.map((p,i)=>
-`<option value="${i}">
-${p.name} · ${p.team}
-</option>`).join("")}
-</select>
-</div>
-
-<div class="form-group">
-<label>타수</label>
-<input id="rAB" class="form-control" type="number" value="0">
-</div>
-
-<div class="form-group">
-<label>안타</label>
-<input id="rH" class="form-control" type="number" value="0">
-</div>
-
-<div class="form-group">
-<label>홈런</label>
-<input id="rHR" class="form-control" type="number" value="0">
-</div>
-
-<div class="form-group">
-<label>타점</label>
-<input id="rRBI" class="form-control" type="number" value="0">
-</div>
-
-<div class="form-group">
-<label>투구 수</label>
-<input id="rPitches" class="form-control" type="number" value="0">
-</div>
-
-<div class="form-group">
-<label>스트라이크</label>
-<input id="rStrikes" class="form-control" type="number" value="0">
-</div>
-
-<div class="form-group">
-<label>볼</label>
-<input id="rBalls" class="form-control" type="number" value="0">
-</div>
-
-<div class="form-group">
-<label>투구 역할</label>
-<select id="rRole" class="form-control">
-<option>선발</option>
-<option>구원</option>
-<option>종합</option>
-</select>
-</div>
-
-</div>
-
-<div class="admin-buttons">
-<button class="btn btn-black" onclick="saveRecord()">기록 저장</button>
-</div>
-
-<div class="manage-list">
-
-${records.map((r,i)=>`
-<div class="manage-row">
-<div class="manage-row-main">
-<strong>${escapeHtml(r.player)} · ${escapeHtml(r.role)}</strong>
-<small>
-타격 ${r.ab}타수 ${r.h}안타 ${r.hr}홈런 ${r.rbi}타점
-· 투구 ${r.pitches}구
-</small>
-</div>
-<button class="btn btn-red" onclick="deleteRecord(${i})">삭제</button>
-</div>
-`).join("")}
-
-</div>
-
-</div>
-`;
+  showModal(
+    '게임 종료',
+    '<p>게임이 종료되었습니다.</p>',
+    [
+      ['닫기',closeModal]
+    ]
+  );
 
 }
 
 
-function saveRecord(){
+/* =========================
+   시작
+========================= */
 
-const gameIndex=Number(document.getElementById("rGame").value);
-const playerIndex=Number(document.getElementById("rPlayer").value);
-const p=players[playerIndex];
-const g=schedule[gameIndex];
+buildBoard();
 
-records.unshift({
-game:g.date+" "+g.home+" vs "+g.away,
-player:p.name,
-role:document.getElementById("rRole").value,
-ab:Number(document.getElementById("rAB").value)||0,
-h:Number(document.getElementById("rH").value)||0,
-hr:Number(document.getElementById("rHR").value)||0,
-rbi:Number(document.getElementById("rRBI").value)||0,
-pitches:Number(document.getElementById("rPitches").value)||0,
-strikes:Number(document.getElementById("rStrikes").value)||0,
-balls:Number(document.getElementById("rBalls").value)||0
-});
-
-renderRecordAdmin(document.getElementById("adminEditor"));
-
-showToast("경기 기록이 저장되었습니다.");
-
-}
-
-
-function deleteRecord(i){
-
-if(!confirm("이 기록을 삭제할까요?"))return;
-
-records.splice(i,1);
-
-renderRecordAdmin(document.getElementById("adminEditor"));
-
-}
-
-
-/* ================================
- UTILITY
-================================ */
-
-function escapeHtml(value){
-
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
-
-
-function vote(team){
-showToast(team+" 승리를 선택했습니다.");
-}
-
-
-function showToast(message){
-
-const toast=document.getElementById("toast");
-
-toast.textContent=message;
-toast.classList.add("show");
-
-clearTimeout(toastTimer);
-
-toastTimer=setTimeout(()=>{
-toast.classList.remove("show");
-},2200);
-
-}
-
-
-/* ================================
- ENTER LOGIN
-================================ */
-
-document.getElementById("loginEmail")
-.addEventListener("keydown",e=>{
-if(e.key==="Enter")login();
-});
-
-document.getElementById("loginPassword")
-.addEventListener("keydown",e=>{
-if(e.key==="Enter")login();
-});
+/*
+  페이지를 열면 바로
+  2명 / 3명 / 4명 선택창이 나옵니다.
+*/
+newGame();
 
 </script>
 
