@@ -3,13 +3,13 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>WORLD MARBLE — Classic Board</title>
 
 <style>
 :root{
   --bg:#f4f6f8;
-  --panel:#ffffff;
+  --panel:#fff;
   --ink:#111827;
   --muted:#6b7280;
   --line:#e5e7eb;
@@ -33,16 +33,21 @@ button{
   cursor:pointer;
 }
 
+button:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
 .app{
   max-width:1500px;
-  margin:0 auto;
+  margin:auto;
   padding:20px;
 }
 
 header{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   margin-bottom:18px;
 }
 
@@ -68,7 +73,7 @@ header{
   background:#fff;
   border-radius:10px;
   padding:10px 15px;
-  font-weight:700;
+  font-weight:800;
 }
 
 .layout{
@@ -77,12 +82,16 @@ header{
   gap:18px;
 }
 
-.board-wrap{
+.board-wrap,
+.panel{
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:18px;
-  padding:14px;
   box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.board-wrap{
+  padding:14px;
 }
 
 .board{
@@ -105,13 +114,13 @@ header{
   overflow:hidden;
 }
 
-.cell.center{
+.center{
   grid-column:2/11;
   grid-row:2/11;
-  background:#f8fafc;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:#f8fafc;
   border:2px solid #e5e7eb;
 }
 
@@ -123,50 +132,31 @@ header{
 
 .cell-name{
   font-size:10px;
-  font-weight:800;
+  font-weight:900;
   line-height:1.1;
 }
 
 .cell-price{
+  margin-top:2px;
   font-size:9px;
   color:var(--muted);
-  margin-top:2px;
 }
 
 .cell-toll{
-  font-size:8px;
-  color:#374151;
   margin-top:2px;
+  font-size:8px;
 }
 
-.cell.special{
-  background:#fffaf0;
-}
+.cell.start{background:#eef6ff}
+.cell.gold{background:#fff8dc}
+.cell.island{background:#f1f5f9}
+.cell.vehicle{background:#f3f4f6}
+.cell.welfare{background:#f0fdf4}
 
-.cell.gold{
-  background:#fff8dc;
-}
-
-.cell.start{
-  background:#eef6ff;
-}
-
-.cell.island{
-  background:#f2f2f2;
-}
-
-.cell.vehicle{
-  background:#f3f4f6;
-}
-
-.cell.welfare{
-  background:#f0fdf4;
-}
-
-.cell.owner1{box-shadow:inset 0 0 0 3px #2563eb}
-.cell.owner2{box-shadow:inset 0 0 0 3px #ef4444}
-.cell.owner3{box-shadow:inset 0 0 0 3px #16a34a}
-.cell.owner4{box-shadow:inset 0 0 0 3px #f59e0b}
+.owner1{box-shadow:inset 0 0 0 3px #2563eb}
+.owner2{box-shadow:inset 0 0 0 3px #ef4444}
+.owner3{box-shadow:inset 0 0 0 3px #16a34a}
+.owner4{box-shadow:inset 0 0 0 3px #f59e0b}
 
 .tokens{
   position:absolute;
@@ -179,16 +169,16 @@ header{
 }
 
 .token{
-  width:15px;
-  height:15px;
+  width:16px;
+  height:16px;
   border-radius:50%;
-  color:#fff;
+  color:white;
   font-size:8px;
   font-weight:900;
   display:flex;
   align-items:center;
   justify-content:center;
-  border:1px solid #fff;
+  border:1px solid white;
 }
 
 .side{
@@ -198,17 +188,19 @@ header{
 }
 
 .panel{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:16px;
   padding:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,.04);
 }
 
 .turn-box{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
+}
+
+.section-title{
+  font-size:13px;
+  font-weight:900;
+  margin-bottom:8px;
 }
 
 .turn-name{
@@ -217,15 +209,15 @@ header{
 }
 
 .money{
-  font-size:18px;
+  font-size:17px;
   font-weight:900;
 }
 
 .dice{
   display:flex;
-  gap:10px;
   justify-content:center;
-  margin:14px 0;
+  gap:10px;
+  margin:15px 0;
 }
 
 .die{
@@ -233,12 +225,11 @@ header{
   height:58px;
   border:1px solid var(--line);
   border-radius:12px;
-  background:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
-  font-weight:900;
+  background:#fff;
+  font-size:30px;
 }
 
 .roll{
@@ -252,21 +243,25 @@ header{
   font-weight:900;
 }
 
-.roll:disabled{
-  opacity:.5;
-  cursor:not-allowed;
+.action-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:8px;
 }
 
-.section-title{
-  font-size:14px;
-  font-weight:900;
-  margin-bottom:9px;
+.action-buttons button{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:10px;
+  padding:10px;
+  font-weight:800;
 }
 
 .player{
   display:flex;
-  align-items:center;
   gap:9px;
+  align-items:center;
   padding:9px 0;
   border-bottom:1px solid #f0f0f0;
 }
@@ -286,8 +281,8 @@ header{
 }
 
 .player-name{
-  font-weight:800;
   font-size:13px;
+  font-weight:900;
 }
 
 .player-money{
@@ -298,9 +293,9 @@ header{
 .log{
   height:180px;
   overflow:auto;
-  background:#f8fafc;
-  border-radius:10px;
   padding:9px;
+  border-radius:10px;
+  background:#f8fafc;
   font-size:11px;
   line-height:1.5;
 }
@@ -312,12 +307,12 @@ header{
 .modal-bg{
   position:fixed;
   inset:0;
-  background:rgba(15,23,42,.55);
+  z-index:1000;
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:1000;
   padding:20px;
+  background:rgba(15,23,42,.55);
 }
 
 .modal-bg.show{
@@ -325,15 +320,17 @@ header{
 }
 
 .modal{
-  width:min(500px,100%);
-  background:#fff;
-  border-radius:18px;
+  width:min(520px,100%);
+  max-height:90vh;
+  overflow:auto;
   padding:22px;
+  border-radius:18px;
+  background:#fff;
   box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
 .modal h2{
-  margin:0 0 10px;
+  margin:0 0 12px;
 }
 
 .modal p{
@@ -349,25 +346,62 @@ header{
 
 .modal-buttons button{
   flex:1;
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:10px;
   padding:12px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
   font-weight:900;
 }
 
 .modal-buttons button.primary{
   background:var(--accent);
-  color:#fff;
   border-color:var(--accent);
+  color:#fff;
 }
 
 .card{
-  border:1px solid var(--line);
-  border-radius:12px;
   padding:14px;
   margin-top:10px;
+  border:1px solid var(--line);
+  border-radius:12px;
   background:#fffdf5;
+}
+
+.info-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:12px;
+}
+
+.info-table th,
+.info-table td{
+  padding:7px 5px;
+  border-bottom:1px solid var(--line);
+  text-align:center;
+}
+
+.info-table th{
+  background:#f8fafc;
+}
+
+.build-btn{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:8px;
+  padding:7px 10px;
+  font-weight:800;
+}
+
+.trade-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.trade-row:last-child{
+  border-bottom:0;
 }
 
 @media(max-width:1000px){
@@ -379,14 +413,6 @@ header{
 @media(max-width:700px){
   .app{
     padding:8px;
-  }
-
-  .layout{
-    display:block;
-  }
-
-  .side{
-    margin-top:12px;
   }
 
   .board-wrap{
@@ -434,13 +460,16 @@ header{
   <div class="side">
 
     <div class="panel">
+
       <div class="turn-box">
+
         <div>
           <div class="section-title">현재 턴</div>
           <div class="turn-name" id="turnName">플레이어 1</div>
         </div>
 
         <div class="money" id="turnMoney">₩3,000,000</div>
+
       </div>
 
       <div class="dice">
@@ -448,41 +477,75 @@ header{
         <div class="die" id="die2">⚀</div>
       </div>
 
-      <button class="roll" id="rollBtn" onclick="rollDice()">주사위 굴리기</button>
+      <button class="roll" id="rollBtn" onclick="rollDice()">
+        주사위 굴리기
+      </button>
+
+      <div class="action-buttons">
+        <button onclick="showBuildMenu()">건물</button>
+        <button onclick="showTradeMenu()">거래</button>
+      </div>
+
     </div>
 
+
     <div class="panel">
+
       <div class="section-title">플레이어</div>
+
       <div id="playersPanel"></div>
+
     </div>
 
+
     <div class="panel">
+
       <div class="section-title">사회복지기금</div>
+
       <div id="fund">₩0</div>
+
     </div>
 
+
     <div class="panel">
+
       <div class="section-title">게임 로그</div>
+
       <div class="log" id="log"></div>
+
     </div>
 
   </div>
+
 </div>
 </div>
+
 
 <div class="modal-bg" id="modalBg">
+
   <div class="modal">
+
     <h2 id="modalTitle"></h2>
+
     <div id="modalBody"></div>
+
     <div class="modal-buttons" id="modalButtons"></div>
+
   </div>
+
 </div>
+
 
 <script>
 
+/* =========================================================
+   기본 설정
+========================================================= */
+
 const W=10000;
 
-const fmt=n=>'₩'+(n*10000).toLocaleString('ko-KR');
+const fmt=n =>
+  '₩'+Math.round(n*10000).toLocaleString('ko-KR');
 
 const PColors=[
   '#2563eb',
@@ -498,7 +561,11 @@ const PNames=[
   '플레이어 4'
 ];
 
-/* ★ 추가된 부분 : 게임 인원 */
+
+/* =========================================================
+   게임 상태
+========================================================= */
+
 let playerCount=4;
 
 let players=[],
@@ -510,74 +577,347 @@ let players=[],
     deck=[],
     deckPos=0;
 
+let board=[];
+
 let pendingMove=null;
 
 
-/* =========================
-   보드 데이터
-========================= */
+/* =========================================================
+   ★ 전체 보드 데이터
+========================================================= */
 
 const boardData=[
-  {name:'출발',type:'start',price:0},
-  {name:'타이베이',type:'property',price:5,t:[0,2,4,8,12]},
+
+  {name:'출발',type:'start'},
+
+  {
+    name:'타이베이',
+    type:'property',
+    price:5,
+    villa:1,
+    building:5,
+    hotel:15,
+    toll:[1,5,15,30]
+  },
+
   {name:'황금열쇠',type:'gold'},
-  {name:'베이징',type:'property',price:5,t:[0,2,4,8,12]},
-  {name:'마닐라',type:'property',price:6,t:[0,3,6,12,18]},
-  {name:'제주도',type:'property',price:6,t:[0,3,6,12,18]},
+
+  {
+    name:'베이징',
+    type:'property',
+    price:8,
+    villa:2,
+    building:10,
+    hotel:30,
+    toll:[2,10,30,60]
+  },
+
+  {
+    name:'마닐라',
+    type:'property',
+    price:10,
+    villa:3,
+    building:15,
+    hotel:40,
+    toll:[3,15,40,80]
+  },
+
+  {
+    name:'제주도',
+    type:'property',
+    price:20,
+    special:true,
+    toll:[30]
+  },
+
   {name:'황금열쇠',type:'gold'},
-  {name:'싱가포르',type:'property',price:7,t:[0,3,7,14,21]},
-  {name:'카이로',type:'property',price:7,t:[0,3,7,14,21]},
-  {name:'이스탄불',type:'property',price:8,t:[0,4,8,16,24]},
+
+  {
+    name:'싱가포르',
+    type:'property',
+    price:14,
+    villa:4,
+    building:20,
+    hotel:50,
+    toll:[4,20,50,100]
+  },
+
+  {
+    name:'카이로',
+    type:'property',
+    price:22,
+    villa:6,
+    building:30,
+    hotel:70,
+    toll:[6,30,70,140]
+  },
+
+  {
+    name:'이스탄불',
+    type:'property',
+    price:18,
+    villa:5,
+    building:25,
+    hotel:60,
+    toll:[5,25,60,120]
+  },
+
   {name:'무인도',type:'island'},
-  {name:'아테네',type:'property',price:8,t:[0,4,8,16,24]},
+
+  {
+    name:'아테네',
+    type:'property',
+    price:12,
+    villa:3,
+    building:15,
+    hotel:40,
+    toll:[3,15,40,80]
+  },
+
   {name:'황금열쇠',type:'gold'},
-  {name:'코펜하겐',type:'property',price:9,t:[0,4,9,18,27]},
-  {name:'스톡홀름',type:'property',price:9,t:[0,4,9,18,27]},
-  {name:'콩코드 여객기',type:'vehicle',toll:20},
-  {name:'베른',type:'property',price:10,t:[0,5,10,20,30]},
+
+  {
+    name:'코펜하겐',
+    type:'property',
+    price:16,
+    villa:4,
+    building:20,
+    hotel:50,
+    toll:[4,20,50,100]
+  },
+
+  {
+    name:'스톡홀름',
+    type:'property',
+    price:20,
+    villa:5,
+    building:25,
+    hotel:60,
+    toll:[5,25,60,120]
+  },
+
+  {
+    name:'콩코드 여객기',
+    type:'vehicle',
+    toll:20
+  },
+
+  {
+    name:'베른',
+    type:'property',
+    price:22,
+    villa:6,
+    building:30,
+    hotel:70,
+    toll:[6,30,70,140]
+  },
+
   {name:'황금열쇠',type:'gold'},
-  {name:'베를린',type:'property',price:10,t:[0,5,10,20,30]},
-  {name:'오타와',type:'property',price:11,t:[0,5,11,22,33]},
-  {name:'사회복지기금 수령처',type:'welfare'},
-  {name:'부에노스아이레스',type:'property',price:11,t:[0,5,11,22,33]},
+
+  {
+    name:'베를린',
+    type:'property',
+    price:28,
+    villa:7,
+    building:35,
+    hotel:80,
+    toll:[7,35,80,160]
+  },
+
+  {
+    name:'오타와',
+    type:'property',
+    price:30,
+    villa:8,
+    building:40,
+    hotel:90,
+    toll:[8,40,90,180]
+  },
+
+  {
+    name:'사회복지기금 수령처',
+    type:'welfare'
+  },
+
+  {
+    name:'부에노스아이레스',
+    type:'property',
+    price:22,
+    villa:6,
+    building:30,
+    hotel:70,
+    toll:[6,30,70,140]
+  },
+
   {name:'황금열쇠',type:'gold'},
-  {name:'상파울루',type:'property',price:12,t:[0,6,12,24,36]},
-  {name:'시드니',type:'property',price:12,t:[0,6,12,24,36]},
-  {name:'부산',type:'property',price:13,t:[0,6,13,26,39]},
-  {name:'하와이',type:'property',price:13,t:[0,6,13,26,39]},
-  {name:'리스본',type:'property',price:14,t:[0,7,14,28,42]},
-  {name:'퀸 엘리자베스호',type:'vehicle',toll:20},
-  {name:'마드리드',type:'property',price:14,t:[0,7,14,28,42]},
-  {name:'우주여행',type:'tour'},
-  {name:'도쿄',type:'property',price:15,t:[0,7,15,30,45]},
-  {name:'컬럼비아호',type:'vehicle',toll:20},
-  {name:'파리',type:'property',price:15,t:[0,7,15,30,45]},
-  {name:'로마',type:'property',price:16,t:[0,8,16,32,48]},
+
+  {
+    name:'상파울루',
+    type:'property',
+    price:24,
+    villa:6,
+    building:30,
+    hotel:75,
+    toll:[6,30,75,150]
+  },
+
+  {
+    name:'시드니',
+    type:'property',
+    price:26,
+    villa:7,
+    building:35,
+    hotel:80,
+    toll:[7,35,80,160]
+  },
+
+  {
+    name:'부산',
+    type:'property',
+    price:50,
+    special:true,
+    toll:[60]
+  },
+
+  {
+    name:'하와이',
+    type:'property',
+    price:26,
+    villa:7,
+    building:35,
+    hotel:80,
+    toll:[7,35,80,160]
+  },
+
+  {
+    name:'리스본',
+    type:'property',
+    price:24,
+    villa:6,
+    building:30,
+    hotel:75,
+    toll:[6,30,75,150]
+  },
+
+  {
+    name:'퀸 엘리자베스호',
+    type:'vehicle',
+    toll:20
+  },
+
+  {
+    name:'마드리드',
+    type:'property',
+    price:28,
+    villa:7,
+    building:35,
+    hotel:80,
+    toll:[7,35,80,160]
+  },
+
+  {
+    name:'우주여행',
+    type:'tour'
+  },
+
+  {
+    name:'도쿄',
+    type:'property',
+    price:30,
+    villa:8,
+    building:40,
+    hotel:90,
+    toll:[8,40,90,180]
+  },
+
+  {
+    name:'콜럼비아호',
+    type:'vehicle',
+    toll:20
+  },
+
+  {
+    name:'파리',
+    type:'property',
+    price:32,
+    villa:8,
+    building:40,
+    hotel:100,
+    toll:[8,40,100,200]
+  },
+
+  {
+    name:'로마',
+    type:'property',
+    price:32,
+    villa:8,
+    building:40,
+    hotel:100,
+    toll:[8,40,100,200]
+  },
+
   {name:'황금열쇠',type:'gold'},
-  {name:'런던',type:'property',price:16,t:[0,8,16,32,48]},
-  {name:'뉴욕',type:'property',price:17,t:[0,8,17,34,51]},
-  {name:'사회복지기금 접수처',type:'welfare'},
-  {name:'서울',type:'property',price:20,t:[0,10,20,40,60]}
+
+  {
+    name:'런던',
+    type:'property',
+    price:35,
+    villa:9,
+    building:45,
+    hotel:110,
+    toll:[9,45,110,220]
+  },
+
+  {
+    name:'뉴욕',
+    type:'property',
+    price:35,
+    villa:9,
+    building:45,
+    hotel:110,
+    toll:[9,45,110,220]
+  },
+
+  {
+    name:'사회복지기금 접수처',
+    type:'welfare'
+  },
+
+  {
+    name:'서울',
+    type:'property',
+    price:100,
+    special:true,
+    toll:[200]
+  }
+
 ];
 
-let board=[];
+
+/* =========================================================
+   황금열쇠
+========================================================= */
 
 const golden=[
+
   {
-    title:'보너스',
-    text:'은행에서 보너스 20만원을 받습니다.',
+    title:'은행에서 보너스',
+    text:'은행에서 20만원을 받습니다.',
     action:p=>{
       p.money+=20;
     }
   },
+
   {
-    title:'사회복지기금',
+    title:'사회복지기금 납부',
     text:'사회복지기금에 10만원을 납부합니다.',
     action:p=>{
-      p.money-=10;
-      fund+=10;
+      const amount=Math.min(10,p.money);
+      p.money-=amount;
+      fund+=amount;
     }
   },
+
   {
     title:'은행 보너스',
     text:'은행에서 30만원을 받습니다.',
@@ -585,42 +925,50 @@ const golden=[
       p.money+=30;
     }
   },
+
   {
-    title:'통행료 면제',
-    text:'다음 한 번의 통행료를 면제받습니다.',
+    title:'우대권',
+    text:'다음 통행료를 한 번 면제받습니다.',
     action:p=>{
       p.favor++;
     }
   },
+
   {
     title:'무인도 탈출',
-    text:'무인도 탈출권을 획득합니다.',
+    text:'무인도 탈출권을 얻습니다.',
     action:p=>{
-      p.island=0;
+      p.escapeCard++;
     }
   },
+
   {
-    title:'여행',
+    title:'3칸 전진',
     text:'3칸 앞으로 이동합니다.',
     action:p=>{
       pendingMove=3;
     }
   }
+
 ];
 
 
-/* =========================
+/* =========================================================
    유틸
-========================= */
+========================================================= */
 
 function shuffle(arr){
   return [...arr].sort(()=>Math.random()-.5);
 }
 
 function log(msg){
+
   const el=document.getElementById('log');
+
   const d=document.createElement('div');
+
   d.textContent=msg;
+
   el.prepend(d);
 }
 
@@ -629,53 +977,68 @@ function activePlayers(){
 }
 
 
-/* =========================
-   ★ 플레이어 초기화
-   선택한 인원만 생성
-========================= */
+/* =========================================================
+   플레이어 생성
+========================================================= */
 
 function initPlayers(){
 
   players=PNames
     .slice(0,playerCount)
     .map((name,i)=>({
+
       id:i,
-      name,
+      name:name,
       money:300,
       pos:0,
+
       props:{},
+
       island:0,
-      radio:0,
+
+      escapeCard:0,
+
       favor:0,
-      alive:true
+
+      alive:true,
+
+      completedRounds:0
+
     }));
 
 }
 
 
-/* =========================
-   ★ 새 게임
-   인원 선택
-========================= */
+/* =========================================================
+   새 게임
+========================================================= */
 
 function newGame(){
 
   showModal(
+
     '게임 인원 선택',
-    '<p>몇 명이 플레이할까요?</p>',
+
+    '<p>플레이할 인원을 선택하세요.</p>',
+
     [
+
       ['2명',()=>startGame(2)],
+
       ['3명',()=>startGame(3)],
+
       ['4명',()=>startGame(4)]
+
     ]
+
   );
 
 }
 
 
-/* =========================
-   ★ 실제 게임 시작
-========================= */
+/* =========================================================
+   게임 시작
+========================================================= */
 
 function startGame(count){
 
@@ -684,8 +1047,11 @@ function startGame(count){
   initPlayers();
 
   turn=0;
+
   rolled=false;
+
   dice=[1,1];
+
   fund=0;
 
   deck=shuffle(
@@ -697,17 +1063,28 @@ function startGame(count){
 
   deckPos=0;
 
+  pendingMove=null;
+
   gameStarted=true;
 
-  board.forEach(x=>{
-    if(x){
-      delete x.owner;
-      x.build=0;
+  board.forEach(c=>{
+
+    if(c){
+
+      delete c.owner;
+
+      delete c.purchasePrice;
+
+      delete c.purchaseRound;
+
+      c.build=0;
+
     }
+
   });
 
   log(
-    `${playerCount}인 게임을 시작했습니다. 4인 클래식 규칙, 시작자금 300만원.`
+    `${playerCount}인 게임을 시작했습니다.`
   );
 
   closeModal();
@@ -717,9 +1094,9 @@ function startGame(count){
 }
 
 
-/* =========================
+/* =========================================================
    모달
-========================= */
+========================================================= */
 
 function showModal(title,body,buttons=[]){
 
@@ -747,49 +1124,24 @@ function showModal(title,body,buttons=[]){
 
   });
 
-  document.getElementById('modalBg').classList.add('show');
+  document
+    .getElementById('modalBg')
+    .classList.add('show');
 
 }
 
 function closeModal(){
 
-  document.getElementById('modalBg').classList.remove('show');
+  document
+    .getElementById('modalBg')
+    .classList.remove('show');
 
 }
 
 
-/* =========================
-   규칙
-========================= */
-
-function showRules(){
-
-  showModal(
-    'WORLD MARBLE 규칙',
-    `
-    <p>
-    • 40칸 클래식 세계여행 보드<br>
-    • 플레이어는 2~4명 선택 가능<br>
-    • 시작자금 300만원<br>
-    • 주사위 2개를 굴려 이동<br>
-    • 빈 토지는 구매 가능<br>
-    • 소유 토지는 건물을 건설할 수 있습니다.<br>
-    • 다른 플레이어의 토지에 도착하면 통행료를 냅니다.<br>
-    • 황금열쇠에서는 카드를 뽑습니다.<br>
-    • 무인도에서는 일정 조건에 따라 탈출할 수 있습니다.
-    </p>
-    `,
-    [
-      ['닫기',closeModal]
-    ]
-  );
-
-}
-
-
-/* =========================
-   보드 생성
-========================= */
+/* =========================================================
+   보드
+========================================================= */
 
 function buildBoard(){
 
@@ -797,71 +1149,89 @@ function buildBoard(){
 
   el.innerHTML='';
 
-  board=[];
+  board=boardData.map(c=>({
+    ...c,
+    build:0
+  }));
 
-  for(let i=0;i<40;i++){
-
-    const c=boardData[i];
+  board.forEach((c,i)=>{
 
     const cell=document.createElement('div');
 
     cell.className='cell';
 
-    if(c.type==='start')cell.classList.add('start');
-    if(c.type==='gold')cell.classList.add('gold');
-    if(c.type==='island')cell.classList.add('island');
-    if(c.type==='vehicle'||c.type==='tour')cell.classList.add('vehicle');
-    if(c.type==='welfare')cell.classList.add('welfare');
+    if(c.type==='start')
+      cell.classList.add('start');
 
-    cell.dataset.index=i;
+    if(c.type==='gold')
+      cell.classList.add('gold');
 
-    cell.onclick=()=>{
-      if(gameStarted) spaceAction(i);
-    };
+    if(c.type==='island')
+      cell.classList.add('island');
 
-    board[i]={
-      ...c,
-      build:0
-    };
+    if(c.type==='vehicle'||c.type==='tour')
+      cell.classList.add('vehicle');
+
+    if(c.type==='welfare')
+      cell.classList.add('welfare');
 
     cell.id='cell-'+i;
 
+    /*
+      ★ 클릭은 정보 확인만 한다.
+      ★ 여기서 땅을 구매할 수 없다.
+    */
+
+    cell.onclick=()=>{
+      showSpaceInfo(i);
+    };
+
     el.appendChild(cell);
 
-  }
+  });
+
 
   const cells=[...el.children];
 
   const positions=[];
 
-  for(let x=0;x<11;x++)positions.push([0,x]);
-  for(let y=1;y<11;y++)positions.push([y,10]);
-  for(let x=9;x>=0;x--)positions.push([10,x]);
-  for(let y=9;y>=1;y--)positions.push([y,0]);
+  for(let x=0;x<11;x++)
+    positions.push([0,x]);
+
+  for(let y=1;y<11;y++)
+    positions.push([y,10]);
+
+  for(let x=9;x>=0;x--)
+    positions.push([10,x]);
+
+  for(let y=9;y>=1;y--)
+    positions.push([y,0]);
+
 
   positions.forEach((pos,i)=>{
 
-    const cell=cells[i];
+    cells[i].style.gridRow=pos[0]+1;
 
-    cell.style.gridRow=pos[0]+1;
-    cell.style.gridColumn=pos[1]+1;
+    cells[i].style.gridColumn=pos[1]+1;
 
   });
+
 
   const center=document.createElement('div');
 
   center.className='cell center';
 
-  center.innerHTML='<div class="center-title">WORLD MARBLE</div>';
+  center.innerHTML=
+    '<div class="center-title">WORLD MARBLE</div>';
 
   el.appendChild(center);
 
 }
 
 
-/* =========================
+/* =========================================================
    보드 렌더링
-========================= */
+========================================================= */
 
 function renderBoard(){
 
@@ -873,40 +1243,79 @@ function renderBoard(){
 
     cell.className='cell';
 
-    if(c.type==='start')cell.classList.add('start');
-    if(c.type==='gold')cell.classList.add('gold');
-    if(c.type==='island')cell.classList.add('island');
-    if(c.type==='vehicle'||c.type==='tour')cell.classList.add('vehicle');
-    if(c.type==='welfare')cell.classList.add('welfare');
+    if(c.type==='start')
+      cell.classList.add('start');
 
-    if(c.owner!==undefined){
+    if(c.type==='gold')
+      cell.classList.add('gold');
+
+    if(c.type==='island')
+      cell.classList.add('island');
+
+    if(c.type==='vehicle'||c.type==='tour')
+      cell.classList.add('vehicle');
+
+    if(c.type==='welfare')
+      cell.classList.add('welfare');
+
+    if(c.owner!==undefined)
       cell.classList.add('owner'+(c.owner+1));
-    }
 
-    let html='';
 
-    html+=`<div class="cell-name">${c.name}</div>`;
+    let html=
+      `<div class="cell-name">${c.name}</div>`;
+
 
     if(c.price){
-      html+=`<div class="cell-price">${fmt(c.price)}</div>`;
+
+      html+=
+        `<div class="cell-price">
+          ${fmt(c.price)}
+        </div>`;
+
     }
 
-    if(c.toll){
-      html+=`<div class="cell-toll">통행료 ${fmt(c.toll)}</div>`;
+
+    if(c.type==='property'){
+
+      const level=c.build||0;
+
+      html+=
+        `<div class="cell-toll">
+          통행료 ${fmt(calcToll(c))}
+        </div>`;
+
+      if(level>0){
+
+        html+=
+          `<div class="cell-toll">
+            ${BUILDING_NAMES[level]}
+          </div>`;
+
+      }
+
     }
 
-    if(c.t){
-      html+=`<div class="cell-toll">대지료 ${fmt(c.t[c.build||0])}</div>`;
-    }
 
     const tokens=players
+
       .filter(p=>p.alive&&p.pos===i)
+
       .map(p=>
-        `<div class="token" style="background:${PColors[p.id]}">${p.id+1}</div>`
+        `<div class="token"
+          style="background:${PColors[p.id]}">
+          ${p.id+1}
+        </div>`
       )
+
       .join('');
 
-    html+=`<div class="tokens">${tokens}</div>`;
+
+    html+=
+      `<div class="tokens">
+        ${tokens}
+      </div>`;
+
 
     cell.innerHTML=html;
 
@@ -915,9 +1324,9 @@ function renderBoard(){
 }
 
 
-/* =========================
+/* =========================================================
    플레이어 렌더링
-========================= */
+========================================================= */
 
 function renderPlayers(){
 
@@ -932,15 +1341,26 @@ function renderPlayers(){
     row.className='player';
 
     row.innerHTML=`
-      <div class="player-dot" style="background:${PColors[p.id]}"></div>
-      <div class="player-info">
-        <div class="player-name">
-          ${p.name}${turn===p.id?' ◀':''}
-        </div>
-        <div class="player-money">
-          ${fmt(p.money)} · ${board[p.pos]?.name||''}
-        </div>
+
+      <div class="player-dot"
+        style="background:${PColors[p.id]}">
       </div>
+
+      <div class="player-info">
+
+        <div class="player-name">
+          ${p.name}
+          ${turn===p.id?' ◀':''}
+        </div>
+
+        <div class="player-money">
+          ${fmt(p.money)}
+          ·
+          ${board[p.pos]?.name||''}
+        </div>
+
+      </div>
+
     `;
 
     el.appendChild(row);
@@ -950,9 +1370,9 @@ function renderPlayers(){
 }
 
 
-/* =========================
-   전체 렌더링
-========================= */
+/* =========================================================
+   전체 렌더
+========================================================= */
 
 function render(){
 
@@ -964,22 +1384,25 @@ function render(){
 
   if(p){
 
-    document.getElementById('turnName').textContent=p.name;
+    document.getElementById('turnName').textContent=
+      p.name;
 
-    document.getElementById('turnMoney').textContent=fmt(p.money);
+    document.getElementById('turnMoney').textContent=
+      fmt(p.money);
 
   }
 
-  document.getElementById('fund').textContent=fmt(fund);
+  document.getElementById('fund').textContent=
+    fmt(fund);
 
   renderDice();
 
 }
 
 
-/* =========================
+/* =========================================================
    주사위
-========================= */
+========================================================= */
 
 const diceFace=[
   '',
@@ -993,24 +1416,26 @@ const diceFace=[
 
 function renderDice(){
 
-  document.getElementById('die1').textContent=diceFace[dice[0]];
+  document.getElementById('die1').textContent=
+    diceFace[dice[0]];
 
-  document.getElementById('die2').textContent=diceFace[dice[1]];
+  document.getElementById('die2').textContent=
+    diceFace[dice[1]];
 
   const btn=document.getElementById('rollBtn');
 
   btn.disabled=
-    !gameStarted ||
-    rolled ||
-    !players.length ||
+    !gameStarted||
+    rolled||
+    !players.length||
     !players[turn]?.alive;
 
 }
 
 
-/* =========================
-   주사위 굴리기
-========================= */
+/* =========================================================
+   ★ 주사위
+========================================================= */
 
 function rollDice(){
 
@@ -1034,6 +1459,9 @@ function rollDice(){
 
   }
 
+
+  /* 무인도 */
+
   if(p.island>0){
 
     islandTurn(p);
@@ -1041,6 +1469,7 @@ function rollDice(){
     return;
 
   }
+
 
   dice=[
     1+Math.floor(Math.random()*6),
@@ -1051,29 +1480,36 @@ function rollDice(){
 
   renderDice();
 
-  const total=dice[0]+dice[1];
+  const total=
+    dice[0]+dice[1];
 
   log(
     `${p.name} 주사위 ${dice[0]} + ${dice[1]} = ${total}`
   );
 
   moveSteps(
+
     p,
+
     total,
+
     ()=>{
+
       afterMove(
         p,
         dice[0]===dice[1]
       );
+
     }
+
   );
 
 }
 
 
-/* =========================
+/* =========================================================
    이동
-========================= */
+========================================================= */
 
 function moveSteps(p,n,done){
 
@@ -1089,13 +1525,19 @@ function moveSteps(p,n,done){
 
     }
 
+    const oldPos=p.pos;
+
     p.pos=(p.pos+1)%40;
 
     if(p.pos===0){
 
       p.money+=20;
 
-      log(`${p.name} 출발을 지나 20만원을 받았습니다.`);
+      p.completedRounds++;
+
+      log(
+        `${p.name} 출발 통과 +20만원`
+      );
 
     }
 
@@ -1103,7 +1545,10 @@ function moveSteps(p,n,done){
 
     render();
 
-    setTimeout(step,180);
+    setTimeout(
+      step,
+      180
+    );
 
   }
 
@@ -1112,18 +1557,27 @@ function moveSteps(p,n,done){
 }
 
 
-/* =========================
-   도착 처리
-========================= */
+/* =========================================================
+   도착
+========================================================= */
 
 function afterMove(p,doubles){
 
-  spaceAction(
+  /*
+    ★ 실제 도착한 칸만 행동
+  */
+
+  arrivalAction(
+
     p.pos,
+
     ()=>{
+
       if(doubles){
 
-        log(`${p.name} 더블! 한 번 더 굴릴 수 있습니다.`);
+        log(
+          `${p.name} 더블! 한 번 더 굴릴 수 있습니다.`
+        );
 
         rolled=false;
 
@@ -1134,110 +1588,145 @@ function afterMove(p,doubles){
         nextTurn();
 
       }
+
     }
+
   );
 
 }
 
 
-/* =========================
-   칸 행동
-========================= */
+/* =========================================================
+   ★ 도착 행동
+========================================================= */
 
-function spaceAction(index,done=()=>{}){
+function arrivalAction(index,done){
 
   const c=board[index];
 
-  if(!c)return;
-
   const p=players[turn];
 
-  if(c.type==='property'){
+  if(!c||!p){
 
-    if(c.owner===undefined){
-
-      showModal(
-        c.name,
-        `
-        <p>
-        가격: <b>${fmt(c.price)}</b><br>
-        현재 보유금액: <b>${fmt(p.money)}</b>
-        </p>
-        `,
-        [
-          ['구매',()=>buyProperty(index,done)],
-          ['구매하지 않기',()=>{
-            closeModal();
-            done();
-          }]
-        ]
-      );
-
-      return;
-
-    }
-
-    if(c.owner!==p.id){
-
-      payToll(p,c,done);
-
-      return;
-
-    }
-
-  }
-
-  if(c.type==='gold'){
-
-    drawGolden(p,done);
+    done();
 
     return;
 
   }
 
+
+  /* 도시 */
+
+  if(c.type==='property'){
+
+    handlePropertyArrival(
+      index,
+      done
+    );
+
+    return;
+
+  }
+
+
+  /* 황금열쇠 */
+
+  if(c.type==='gold'){
+
+    drawGolden(
+      p,
+      done
+    );
+
+    return;
+
+  }
+
+
+  /* 무인도 */
+
   if(c.type==='island'){
 
     p.island=2;
 
-    log(`${p.name} 무인도에 갇혔습니다.`);
+    log(
+      `${p.name} 무인도 도착`
+    );
+
+    render();
+
+    done();
+
+    return;
 
   }
+
+
+  /* 사회복지기금 */
 
   if(c.type==='welfare'){
 
     if(index===38){
 
-      const amount=Math.min(30,p.money);
+      const amount=
+        Math.min(10,p.money);
 
       p.money-=amount;
 
       fund+=amount;
 
-      log(`${p.name} 사회복지기금 ${fmt(amount)}을 납부했습니다.`);
+      log(
+        `${p.name} 사회복지기금 ${fmt(amount)} 납부`
+      );
 
     }else{
 
       p.money+=fund;
 
-      log(`${p.name} 사회복지기금 ${fmt(fund)}을 받았습니다.`);
+      log(
+        `${p.name} 사회복지기금 ${fmt(fund)} 수령`
+      );
 
       fund=0;
 
     }
 
-  }
+    render();
 
-  if(c.type==='vehicle'||c.type==='tour'){
+    done();
 
-    if(c.toll){
-
-      p.money+=c.toll;
-
-      log(`${p.name} 특별칸 보상 ${fmt(c.toll)}을 받았습니다.`);
-
-    }
+    return;
 
   }
+
+
+  /* 교통수단 */
+
+  if(c.type==='vehicle'){
+
+    log(
+      `${p.name} ${c.name} 도착`
+    );
+
+    render();
+
+    done();
+
+    return;
+
+  }
+
+
+  /* 우주여행 */
+
+  if(c.type==='tour'){
+
+    showSpaceTravel(done);
+
+    return;
+
+  }
+
 
   render();
 
@@ -1246,9 +1735,105 @@ function spaceAction(index,done=()=>{}){
 }
 
 
-/* =========================
-   토지 구매
-========================= */
+/* =========================================================
+   ★ 도시 도착
+========================================================= */
+
+function handlePropertyArrival(index,done){
+
+  const c=board[index];
+
+  const p=players[turn];
+
+
+  /* 내 땅 */
+
+  if(c.owner===p.id){
+
+    log(
+      `${p.name}이(가) 자신의 ${c.name}에 도착했습니다.`
+    );
+
+    render();
+
+    done();
+
+    return;
+
+  }
+
+
+  /* 상대 땅 */
+
+  if(c.owner!==undefined){
+
+    payToll(
+      p,
+      c,
+      done
+    );
+
+    return;
+
+  }
+
+
+  /* 빈 땅 */
+
+  showModal(
+
+    `${c.name} 도착`,
+
+    `
+
+    <div class="card">
+
+      <h3>${c.name}</h3>
+
+      <p>
+        구매가격 :
+        <b>${fmt(c.price)}</b>
+      </p>
+
+      <p>
+        보유금액 :
+        <b>${fmt(p.money)}</b>
+      </p>
+
+      <p>
+        구매 후 한 바퀴를 완주해야
+        건물을 건설할 수 있습니다.
+      </p>
+
+    </div>
+
+    `,
+
+    [
+
+      [
+        '구매',
+        ()=>buyProperty(index,done)
+      ],
+
+      [
+        '구매하지 않기',
+        ()=>{
+          closeModal();
+          done();
+        }
+      ]
+
+    ]
+
+  );
+
+}
+
+
+/* =========================================================
+   ★ 땅 구매
+========================================================= */
 
 function buyProperty(index,done){
 
@@ -1258,7 +1843,9 @@ function buyProperty(index,done){
 
   if(p.money<c.price){
 
-    log(`${p.name}은(는) 돈이 부족하여 ${c.name}을 구매하지 못했습니다.`);
+    log(
+      `${p.name}은(는) ${c.name}을 구매할 돈이 부족합니다.`
+    );
 
     closeModal();
 
@@ -1268,15 +1855,28 @@ function buyProperty(index,done){
 
   }
 
+
   p.money-=c.price;
 
   c.owner=p.id;
 
   c.build=0;
 
+  /*
+    ★ 실제 구매가격 저장
+    ★ 거래 시 이 가격을 기준으로 사용
+  */
+
+  c.purchasePrice=c.price;
+
+  c.purchaseRound=
+    p.completedRounds;
+
   p.props[index]=true;
 
-  log(`${p.name}이(가) ${c.name}을 ${fmt(c.price)}에 구매했습니다.`);
+  log(
+    `${p.name}이(가) ${c.name}을 ${fmt(c.price)}에 구매`
+  );
 
   closeModal();
 
@@ -1287,17 +1887,24 @@ function buyProperty(index,done){
 }
 
 
-/* =========================
-   통행료
-========================= */
+/* =========================================================
+   ★ 통행료
+========================================================= */
 
 function calcToll(c){
 
-  if(c.type==='tour'||c.type==='vehicle')return c.toll||0;
+  if(c.type==='vehicle')
+    return c.toll||0;
 
-  return c.t[p=>p];
+  if(c.type!=='property')
+    return 0;
+
+  const level=c.build||0;
+
+  return c.toll[level]||c.toll[0]||0;
 
 }
+
 
 function payToll(p,c,done){
 
@@ -1311,19 +1918,16 @@ function payToll(p,c,done){
 
   }
 
-  let toll=calcToll(c);
 
-  if(!Number.isFinite(toll)){
-
-    toll=c.t[c.build||0]||0;
-
-  }
+  /* 우대권 */
 
   if(p.favor>0){
 
     p.favor--;
 
-    log(`${p.name}이(가) 통행료 면제권을 사용했습니다.`);
+    log(
+      `${p.name}이(가) 우대권을 사용하여 통행료 면제`
+    );
 
     render();
 
@@ -1333,15 +1937,35 @@ function payToll(p,c,done){
 
   }
 
-  toll=Math.min(toll,p.money);
+
+  const toll=
+    Math.min(
+      calcToll(c),
+      p.money
+    );
+
 
   p.money-=toll;
 
   owner.money+=toll;
 
+
   log(
-    `${p.name} → ${owner.name} ${c.name} 통행료 ${fmt(toll)}`
+    `${p.name} → ${owner.name} `
+    +`${c.name} 통행료 ${fmt(toll)}`
   );
+
+
+  if(toll<calcToll(c)){
+
+    p.alive=false;
+
+    log(
+      `${p.name} 파산`
+    );
+
+  }
+
 
   render();
 
@@ -1350,97 +1974,938 @@ function payToll(p,c,done){
 }
 
 
-/* =========================
-   황금열쇠
-========================= */
+/* =========================================================
+   ★ 도시 정보
+   클릭해도 구매하지 않음
+========================================================= */
 
-function drawGolden(p,done){
+function showSpaceInfo(index){
 
-  const card=deck[deckPos];
+  const c=board[index];
 
-  deckPos++;
+  if(!c)return;
 
-  if(deckPos>=deck.length)deckPos=0;
+
+  if(c.type!=='property'){
+
+    showModal(
+
+      c.name,
+
+      `<p>${getSpaceDescription(c)}</p>`,
+
+      [['닫기',closeModal]]
+
+    );
+
+    return;
+
+  }
+
+
+  const owner=
+    c.owner!==undefined
+      ? players[c.owner]?.name
+      : '은행';
+
+
+  const level=c.build||0;
+
+
+  let html=`
+
+    <div class="card">
+
+      <h3>${c.name}</h3>
+
+      <table class="info-table">
+
+        <tr>
+          <th>항목</th>
+          <th>금액</th>
+        </tr>
+
+        <tr>
+          <td>토지 구매</td>
+          <td>${fmt(c.price)}</td>
+        </tr>
+
+        <tr>
+          <td>별장</td>
+          <td>${c.villa?fmt(c.villa):'-'}</td>
+        </tr>
+
+        <tr>
+          <td>빌딩</td>
+          <td>${c.building?fmt(c.building):'-'}</td>
+        </tr>
+
+        <tr>
+          <td>호텔</td>
+          <td>${c.hotel?fmt(c.hotel):'-'}</td>
+        </tr>
+
+        <tr>
+          <td>현재 통행료</td>
+          <td>${fmt(calcToll(c))}</td>
+        </tr>
+
+        <tr>
+          <td>현재 건물</td>
+          <td>${BUILDING_NAMES[level]}</td>
+        </tr>
+
+        <tr>
+          <td>소유자</td>
+          <td>${owner}</td>
+        </tr>
+
+      </table>
+
+    </div>
+
+  `;
+
 
   showModal(
-    '황금열쇠',
-    `
-    <div class="card">
-      <b>${card.title}</b>
-      <p>${card.text}</p>
-    </div>
-    `,
-    [
-      ['확인',()=>{
 
-        card.action(p);
+    c.name,
 
-        closeModal();
+    html,
 
-        if(pendingMove){
+    [['닫기',closeModal]]
 
-          const n=pendingMove;
-
-          pendingMove=null;
-
-          moveSteps(
-            p,
-            n,
-            ()=>{
-              spaceAction(
-                p.pos,
-                done
-              );
-            }
-          );
-
-        }else{
-
-          render();
-
-          done();
-
-        }
-
-      }]
-    ]
   );
 
 }
 
 
-/* =========================
+/* =========================================================
+   특수칸 설명
+========================================================= */
+
+function getSpaceDescription(c){
+
+  if(c.type==='start')
+    return '출발점을 지나면 20만원을 받습니다.';
+
+  if(c.type==='gold')
+    return '황금열쇠 카드를 한 장 뽑습니다.';
+
+  if(c.type==='island')
+    return '무인도에 갇힙니다.';
+
+  if(c.type==='welfare')
+    return '사회복지기금을 납부하거나 수령합니다.';
+
+  if(c.type==='vehicle')
+    return '교통수단 특수칸입니다.';
+
+  if(c.type==='tour')
+    return '우주여행을 할 수 있는 특수칸입니다.';
+
+  return '';
+
+}
+
+
+/* =========================================================
+   건물 이름
+========================================================= */
+
+const BUILDING_NAMES=[
+  '맨땅',
+  '별장',
+  '빌딩',
+  '호텔'
+];
+
+
+/* =========================================================
+   ★ 건물 구매 가능 여부
+   ---------------------------------------------------------
+   구매한 뒤 최소 한 바퀴 완주해야 함
+========================================================= */
+
+function canBuild(p,c){
+
+  if(!p||!c)return false;
+
+  if(c.type!=='property')return false;
+
+  if(c.owner!==p.id)return false;
+
+  if((c.build||0)>=3)return false;
+
+  const completed=
+    p.completedRounds||0;
+
+  const boughtAt=
+    c.purchaseRound||0;
+
+  return completed>boughtAt;
+
+}
+
+
+/* =========================================================
+   건물 가격
+========================================================= */
+
+function getBuildingPrice(c,nextLevel){
+
+  if(nextLevel===1)
+    return c.villa||0;
+
+  if(nextLevel===2)
+    return c.building||0;
+
+  if(nextLevel===3)
+    return c.hotel||0;
+
+  return 0;
+
+}
+
+
+/* =========================================================
+   ★ 건물 건설
+========================================================= */
+
+function buildBuilding(index){
+
+  const p=players[turn];
+
+  const c=board[index];
+
+  if(!canBuild(p,c)){
+
+    log(
+      `${c.name}은(는) 현재 건물을 지을 수 없습니다.`
+    );
+
+    return;
+
+  }
+
+
+  const nextLevel=
+    (c.build||0)+1;
+
+
+  const price=
+    getBuildingPrice(
+      c,
+      nextLevel
+    );
+
+
+  if(p.money<price){
+
+    log(
+      `${p.name}의 건설비가 부족합니다.`
+    );
+
+    return;
+
+  }
+
+
+  p.money-=price;
+
+  c.build=nextLevel;
+
+
+  log(
+    `${p.name} → ${c.name} `
+    +`${BUILDING_NAMES[nextLevel]} 건설`
+  );
+
+
+  render();
+
+  showBuildMenu();
+
+}
+
+
+/* =========================================================
+   ★ 건물 메뉴
+========================================================= */
+
+function showBuildMenu(){
+
+  if(!gameStarted){
+
+    log('게임을 먼저 시작하세요.');
+
+    return;
+
+  }
+
+
+  const p=players[turn];
+
+  let html='';
+
+
+  Object.keys(p.props).forEach(index=>{
+
+    const c=board[index];
+
+    if(!c||c.type!=='property')
+      return;
+
+
+    const level=c.build||0;
+
+    const next=level+1;
+
+
+    html+=`
+
+      <div class="card">
+
+        <b>${c.name}</b>
+
+        <p>
+          현재 : ${BUILDING_NAMES[level]}
+          <br>
+          현재 통행료 :
+          ${fmt(calcToll(c))}
+        </p>
+
+    `;
+
+
+    if(next<=3){
+
+      const price=
+        getBuildingPrice(c,next);
+
+
+      html+=`
+
+        <p>
+          다음 :
+          ${BUILDING_NAMES[next]}
+          <br>
+          건설비 :
+          ${fmt(price)}
+        </p>
+
+        <button
+          class="build-btn"
+          onclick="buildBuilding(${index})"
+          ${canBuild(p,c)?'':'disabled'}
+        >
+          ${canBuild(p,c)?'건설':'한 바퀴 후 가능'}
+        </button>
+
+      `;
+
+    }else{
+
+      html+=
+        '<p>최고 단계인 호텔입니다.</p>';
+
+    }
+
+
+    html+=
+      '</div>';
+
+  });
+
+
+  if(!html){
+
+    html=
+      '<p>보유한 토지가 없습니다.</p>';
+
+  }
+
+
+  showModal(
+
+    '건물 건설',
+
+    html,
+
+    [['닫기',closeModal]]
+
+  );
+
+}
+
+
+/* =========================================================
+   ★ 거래 메뉴
+========================================================= */
+
+function showTradeMenu(){
+
+  if(!gameStarted){
+
+    log('게임을 먼저 시작하세요.');
+
+    return;
+
+  }
+
+
+  const p=players[turn];
+
+  let html='';
+
+
+  players
+    .filter(x=>x.id!==p.id&&x.alive)
+    .forEach(other=>{
+
+      const props=
+        Object.keys(other.props);
+
+
+      props.forEach(index=>{
+
+        const c=board[index];
+
+        if(!c||c.owner!==other.id)
+          return;
+
+
+        const tradePrice=
+          c.purchasePrice||c.price;
+
+
+        html+=`
+
+          <div class="trade-row">
+
+            <div>
+
+              <b>${c.name}</b>
+
+              <br>
+
+              <small>
+                소유자 : ${other.name}<br>
+                기준가격 : ${fmt(tradePrice)}
+              </small>
+
+            </div>
+
+            <button
+              class="build-btn"
+              onclick="requestTrade(${index},${other.id})"
+            >
+              거래
+            </button>
+
+          </div>
+
+        `;
+
+      });
+
+    });
+
+
+  if(!html){
+
+    html='<p>현재 거래할 수 있는 토지가 없습니다.</p>';
+
+  }
+
+
+  showModal(
+
+    '토지 거래',
+
+    html,
+
+    [['닫기',closeModal]]
+
+  );
+
+}
+
+
+/* =========================================================
+   ★ 거래 요청
+   ---------------------------------------------------------
+   거래 기준가격 = 실제 구매가격
+========================================================= */
+
+function requestTrade(index,ownerId){
+
+  const buyer=players[turn];
+
+  const owner=players[ownerId];
+
+  const c=board[index];
+
+  const price=
+    c.purchasePrice||c.price;
+
+
+  if(!buyer||!owner||!c)
+    return;
+
+
+  closeModal();
+
+
+  showModal(
+
+    '거래 제안',
+
+    `
+
+      <div class="card">
+
+        <h3>${c.name}</h3>
+
+        <p>
+          판매자 :
+          <b>${owner.name}</b>
+        </p>
+
+        <p>
+          실제 구매가격 :
+          <b>${fmt(price)}</b>
+        </p>
+
+        <p>
+          거래 요청자는
+          실제 구매가격으로 제안합니다.
+        </p>
+
+      </div>
+
+    `,
+
+    [
+
+      [
+
+        '거래 요청',
+
+        ()=>{
+
+          closeModal();
+
+          ownerTradeConfirm(
+            index,
+            ownerId,
+            buyer.id,
+            price
+          );
+
+        }
+
+      ],
+
+      ['취소',closeModal]
+
+    ]
+
+  );
+
+}
+
+
+/* =========================================================
+   ★ 소유자 거래 승인
+========================================================= */
+
+function ownerTradeConfirm(
+  index,
+  ownerId,
+  buyerId,
+  price
+){
+
+  const owner=players[ownerId];
+
+  const buyer=players[buyerId];
+
+  const c=board[index];
+
+
+  if(!owner||!buyer||!c)
+    return;
+
+
+  showModal(
+
+    '거래 요청',
+
+    `
+
+      <div class="card">
+
+        <h3>${c.name}</h3>
+
+        <p>
+          ${buyer.name}이(가)
+          <b>${fmt(price)}</b>에
+          구매를 요청했습니다.
+        </p>
+
+      </div>
+
+    `,
+
+    [
+
+      [
+
+        '거래 승인',
+
+        ()=>{
+
+          if(buyer.money<price){
+
+            log(
+              `${buyer.name}은(는) 거래금액이 부족합니다.`
+            );
+
+            closeModal();
+
+            return;
+
+          }
+
+
+          buyer.money-=price;
+
+          owner.money+=price;
+
+
+          delete owner.props[index];
+
+          buyer.props[index]=true;
+
+          c.owner=buyer.id;
+
+          c.purchasePrice=price;
+
+          c.purchaseRound=
+            buyer.completedRounds;
+
+
+          log(
+            `${buyer.name}이(가) `
+            +`${c.name}을 `
+            +`${owner.name}에게 `
+            +`${fmt(price)}에 구매`
+          );
+
+
+          closeModal();
+
+          render();
+
+        }
+
+      ],
+
+      ['거절',closeModal]
+
+    ]
+
+  );
+
+}
+
+
+/* =========================================================
+   황금열쇠
+========================================================= */
+
+function drawGolden(p,done){
+
+  const card=
+    deck[deckPos];
+
+  deckPos++;
+
+  if(deckPos>=deck.length)
+    deckPos=0;
+
+
+  showModal(
+
+    '황금열쇠',
+
+    `
+
+      <div class="card">
+
+        <h3>${card.title}</h3>
+
+        <p>${card.text}</p>
+
+      </div>
+
+    `,
+
+    [
+
+      [
+
+        '확인',
+
+        ()=>{
+
+          card.action(p);
+
+          closeModal();
+
+
+          if(pendingMove){
+
+            const n=
+              pendingMove;
+
+            pendingMove=null;
+
+
+            moveSteps(
+
+              p,
+
+              n,
+
+              ()=>{
+
+                arrivalAction(
+                  p.pos,
+                  done
+                );
+
+              }
+
+            );
+
+          }else{
+
+            render();
+
+            done();
+
+          }
+
+        }
+
+      ]
+
+    ]
+
+  );
+
+}
+
+
+/* =========================================================
    무인도
-========================= */
+========================================================= */
 
 function islandTurn(p){
 
+  if(p.escapeCard>0){
+
+    showModal(
+
+      '무인도',
+
+      `<p>무인도 탈출권을 사용할 수 있습니다.</p>`,
+
+      [
+
+        [
+
+          '탈출권 사용',
+
+          ()=>{
+
+            p.escapeCard--;
+
+            p.island=0;
+
+            log(
+              `${p.name} 무인도 탈출`
+            );
+
+            closeModal();
+
+            rolled=true;
+
+            render();
+
+            setTimeout(
+              nextTurn,
+              400
+            );
+
+          }
+
+        ],
+
+        [
+
+          '그냥 쉬기',
+
+          ()=>{
+
+            p.island--;
+
+            log(
+              `${p.name} 무인도에서 대기`
+            );
+
+            closeModal();
+
+            rolled=true;
+
+            render();
+
+            setTimeout(
+              nextTurn,
+              400
+            );
+
+          }
+
+        ]
+
+      ]
+
+    );
+
+    return;
+
+  }
+
+
   p.island--;
 
-  log(`${p.name} 무인도 턴 ${p.island}`);
+  log(
+    `${p.name} 무인도 턴 ${p.island}`
+  );
+
 
   if(p.island<=0){
 
-    log(`${p.name}이(가) 무인도에서 나왔습니다.`);
+    log(
+      `${p.name} 무인도에서 나왔습니다.`
+    );
 
   }
+
 
   rolled=true;
 
   render();
 
+
   setTimeout(
     nextTurn,
-    500
+    400
   );
 
 }
 
 
-/* =========================
+/* =========================================================
+   우주여행
+========================================================= */
+
+function showSpaceTravel(done){
+
+  const destinations=[
+    1,3,7,8,9,11,13,14,16,18,
+    19,21,23,24,26,27,29,31,33,34,
+    36,37,39
+  ];
+
+
+  let html=
+    '<p>이동할 목적지를 선택하세요.</p>';
+
+
+  html+='<div class="modal-buttons">';
+
+
+  destinations.forEach(index=>{
+
+    html+=`
+
+      <button
+        onclick="travelTo(${index});window.__travelDone=window.__travelDone||null"
+      >
+        ${board[index].name}
+      </button>
+
+    `;
+
+  });
+
+
+  html+='</div>';
+
+
+  window.__spaceDone=done;
+
+
+  showModal(
+    '우주여행',
+    html,
+    []
+  );
+
+}
+
+
+function travelTo(index){
+
+  const p=players[turn];
+
+  if(!p)return;
+
+  p.pos=index;
+
+  log(
+    `${p.name} 우주여행 → ${board[index].name}`
+  );
+
+  closeModal();
+
+  render();
+
+  if(window.__spaceDone){
+
+    const done=
+      window.__spaceDone;
+
+    window.__spaceDone=null;
+
+    arrivalAction(
+      index,
+      done
+    );
+
+  }
+
+}
+
+
+/* =========================================================
    다음 턴
-   ★ players.length가 선택 인원수
-========================= */
+   ★ 선택한 인원수만 순환
+========================================================= */
 
 function nextTurn(){
 
@@ -1452,69 +2917,134 @@ function nextTurn(){
 
   }
 
+
   rolled=false;
+
 
   let tries=0;
 
+
   do{
 
-    turn=(turn+1)%players.length;
+    turn=
+      (turn+1)%players.length;
 
     tries++;
 
   }while(
+
     !players[turn].alive &&
-    tries<10
+    tries<players.length+2
+
   );
+
 
   render();
 
 }
 
 
-/* =========================
+/* =========================================================
    게임 종료
-========================= */
+========================================================= */
 
 function endGame(){
 
-  const alive=activePlayers();
+  const alive=
+    activePlayers();
+
 
   if(alive.length===1){
 
     showModal(
+
       '게임 종료',
-      `<p><b>${alive[0].name}</b> 승리!</p>`,
-      [
-        ['닫기',closeModal]
-      ]
+
+      `<p>
+        <b>${alive[0].name}</b>만 남았습니다.
+      </p>`,
+
+      [['닫기',closeModal]]
+
     );
 
     return;
 
   }
 
+
   showModal(
+
     '게임 종료',
+
     '<p>게임이 종료되었습니다.</p>',
-    [
-      ['닫기',closeModal]
-    ]
+
+    [['닫기',closeModal]]
+
   );
 
 }
 
 
-/* =========================
+/* =========================================================
+   규칙
+========================================================= */
+
+function showRules(){
+
+  showModal(
+
+    'WORLD MARBLE 규칙',
+
+    `
+
+      <p>
+
+      • 2~4명이 플레이할 수 있습니다.<br>
+
+      • 시작자금은 300만원입니다.<br>
+
+      • 주사위 2개를 굴리고 나온 수만큼 이동합니다.<br>
+
+      • 실제 도착한 빈 땅만 구매할 수 있습니다.<br>
+
+      • 도시를 클릭하는 것만으로 구매할 수 없습니다.<br>
+
+      • 구매한 땅은 한 바퀴 완주한 후 건물을 지을 수 있습니다.<br>
+
+      • 건물은 별장 → 빌딩 → 호텔 순서입니다.<br>
+
+      • 상대방 땅에 도착하면 현재 건물 단계의 통행료를 냅니다.<br>
+
+      • 거래가격은 해당 토지를 구매한 가격을 기준으로 합니다.<br>
+
+      • 황금열쇠는 카드를 뽑습니다.<br>
+
+      • 사회복지기금 접수처에서는 기금을 납부합니다.<br>
+
+      • 사회복지기금 수령처에서는 모인 기금을 받습니다.<br>
+
+      • 무인도에서는 이동할 수 없습니다.<br>
+
+      • 더블이 나오면 한 번 더 굴립니다.
+
+      </p>
+
+    `,
+
+    [['닫기',closeModal]]
+
+  );
+
+}
+
+
+/* =========================================================
    시작
-========================= */
+========================================================= */
 
 buildBoard();
 
-/*
-  페이지를 열면 바로
-  2명 / 3명 / 4명 선택창이 나옵니다.
-*/
 newGame();
 
 </script>
