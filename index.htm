@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,15 +23,8 @@ button{
   background:#172033;
   color:white;
 }
-button:disabled{
-  opacity:.4;
-  cursor:not-allowed;
-}
-.app{
-  max-width:1500px;
-  margin:auto;
-  padding:18px;
-}
+button:disabled{opacity:.4;cursor:not-allowed}
+.app{max-width:1500px;margin:auto;padding:18px}
 header{
   background:#fff;
   border:1px solid #dfe4ea;
@@ -41,20 +35,9 @@ header{
   justify-content:space-between;
   margin-bottom:16px;
 }
-.logo{
-  font-size:27px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-.sub{
-  color:#718096;
-  font-size:13px;
-  margin-top:4px;
-}
-.headerBtns{
-  display:flex;
-  gap:8px;
-}
+.logo{font-size:27px;font-weight:900;letter-spacing:1px}
+.sub{color:#718096;font-size:13px;margin-top:4px}
+.headerBtns{display:flex;gap:8px}
 .layout{
   display:grid;
   grid-template-columns:minmax(650px,1fr) 380px;
@@ -65,9 +48,7 @@ header{
   border:1px solid #dfe4ea;
   border-radius:18px;
 }
-.boardWrap{
-  padding:14px;
-}
+.boardWrap{padding:14px}
 .board{
   width:min(100%,850px);
   aspect-ratio:1/1;
@@ -88,21 +69,11 @@ header{
   overflow:hidden;
   border:1px solid #d8dde4;
 }
-.cell.corner{
-  background:#f6f7f9;
-}
-.cell.gold{
-  background:#fff8dc;
-}
-.cell.vehicle{
-  background:#edf6ff;
-}
-.cell.special{
-  background:#f3f1ff;
-}
-.cell.seoul{
-  background:#fff0f0;
-}
+.cell.corner{background:#f6f7f9}
+.cell.gold{background:#fff8dc}
+.cell.vehicle{background:#edf6ff}
+.cell.special{background:#f3f1ff}
+.cell.seoul{background:#fff0f0}
 .cellName{
   font-size:clamp(7px,1vw,12px);
   font-weight:800;
@@ -188,43 +159,19 @@ header{
   color:#cbd5e1;
   font-size:12px;
 }
-.side{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-.panel{
-  padding:15px;
-}
-.turnBox{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.turnDot{
-  width:16px;
-  height:16px;
-  border-radius:50%;
-}
-.turnName{
-  font-size:20px;
-  font-weight:900;
-}
-.money{
-  margin-left:auto;
-  font-size:18px;
-  font-weight:900;
-}
+.side{display:flex;flex-direction:column;gap:12px}
+.panel{padding:15px}
+.turnBox{display:flex;align-items:center;gap:10px}
+.turnDot{width:16px;height:16px;border-radius:50%}
+.turnName{font-size:20px;font-weight:900}
+.money{margin-left:auto;font-size:18px;font-weight:900}
 .diceArea{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:10px;
 }
-.dice{
-  display:flex;
-  gap:7px;
-}
+.dice{display:flex;gap:7px}
 .die{
   width:48px;
   height:48px;
@@ -237,36 +184,14 @@ header{
   font-weight:900;
   background:#fafafa;
 }
-.actionRow{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-}
-.actionRow button{
-  flex:1;
-}
-.primary{
-  background:#2563eb;
-}
-.green{
-  background:#16a34a;
-}
-.red{
-  background:#dc2626;
-}
-.goldBtn{
-  background:#b88700;
-}
-.sectionTitle{
-  font-size:14px;
-  font-weight:900;
-  margin-bottom:9px;
-}
-.players{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-}
+.actionRow{display:flex;gap:8px;margin-top:10px}
+.actionRow button{flex:1}
+.primary{background:#2563eb}
+.green{background:#16a34a}
+.red{background:#dc2626}
+.goldBtn{background:#b88700}
+.sectionTitle{font-size:14px;font-weight:900;margin-bottom:9px}
+.players{display:flex;flex-direction:column;gap:7px}
 .playerRow{
   display:flex;
   align-items:center;
@@ -275,22 +200,10 @@ header{
   background:#f7f8fa;
   border-radius:9px;
 }
-.playerDot{
-  width:13px;
-  height:13px;
-  border-radius:50%;
-}
-.playerRow .name{
-  font-weight:800;
-}
-.playerRow .cash{
-  margin-left:auto;
-  font-weight:800;
-}
-.playerRow .pos{
-  font-size:11px;
-  color:#77808c;
-}
+.playerDot{width:13px;height:13px;border-radius:50%}
+.playerRow .name{font-weight:800}
+.playerRow .cash{margin-left:auto;font-weight:800}
+.playerRow .pos{font-size:11px;color:#77808c}
 .log{
   height:190px;
   overflow:auto;
@@ -301,25 +214,15 @@ header{
   font-size:12px;
   line-height:1.55;
 }
-.infoGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px;
-}
-.info{
-  background:#f7f8fa;
-  border-radius:9px;
-  padding:9px;
-}
+.infoGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.info{background:#f7f8fa;border-radius:9px;padding:9px}
 .info b{
   display:block;
   font-size:11px;
   color:#687385;
   margin-bottom:3px;
 }
-.info span{
-  font-weight:900;
-}
+.info span{font-weight:900}
 .modalBack{
   position:fixed;
   inset:0;
@@ -338,14 +241,8 @@ header{
   border-radius:18px;
   padding:20px;
 }
-.modal h2{
-  margin:0 0 10px;
-}
-.modalText{
-  line-height:1.65;
-  font-size:14px;
-  white-space:pre-line;
-}
+.modal h2{margin:0 0 10px}
+.modalText{line-height:1.65;font-size:14px;white-space:pre-line}
 .modalBtns{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -358,9 +255,6 @@ header{
   text-align:left;
   border:1px solid #dce1e7;
 }
-.assetBtn:hover{
-  background:#e9edf2;
-}
 .notice{
   padding:9px;
   background:#fff7df;
@@ -369,6 +263,7 @@ header{
   font-size:12px;
   margin-bottom:10px;
 }
+
 @media(max-width:1050px){
   .layout{grid-template-columns:1fr}
 }
@@ -393,6 +288,7 @@ header{
     <div class="logo">WORLD MARBLE</div>
     <div class="sub">WORLD TRAVEL BOARD GAME</div>
   </div>
+
   <div class="headerBtns">
     <button onclick="showRules()">규칙</button>
     <button onclick="newGame()" class="primary">새 게임</button>
@@ -430,10 +326,8 @@ header{
     <button onclick="showCurrentProperty()">현재 지역</button>
   </div>
 
-  <div class="actionRow">
-    <button onclick="showBank()">은행 / 자산매각</button>
-    <button onclick="showGoldInfo()">황금열쇠</button>
-  </div>
+  <!-- 황금열쇠 알려주기 버튼 제거 -->
+
 </div>
 
 <div class="panel">
@@ -469,9 +363,10 @@ header{
 </div>
 
 <script>
+
 /* =========================================================
-   WORLD MARBLE
-   ========================================================= */
+   기본 설정
+========================================================= */
 
 const colors=[
   "#2563eb",
@@ -488,103 +383,336 @@ const names=[
 ];
 
 /*
-  단위:
-  1 = 1만원
+  금액 단위 = 만원
 */
 
+/* =========================================================
+   보드 데이터
+========================================================= */
+
 const boardData=[
+
   {name:"출발",type:"start"},
-  {name:"타이베이",type:"property",price:5,landFee:2,villa:5,building:15,hotel:25,villaFee:10,buildingFee:30,hotelFee:50},
+
+  {name:"타이베이",type:"property",
+   price:5,landFee:2,
+   villa:5,buildingCost:15,hotel:25,
+   villaFee:10,buildingFee:30,hotelFee:50},
+
   {name:"황금열쇠",type:"gold"},
-  {name:"베이징",type:"property",price:5,landFee:2,villa:5,building:15,hotel:25,villaFee:10,buildingFee:30,hotelFee:50},
-  {name:"마닐라",type:"property",price:6,landFee:3,villa:6,building:18,hotel:30,villaFee:12,buildingFee:36,hotelFee:60},
-  {name:"제주도",type:"property",price:6,landFee:3,villa:6,building:18,hotel:30,villaFee:12,buildingFee:36,hotelFee:60},
+
+  {name:"베이징",type:"property",
+   price:5,landFee:2,
+   villa:5,buildingCost:15,hotel:25,
+   villaFee:10,buildingFee:30,hotelFee:50},
+
+  {name:"마닐라",type:"property",
+   price:6,landFee:3,
+   villa:6,buildingCost:18,hotel:30,
+   villaFee:12,buildingFee:36,hotelFee:60},
+
+  {name:"제주도",type:"property",
+   price:6,landFee:3,
+   villa:6,buildingCost:18,hotel:30,
+   villaFee:12,buildingFee:36,hotelFee:60},
+
   {name:"황금열쇠",type:"gold"},
-  {name:"싱가포르",type:"property",price:7,landFee:3,villa:7,building:21,hotel:35,villaFee:14,buildingFee:42,hotelFee:70},
-  {name:"카이로",type:"property",price:7,landFee:3,villa:7,building:21,hotel:35,villaFee:14,buildingFee:42,hotelFee:70},
-  {name:"이스탄불",type:"property",price:8,landFee:4,villa:8,building:24,hotel:40,villaFee:16,buildingFee:48,hotelFee:80},
+
+  {name:"싱가포르",type:"property",
+   price:7,landFee:3,
+   villa:7,buildingCost:21,hotel:35,
+   villaFee:14,buildingFee:42,hotelFee:70},
+
+  {name:"카이로",type:"property",
+   price:7,landFee:3,
+   villa:7,buildingCost:21,hotel:35,
+   villaFee:14,buildingFee:42,hotelFee:70},
+
+  {name:"이스탄불",type:"property",
+   price:8,landFee:4,
+   villa:8,buildingCost:24,hotel:40,
+   villaFee:16,buildingFee:48,hotelFee:80},
+
   {name:"무인도",type:"island"},
-  {name:"아테네",type:"property",price:8,landFee:4,villa:8,building:24,hotel:40,villaFee:16,buildingFee:48,hotelFee:80},
-  {name:"황금열쇠",type:"gold"},
-  {name:"코펜하겐",type:"property",price:9,landFee:4,villa:9,building:27,hotel:45,villaFee:18,buildingFee:54,hotelFee:90},
-  {name:"스톡홀름",type:"property",price:9,landFee:4,villa:9,building:27,hotel:45,villaFee:18,buildingFee:54,hotelFee:90},
 
-  /* 탈것 */
-  {name:"콩코드 여객기",type:"vehicle",price:20,toll:30},
-  
-  {name:"베른",type:"property",price:10,landFee:5,villa:10,building:30,hotel:50,villaFee:20,buildingFee:60,hotelFee:100},
+  {name:"아테네",type:"property",
+   price:8,landFee:4,
+   villa:8,buildingCost:24,hotel:40,
+   villaFee:16,buildingFee:48,hotelFee:80},
+
   {name:"황금열쇠",type:"gold"},
-  {name:"베를린",type:"property",price:10,landFee:5,villa:10,building:30,hotel:50,villaFee:20,buildingFee:60,hotelFee:100},
-  {name:"오타와",type:"property",price:11,landFee:5,villa:11,building:33,hotel:55,villaFee:22,buildingFee:66,hotelFee:110},
+
+  {name:"코펜하겐",type:"property",
+   price:9,landFee:4,
+   villa:9,buildingCost:27,hotel:45,
+   villaFee:18,buildingFee:54,hotelFee:90},
+
+  {name:"스톡홀름",type:"property",
+   price:9,landFee:4,
+   villa:9,buildingCost:27,hotel:45,
+   villaFee:18,buildingFee:54,hotelFee:90},
+
+  {name:"콩코드 여객기",type:"vehicle",
+   price:20,toll:30},
+
+  {name:"베른",type:"property",
+   price:10,landFee:5,
+   villa:10,buildingCost:30,hotel:50,
+   villaFee:20,buildingFee:60,hotelFee:100},
+
+  {name:"황금열쇠",type:"gold"},
+
+  {name:"베를린",type:"property",
+   price:10,landFee:5,
+   villa:10,buildingCost:30,hotel:50,
+   villaFee:20,buildingFee:60,hotelFee:100},
+
+  {name:"오타와",type:"property",
+   price:11,landFee:5,
+   villa:11,buildingCost:33,hotel:55,
+   villaFee:22,buildingFee:66,hotelFee:110},
+
   {name:"사회복지기금 수령처",type:"welfare"},
-  {name:"부에노스아이레스",type:"property",price:11,landFee:5,villa:11,building:33,hotel:55,villaFee:22,buildingFee:66,hotelFee:110},
+
+  {name:"부에노스아이레스",type:"property",
+   price:11,landFee:5,
+   villa:11,buildingCost:33,hotel:55,
+   villaFee:22,buildingFee:66,hotelFee:110},
+
   {name:"황금열쇠",type:"gold"},
-  {name:"상파울루",type:"property",price:12,landFee:6,villa:12,building:36,hotel:60,villaFee:24,buildingFee:72,hotelFee:120},
-  {name:"시드니",type:"property",price:12,landFee:6,villa:12,building:36,hotel:60,villaFee:24,buildingFee:72,hotelFee:120},
-  {name:"부산",type:"property",price:13,landFee:6,villa:13,building:39,hotel:65,villaFee:26,buildingFee:78,hotelFee:130},
-  {name:"하와이",type:"property",price:13,landFee:6,villa:13,building:39,hotel:65,villaFee:26,buildingFee:78,hotelFee:130},
-  {name:"리스본",type:"property",price:14,landFee:7,villa:14,building:42,hotel:70,villaFee:28,buildingFee:84,hotelFee:140},
 
-  /* 퀸 엘리자베스호 */
-  {name:"퀸 엘리자베스호",type:"vehicle",price:30,toll:25},
+  {name:"상파울루",type:"property",
+   price:12,landFee:6,
+   villa:12,buildingCost:36,hotel:60,
+   villaFee:24,buildingFee:72,hotelFee:120},
 
-  {name:"마드리드",type:"property",price:14,landFee:7,villa:14,building:42,hotel:70,villaFee:28,buildingFee:84,hotelFee:140},
+  {name:"시드니",type:"property",
+   price:12,landFee:6,
+   villa:12,buildingCost:36,hotel:60,
+   villaFee:24,buildingFee:72,hotelFee:120},
+
+  {name:"부산",type:"property",
+   price:13,landFee:6,
+   villa:13,buildingCost:39,hotel:65,
+   villaFee:26,buildingFee:78,hotelFee:130},
+
+  {name:"하와이",type:"property",
+   price:13,landFee:6,
+   villa:13,buildingCost:39,hotel:65,
+   villaFee:26,buildingFee:78,hotelFee:130},
+
+  {name:"리스본",type:"property",
+   price:14,landFee:7,
+   villa:14,buildingCost:42,hotel:70,
+   villaFee:28,buildingFee:84,hotelFee:140},
+
+  {name:"퀸 엘리자베스호",type:"vehicle",
+   price:30,toll:25},
+
+  {name:"마드리드",type:"property",
+   price:14,landFee:7,
+   villa:14,buildingCost:42,hotel:70,
+   villaFee:28,buildingFee:84,hotelFee:140},
+
   {name:"우주여행",type:"tour"},
-  {name:"도쿄",type:"property",price:15,landFee:7,villa:15,building:45,hotel:75,villaFee:30,buildingFee:90,hotelFee:150},
 
-  /* 콜럼비아호 */
-  {name:"콜럼비아호",type:"vehicle",price:45,toll:40,spaceFee:20},
+  {name:"도쿄",type:"property",
+   price:15,landFee:7,
+   villa:15,buildingCost:45,hotel:75,
+   villaFee:30,buildingFee:90,hotelFee:150},
 
-  {name:"파리",type:"property",price:15,landFee:7,villa:15,building:45,hotel:75,villaFee:30,buildingFee:90,hotelFee:150},
-  {name:"로마",type:"property",price:16,landFee:8,villa:16,building:48,hotel:80,villaFee:32,buildingFee:96,hotelFee:160},
+  {name:"콜럼비아호",type:"vehicle",
+   price:45,toll:40,spaceFee:20},
+
+  {name:"파리",type:"property",
+   price:15,landFee:7,
+   villa:15,buildingCost:45,hotel:75,
+   villaFee:30,buildingFee:90,hotelFee:150},
+
+  {name:"로마",type:"property",
+   price:16,landFee:8,
+   villa:16,buildingCost:48,hotel:80,
+   villaFee:32,buildingFee:96,hotelFee:160},
+
   {name:"황금열쇠",type:"gold"},
-  {name:"런던",type:"property",price:16,landFee:8,villa:16,building:48,hotel:80,villaFee:32,buildingFee:96,hotelFee:160},
-  {name:"뉴욕",type:"property",price:17,landFee:8,villa:17,building:51,hotel:85,villaFee:34,buildingFee:102,hotelFee:170},
+
+  {name:"런던",type:"property",
+   price:16,landFee:8,
+   villa:16,buildingCost:48,hotel:80,
+   villaFee:32,buildingFee:96,hotelFee:160},
+
+  {name:"뉴욕",type:"property",
+   price:17,landFee:8,
+   villa:17,buildingCost:51,hotel:85,
+   villaFee:34,buildingFee:102,hotelFee:170},
+
   {name:"사회복지기금 접수처",type:"welfare"},
-  {name:"서울",type:"property",price:20,landFee:10,seoul:true}
+
+  /* 서울 수정 */
+  {name:"서울",type:"property",
+   price:100,
+   landFee:200,
+   seoul:true}
 ];
 
 /* =========================================================
    황금열쇠
-   실제 제품/에디션에 따라 문구가 달라질 수 있으므로
-   게임용 데이터로 구성.
-   ========================================================= */
+========================================================= */
 
 const golden=[
- {title:"축하합니다!",text:"은행에서 20만원을 받습니다.",action:"money",value:20},
- {title:"병원비",text:"병원비 10만원을 지불합니다.",action:"money",value:-10},
- {title:"복권 당첨",text:"은행에서 30만원을 받습니다.",action:"money",value:30},
- {title:"세금",text:"은행에 20만원을 지불합니다.",action:"money",value:-20},
- {title:"세계일주",text:"출발점으로 이동합니다.",action:"start"},
- {title:"서울 여행",text:"서울로 이동합니다.",action:"move",value:39},
- {title:"항공여행",text:"콩코드 여객기를 이용하여 이동합니다.",action:"concord"},
- {title:"우주여행",text:"우주여행으로 이동합니다.",action:"move",value:30},
- {title:"무인도 탈출",text:"무인도 탈출권을 얻습니다.",action:"escape"},
- {title:"반액 대매출",text:"보유 자산 중 하나를 은행에 매각할 때 절반 가격으로 매각하는 카드입니다.",action:"halfSale"},
- {title:"사회복지기금",text:"사회복지기금 접수처로 이동합니다.",action:"move",value:38},
- {title:"제주도 여행",text:"제주도로 이동합니다.",action:"move",value:5},
- {title:"부산 여행",text:"부산으로 이동합니다.",action:"move",value:25},
- {title:"하와이 여행",text:"하와이로 이동합니다.",action:"move",value:26},
- {title:"타이베이 여행",text:"타이베이로 이동합니다.",action:"move",value:1},
- {title:"베이징 여행",text:"베이징으로 이동합니다.",action:"move",value:3},
- {title:"마닐라 여행",text:"마닐라로 이동합니다.",action:"move",value:4},
- {title:"싱가포르 여행",text:"싱가포르로 이동합니다.",action:"move",value:7},
- {title:"카이로 여행",text:"카이로로 이동합니다.",action:"move",value:8},
- {title:"이스탄불 여행",text:"이스탄불로 이동합니다.",action:"move",value:9},
- {title:"아테네 여행",text:"아테네로 이동합니다.",action:"move",value:11},
- {title:"코펜하겐 여행",text:"코펜하겐으로 이동합니다.",action:"move",value:13},
- {title:"베른 여행",text:"베른으로 이동합니다.",action:"move",value:16},
- {title:"베를린 여행",text:"베를린으로 이동합니다.",action:"move",value:18},
- {title:"오타와 여행",text:"오타와로 이동합니다.",action:"move",value:19},
- {title:"상파울루 여행",text:"상파울루로 이동합니다.",action:"move",value:23},
- {title:"시드니 여행",text:"시드니로 이동합니다.",action:"move",value:24},
- {title:"리스본 여행",text:"리스본으로 이동합니다.",action:"move",value:27},
- {title:"마드리드 여행",text:"마드리드로 이동합니다.",action:"move",value:29},
- {title:"도쿄 여행",text:"도쿄로 이동합니다.",action:"move",value:31},
- {title:"호텔 건설비 지원",text:"호텔 건설에 사용할 수 있는 20만원을 은행에서 받습니다.",action:"hotelBonus",value:20}
+
+ {title:"축하합니다!",
+  text:"은행에서 20만원을 받습니다.",
+  action:"money",value:20},
+
+ {title:"병원비",
+  text:"병원비 10만원을 지불합니다.",
+  action:"money",value:-10},
+
+ {title:"복권 당첨",
+  text:"은행에서 30만원을 받습니다.",
+  action:"money",value:30},
+
+ {title:"세금",
+  text:"은행에 20만원을 지불합니다.",
+  action:"money",value:-20},
+
+ {title:"세계일주",
+  text:"출발점으로 이동합니다.",
+  action:"start"},
+
+ {title:"서울 여행",
+  text:"서울로 이동합니다.",
+  action:"move",value:39},
+
+ {title:"항공여행",
+  text:"콩코드 여객기로 이동합니다.",
+  action:"concord"},
+
+ {title:"우주여행",
+  text:"우주여행으로 이동합니다.",
+  action:"move",value:30},
+
+ {title:"무인도 탈출",
+  text:"무인도 탈출권을 얻습니다.",
+  action:"escape"},
+
+ /*
+   반액 대매출
+   실제 매각 시 반액 모드 활성화
+ */
+ {title:"반액 대매출",
+  text:"다음 자산을 은행에 판매할 때 매각 금액이 절반으로 적용됩니다.",
+  action:"halfSale"},
+
+ {title:"사회복지기금",
+  text:"사회복지기금 접수처로 이동합니다.",
+  action:"move",value:38},
+
+ {title:"제주도 여행",
+  text:"제주도로 이동합니다.",
+  action:"move",value:5},
+
+ {title:"부산 여행",
+  text:"부산으로 이동합니다.",
+  action:"move",value:25},
+
+ {title:"하와이 여행",
+  text:"하와이로 이동합니다.",
+  action:"move",value:26},
+
+ {title:"타이베이 여행",
+  text:"타이베이로 이동합니다.",
+  action:"move",value:1},
+
+ {title:"베이징 여행",
+  text:"베이징으로 이동합니다.",
+  action:"move",value:3},
+
+ {title:"마닐라 여행",
+  text:"마닐라로 이동합니다.",
+  action:"move",value:4},
+
+ {title:"싱가포르 여행",
+  text:"싱가포르로 이동합니다.",
+  action:"move",value:7},
+
+ {title:"카이로 여행",
+  text:"카이로로 이동합니다.",
+  action:"move",value:8},
+
+ {title:"이스탄불 여행",
+  text:"이스탄불로 이동합니다.",
+  action:"move",value:9},
+
+ {title:"아테네 여행",
+  text:"아테네로 이동합니다.",
+  action:"move",value:11},
+
+ {title:"코펜하겐 여행",
+  text:"코펜하겐으로 이동합니다.",
+  action:"move",value:13},
+
+ {title:"베른 여행",
+  text:"베른으로 이동합니다.",
+  action:"move",value:16},
+
+ {title:"베를린 여행",
+  text:"베를린으로 이동합니다.",
+  action:"move",value:18},
+
+ {title:"오타와 여행",
+  text:"오타와로 이동합니다.",
+  action:"move",value:19},
+
+ {title:"상파울루 여행",
+  text:"상파울루로 이동합니다.",
+  action:"move",value:23},
+
+ {title:"시드니 여행",
+  text:"시드니로 이동합니다.",
+  action:"move",value:24},
+
+ {title:"리스본 여행",
+  text:"리스본으로 이동합니다.",
+  action:"move",value:27},
+
+ {title:"마드리드 여행",
+  text:"마드리드로 이동합니다.",
+  action:"move",value:29},
+
+ {title:"도쿄 여행",
+  text:"도쿄로 이동합니다.",
+  action:"move",value:31},
+
+ {title:"파리 여행",
+  text:"파리로 이동합니다.",
+  action:"move",value:33},
+
+ {title:"로마 여행",
+  text:"로마로 이동합니다.",
+  action:"move",value:34},
+
+ {title:"런던 여행",
+  text:"런던으로 이동합니다.",
+  action:"move",value:36},
+
+ {title:"뉴욕 여행",
+  text:"뉴욕으로 이동합니다.",
+  action:"move",value:37},
+
+ {title:"호텔 건설비 지원",
+  text:"은행에서 호텔 건설비 20만원을 받습니다.",
+  action:"hotelBonus",value:20},
+
+ {title:"사회복지기금 면제",
+  text:"다음 사회복지기금 납부 시 10만원을 면제받습니다.",
+  action:"welfareFree"}
 ];
 
-/* ========================================================= */
+/* =========================================================
+   상태
+========================================================= */
 
 let players=[];
 let playerCount=4;
@@ -597,6 +725,12 @@ let deckPos=0;
 let round=0;
 let modalOpen=false;
 
+/* 빠른 버튼 중복 실행 방지 */
+let actionLocked=false;
+
+/* 이동 애니메이션 중인지 */
+let moving=false;
+
 /* ========================================================= */
 
 function money(v){
@@ -605,7 +739,8 @@ function money(v){
 
 function log(msg){
   const el=document.getElementById("log");
-  const time=new Date().toLocaleTimeString("ko-KR",{hour:"2-digit",minute:"2-digit"});
+  const time=new Date().toLocaleTimeString("ko-KR",
+    {hour:"2-digit",minute:"2-digit"});
   el.innerHTML=`<div>[${time}] ${msg}</div>`+el.innerHTML;
 }
 
@@ -619,11 +754,27 @@ function initPlayers(){
     name,
     money:500,
     pos:0,
-    props:{},
     completedRounds:0,
+
+    /*
+      무인도 상태
+      islandTurns = 실제 무인도에서 주사위를 굴린 횟수
+    */
     inIsland:0,
+    islandTurns:0,
+
     escapeCard:0,
+
     pendingSpace:false,
+
+    /*
+      반액 대매출 카드
+      true이면 다음 자산 매각 1회만 절반
+    */
+    halfSale:false,
+
+    welfareFree:false,
+
     alive:true
   }));
 }
@@ -632,7 +783,12 @@ function shuffle(arr){
   return [...arr].sort(()=>Math.random()-.5);
 }
 
+/* =========================================================
+   새 게임
+========================================================= */
+
 function newGame(){
+
   showModal(
     "게임 인원 선택",
     "플레이할 인원 수를 선택하세요.\n시작 자금은 500만원입니다.",
@@ -645,13 +801,19 @@ function newGame(){
 }
 
 function startGame(count){
+
+  actionLocked=false;
+  moving=false;
+
   playerCount=count;
   initPlayers();
+
   turn=0;
   rolled=false;
   dice=[1,1];
   fund=0;
   round=0;
+
   deck=shuffle(golden.map((c,i)=>({...c,id:i+1})));
   deckPos=0;
 
@@ -659,106 +821,168 @@ function startGame(count){
     delete c.owner;
     delete c.building;
     delete c.purchaseRound;
+    delete c.purchasePrice;
   });
 
+  document.getElementById("log").innerHTML="";
+
   closeModal();
+
   log(`${count}인 게임 시작. 시작 자금 ${money(500)}.`);
+
   render();
 }
 
 /* =========================================================
    BOARD
-   ========================================================= */
+========================================================= */
 
 function perimeterPositions(){
+
   const arr=[];
+
   for(let c=0;c<11;c++)arr.push([0,c]);
   for(let r=1;r<11;r++)arr.push([r,10]);
   for(let c=9;c>=0;c--)arr.push([10,c]);
   for(let r=9;r>0;r--)arr.push([r,0]);
+
   return arr;
 }
 
 function buildBoard(){
+
   const board=document.getElementById("board");
+
   board.innerHTML="";
 
   const coords=perimeterPositions();
 
   for(let i=0;i<40;i++){
+
     const c=boardData[i];
     const div=document.createElement("div");
     const [r,col]=coords[i];
 
     div.className="cell";
+
     div.style.gridRow=r+1;
     div.style.gridColumn=col+1;
 
-    if(i===0||i===10||i===20||i===30)div.classList.add("corner");
-    if(c.type==="gold")div.classList.add("gold");
-    if(c.type==="vehicle")div.classList.add("vehicle");
-    if(c.type==="tour"||c.type==="welfare")div.classList.add("special");
-    if(c.seoul)div.classList.add("seoul");
+    if(i===0||i===10||i===20||i===30)
+      div.classList.add("corner");
+
+    if(c.type==="gold")
+      div.classList.add("gold");
+
+    if(c.type==="vehicle")
+      div.classList.add("vehicle");
+
+    if(c.type==="tour"||c.type==="welfare")
+      div.classList.add("special");
+
+    if(c.seoul)
+      div.classList.add("seoul");
 
     let html=`<div class="cellName">${c.name}</div>`;
 
     if(c.type==="property"){
+
       html+=`<div class="price">${money(c.price)}</div>`;
+
       html+=`<div class="cellType">대지료 ${money(c.landFee)}</div>`;
+
     }else if(c.type==="vehicle"){
+
       html+=`<div class="price">구입 ${money(c.price)}</div>`;
+
       html+=`<div class="cellType">통행료 ${money(c.toll)}</div>`;
+
     }else{
+
       html+=`<div class="cellType">${typeText(c.type)}</div>`;
+
     }
 
     if(c.owner!==undefined){
+
       const owner=players[c.owner];
+
       if(owner){
-        html+=`<div style="position:absolute;top:2px;left:2px;width:7px;height:7px;border-radius:50%;background:${colors[c.owner]}"></div>`;
+
+        html+=`
+        <div style="
+        position:absolute;
+        top:2px;
+        left:2px;
+        width:7px;
+        height:7px;
+        border-radius:50%;
+        background:${colors[c.owner]}"></div>`;
       }
     }
 
     if(c.building){
+
       const owner=players[c.owner];
+
       const color=owner?colors[c.owner]:"#555";
-      const label=c.building==="villa"?"별장":c.building==="building"?"빌딩":"호텔";
+
+      const label=
+        c.building==="villa"?"별장":
+        c.building==="building"?"빌딩":"호텔";
+
       html+=`
-        <div class="buildingMark">
-          <div class="build ${c.building}" style="background:${color}" title="${label}">
-            ${c.building==="villa"?"별":c.building==="building"?"빌":"호"}
-          </div>
+      <div class="buildingMark">
+        <div class="build ${c.building}"
+             style="background:${color}"
+             title="${label}">
+          ${c.building==="villa"?"별":
+            c.building==="building"?"빌":"호"}
         </div>
-      `;
+      </div>`;
     }
 
-    const tokens=players.filter(p=>p.alive&&p.pos===i);
+    const tokens=
+      players.filter(p=>p.alive&&p.pos===i);
+
     if(tokens.length){
+
       html+=`<div class="tokens">`;
+
       tokens.forEach(p=>{
-        html+=`<div class="token" style="background:${colors[p.id]}">${p.id+1}</div>`;
+
+        html+=`
+        <div class="token"
+             style="background:${colors[p.id]}">
+          ${p.id+1}
+        </div>`;
+
       });
+
       html+=`</div>`;
     }
 
     div.innerHTML=html;
 
-    /* 클릭은 구매가 아니라 정보 확인 */
     div.onclick=()=>showProperty(i);
 
     board.appendChild(div);
   }
 
   const center=document.createElement("div");
+
   center.className="center";
+
   center.innerHTML=`
     <h1>WORLD MARBLE</h1>
     <p>WORLD TRAVEL</p>
   `;
+
   board.appendChild(center);
 }
 
 function typeText(type){
+
   return {
     start:"출발",
     gold:"황금열쇠",
@@ -770,75 +994,144 @@ function typeText(type){
 
 /* =========================================================
    RENDER
-   ========================================================= */
+========================================================= */
 
 function render(){
+
   buildBoard();
 
   if(!players.length){
+
     document.getElementById("turnName").textContent="게임 시작 전";
     document.getElementById("turnState").textContent="새 게임을 시작하세요.";
     document.getElementById("turnMoney").textContent=money(0);
+
     return;
   }
 
   const p=players[turn];
 
   document.getElementById("turnName").textContent=p.name;
+
   document.getElementById("turnDot").style.background=colors[p.id];
+
   document.getElementById("turnMoney").textContent=money(p.money);
 
   let state="";
-  if(p.money<0) state="⚠ 빚 상태";
-  else if(!rolled) state="주사위를 굴리세요.";
-  else if(dice[0]===dice[1]) state="더블! 한 번 더 굴릴 수 있습니다.";
-  else state="이동 완료. 턴 종료를 누르세요.";
 
-  if(p.pendingSpace)state+=" · 우주여행 가능";
+  if(p.money<0){
+
+    state="⚠ 빚 상태";
+
+  }else if(p.inIsland>0){
+
+    state=
+      `🏝️ 무인도 ${p.islandTurns}/3회 · 더블이면 탈출`;
+
+  }else if(!rolled){
+
+    state="주사위를 굴리세요.";
+
+  }else if(dice[0]===dice[1]){
+
+    state="더블! 한 번 더 굴릴 수 있습니다.";
+
+  }else{
+
+    state="이동 완료. 턴 종료를 누르세요.";
+  }
+
+  if(p.pendingSpace)
+    state+=" · 우주여행 가능";
 
   document.getElementById("turnState").textContent=state;
 
-  document.getElementById("die1").textContent=dice[0]||"–";
-  document.getElementById("die2").textContent=dice[1]||"–";
+  document.getElementById("die1").textContent=
+    dice[0]||"–";
 
-  document.getElementById("rollBtn").disabled=rolled && dice[0]!==dice[1];
-  document.getElementById("endBtn").disabled=!rolled || dice[0]===dice[1];
+  document.getElementById("die2").textContent=
+    dice[1]||"–";
+
+  /*
+    일반 더블이 아니면 종료 가능.
+    무인도에서는 더블이어도 이동 후 상태를 처리.
+  */
+  document.getElementById("rollBtn").disabled=
+    moving ||
+    (rolled && dice[0]!==dice[1]);
+
+  document.getElementById("endBtn").disabled=
+    moving ||
+    !rolled ||
+    dice[0]===dice[1] ||
+    p.inIsland>0;
 
   document.getElementById("fund").textContent=money(fund);
 
   const pl=document.getElementById("players");
+
   pl.innerHTML=players.map(p=>`
-    <div class="playerRow" style="${p.id===turn?'outline:2px solid '+colors[p.id]:''}">
-      <div class="playerDot" style="background:${colors[p.id]}"></div>
+
+    <div class="playerRow"
+      style="${p.id===turn?
+      'outline:2px solid '+colors[p.id]:''}">
+
+      <div class="playerDot"
+           style="background:${colors[p.id]}"></div>
+
       <div>
         <div class="name">${p.name}</div>
-        <div class="pos">${boardData[p.pos].name}${p.alive?"":" · 탈락"}</div>
+
+        <div class="pos">
+          ${boardData[p.pos].name}
+          ${p.inIsland>0?
+            ` · 무인도 ${p.islandTurns}/3`:""}
+          ${p.alive?"":" · 탈락"}
+        </div>
       </div>
+
       <div class="cash">${money(p.money)}</div>
+
     </div>
+
   `).join("");
 
   showCurrentInfo();
 }
 
 /* =========================================================
-   DICE / MOVEMENT
-   ========================================================= */
+   주사위
+========================================================= */
 
 function rollDice(){
+
+  if(actionLocked||moving)
+    return;
+
   if(!players.length){
+
     newGame();
     return;
   }
 
   const p=players[turn];
 
+  if(!p.alive)
+    return;
+
   if(p.money<0){
+
     settleDebt();
     return;
   }
 
-  if(rolled && dice[0]!==dice[1])return;
+  /*
+    일반 턴에서는 더블일 때만 다시 굴릴 수 있음.
+  */
+  if(rolled && dice[0]!==dice[1])
+    return;
+
+  actionLocked=true;
 
   dice=[
     Math.floor(Math.random()*6)+1,
@@ -851,300 +1144,725 @@ function rollDice(){
 
   log(`${p.name} 주사위 ${dice[0]} + ${dice[1]} = ${steps}.`);
 
-  movePlayer(p,steps);
+  /*
+    무인도 처리
+  */
+  if(p.inIsland>0){
+
+    handleIslandRoll(p,steps);
+
+    return;
+  }
+
+  movePlayerAnimated(p,steps);
+}
+
+/* =========================================================
+   무인도
+========================================================= */
+
+function handleIslandRoll(p,steps){
+
+  const isDouble=dice[0]===dice[1];
+
+  p.islandTurns++;
+
+  /*
+    더블이면 즉시 탈출
+  */
+  if(isDouble){
+
+    log(
+      `${p.name} 무인도에서 더블! 무인도를 탈출합니다.`
+    );
+
+    p.inIsland=0;
+    p.islandTurns=0;
+
+    /*
+      더블로 탈출하면서 주사위 숫자만큼 이동
+    */
+    movePlayerAnimated(p,steps);
+
+    return;
+  }
+
+  /*
+    3번째 시도까지 더블이 아니면
+    3회 제한으로 탈출
+  */
+  if(p.islandTurns>=3){
+
+    log(
+      `${p.name} 무인도 3회 시도 완료. 무인도를 탈출합니다.`
+    );
+
+    p.inIsland=0;
+    p.islandTurns=0;
+
+    /*
+      3회째 이동은 하지 않고 탈출만 처리
+    */
+    rolled=false;
+    dice=[1,1];
+
+    actionLocked=false;
+
+    render();
+
+    /*
+      무인도 탈출 후 이번 턴 종료
+    */
+    setTimeout(()=>{
+      nextTurn();
+    },300);
+
+    return;
+  }
+
+  /*
+    아직 3회 미만이고 더블도 아님
+    이동하지 않고 턴 종료
+  */
+
+  log(
+    `${p.name} 무인도 ${p.islandTurns}/3회. 더블이 나오지 않았습니다.`
+  );
+
+  actionLocked=false;
+
+  render();
+
+  setTimeout(()=>{
+    nextTurn();
+  },500);
+}
+
+/* =========================================================
+   이동
+   0.5초마다 한 칸
+========================================================= */
+
+function movePlayerAnimated(p,steps){
+
+  moving=true;
+
+  let count=0;
+
+  const timer=setInterval(()=>{
+
+    if(count>=steps){
+
+      clearInterval(timer);
+
+      moving=false;
+
+      resolveLanding(p,p.pos);
+
+      actionLocked=false;
+
+      render();
+
+      return;
+    }
+
+    const old=p.pos;
+
+    const newPos=(old+1)%40;
+
+    /*
+      실제로 한 칸씩 이동
+    */
+    p.pos=newPos;
+
+    /*
+      출발점 통과 시 정확히 한 번만 지급
+    */
+    if(newPos===0){
+
+      p.completedRounds++;
+
+      round++;
+
+      p.money+=20;
+
+      log(
+        `${p.name}이(가) 출발점을 통과했습니다. ${money(20)} 지급.`
+      );
+    }
+
+    count++;
+
+    log(
+      `${p.name} → ${boardData[p.pos].name}`
+    );
+
+    render();
+
+  },500);
+}
+
+/*
+  여행권/카드/우주여행 전용 이동
+  출발점 보너스 없음
+*/
+function moveDirect(p,pos){
+
+  p.pos=pos;
+
+  log(
+    `${p.name} → ${boardData[pos].name}`
+  );
+
+  resolveLanding(p,pos);
 
   render();
 }
 
-function movePlayer(p,steps){
-  const old=p.pos;
-  const newPos=(p.pos+steps)%40;
-
-  if(old+steps>=40){
-    p.completedRounds++;
-    round++;
-    p.money+=20;
-    log(`${p.name}이(가) 출발점을 지나 ${money(20)}을 받았습니다.`);
-  }
-
-  p.pos=newPos;
-
-  log(`${p.name} → ${boardData[newPos].name}`);
-
-  resolveLanding(p,newPos);
-}
-
 /* =========================================================
-   LANDING
-   ========================================================= */
+   착지
+========================================================= */
 
 function resolveLanding(p,pos){
+
   const c=boardData[pos];
 
-  if(c.type==="start"){
+  if(c.type==="start")
     return;
-  }
 
   if(c.type==="property"){
+
     propertyLanding(p,pos);
+
     return;
   }
 
   if(c.type==="vehicle"){
+
     vehicleLanding(p,pos);
+
     return;
   }
 
   if(c.type==="gold"){
+
     drawGold();
+
     return;
   }
 
   if(c.type==="welfare"){
+
     if(c.name.includes("수령")){
+
       const amount=fund;
+
       p.money+=amount;
+
       fund=0;
-      log(`${p.name}이(가) 사회복지기금 ${money(amount)}을 받았습니다.`);
+
+      log(
+        `${p.name}이(가) 사회복지기금 ${money(amount)}을 받았습니다.`
+      );
+
     }else{
-      fund+=10;
-      p.money-=10;
-      log(`${p.name}이(가) 사회복지기금에 ${money(10)}을 냈습니다.`);
+
+      /*
+        사회복지금 면제 카드
+      */
+      if(p.welfareFree){
+
+        p.welfareFree=false;
+
+        log(
+          `${p.name} 사회복지기금 면제권 사용.`
+        );
+
+      }else{
+
+        fund+=10;
+
+        p.money-=10;
+
+        log(
+          `${p.name} 사회복지기금 ${money(10)} 납부.`
+        );
+
+      }
     }
+
     return;
   }
 
   if(c.type==="island"){
-    if(p.escapeCard>0){
-      log(`${p.name}은(는) 무인도 탈출권을 보유하고 있습니다.`);
-    }else{
-      p.inIsland=3;
-      log(`${p.name} 무인도.`);
-    }
+
+    /*
+      무인도에 새로 들어온 경우
+      3회 제한을 새로 시작
+    */
+    p.inIsland=1;
+    p.islandTurns=0;
+
+    log(`${p.name} 무인도에 갇혔습니다.`);
+
     return;
   }
 
   if(c.type==="tour"){
+
     /*
-      우주여행 도착 즉시 사용하지 않음.
-      다음 턴부터 사용 가능.
+      다음 턴부터 사용 가능
     */
     p.pendingSpace=true;
-    log(`${p.name} 우주여행 도착. 다음 턴부터 우주여행을 이용할 수 있습니다.`);
+
+    log(
+      `${p.name} 우주여행 도착. 다음 턴부터 이용할 수 있습니다.`
+    );
+
+    return;
   }
 }
 
 /* =========================================================
-   PROPERTY
-   ========================================================= */
+   토지
+========================================================= */
 
 function propertyLanding(p,pos){
+
   const c=boardData[pos];
 
-  /* 빈 땅 */
-  if(c.owner===undefined){
-    showModal(
-      `${c.name} 도착`,
-      `빈 땅입니다.\n\n땅 가격: ${money(c.price)}\n대지료: ${money(c.landFee)}\n\n지금은 땅만 구매할 수 있습니다.\n건물은 한 바퀴 이상 돈 뒤 이 지역에 다시 와야 합니다.`,
-      [
-        [`땅 구매 ${money(c.price)}`,()=>buyLand(p,pos)],
-        ["구매하지 않기",closeModal]
-      ]
-    );
-    return;
-  }
+  /*
+    이미 다른 사람 소유
+  */
+  if(c.owner!==undefined){
 
-  /* 자기 땅 */
-  if(c.owner===p.id){
-    if(c.seoul){
-      log(`${p.name} 서울: 건물 설치 불가.`);
+    if(c.owner===p.id){
+
+      /*
+        서울은 건물 불가
+      */
+      if(c.seoul){
+
+        log(
+          `${p.name} 서울은 건물 설치가 불가능합니다.`
+        );
+
+        return;
+      }
+
+      /*
+        구매 후 한 바퀴 이상 돌아야 함
+      */
+      if(
+        p.completedRounds >
+        (c.purchaseRound??0)
+      ){
+
+        showBuildMenu(p,pos);
+
+      }else{
+
+        log(
+          `${c.name}: 아직 구매 후 한 바퀴를 완료하지 않았습니다.`
+        );
+      }
+
       return;
     }
 
     /*
-      구매 후 한 바퀴 이상 + 같은 지역 재방문
+      남의 땅
     */
-    const purchaseRound=c.purchaseRound??0;
+    const owner=players[c.owner];
 
-    if(p.completedRounds>purchaseRound){
-      showBuildMenu(p,pos);
-    }else{
-      log(`${c.name}: 아직 한 바퀴를 완료하지 않아 건물을 살 수 없습니다.`);
-    }
+    const toll=calcPropertyToll(c);
+
+    p.money-=toll;
+
+    owner.money+=toll;
+
+    log(
+      `${p.name} → ${owner.name}에게 ${c.name} 통행료 ${money(toll)} 지급.`
+    );
+
+    if(p.money<0)
+      settleDebt();
+
     return;
   }
 
-  /* 남의 땅 */
-  const owner=players[c.owner];
-  const toll=calcPropertyToll(c);
+  /*
+    빈 땅
+    여행권으로 왔더라도 똑같이 구매 가능
+  */
+  showModal(
+    `${c.name} 도착`,
+    `빈 땅입니다.
 
-  p.money-=toll;
-  owner.money+=toll;
+땅 가격: ${money(c.price)}
+대지료: ${money(c.landFee)}
 
-  log(`${p.name} → ${owner.name}에게 ${c.name} 통행료 ${money(toll)} 지급.`);
+지금 땅을 구매할 수 있습니다.
 
-  if(p.money<0)settleDebt();
+※ 여행권으로 이동한 경우에도 해당 지역의 정상적인 구매 규칙이 적용됩니다.
+※ 건물은 땅 구매 후 한 바퀴 이상 돌아 다시 방문해야 합니다.`,
+    [
+      [
+        `땅 구매 ${money(c.price)}`,
+        ()=>buyLand(p,pos)
+      ],
+      [
+        "구매하지 않기",
+        closeModal
+      ]
+    ]
+  );
 }
 
 function buyLand(p,pos){
+
   const c=boardData[pos];
 
+  /*
+    이중 클릭/동시 구매 방지
+  */
+  if(c.owner!==undefined){
+
+    alert("이미 다른 플레이어가 소유한 땅입니다.");
+
+    closeModal();
+
+    render();
+
+    return;
+  }
+
+  if(p.money<0){
+
+    alert("빚이 있는 상태에서는 구매할 수 없습니다.");
+
+    return;
+  }
+
   if(p.money<c.price){
+
     alert("돈이 부족합니다.");
+
     return;
   }
 
   p.money-=c.price;
+
   c.owner=p.id;
+
   c.purchaseRound=p.completedRounds;
+
   c.building=null;
 
-  log(`${p.name}이(가) ${c.name}을(를) ${money(c.price)}에 구매했습니다.`);
+  log(
+    `${p.name}이(가) ${c.name}을(를) ${money(c.price)}에 구매했습니다.`
+  );
+
   closeModal();
+
   render();
 }
 
 /* =========================================================
-   BUILDINGS
-   ========================================================= */
+   건물
+========================================================= */
 
 function showBuildMenu(p,pos){
+
   const c=boardData[pos];
 
   if(c.seoul){
+
     alert("서울은 건물을 지을 수 없습니다.");
+
     return;
   }
 
   let buttons=[];
 
+  /*
+    순서 강제
+  */
+
   if(!c.building){
-    buttons.push([`별장 구매 ${money(c.villa)}`,()=>buyBuilding(p,pos,"villa")]);
-    buttons.push([`빌딩 구매 ${money(c.building)}`,()=>buyBuilding(p,pos,"building")]);
-    buttons.push([`호텔 구매 ${money(c.hotel)}`,()=>buyBuilding(p,pos,"hotel")]);
+
+    buttons.push([
+      `별장 구매 ${money(c.villa)}`,
+      ()=>buyBuilding(p,pos,"villa")
+    ]);
+
   }else if(c.building==="villa"){
-    buttons.push([`별장 → 호텔 ${money(c.hotel)}`,()=>buyBuilding(p,pos,"hotel")]);
+
+    buttons.push([
+      `빌딩 건설 ${money(c.buildingCost)}`,
+      ()=>buyBuilding(p,pos,"building")
+    ]);
+
   }else if(c.building==="building"){
-    buttons.push([`빌딩 → 호텔 ${money(c.hotel)}`,()=>buyBuilding(p,pos,"hotel")]);
+
+    buttons.push([
+      `호텔 건설 ${money(c.hotel)}`,
+      ()=>buyBuilding(p,pos,"hotel")
+    ]);
+
   }else{
-    buttons.push(["호텔 완성 — 추가 건설 불가",()=>{}]);
+
+    buttons.push([
+      "호텔 완성 — 추가 건설 불가",
+      ()=>{}
+    ]);
   }
 
-  buttons.push(["취소",closeModal]);
+  buttons.push([
+    "취소",
+    closeModal
+  ]);
 
   showModal(
     `${c.name} 건물`,
-    `현재 지역: ${c.name}\n\n대지료: ${money(c.landFee)}\n현재 건물: ${c.building?buildingName(c.building):"없음"}\n\n※ 한 땅에는 건물 한 채만 가능합니다.\n※ 별장/빌딩이 있으면 호텔로 교체할 수 있습니다.\n※ 현재 플레이어가 이 지역에 있을 때만 건설할 수 있습니다.`,
+    `현재 지역: ${c.name}
+
+현재 건물: ${c.building?
+      buildingName(c.building):"없음"}
+
+건설 순서:
+
+① 별장
+↓
+② 빌딩
+↓
+③ 호텔
+
+※ 건물은 현재 플레이어가 서 있는 자기 땅에서만 건설할 수 있습니다.
+※ 구매 후 한 바퀴 이상 돌아야 건설할 수 있습니다.`,
     buttons
   );
 }
 
 function buyBuilding(p,pos,type){
+
   const c=boardData[pos];
 
   if(c.owner!==p.id){
+
     alert("자기 땅만 건설할 수 있습니다.");
+
     return;
   }
 
   if(c.seoul){
-    alert("서울은 건물 설치가 불가능합니다.");
+
+    alert("서울은 건물을 설치할 수 없습니다.");
+
     return;
   }
 
-  if(p.completedRounds<=(c.purchaseRound??0)){
-    alert("땅을 산 후 한 바퀴 이상 돌아 다시 와야 합니다.");
+  if(
+    p.completedRounds <=
+    (c.purchaseRound??0)
+  ){
+
+    alert(
+      "땅을 산 후 한 바퀴 이상 돌아야 합니다."
+    );
+
+    return;
+  }
+
+  /*
+    건설 순서 강제
+  */
+  if(type==="villa" && c.building){
+
+    alert("이미 건물이 있습니다.");
+
+    return;
+  }
+
+  if(type==="building" && c.building!=="villa"){
+
+    alert("빌딩은 별장 다음에 건설할 수 있습니다.");
+
+    return;
+  }
+
+  if(type==="hotel" &&
+     c.building!=="building"){
+
+    alert("호텔은 빌딩 다음에 건설할 수 있습니다.");
+
     return;
   }
 
   let cost=0;
 
-  if(type==="villa")cost=c.villa;
-  if(type==="building")cost=c.building;
-  if(type==="hotel")cost=c.hotel;
+  if(type==="villa")
+    cost=c.villa;
 
+  if(type==="building")
+    cost=c.buildingCost;
+
+  if(type==="hotel")
+    cost=c.hotel;
+
+  /*
+    돈이 부족하면 절대 건설하지 않음
+  */
   if(p.money<cost){
-    alert("돈이 부족합니다.");
+
+    alert(
+      `건설비가 부족합니다.\n필요 금액: ${money(cost)}`
+    );
+
     return;
   }
 
   p.money-=cost;
+
   c.building=type;
 
-  log(`${p.name}이(가) ${c.name}에 ${buildingName(type)}을(를) 건설했습니다. 비용 ${money(cost)}.`);
+  log(
+    `${p.name}이(가) ${c.name}에 ${buildingName(type)} 건설.
+비용 ${money(cost)}.`
+  );
+
   closeModal();
+
   render();
 }
 
 function buildingName(type){
-  return type==="villa"?"별장":type==="building"?"빌딩":"호텔";
+
+  return type==="villa"?
+    "별장":
+    type==="building"?
+      "빌딩":
+      "호텔";
 }
 
 function calcPropertyToll(c){
-  if(c.building==="villa")return c.villaFee;
-  if(c.building==="building")return c.buildingFee;
-  if(c.building==="hotel")return c.hotelFee;
+
+  if(c.building==="villa")
+    return c.villaFee;
+
+  if(c.building==="building")
+    return c.buildingFee;
+
+  if(c.building==="hotel")
+    return c.hotelFee;
+
   return c.landFee;
 }
 
 /* =========================================================
-   VEHICLES
-   ========================================================= */
+   탈것
+========================================================= */
 
 function vehicleLanding(p,pos){
+
   const c=boardData[pos];
 
   if(c.owner===undefined){
+
     showModal(
       `${c.name} 도착`,
-      `구입 가격: ${money(c.price)}\n통행료: ${money(c.toll)}\n\n탈것은 건물을 지을 수 없습니다.`,
+      `구입 가격: ${money(c.price)}
+통행료: ${money(c.toll)}
+
+탈것은 건물을 지을 수 없습니다.`,
       [
-        [`구매 ${money(c.price)}`,()=>buyVehicle(p,pos)],
-        ["구매하지 않기",closeModal]
+        [
+          `구매 ${money(c.price)}`,
+          ()=>buyVehicle(p,pos)
+        ],
+        [
+          "구매하지 않기",
+          closeModal
+        ]
       ]
     );
+
     return;
   }
 
   if(c.owner===p.id){
+
     log(`${p.name}의 ${c.name}입니다.`);
+
     return;
   }
 
   p.money-=c.toll;
+
   players[c.owner].money+=c.toll;
 
-  log(`${p.name} → ${players[c.owner].name}에게 ${c.name} 통행료 ${money(c.toll)} 지급.`);
+  log(
+    `${p.name} → ${players[c.owner].name}에게 ${c.name} 통행료 ${money(c.toll)} 지급.`
+  );
 
-  if(p.money<0)settleDebt();
+  if(p.money<0)
+    settleDebt();
 }
 
 function buyVehicle(p,pos){
+
   const c=boardData[pos];
 
+  if(c.owner!==undefined){
+
+    alert("이미 다른 플레이어가 소유한 탈것입니다.");
+
+    return;
+  }
+
+  if(p.money<0){
+
+    alert("빚이 있는 상태에서는 구매할 수 없습니다.");
+
+    return;
+  }
+
   if(p.money<c.price){
+
     alert("돈이 부족합니다.");
+
     return;
   }
 
   p.money-=c.price;
+
   c.owner=p.id;
+
   c.purchasePrice=c.price;
 
-  log(`${p.name}이(가) ${c.name}을(를) ${money(c.price)}에 구매했습니다.`);
+  log(
+    `${p.name}이(가) ${c.name}을(를) ${money(c.price)}에 구매했습니다.`
+  );
+
   closeModal();
+
   render();
 }
 
 /* =========================================================
-   SPACE TRAVEL
-   ========================================================= */
+   우주여행
+========================================================= */
 
 function useSpaceTravel(){
+
   const p=players[turn];
 
   if(!p.pendingSpace){
-    alert("우주여행은 우주여행 칸에 도착한 다음 턴부터 이용할 수 있습니다.");
+
+    alert(
+      "우주여행 칸에 도착한 다음 턴부터 이용할 수 있습니다."
+    );
+
     return;
   }
 
@@ -1154,120 +1872,206 @@ function useSpaceTravel(){
   ];
 
   const buttons=destinations.map(pos=>[
+
     boardData[pos].name,
+
     ()=>{
+
+      if(actionLocked)
+        return;
+
+      actionLocked=true;
+
       const fee=20;
 
       const col=boardData[32];
 
-      if(col.owner!==undefined && col.owner!==p.id){
+      /*
+        콜럼비아호 소유자가 다른 사람일 때만 이용료
+      */
+      if(
+        col.owner!==undefined &&
+        col.owner!==p.id
+      ){
+
         p.money-=fee;
+
         players[col.owner].money+=fee;
-        log(`${p.name}이(가) 콜럼비아호 우주여행 이용료 ${money(fee)} 지급.`);
+
+        log(
+          `${p.name} → ${players[col.owner].name}에게 콜럼비아호 우주여행 이용료 ${money(fee)} 지급.`
+        );
       }
 
-      p.pos=pos;
+      /*
+        우주여행권은 사용 즉시 소멸
+      */
       p.pendingSpace=false;
 
-      log(`${p.name} 우주여행 → ${boardData[pos].name}`);
-      resolveLanding(p,pos);
+      /*
+        우주여행은 출발점 보너스를 지급하지 않는 직접 이동
+      */
+      moveDirect(p,pos);
+
       closeModal();
+
+      actionLocked=false;
+
       render();
+
+      if(p.money<0)
+        settleDebt();
     }
   ]);
 
-  buttons.push(["취소",closeModal]);
+  buttons.push([
+    "취소",
+    closeModal
+  ]);
 
   showModal(
     "우주여행",
-    "지난 턴에 우주여행 칸에 도착했습니다.\n지금부터 목적지를 선택할 수 있습니다.",
+    "지난 턴에 우주여행 칸에 도착했습니다.\n\n목적지를 선택하세요.\n\n※ 우주여행 이동은 출발점 보너스를 지급하지 않습니다.\n※ 목적지의 정상적인 토지/건물/통행료 규칙은 적용됩니다.",
     buttons
   );
 }
 
 /* =========================================================
-   GOLDEN KEY
-   ========================================================= */
+   황금열쇠
+========================================================= */
 
 function drawGold(){
-  const card=deck[deckPos];
-  deckPos=(deckPos+1)%deck.length;
 
+  if(!deck.length)
+    return;
+
+  const card=deck[deckPos];
+
+  deckPos=
+    (deckPos+1)%deck.length;
+
+  /*
+    카드 한 번만 실행
+  */
   showModal(
     `황금열쇠 — ${card.title}`,
     card.text,
     [
-      ["확인",()=>applyCard(card)]
+      [
+        "확인",
+        ()=>applyCard(card)
+      ]
     ]
   );
 }
 
 function applyCard(card){
+
   const p=players[turn];
 
+  if(!p||!p.alive)
+    return;
+
+  /*
+    카드 효과는 여기서 단 한 번만 실행
+  */
+
   if(card.action==="money"){
+
     p.money+=card.value;
-    log(`${p.name}: 황금열쇠 ${card.title} → ${money(Math.abs(card.value))}${card.value>=0?" 수령":" 지불"}.`);
+
+    log(
+      `${p.name}: ${card.title} → ${money(Math.abs(card.value))}
+      ${card.value>=0?"수령":"지불"}.`
+    );
   }
 
   if(card.action==="hotelBonus"){
+
     p.money+=card.value;
-    log(`${p.name}: 호텔 건설비 지원 ${money(card.value)} 수령.`);
+
+    log(
+      `${p.name}: 호텔 건설비 지원 ${money(card.value)} 수령.`
+    );
   }
 
   if(card.action==="start"){
-    p.pos=0;
-    log(`${p.name}: 출발점으로 이동.`);
+
+    /*
+      카드 이동은 출발점 보너스 없음
+    */
+    moveDirect(p,0);
   }
 
   if(card.action==="move"){
-    p.pos=card.value;
-    log(`${p.name}: 황금열쇠로 ${boardData[p.pos].name} 이동.`);
-    resolveLanding(p,p.pos);
+
+    /*
+      여행권 이동
+      출발점 보너스 없음
+      목적지의 정상 착지 처리
+    */
+    moveDirect(p,card.value);
   }
 
   if(card.action==="concord"){
-    const concord=boardData.findIndex(x=>x.name==="콩코드 여객기");
-    p.pos=concord;
-    log(`${p.name}: 콩코드 여객기로 이동.`);
-    resolveLanding(p,concord);
+
+    const concord=
+      boardData.findIndex(
+        x=>x.name==="콩코드 여객기"
+      );
+
+    moveDirect(p,concord);
   }
 
   if(card.action==="escape"){
+
     p.escapeCard++;
-    log(`${p.name}: 무인도 탈출권 획득.`);
+
+    log(
+      `${p.name}: 무인도 탈출권 획득.`
+    );
+  }
+
+  if(card.action==="halfSale"){
+
+    /*
+      카드가 즉시 매각하지 않고
+      다음 실제 자산 매각 1회에만 적용
+    */
+    p.halfSale=true;
+
+    log(
+      `${p.name}: 반액 대매출 카드 사용 준비. 다음 자산 1회 매각가가 절반으로 적용됩니다.`
+    );
+  }
+
+  if(card.action==="welfareFree"){
+
+    p.welfareFree=true;
+
+    log(
+      `${p.name}: 사회복지기금 면제권 획득.`
+    );
   }
 
   closeModal();
+
   render();
 
-  if(p.money<0)settleDebt();
-}
-
-function showGoldInfo(){
-  const card=deck.length?deck[deckPos]:null;
-
-  if(!card){
-    alert("게임을 먼저 시작하세요.");
-    return;
-  }
-
-  showModal(
-    "황금열쇠",
-    `황금열쇠는 총 ${golden.length}장 데이터로 구성되어 있습니다.\n현재 다음 카드: ${card.title}`,
-    [
-      ["닫기",closeModal]
-    ]
-  );
+  if(p.money<0)
+    settleDebt();
 }
 
 /* =========================================================
-   BANK / SALE / DEBT
-   ========================================================= */
+   은행 / 매각
+========================================================= */
 
 function showBank(){
+
   if(!players.length){
+
     alert("게임을 먼저 시작하세요.");
+
     return;
   }
 
@@ -1275,164 +2079,307 @@ function showBank(){
 
   let buttons=[];
 
-  Object.keys(p.props).forEach(pos=>{
-    const c=boardData[pos];
-    buttons.push([
-      `${c.name} — ${money(c.price)}에 매각`,
-      ()=>sellLand(Number(pos))
-    ]);
-  });
-
+  /*
+    현재 보드의 실제 소유권만 사용
+  */
   boardData.forEach((c,i)=>{
-    if(c.owner===p.id && c.type==="property" && !p.props[i]){
+
+    if(c.owner===p.id &&
+       c.type==="property"){
+
+      const base=c.price;
+
+      const value=
+        p.halfSale?
+        Math.floor(base/2):
+        base;
+
       buttons.push([
-        `${c.name} — ${money(c.price)}에 매각`,
+        `${c.name} — ${money(value)}에 매각`,
         ()=>sellLand(i)
       ]);
     }
   });
 
   boardData.forEach((c,i)=>{
-    if(c.owner===p.id && c.type==="vehicle"){
+
+    if(c.owner===p.id &&
+       c.type==="vehicle"){
+
+      const base=c.purchasePrice||c.price;
+
+      const value=
+        p.halfSale?
+        Math.floor(base/2):
+        base;
+
       buttons.push([
-        `${c.name} — ${money(c.purchasePrice||c.price)}에 매각`,
+        `${c.name} — ${money(value)}에 매각`,
         ()=>sellVehicle(i)
       ]);
     }
   });
 
   if(!buttons.length){
-    buttons.push(["매각할 자산 없음",()=>{}]);
+
+    buttons.push([
+      "매각할 자산 없음",
+      ()=>{}
+    ]);
   }
 
-  buttons.push(["닫기",closeModal]);
+  buttons.push([
+    "닫기",
+    closeModal
+  ]);
 
   showModal(
     "은행 / 자산 매각",
-    `현재 자금: ${money(p.money)}\n\n땅 거래는 은행과만 가능합니다.\n땅은 최초 구매가격으로 은행에 판매할 수 있습니다.\n건물이 있는 땅을 판매하면 건물은 함께 없어집니다.`,
+    `현재 자금: ${money(p.money)}
+
+땅과 탈것은 은행에만 판매할 수 있습니다.
+
+${
+p.halfSale?
+"⚠ 반액 대매출 적용 중\n다음 자산 1개를 정상 매각가의 50%에 판매합니다."
+:
+""
+}
+
+건물이 있는 땅을 판매하면 건물도 함께 없어집니다.`,
     buttons
   );
 }
 
 function sellLand(pos){
+
   const p=players[turn];
+
   const c=boardData[pos];
 
   if(c.owner!==p.id){
+
     alert("본인 소유 자산만 판매할 수 있습니다.");
+
     return;
   }
 
-  const value=c.price;
+  const base=c.price;
+
+  /*
+    반액 대매출 적용
+  */
+  const value=
+    p.halfSale?
+    Math.floor(base/2):
+    base;
 
   p.money+=value;
+
+  /*
+    반액 카드는 정확히 한 번만 사용
+  */
+  if(p.halfSale){
+
+    p.halfSale=false;
+
+    log(
+      `${p.name}: 반액 대매출 적용 → ${c.name} ${money(value)} 매각.`
+    );
+
+  }else{
+
+    log(
+      `${p.name}이(가) ${c.name}을(를) 은행에 ${money(value)}에 판매했습니다.`
+    );
+  }
 
   delete c.owner;
   delete c.building;
   delete c.purchaseRound;
 
-  log(`${p.name}이(가) ${c.name}을(를) 은행에 ${money(value)}에 판매했습니다.`);
+  /*
+    매각 후에도 은행창을 닫지 않고 다시 생성
+    → 여러 자산을 연속으로 매각 가능
+  */
+  showBank();
 
-  closeModal();
   render();
-
-  if(p.money>=0 && p.money===0){
-    log(`${p.name}의 자금이 0원이 되었습니다. 아직 파산이 아닙니다.`);
-  }
 }
 
 function sellVehicle(pos){
+
   const p=players[turn];
+
   const c=boardData[pos];
 
-  if(c.owner!==p.id)return;
+  if(c.owner!==p.id)
+    return;
 
-  const value=c.purchasePrice||c.price;
+  const base=c.purchasePrice||c.price;
+
+  const value=
+    p.halfSale?
+    Math.floor(base/2):
+    base;
 
   p.money+=value;
+
+  if(p.halfSale){
+
+    p.halfSale=false;
+
+    log(
+      `${p.name}: 반액 대매출 적용 → ${c.name} ${money(value)} 매각.`
+    );
+
+  }else{
+
+    log(
+      `${p.name}이(가) ${c.name}을(를) 은행에 ${money(value)}에 판매했습니다.`
+    );
+  }
 
   delete c.owner;
   delete c.purchasePrice;
 
-  log(`${p.name}이(가) ${c.name}을(를) 은행에 ${money(value)}에 판매했습니다.`);
+  /*
+    여러 번 매각 가능
+  */
+  showBank();
 
-  closeModal();
   render();
 }
 
+/* =========================================================
+   빚 / 파산
+========================================================= */
+
 function settleDebt(){
+
   const p=players[turn];
 
   if(p.money>=0){
+
     render();
+
     return;
   }
 
   showModal(
     "빚 상환",
-    `${p.name}의 현재 자금은 ${money(p.money)}입니다.\n\n원하는 자산을 골라 은행에 팔아 빚을 갚을 수 있습니다.\n\n자산을 모두 팔아도 0원 미만이면 파산 처리됩니다.\n0원은 파산이 아닙니다.`,
+    `${p.name}의 현재 자금은 ${money(p.money)}입니다.
+
+자산을 팔아 빚을 갚아야 합니다.
+
+자산을 모두 팔아도 0원 미만이면 파산합니다.
+
+0원은 파산이 아닙니다.`,
     [
-      ["자산 매각",showBank],
-      ["파산 확인",checkBankruptcy]
+      [
+        "자산 매각",
+        showBank
+      ],
+      [
+        "파산 확인",
+        checkBankruptcy
+      ]
     ]
   );
 }
 
 function checkBankruptcy(){
+
   const p=players[turn];
 
   if(p.money>=0){
+
     closeModal();
+
     render();
+
     return;
   }
 
-  const hasAsset=boardData.some(c=>c.owner===p.id);
+  const hasAsset=
+    boardData.some(
+      c=>c.owner===p.id
+    );
 
   if(hasAsset){
-    alert("아직 자산을 팔아 빚을 갚을 수 있습니다.");
+
+    alert(
+      "아직 자산을 팔아 빚을 갚을 수 있습니다."
+    );
+
     showBank();
+
     return;
   }
 
   p.alive=false;
 
   boardData.forEach(c=>{
+
     if(c.owner===p.id){
+
       delete c.owner;
       delete c.building;
       delete c.purchaseRound;
+      delete c.purchasePrice;
     }
   });
 
   log(`${p.name} 파산.`);
+
   closeModal();
 
   if(activePlayers().length<=1){
+
     endGame();
+
   }else{
+
     nextTurn();
   }
 }
 
 /* =========================================================
-   TURN
-   ========================================================= */
+   턴
+========================================================= */
 
 function endTurn(){
-  if(!players.length)return;
+
+  if(!players.length)
+    return;
 
   const p=players[turn];
 
-  if(!rolled)return;
+  if(!rolled)
+    return;
 
+  /*
+    무인도에서는 일반 턴 종료 버튼 사용 안 함
+  */
+  if(p.inIsland>0)
+    return;
+
+  /*
+    더블이면 반드시 다시 굴림
+  */
   if(dice[0]===dice[1]){
-    alert("더블이므로 한 번 더 굴려야 합니다.");
+
+    alert(
+      "더블이므로 한 번 더 굴려야 합니다."
+    );
+
     return;
   }
 
   if(p.money<0){
+
     settleDebt();
+
     return;
   }
 
@@ -1440,192 +2387,357 @@ function endTurn(){
 }
 
 function nextTurn(){
+
   if(activePlayers().length<=1){
+
     endGame();
+
     return;
   }
 
   let next=turn;
+
   let guard=0;
 
   do{
+
     next=(next+1)%players.length;
+
     guard++;
-  }while(!players[next].alive && guard<players.length+2);
+
+  }while(
+    !players[next].alive &&
+    guard<players.length+2
+  );
 
   turn=next;
+
   rolled=false;
+
   dice=[1,1];
+
+  actionLocked=false;
 
   const p=players[turn];
 
+  log(`${p.name}의 턴.`);
+
+  render();
+
   /*
-    우주여행은 다음 턴부터 사용 가능
+    우주여행 가능
   */
   if(p.pendingSpace){
+
     setTimeout(()=>{
+
+      if(
+        players[turn]!==p ||
+        p.pendingSpace===false
+      )
+        return;
+
       showModal(
         "우주여행 가능",
-        `${p.name}은(는) 지난 턴에 우주여행 칸에 도착했습니다.\n이번 턴부터 우주여행을 이용할 수 있습니다.`,
+        `${p.name}은(는) 지난 턴에 우주여행 칸에 도착했습니다.
+
+이번 턴부터 우주여행을 이용할 수 있습니다.`,
         [
-          ["우주여행 이용",useSpaceTravel],
-          ["이번에는 이용하지 않기",closeModal]
+          [
+            "우주여행 이용",
+            useSpaceTravel
+          ],
+          [
+            "이번에는 이용하지 않기",
+            closeModal
+          ]
         ]
       );
-    },100);
-  }
 
-  log(`${p.name}의 턴.`);
-  render();
+    },300);
+  }
 }
 
 function endGame(){
+
   const alive=activePlayers();
 
   if(alive.length===1){
+
     showModal(
       "게임 종료",
-      `${alive[0].name}만 남았습니다.\n게임이 종료되었습니다.`,
-      [["확인",closeModal]]
+      `${alive[0].name}만 남았습니다.
+
+게임이 종료되었습니다.`,
+      [
+        [
+          "확인",
+          closeModal
+        ]
+      ]
     );
-    log(`게임 종료 — ${alive[0].name} 생존.`);
+
+    log(
+      `게임 종료 — ${alive[0].name} 생존.`
+    );
   }
 }
 
 /* =========================================================
-   PROPERTY INFO
-   ========================================================= */
+   지역 정보
+========================================================= */
 
 function showCurrentProperty(){
-  if(!players.length)return;
+
+  if(!players.length)
+    return;
+
   showProperty(players[turn].pos);
 }
 
 function showProperty(pos){
+
   const c=boardData[pos];
 
   let text=`지역: ${c.name}\n\n`;
 
   if(c.type==="property"){
+
     text+=`땅 가격: ${money(c.price)}\n`;
+
     text+=`대지료: ${money(c.landFee)}\n`;
 
     if(c.seoul){
-      text+=`\n서울은 땅만 구매할 수 있습니다.\n별장 / 빌딩 / 호텔 불가능`;
+
+      text+=`
+서울 특별 규칙
+
+땅 가격: ${money(100)}
+통행료: ${money(200)}
+
+별장 / 빌딩 / 호텔 설치 불가능`;
+
     }else{
-      text+=`\n별장 건설비: ${money(c.villa)}\n별장 대지료: ${money(c.villaFee)}\n`;
-      text+=`빌딩 건설비: ${money(c.building)}\n빌딩 대지료: ${money(c.buildingFee)}\n`;
-      text+=`호텔 건설비: ${money(c.hotel)}\n호텔 대지료: ${money(c.hotelFee)}\n`;
-      text+=`\n현재 건물: ${c.building?buildingName(c.building):"없음"}`;
+
+      text+=`
+별장 건설비: ${money(c.villa)}
+별장 대지료: ${money(c.villaFee)}
+
+빌딩 건설비: ${money(c.buildingCost)}
+빌딩 대지료: ${money(c.buildingFee)}
+
+호텔 건설비: ${money(c.hotel)}
+호텔 대지료: ${money(c.hotelFee)}
+
+현재 건물:
+${c.building?
+buildingName(c.building):
+"없음"}`;
     }
 
-    if(c.owner!==undefined){
-      text+=`\n소유자: ${players[c.owner].name}`;
-    }else{
-      text+=`\n소유자: 없음`;
-    }
+    text+=`
+소유자:
+${c.owner===undefined?
+"없음":
+players[c.owner].name}`;
   }
 
   if(c.type==="vehicle"){
+
     text+=`구입 가격: ${money(c.price)}\n`;
+
     text+=`통행료: ${money(c.toll)}\n`;
-    if(c.spaceFee)text+=`우주여행 이용료: ${money(c.spaceFee)}\n`;
+
+    if(c.spaceFee)
+      text+=`우주여행 이용료: ${money(c.spaceFee)}\n`;
+
     text+=`\n건물 설치: 불가능`;
-    if(c.owner!==undefined)text+=`\n소유자: ${players[c.owner].name}`;
+
+    if(c.owner!==undefined)
+      text+=`\n소유자: ${players[c.owner].name}`;
   }
 
   if(c.type==="tour"){
-    text+="우주여행 칸\n도착 후 다음 턴부터 우주여행 이용 가능";
+
+    text+=
+      "우주여행 칸\n도착 후 다음 턴부터 우주여행 이용 가능";
   }
 
   if(c.type==="gold"){
+
     text+="황금열쇠 카드 칸";
   }
 
   showModal(
     c.name,
     text,
-    [["닫기",closeModal]]
+    [
+      [
+        "닫기",
+        closeModal
+      ]
+    ]
   );
 }
 
 function showCurrentInfo(){
+
   const el=document.getElementById("currentInfo");
 
   if(!players.length){
+
     el.innerHTML="";
+
     return;
   }
 
   const p=players[turn];
+
   const c=boardData[p.pos];
 
   let html="";
 
-  html+=infoBox("현재 위치",c.name);
+  html+=infoBox(
+    "현재 위치",
+    c.name
+  );
 
   if(c.type==="property"){
-    html+=infoBox("땅 가격",money(c.price));
-    html+=infoBox("대지료",money(c.landFee));
+
+    html+=infoBox(
+      "땅 가격",
+      money(c.price)
+    );
+
+    html+=infoBox(
+      "대지료",
+      money(c.landFee)
+    );
 
     if(c.seoul){
-      html+=infoBox("건물","불가능");
+
+      html+=infoBox(
+        "건물",
+        "불가능"
+      );
+
     }else{
-      html+=infoBox("별장",money(c.villa));
-      html+=infoBox("빌딩",money(c.building));
-      html+=infoBox("호텔",money(c.hotel));
+
+      html+=infoBox(
+        "별장",
+        money(c.villa)
+      );
+
+      html+=infoBox(
+        "빌딩",
+        money(c.buildingCost)
+      );
+
+      html+=infoBox(
+        "호텔",
+        money(c.hotel)
+      );
     }
 
     html+=infoBox(
       "소유자",
-      c.owner===undefined?"없음":players[c.owner].name
+      c.owner===undefined?
+      "없음":
+      players[c.owner].name
     );
   }
 
   if(c.type==="vehicle"){
-    html+=infoBox("구입",money(c.price));
-    html+=infoBox("통행료",money(c.toll));
-    if(c.spaceFee)html+=infoBox("우주여행",money(c.spaceFee));
+
+    html+=infoBox(
+      "구입",
+      money(c.price)
+    );
+
+    html+=infoBox(
+      "통행료",
+      money(c.toll)
+    );
+
+    if(c.spaceFee)
+      html+=infoBox(
+        "우주여행",
+        money(c.spaceFee)
+      );
   }
 
   el.innerHTML=html;
 }
 
 function infoBox(a,b){
-  return `<div class="info"><b>${a}</b><span>${b}</span></div>`;
+
+  return `
+  <div class="info">
+    <b>${a}</b>
+    <span>${b}</span>
+  </div>`;
 }
 
 /* =========================================================
    MODAL
-   ========================================================= */
+========================================================= */
 
 function showModal(title,text,buttons=[]){
+
   modalOpen=true;
 
-  document.getElementById("modalTitle").textContent=title;
+  document.getElementById("modalTitle")
+    .textContent=title;
 
-  document.getElementById("modalBody").innerHTML=
-    `<div class="modalText">${escapeHtml(text)}</div>`;
+  document.getElementById("modalBody")
+    .innerHTML=
+      `<div class="modalText">
+        ${escapeHtml(text)}
+      </div>`;
 
-  const mb=document.getElementById("modalBtns");
+  const mb=
+    document.getElementById("modalBtns");
+
   mb.innerHTML="";
 
   buttons.forEach(([label,fn])=>{
-    const b=document.createElement("button");
+
+    const b=
+      document.createElement("button");
+
     b.textContent=label;
-    b.onclick=fn;
+
+    b.onclick=()=>{
+
+      /*
+        버튼을 누르면 해당 버튼 자체를 잠시 비활성
+        → 빠른 더블 클릭 방지
+      */
+      if(b.dataset.busy==="1")
+        return;
+
+      b.dataset.busy="1";
+
+      fn();
+    };
+
     mb.appendChild(b);
   });
 
-  document.getElementById("modalBack").style.display="flex";
+  document.getElementById("modalBack")
+    .style.display="flex";
 }
 
 function closeModal(){
+
   modalOpen=false;
-  document.getElementById("modalBack").style.display="none";
+
+  document.getElementById("modalBack")
+    .style.display="none";
 }
 
 function escapeHtml(str){
+
   return String(str)
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
@@ -1633,49 +2745,77 @@ function escapeHtml(str){
     .replace(/\n/g,"<br>");
 }
 
+/* =========================================================
+   규칙
+========================================================= */
+
 function showRules(){
+
   showModal(
     "WORLD MARBLE 규칙",
-`1. 빈 땅에 도착하면 땅만 구매할 수 있습니다.
+`1. 빈 땅에 도착하면 땅을 구매할 수 있습니다.
 
-2. 땅을 구매한 뒤 한 바퀴 이상 돌아서 같은 지역에 다시 도착해야 건물을 살 수 있습니다.
+2. 황금열쇠 여행권으로 이동한 지역도 정상적인 빈 땅 구매가 가능합니다.
 
-3. 건물은 현재 플레이어가 서 있는 자기 땅에서만 구매할 수 있습니다.
+3. 여행권 이동은 출발점 보너스를 지급하지 않습니다.
 
-4. 한 땅에는 건물 한 채만 설치할 수 있습니다.
+4. 땅을 구매한 뒤 한 바퀴 이상 돌아서 같은 지역에 다시 도착해야 건물을 건설할 수 있습니다.
 
-5. 별장 / 빌딩 / 호텔 중 하나를 설치할 수 있습니다.
+5. 건물 순서는 별장 → 빌딩 → 호텔입니다.
 
-6. 별장 또는 빌딩이 있는 땅은 호텔로 교체할 수 있습니다.
+6. 별장 없이 빌딩을 건설할 수 없습니다.
 
-7. 서울은 땅만 구매할 수 있으며 별장·빌딩·호텔은 설치할 수 없습니다.
+7. 빌딩 없이 호텔을 건설할 수 없습니다.
 
-8. 모든 땅에는 대지료가 표시됩니다.
+8. 건물 건설비는 건설 즉시 차감됩니다.
 
-9. 다른 플레이어의 땅에 도착하면 해당 단계의 통행료를 냅니다.
+9. 건물이 올라가면 해당 건물의 통행료가 적용됩니다.
 
-10. 콩코드 여객기·퀸 엘리자베스호·콜럼비아호도 각각 구매해야 합니다.
+10. 자기 땅에 도착하면 통행료를 내지 않습니다.
 
-11. 탈것에는 건물을 설치할 수 없습니다.
+11. 서울은 땅 가격 100만원, 통행료 200만원입니다.
 
-12. 땅 거래는 플레이어끼리 하지 않고 은행과만 합니다.
+12. 서울에는 별장·빌딩·호텔을 설치할 수 없습니다.
 
-13. 땅은 최초 구매가격으로 은행에 판매할 수 있습니다.
+13. 다른 플레이어의 땅에 도착하면 해당 통행료를 지급합니다.
 
-14. 빚이 발생하면 원하는 자산부터 골라 은행에 팔아 빚을 갚을 수 있습니다.
+14. 콩코드 여객기·퀸 엘리자베스호·콜럼비아호는 각각 구매해야 합니다.
 
-15. 자금이 정확히 0원이면 파산이 아닙니다.
+15. 탈것에는 건물을 설치할 수 없습니다.
 
-16. 자산을 모두 팔아도 빚이 남으면 파산합니다.
+16. 우주여행은 도착한 다음 턴부터 이용할 수 있습니다.
 
-17. 일반 주사위 이동 후 턴 종료를 누릅니다.
+17. 우주여행 이동에는 출발점 보너스가 없습니다.
 
-18. 더블이면 한 번 더 주사위를 굴릴 수 있습니다.
+18. 우주여행 이용 시 콜럼비아호 소유자가 다른 플레이어라면 이용료를 지급합니다.
 
-19. 우주여행 칸에 도착하면 즉시 사용하지 않고 다음 턴부터 이용할 수 있습니다.
+19. 무인도에서는 주사위를 굴려 더블이 나오면 탈출합니다.
 
-20. 콜럼비아호 우주여행 이용 시 소유자가 있다면 우주여행 이용료를 냅니다.`,
-    [["닫기",closeModal]]
+20. 무인도에서 더블이 나오지 않으면 1회로 기록됩니다.
+
+21. 무인도에서 3회째까지 더블이 나오지 않으면 자동 탈출합니다.
+
+22. 무인도 상태에서 이전 주사위 값 1·1을 사용하여 탈출 판정을 하지 않습니다.
+
+23. 황금열쇠 카드는 한 번만 효과가 적용됩니다.
+
+24. 반액 대매출 카드는 다음 자산 1개를 절반 가격으로 매각할 때 적용됩니다.
+
+25. 반액 대매출 적용 후 카드는 소멸합니다.
+
+26. 자산 매각은 여러 개를 연속으로 할 수 있습니다.
+
+27. 자금이 0원인 것은 파산이 아닙니다.
+
+28. 자산을 모두 매각해도 빚이 남으면 파산합니다.
+
+29. 탈락한 플레이어는 이후 턴에서 자동으로 제외됩니다.`,
+    [
+      [
+        "닫기",
+        closeModal
+      ]
+    ]
   );
 }
 
